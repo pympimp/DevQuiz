@@ -72,7 +72,7 @@ export default {
   .page button {
   background-color: #003d65;
   color: white;
-  margin-top: 5px;
+  margin-top: 6px;
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
