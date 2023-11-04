@@ -21,29 +21,40 @@ export default {
 </script>
 
 <template>
-
-  <div class="bg-green-400 h-screen">
+  <div class=" h-screen">
     <NavBar/>
-
+    <div class="row " style="display: flex; align-items: center; ">
     <div class="page">
     <h1>DevQuiz</h1>
     <h3>Web Application ระบบ e-Learning </h3>
-    <h4>สำหรับเรียนการเขียนโปรแกรมเบื้องต้น</h4>
+    <h3>สำหรับเรียนการเขียนโปรแกรมเบื้องต้น</h3>
     <button @click="startQuiz">เริ่มต้นการเรียน</button>
+    
   </div>
+  <img src="images/rmBG.png" alt="" class="h-auto" style="width: 80vh;">
+
+</div>
 </div>
   <!-- <RouterView /> -->
 </template>
 
 <style scoped>
+*{
+  background-color: rgb(210, 197, 226)
+}
 .page {
+  display: flex; /* เปิดใช้งาน Flexbox */
+  flex-direction: column; /* จัดเรียงเนื้อหาในแนวตั้ง */
+  align-items: start; /* จัดให้เนื้อหาอยู่ตรงกลางในแนวดิ่ง */
+  justify-content: flex-start; /* ชิดด้านซ้ายในแนวนอน */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #ffffff;
-  margin-top: 190px;
+  color: #191717;
+  margin-top: 150px;
   padding: 100px;
 }
+
 
   .page h1{
     font-size: 50px;
@@ -67,7 +78,7 @@ export default {
 
 
   .page button {
-  background-color: #003d65;
+  background-color: #49385f;
   color: white;
   margin-top: 6px;
   padding: 10px 20px;

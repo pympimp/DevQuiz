@@ -55,12 +55,12 @@ export default {
   }
 
   .custom-background {
-    background-color: #435585; /* เปลี่ยนสีพื้นหลังของ div ที่มีคลาส custom-background */
+    background-color: #191717; /* เปลี่ยนสีพื้นหลังของ div ที่มีคลาส custom-background */
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
   }
 
   ul {
-    background-color: #435585;
+    background-color: #191717;
   }
 </style>
 
