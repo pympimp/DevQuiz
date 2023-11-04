@@ -2,9 +2,10 @@
   <div class="bg-gray-900 text-gray-100 py-3.5 px-6 shadow md:flex justify-between items-center">
     <div class="flex items-center cursor-pointer">
       <span class="text-green-500 text-xl mr-1">
-        <i class="bi bi-xbox"></i>
+        <!-- <i class="bi bi-xbox"></i> -->
+         <img src="images/logo1.png" alt="">
       </span>
-      <h1 class="text-hl">Xbox</h1>
+      <!-- <h1 class="text-hl">Xbox</h1> -->
     </div>
 
     <span @click="MenuOpen()" class="absolute md:hidden right-6 top-1.5 cursor-pointer text-4xl">
@@ -44,4 +45,12 @@ export default {
 </script>
 
 <style scoped>
+
+
+img {
+  width: 90px; 
+  height: 90px;
+  border-radius: 50px;
+}
+
 </style>
