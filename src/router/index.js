@@ -12,6 +12,14 @@ const router = createRouter({
     //   // which is lazy-loaded when the route is visited.
     //   component: () => import('../views/AboutView.vue')
     // }
+
+
+    {
+      path: '/mainPAge',
+      name: 'MainPAge',
+      component: () => import('../pages/MainPage.vue')
+    },
+
     {
       path: '/',
       name: 'HomePage',
@@ -19,6 +27,7 @@ const router = createRouter({
     },
     {
       path: "/login",
+      name: 'LogIn',
       component: () => import('../pages/LogIn.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
     },
   ]
