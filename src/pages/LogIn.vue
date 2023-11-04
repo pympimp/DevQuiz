@@ -2,7 +2,7 @@
     <div>
       <!-- เนื้อหาหน้า LogIn.vue -->
     </div>
-    <p>Login</p>
+    <p>Loginn</p>
   </template>
   
   <script>
