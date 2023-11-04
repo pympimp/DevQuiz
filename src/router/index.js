@@ -16,8 +16,14 @@ const router = createRouter({
       path: '/',
       name: 'HomePage',
       component: () => import('../pages/HomePage.vue')
-    }
+    },
+    {
+      path: "/login",
+      component: () => import('../pages/LogIn.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
+    },
   ]
+  
 })
+
 
 export default router

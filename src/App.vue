@@ -11,7 +11,7 @@ export default {
   methods: {
     startQuiz() {
       // เพิ่มโค้ดที่คุณต้องการเมื่อปุ่มถูกคลิก
-      console.log("ปุ่มถูกคลิก! คุณสามารถเริ่มเล่นเกมหรือทำอะไรก็ได้ที่นี่");
+      this.$router.push({ name: "LogIn" });
     },
   },
 
@@ -40,7 +40,7 @@ export default {
 
 <style scoped>
 *{
-  background-color: rgb(210, 197, 226)
+  background-color: rgb(229, 219, 241)
 }
 .page {
   display: flex; /* เปิดใช้งาน Flexbox */
