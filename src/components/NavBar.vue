@@ -1,10 +1,11 @@
 <template>
-  <div class="bg-gray-900 text-gray-100 py-3.5 px-6 shadow md:flex justify-between items-center">
+  <div class="custom-background text-gray-100 py-3.5 px-6 shadow md:flex justify-between items-center">
     <div class="flex items-center cursor-pointer">
       <span class="text-green-500 text-xl mr-1">
         <!-- <i class="bi bi-xbox"></i> -->
-         <img src="images/logo1.png" alt="">
+         <img src="images/removeLogo.png" alt="" class="w-15 h-10">
       </span>
+      <p style="font-weight: bold; color: white;">DevQuiz</p>
       <!-- <h1 class="text-hl">Xbox</h1> -->
     </div>
 
@@ -12,7 +13,7 @@
       <i :class="[open ? 'bi bi-x' : 'bi bi-filter-left']"></i>
     </span>
 
-    <ul class="md:flex md:items-center md:px-0 px-3 md:pb-0 pb-6 md:static absolute bg-gray-900 md:w-auto w-full top-14 duration-700 ease-in" :class="[open ? 'left-0' : 'left-[-100%]']">
+    <ul class="md:flex md:items-center md:px-0 px-3 md:pb-0 pb-6 md:static absolute  md:w-auto w-full top-14 duration-700 ease-in" :class="[open ? 'left-0' : 'left-[-100%]']">
       <li class="md:mx-4 md:my-0 my-6" v-for="link in Links" :key="link.name">
         <a :href="link.link" class="text-xl hover:text-green-500">{{ link.name }}</a>
       </li>
@@ -45,12 +46,22 @@ export default {
 </script>
 
 <style scoped>
+  /* import font มาใช้ */
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped&family=Oswald&display=swap');
 
+  /* เลือก font มาใช้ โดยกำหนดให้อันแรกเป็นฟอนต์หลัก และอันสองเป็นฟอนต์รอง*/
+  * {
+    font-family: 'Noto Sans Thai Looped', 'Oswald', sans-serif;
+  }
 
-img {
-  width: 90px; 
-  height: 90px;
-  border-radius: 50px;
-}
+  .custom-background {
+    background-color: #435585; /* เปลี่ยนสีพื้นหลังของ div ที่มีคลาส custom-background */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  }
 
+  ul {
+    background-color: #435585;
+  }
 </style>
+
+
