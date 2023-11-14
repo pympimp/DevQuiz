@@ -1,12 +1,12 @@
 <script>
 // import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
-// import NavBar from "@/components/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
 export default {
   name: "App",
-//   components: {
-//     NavBar,
-//   },
+  components: {
+    NavBar,
+  },
  
   methods: {
     startQuiz() {
@@ -22,8 +22,12 @@ export default {
 
 <template>
   <div class=" h-screen">
+    <NavBar/>
     <!-- <NavBar/> -->
+
     <div class="row " style="display: flex; align-items: center; ">
+    <img src="images/rmBG.png" alt="" class="h-auto" style="width: 80vh;">
+    
     <div class="page">
     <h1>DevQuiz</h1>
     <h3>Web Application ระบบ e-Learning </h3>
@@ -49,9 +53,10 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #191717;
-  margin-top: 150px;
+  margin-top: 100px;
   padding: 100px;
 }
+
 
 
   .page h1{
