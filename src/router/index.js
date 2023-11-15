@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home1 from '@/pages/Home1.vue';
-import Home2 from '@/pages/Home2.vue';
-import Home3 from '@/pages/Home3.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,23 +32,7 @@ const router = createRouter({
       path: "/login",
       name: 'LogIn',
       component: () => import('../pages/LogIn.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
-    },
-
-    {
-      path: '/home1',
-      name: 'Home1',
-      component: Home1,
-    },
-    {
-      path: '/home2',
-      name: 'Home2',
-      component: Home2,
-    },
-    {
-      path: '/home3',
-      name: 'Home3',
-      component: Home3,
-    },
+    }
 
 
     
