@@ -21,11 +21,12 @@ export default {
 </script>
 
 <template>
-  <div class=" h-screen">
-    <NavBar/>
+  <NavBar/>
     <!-- <NavBar/> -->
+  <div class=" h-screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    
 
-    <div class="row " style="display: flex; align-items: center; ">
+    <div class="row" style="display: flex; align-items: center; flex-direction: row-reverse;">
     <img src="images/rmBG.png" alt="" class="h-auto" style="width: 80vh;">
     
     <div class="page">
@@ -53,7 +54,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #191717;
-  margin-top: 100px;
+  margin-top: 20px;
   padding: 100px;
 }
 

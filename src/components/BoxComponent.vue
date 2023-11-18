@@ -59,19 +59,25 @@ export default {
 }
 
 
+/* .boxcontainer{
+  background-color: aqua;
+  
+} */
+
+
 /* กล่องแบบฝึก */
 .box {
   text-align: center;
   width: 700px;
   height: 120px;
-  margin: 10px;
+  margin: 15px;
   border: 1px solid #ddd;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: rgb(229, 219, 241);
   position: relative;
-  top: 40px; /* ปรับตำแหน่งขึ้น 50px */
+  margin-bottom: 20px; /* ปรับตำแหน่งขึ้น 50px */
 ; /* กำหนดสีเทาให้กล่อง */
 }
 
@@ -80,6 +86,7 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+  /* background-color: blue; */
 }
 
 
