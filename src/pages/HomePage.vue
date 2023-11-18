@@ -84,7 +84,7 @@ export default {
       dropdownIcon.classList.toggle('active');
       dropdownContent.classList.toggle('active');
 
-      this.$set(this, `isDropdownOpen${boxId}`, !this[`isDropdownOpen${boxId}`]);
+      this.$set(this.dropdownContent, boxId, !this.dropdownContent[boxId]);
 
       if (dropdownContent.classList.contains('active')) {
       // ถ้า drop-down ถูกเปิดให้ส่ง transitionend event ไปยัง method
@@ -128,7 +128,7 @@ export default {
   
   <div class="box-container">
      
-    <div class="box pink-box"  :style="{ marginTop: isDropdownOpen1 ? '20px' : '0' }" id="dropdownBox1">
+    <div class="box pink-box"  id="dropdownBox1">
         <img src="/images/html.png" alt="Left Image 1" class="left-image" />
         <span class="text">เอชทีเอ็มแอล (อังกฤษ: HTML: Hypertext Markup Language ภาษามาร์กอัปข้อความหลายมิติ) เป็นภาษามาร์กอัปหลักในปัจจุบันที่ใช้ในการสร้างเว็บเพจ หรือข้อมูลอื่นที่เรียกดูผ่านทางเว็บเบราว์เซอร์ ซึ่งตัวโค้ดจะแสดงโครงสร้างของข้อมูล ในการแสดง หัวข้อ ลิงก์ ย่อหน้า รายการ รวมถึงการสร้างแบบฟอร์ม เชื่อมโยงภาพหรือวิดีโอด้วย</span>
          <!-- ไอคอนสามเหลี่ยม -->
@@ -137,17 +137,14 @@ export default {
           </div>
 
         <!-- Drop-down content -->
-        <div class="dropdown-content"  :class="{ active: isDropdownOpen1 }" >
-        <h2>ในการเขียนภาษา HTML นั้น จะมีรูปแบบโครงสร้างการเขียนแบ่งออกเป็น 3 ส่วน โดยจะแสดงในรูปแบบของสีดังนี้</h2>
-        <h2>1. ส่วนประกาศ เป็นส่วนที่กำหนดให้บราวเซอร์ทราบว่า นี่คือภาษา HTML และจะต้องทำการแปรผลอย่างไรมีคำสั่งคู่เดียวคือ  ปรากฏที่หัวและท้ายไฟล์</h2>
-        <h2>2. ส่วนหัวเรื่อง (head) เป็นส่วนที่แสดงผลข้อความบนไตเติ้ลบาร์ของบราวเซอร์ และอาจมีคำสั่งสำหรับกำหนดรายละเอียดด้านเทคนิคอื่นๆ อีก แทรกอยู่ระหว่างคำสั่ง </h2>
-        <h2>3. ส่วนเนื้อหา (body) เป็นส่วนที่มีความซับซ้อนมากที่สุด และสามารถใส่เทคนิคลูกเล่นเพื่อดึงดูดความสนใจจากผู้ชมได้มาก ความแตกต่างระหว่างเว็บไซต์ต่างๆ แสดงความมีฝีมือของผู้จัดทำ ศิลปะในการออกแบบจะอยู่ในส่วนนี้ทั้งหมด ซึ่งจะแทรกอยู่ระหว่างคำสั่ง  </h2>  
-        <!-- เพิ่มเนื้อหา drop-down content ที่นี่ -->
+        <div class="dropdown-content" :class="{ active: dropdownContent[1] }">
+        <h2>Content for Box 1้เ้ดเเดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดดด</h2>
+          <!-- เพิ่มเนื้อหา drop-down content ที่นี่ -->
         </div>
     </div>
 
      
-      <div class="box pink-box" :style="{ marginTop: isDropdownOpen2 ? '20px' : '0' }"  id="dropdownBox2">
+      <div class="box pink-box" id="dropdownBox2">
         <img src="/images/css.png" alt="Left Image 2" class="left-image"  />
         <span class="text">CSS (ภาษาอังกฤษ: Cascading Style Sheet) หรือที่มักเรียกสั้นๆ ว่า ‘สไตล์ชีต’ เป็นภาษาที่ใช้ส่วนของการจัดรูปแบบการแสดงผลเอกสาร HTML โดยที่ CSS กำหนดและระบุรูปแบบ หรือ Style ของเนื้อหาในเอกสาร เช่น สีของข้อความ สีพื้นหลัง ประเภทของตัวอักษร และการจัดวางข้อความ</span>
        <!-- ไอคอนสามเหลี่ยม -->
@@ -156,18 +153,15 @@ export default {
         </div>
 
         <!-- Drop-down content -->
-        <div class="dropdown-content" :class="{ active: isDropdownOpen2 } ">
-          <h2>ในการเขียนภาษา HTML นั้น จะมีรูปแบบโครงสร้างการเขียนแบ่งออกเป็น 3 ส่วน โดยจะแสดงในรูปแบบของสีดังนี้</h2>
-        <h2>1. ส่วนประกาศ เป็นส่วนที่กำหนดให้บราวเซอร์ทราบว่า นี่คือภาษา HTML และจะต้องทำการแปรผลอย่างไรมีคำสั่งคู่เดียวคือ  ปรากฏที่หัวและท้ายไฟล์</h2>
-        <h2>2. ส่วนหัวเรื่อง (head) เป็นส่วนที่แสดงผลข้อความบนไตเติ้ลบาร์ของบราวเซอร์ และอาจมีคำสั่งสำหรับกำหนดรายละเอียดด้านเทคนิคอื่นๆ อีก แทรกอยู่ระหว่างคำสั่ง </h2>
-        <h2>3. ส่วนเนื้อหา (body) เป็นส่วนที่มีความซับซ้อนมากที่สุด และสามารถใส่เทคนิคลูกเล่นเพื่อดึงดูดความสนใจจากผู้ชมได้มาก ความแตกต่างระหว่างเว็บไซต์ต่างๆ แสดงความมีฝีมือของผู้จัดทำ ศิลปะในการออกแบบจะอยู่ในส่วนนี้ทั้งหมด ซึ่งจะแทรกอยู่ระหว่างคำสั่ง  </h2>  
+        <div class="dropdown-content" :class="{ active: dropdownContent[2] }">
+        <h2>Content for Box 2</h2>
         <!-- เพิ่มเนื้อหา drop-down content ที่นี่ -->
          </div>
     </div>
 
 
       
-      <div class="box pink-box" :style="{ marginTop: isDropdownOpen3 ? '20px' : '0' }"  id="dropdownBox3">
+      <div class="box pink-box" id="dropdownBox3">
         <img src="/images/javascript.png" alt="Left Image 3" class="left-image" />
         <span class="text">จาวาสคริปต์ (อังกฤษ: JavaScript) เป็นภาษาสคริปต์ ทีมีลักษณะการเขียนแบบโพรโทไทป์ (Prototyped-based Programming) ส่วนมากใช้ในหน้าเว็บเพื่อประมวลผลข้อมูลที่ฝั่งของผู้ใช้งาน แต่ก็ยังมีใช้เพื่อเพิ่มเติมความสามารถในการเขียนสคริปต์โดยฝังอยู่ในโปรแกรมอื่น ๆ</span>
         <!-- ไอคอนสามเหลี่ยม -->
@@ -176,11 +170,8 @@ export default {
         </div>
 
          <!-- Drop-down content -->
-         <div class="dropdown-content" :class="{ active: isDropdownOpen3 }">
-          <h2>ในการเขียนภาษา HTML นั้น จะมีรูปแบบโครงสร้างการเขียนแบ่งออกเป็น 3 ส่วน โดยจะแสดงในรูปแบบของสีดังนี้</h2>
-        <h2>1. ส่วนประกาศ เป็นส่วนที่กำหนดให้บราวเซอร์ทราบว่า นี่คือภาษา HTML และจะต้องทำการแปรผลอย่างไรมีคำสั่งคู่เดียวคือ  ปรากฏที่หัวและท้ายไฟล์</h2>
-        <h2>2. ส่วนหัวเรื่อง (head) เป็นส่วนที่แสดงผลข้อความบนไตเติ้ลบาร์ของบราวเซอร์ และอาจมีคำสั่งสำหรับกำหนดรายละเอียดด้านเทคนิคอื่นๆ อีก แทรกอยู่ระหว่างคำสั่ง </h2>
-        <h2>3. ส่วนเนื้อหา (body) เป็นส่วนที่มีความซับซ้อนมากที่สุด และสามารถใส่เทคนิคลูกเล่นเพื่อดึงดูดความสนใจจากผู้ชมได้มาก ความแตกต่างระหว่างเว็บไซต์ต่างๆ แสดงความมีฝีมือของผู้จัดทำ ศิลปะในการออกแบบจะอยู่ในส่วนนี้ทั้งหมด ซึ่งจะแทรกอยู่ระหว่างคำสั่ง  </h2>  
+         <div class="dropdown-content" :class="{ active: dropdownContent[3] }">
+        <h2>Content for Box 3</h2>
         <!-- เพิ่มเนื้อหา drop-down content ที่นี่ -->
         </div>
       </div>
@@ -246,7 +237,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 /* กล่องชมพู */
@@ -317,7 +307,7 @@ h3{
 
 
 .dropdown-content {
-  display: flex;
+  display: none;
   position: absolute;
   background-color: #ab4747;
   top: 100%;
@@ -349,8 +339,6 @@ h3{
   position: absolute;
   max-height: 1000px; /* ปรับตามความต้องการ, คือความสูงสูงสุดของ drop-down content */
 } 
-
-
 
 
 </style>
