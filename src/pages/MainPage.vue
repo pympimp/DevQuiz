@@ -22,41 +22,41 @@ export default {
 </script>
 
 <template>
-  <NavBar/>
-    <!-- <NavBar/> -->
-  <div class=" h-screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    
-
-    <div class="row" style="display: flex; align-items: center; flex-direction: row-reverse;">
-      <img src="images/rmBG.png" alt="" class="h-auto" style="width: 80vh;">
+    <NavBar/>
+  <div class="screen" id="screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
     <!-- <div class="page"> -->
-      <div class="container">
+    <div class="container">
 
-      <section class="about">
-        <div class="about-image">
-          <img src="images/rmBG.png" alt="" class="h-auto" style="width: 80vh;">
-        </div>
-        <div class="about-content">
-          <h1>DevQuiz</h1>
-          <h3>Web Application ระบบ e-Learning </h3>
-          <h3>สำหรับเรียนการเขียนโปรแกรมเบื้องต้น</h3>
-          <button @click="startQuiz">เริ่มต้นการเรียน</button>
-        </div>
-      </section>
+    <section class="about">
+      <div class="about-content">
+        <h1>DevQuiz</h1>
+        <h3>Web Application ระบบ e-Learning </h3>
+        <h3>สำหรับเรียนการเขียนโปรแกรมเบื้องต้น</h3>
+        <button @click="startQuiz">เริ่มต้นการเรียน</button>
+      </div>
+      <div class="about-image">
+        <img src="images/rmBG.png" alt="" class="h-auto">
+      </div>
+  </section>
 
     </div>
-</div>
 </div>
   <!-- <RouterView /> -->
 </template>
 
 <style scoped>
 *{
-  background-color: #FAF5FF;
+  /* background-color: #FAF5FF; */
   /* margin: 0px;
   padding: 0px; */
   box-sizing: border-box;
 }
+
+body {
+  background-color: #FAF5FF;
+  margin: 0;
+}
+
 .page {
   display: flex; /* เปิดใช้งาน Flexbox */
   flex-direction: column; /* จัดเรียงเนื้อหาในแนวตั้ง */
@@ -66,7 +66,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #191717;
-  margin-top: 20px;
+  margin-top: 100px;
   padding: 100px;
 }
 
@@ -111,11 +111,17 @@ export default {
   width: 90%;
   margin: 0 auto;
   padding: 10px 20px;
+  /* display: grid;
+  gap: 30px;
+  margin: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 2fr 2fr 1fr; */
+  
 }
 
 .about {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -124,20 +130,26 @@ export default {
   flex:1;
   margin-right: 40px;
   overflow: hidden;
+  /* ไก */
 }
 
 .about-image:hover img {
   /* transform: scale(1.05); */
 }
 
+.about-image img {
+  width: 90vh;
+}
+
 .about-content{
-  flex:0.8;
+  flex:1;
 }
 
 .about-content h1{
-  font-size: 30px;
+  font-size: 60px;
   margin-bottom: 15px;
-  font-weight: bold;
+  font-weight: bolder;
+  color: #EB7E55;
 }
 
 .about-content h3{

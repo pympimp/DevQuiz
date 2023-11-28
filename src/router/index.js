@@ -18,8 +18,16 @@ const router = createRouter({
   
     {
       path: '/',
-      name: 'MainPAge',
-      component: () => import('../pages/MainPage.vue')
+      name: 'MainPage',
+      component: () => import('../pages/MainPage.vue'),
+      // children:
+      // [
+      //   {
+      //     path:'',
+      //     name:'Mainpage',
+      //     component: () => import('../pages/MainPage.vue')
+      //   }
+      // ]
     },
 
     {
