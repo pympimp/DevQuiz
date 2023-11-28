@@ -22,43 +22,30 @@ export default {
 </script>
 
 <template>
-  <div class=" h-screen">
-    <NavBar/>
+  <NavBar/>
     <!-- <NavBar/> -->
-
-    <!-- <div class="row " style="display: flex; align-items: center; "> -->
-    <!-- <vue-responsive-image
-    :image-url= "require('@/images/rmBG.png')"
-    :error-image-url="'https://via.placeholder.com/160x90.png/09f/fff?text=Not+Found'"
-    :show-error-image="true"
-    :width-on-screen="50"
-    :width-on-screen-tablet="75"
-    :width-on-screen-smartphone="100"
-    :image-ratio="16/9"
-    :alt="'test1'"
-    :image-class="'vw50'"
-    :mode="'all'"
-    :lazy-loading="false"
-    ></vue-responsive-image> -->
-    <!-- <img src="images/rmBG.png" alt="" class="h-auto" style="width: 80vh;"> -->
+  <div class=" h-screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
     
-    <!-- <div class="page"> -->
-    <div class="container">
 
-    <section class="about">
-      <div class="about-image">
-        <img src="images/rmBG.png" alt="" class="h-auto" style="width: 80vh;">
-      </div>
-      <div class="about-content">
-        <h1>DevQuiz</h1>
-        <h3>Web Application ระบบ e-Learning </h3>
-        <h3>สำหรับเรียนการเขียนโปรแกรมเบื้องต้น</h3>
-        <button @click="startQuiz">เริ่มต้นการเรียน</button>
-      </div>
-  </section>
+    <div class="row" style="display: flex; align-items: center; flex-direction: row-reverse;">
+      <img src="images/rmBG.png" alt="" class="h-auto" style="width: 80vh;">
+    <!-- <div class="page"> -->
+      <div class="container">
+
+      <section class="about">
+        <div class="about-image">
+          <img src="images/rmBG.png" alt="" class="h-auto" style="width: 80vh;">
+        </div>
+        <div class="about-content">
+          <h1>DevQuiz</h1>
+          <h3>Web Application ระบบ e-Learning </h3>
+          <h3>สำหรับเรียนการเขียนโปรแกรมเบื้องต้น</h3>
+          <button @click="startQuiz">เริ่มต้นการเรียน</button>
+        </div>
+      </section>
 
     </div>
-<!-- </div> -->
+</div>
 </div>
   <!-- <RouterView /> -->
 </template>
@@ -79,8 +66,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #191717;
-  /* margin-top: 100px;
-  padding: 100px; */
+  margin-top: 20px;
+  padding: 100px;
 }
 
 
