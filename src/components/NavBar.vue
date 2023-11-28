@@ -3,7 +3,7 @@
     <div class="flex items-center cursor-pointer">
       <span class="text-green-500 text-xl mr-1">
         <!-- <i class="bi bi-xbox"></i> -->
-         <img src="images/removeLogo.png" alt="" class="w-15 h-10">
+         <!-- <img src="images/removeLogo.png" alt="" class="w-15 h-10"> -->
       </span>
       <p style="font-weight: bold; color: white;">DevQuiz</p>
       <!-- <h1 class="text-hl">Xbox</h1> -->
@@ -15,7 +15,7 @@
 
     <ul class="md:flex md:items-center md:px-0 px-3 md:pb-0 pb-6 md:static absolute  md:w-auto w-full top-14 duration-700 ease-in" :class="[open ? 'left-0' : 'left-[-100%]']">
       <li class="md:mx-4 md:my-0 my-6" v-for="link in Links" :key="link.name">
-        <a :href="link.link" class="text-xl hover:text-green-500">{{ link.name }}</a>
+        <a :href="link.link" class="text-xl hover:text-blue-200">{{ link.name }}</a>
       </li>
       <ButTon/>
     </ul>
@@ -55,12 +55,16 @@ export default {
   }
 
   .custom-background {
-    background-color: #191717; /* เปลี่ยนสีพื้นหลังของ div ที่มีคลาส custom-background */
+    background-color: #EC4088; /* เปลี่ยนสีพื้นหลังของ div ที่มีคลาส custom-background */
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
   }
 
   ul {
-    background-color: #191717;
+    background-color: #EC4088;
+  }
+  
+  .custom-button {
+    background-color: #02BDCC;
   }
 </style>
 

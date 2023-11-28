@@ -1,5 +1,6 @@
 <template>
       <!-- <NavBar/> -->
+      <NavBar/>
       <body>
     <section>
         <form>
@@ -14,13 +15,10 @@
                 <input type="password" required>
                 <label for="">Password</label>
             </div>
-            <div class="forget">
-                <label for=""><input type="checkbox">Remember Me</label>
-              <a href="#">Forget Password</a>
-            </div>
             <button>Log in</button>
             <div class="register">
                 <p>Don't have a account <a href="#">Register</a></p>
+                <!-- <p class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</p> -->
             </div>
         </form>
     </section>
@@ -28,12 +26,12 @@
   </template>
   
   <script>
-// import NavBar from "@/components/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
   export default {
     name: "LogIn",
-  //   components: {
-  //   NavBar,
-  // },
+    components: {
+    NavBar,
+  },
   };
   </script>
 
@@ -52,7 +50,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-image: url(https://user-images.githubusercontent.com/13468728/233847739-219cb494-c265-4554-820a-bd3424c59065.jpg);
+  background-color: #1F1F1F;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -61,7 +59,7 @@ body {
 section {
     position: relative;
     max-width: 400px;
-    background-color: transparent;
+    background-color: rgb(246, 246, 246);
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     backdrop-filter: blur(55px);
@@ -73,7 +71,7 @@ section {
 
 h1 {
     font-size: 2rem;
-    color: #fff;
+    color: #000000;
     text-align: center;
 }
 
@@ -81,7 +79,7 @@ h1 {
     position: relative;
     margin: 30px 0;
     max-width: 310px;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #707070;
 }
 
 .inputbox label {
@@ -89,7 +87,7 @@ h1 {
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
-    color: #fff;
+    color: #707070;
     font-size: 1rem;
     pointer-events: none;
     transition: all 0.5s ease-in-out;
@@ -102,13 +100,13 @@ input:valid ~ label {
 
 .inputbox input {
     width: 100%;
-    height: 60px;
+    height: 40px;
     background: transparent;
     border: none;
     outline: none;
     font-size: 1rem;
     padding: 0 35px 0 5px;
-    color: #fff;
+    color: #707070;
 }
 
 .inputbox ion-icon {
@@ -119,66 +117,49 @@ input:valid ~ label {
     top: 20px;
 }
 
-.forget {
-    margin: 35px 0;
-    font-size: 0.85rem;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
- 
-}
-
-.forget label {
-    display: flex;
-    align-items: center;
-}
-
-.forget label input {
-    margin-right: 3px;
-}
-
-.forget a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.forget a:hover {
-    text-decoration: underline;
-}
 
 button {
     width: 100%;
-    height: 40px;
+    height: 45px;
     border-radius: 40px;
-    background-color: rgb(255, 255,255, 1);
+    background-color: #EE5684;
     border: none;
     outline: none;
     cursor: pointer;
+    color: #ffffff;
     font-size: 1rem;
     font-weight: 600;
     transition: all 0.4s ease;
 }
 
 button:hover {
-  background-color: rgb(255, 255,255, 0.5);
+  background-color: #ae3458;
 }
 
 .register {
     font-size: 0.9rem;
-    color: #fff;
+    color: #707070;
     text-align: center;
-    margin: 25px 0 10px;
+    margin: 10px 0 10px;
 }
 
 .register p a {
     text-decoration: none;
-    color: #fff;
+    color: #EE5684;
     font-weight: 600;
+    text-align: center;
 }
 
 .register p a:hover {
     text-decoration: underline;
 }
+
+/* .register .more {
+    text-decoration: none;
+    color: #EE5684;
+    font-weight: 600;
+    text-align: center;
+} */
+
 </style>
   
