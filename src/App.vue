@@ -17,3 +17,8 @@
   <!-- <RouterView /> -->
 </template>
 
+<style>
+body {
+  background-color: #1F1F1F;
+}
+</style>

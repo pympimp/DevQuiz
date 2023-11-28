@@ -57,8 +57,10 @@ a,
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped&family=Oswald&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
 * {
-  font-family: 'Noto Sans Thai Looped', 'Oswald', sans-serif;
+  font-family: 'Prompt', sans-serif;
 }
+

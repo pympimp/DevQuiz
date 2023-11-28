@@ -47,11 +47,11 @@ export default {
 
 <style scoped>
   /* import font มาใช้ */
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped&family=Oswald&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
   /* เลือก font มาใช้ โดยกำหนดให้อันแรกเป็นฟอนต์หลัก และอันสองเป็นฟอนต์รอง*/
   * {
-    font-family: 'Noto Sans Thai Looped', 'Oswald', sans-serif;
+    font-family: 'Prompt', sans-serif;
   }
 
   .custom-background {
