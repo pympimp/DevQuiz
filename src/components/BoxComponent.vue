@@ -2,7 +2,7 @@
   <div class="boxcontainer">
     <div class="box">
       <div class="flex-container">
-        <div class="image-container">
+        <div class="img-container">
           <img :src="box.imageSrc" alt="Box Image">
         </div>
         <div class="text-container">
@@ -22,6 +22,8 @@ export default {
       required: true,
     },
   },
+
+  
   computed: {
     box() {
       return this.boxData;
@@ -45,6 +47,7 @@ export default {
     toggleBox() {
       this.isActive = !this.isActive;
     },
+    
 
   },
 };
@@ -59,23 +62,17 @@ export default {
 }
 
 
-/* .boxcontainer{
-  background-color: aqua;
-  
-} */
-
-
 /* กล่องแบบฝึก */
 .box {
-  text-align: center;
   width: 700px;
-  height: 120px;
+  height: 100px;
   margin: 15px;
-  border: 1px solid #ddd;
+  margin-left: 25px;
+  border: 1px solid #1F1F1F;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgb(229, 219, 241);
+  background-color:  #1F1F1F;
   position: relative;
   margin-bottom: 20px; /* ปรับตำแหน่งขึ้น 50px */
 ; /* กำหนดสีเทาให้กล่อง */
@@ -85,14 +82,14 @@ export default {
 .flex-container {
   display: flex;
   align-items: center;
-  flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+  /* flex-direction: row;  */
+  margin-bottom: 5px;
   /* background-color: blue; */
 }
 
 
-.image-container {
-  text-align: center;
-  background-color: black; /* กำหนดสีดำให้กับพื้นหลัง */
+.img-container{
+  background-color: #F1F1F1; /* กำหนดสีดำให้กับพื้นหลัง */
   width: 80px; /* ปรับขนาดตามที่ต้องการ */
   height: 80px; /* ปรับขนาดตามที่ต้องการ */
   border-radius: 50%; /* ทำให้รูปร่างเป็นวงกลม */
@@ -105,6 +102,7 @@ export default {
 
 
 /* ส่วนข้างในแบบฝึก */
+
 img {
   max-width: 50px;
   height: 50px;
@@ -120,10 +118,122 @@ img {
 .main-title {
   font-size: 26px; /* ขนาดตัวอักษรสำหรับ HTML */
   font-weight: bold;
+  color: #CCCCCC;
 }
 
 .sub-title {
   font-size: 20px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+  color:#FFFFFF;
 }
+
+
+
+
+
+
+
+
+@media (max-width: 728px) {
+ 
+
+  .box {
+    width: 100%; /* กลับไปให้กล่องมีขนาดเป็น 700px เมื่อหน้าจอกว้างขึ้น */
+    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: 50px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-container {
+  background-color: black;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+img {
+  max-width: 50px;
+  height: 50px;
+}
+
+.text-container {
+  text-align: left;
+  margin-left: 20px;
+  flex: 1;
+}
+
+.main-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.sub-title {
+  font-size: 20px;
+}
+
+
+@media (max-width: 728px) {
+ 
+
+  .box {
+    width: 100%; /* กลับไปให้กล่องมีขนาดเป็น 700px เมื่อหน้าจอกว้างขึ้น */
+    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: 50px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+  }
+
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-container {
+  background-color: black;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  margin-left: 20px;
+}
+
+img {
+  max-width: 50px;
+  height: 50px;
+}
+
+.text-container {
+  text-align: left;
+  margin-left: 20px;
+  flex: 1;
+}
+
+.main-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.sub-title {
+  font-size: 18px;
+}
+
+}
+
+
+
+
+
+
+
+
 
 </style>
