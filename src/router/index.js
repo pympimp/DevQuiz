@@ -40,8 +40,14 @@ const router = createRouter({
       path: "/login",
       name: 'LogIn',
       component: () => import('../pages/LogIn.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
-    }
+    },
 
+
+    {
+      path: "/Articie",
+      name: 'Articie',
+      component: () => import('../pages/ArticIE.vue') 
+    }
 
     
 

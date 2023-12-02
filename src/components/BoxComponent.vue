@@ -53,8 +53,8 @@ export default {
 };
 </script>
 
-<style scoped>
 
+<style scoped>
 
 
 .box:hover {
@@ -120,6 +120,7 @@ img {
   font-weight: bold;
   color: #CCCCCC;
 }
+
 
 .sub-title {
   font-size: 20px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */

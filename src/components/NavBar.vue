@@ -33,7 +33,7 @@ export default {
     let open = ref(false)
     let Links = [
       { name: "บทเรียน", link: "#" },
-      { name: "บทความ", link: "#" },
+      { name: "บทความ", link: 'Articie' },
       { name: "เกี่ยวกับเรา", link: "#" },
     ];
 

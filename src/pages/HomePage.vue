@@ -273,34 +273,35 @@ h3{
 
 .card{
   display: flex;
+  justify-content: center;
 }
 
 
 .card1{
   background-color: #ffffff;
-  width: 600px;
+  width: 350px;
   border-radius: 20px;
   padding: 20px;
-  margin: 5px;
+  margin: 20px;
   margin-top: 50px;
 }
 
 .card2{
   background-color: #ffffff;
-  width: 600px;
+  width: 350px;
   border-radius: 20px;
   padding: 20px;
-  margin: 5px;
+  margin: 20px;
   margin-top: 50px;
 }
 
 
 .card3{
   background-color: #ffffff;
-  width: 600px;
+  width: 350px;
   border-radius: 20px;
   padding: 20px;
-  margin: 5px;
+  margin: 20px;
   margin-top: 50px;
 }
 
@@ -382,7 +383,7 @@ label{
   background-color:  #F5C722;
   padding: 3px 15px;
   border-radius: 3px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 
@@ -393,7 +394,7 @@ img{
   background: transparent;
   width: 100px;
   height: 100px;
- margin-left: 160px;
+ margin-left: 110px;  
  margin-bottom: 10px;
 }
 
@@ -463,6 +464,17 @@ h3 {
   margin-top: 20px;
 }
 
+p{
+  background-color: #ffffff;
+  font-size: 15px;
+}
+
+h{
+  background-color: #ffffff;
+  font-size: 15px;
+  
+}
+
 .card {
   display: flex;
   flex-wrap: wrap; /* ทำให้เรียงแบบ column ถ้าหน้าจอไม่พอขนาด */
@@ -474,7 +486,7 @@ h3 {
 .card3 {
   background-color: #ffffff;
   width: 80%;
-  max-width: 600px; /* ขนาดสูงสุดของกล่อง */
+  max-width: 300px; /* ขนาดสูงสุดของกล่อง */
   border-radius: 20px;
   padding: 20px;
   margin: 5px;
@@ -490,6 +502,7 @@ h3 {
   display: block;
   background: transparent;
 }
+
 
 #ch1:checked ~ label {
   display: none;
