@@ -1,5 +1,5 @@
 <template>
-  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button">
+  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="login">
     <p>เข้าสู่ระบบ</p>
     
   </button>
@@ -18,3 +18,13 @@
   font-size: 17px;
 }
 </style>
+
+<script>
+  export default {
+    methods: {
+      login() {
+        this.$router.push({ name: "LogIn"});
+      }
+    }
+  }
+</script>
