@@ -1,6 +1,6 @@
 <template>
       <!-- <NavBar/> -->
-      <NavBar/>
+      <!-- <NavBar/> -->
       <body>
     <section>
         <form>
@@ -26,11 +26,11 @@
   </template>
   
   <script>
-import NavBar from "@/components/NavBar.vue";
+// import NavBar from "@/components/NavBar.vue";
   export default {
     name: "LogIn",
     components: {
-    NavBar,
+    // NavBar,
   },
   };
   </script>
