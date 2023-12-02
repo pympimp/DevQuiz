@@ -40,7 +40,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   props: {
@@ -62,48 +61,35 @@ export default {
 
 
 
+
   
   <style scoped>
   .container {
-    margin-top: 50px;
-    margin-right: 50px;
-    width: 1000px;
-    height: 1000px;
-    background-color: #1F1F1F;
-    /* background-color: #c51e1e; */
-    display: flex;
-    
-  }
+  margin-top: 50px;
+  margin-right: 50px;
+  width: 1000px;
+  height: 1000px;
+  background-color: #1f1f1f;
+  display: flex;
+}
 
-  .content {
+.content {
   display: flex;
   flex-direction: column;
   margin-left: 50px;
 }
 
 .inner-box {
-  background-color: #F5F5F5; /* สีของกล่องภายใน */
+  background-color: #f5f5f5;
   margin-bottom: 1px;
   margin-top: 15px;
-  width:800px ;
-  height: 70px;
-  border-radius:10px ;
+  width: 800px;
+  height: auto;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
 }
-
-.inner-box h1{
-  color: #000000;
-  margin-left: 20px;
-  margin-top: 8px;
-  font-size: 20px;
-}
-
-.inner-box p{
-    color: #000000;
-    margin-left: 20px;
-    margin-top: 2px;
-    font-size: 16px;
-}
-
 
 h1{
     
@@ -122,15 +108,25 @@ h1{
   }
 
 
-/* ปุ่ม */
+.box-content {
+  flex-grow: 1;
+}
+
+.inner-box h1 {
+  color: #000000;
+  font-size: 20px;
+}
+
+.inner-box p {
+  color: #000000;
+  font-size: 16px;
+}
+
 button {
-  position: absolute;
-  top: 50%;
-  right: 70px;
   background: none;
   border: none;
   cursor: pointer;
-  color: #ffffff;
+  color: #000000;
   font-size: 16px;
 }
 
@@ -139,3 +135,4 @@ button {
 
 
 
+ 

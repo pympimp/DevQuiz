@@ -202,7 +202,8 @@ export default {
   background-color: #F5C722;
   color: #434343;
   padding: 10px 20px;
-  margin-bottom: 80px; /* ปรับตามความต้องการ */
+  margin-bottom: 140px; /* ปรับตามความต้องการ */
+ margin-top: -100px;
   font-size: 18px;
   border: none;
   border-radius: 35px;
@@ -243,7 +244,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 110px;
     margin-left: 260px;
      
 }
@@ -269,7 +270,7 @@ h3{
   padding-bottom:1px ;
   font-weight: bold;
   color: #ffffff;
-  margin-top: 10px;
+  margin-top: 50px;
   
 }
 
@@ -402,10 +403,7 @@ img{
 
 
 
-
-
-
-@media (max-width: 1024px) {
+@media (max-width: 1504px) {
 
   .container {
       flex-direction: column; /* เมื่อหน้าจอมีความกว้างน้อยกว่าหรือเท่ากับ 768px จะเปลี่ยนเป็นแนวตั้ง */
@@ -425,8 +423,6 @@ img{
     }
   
 
-
-
   .button {
   display: flex;
   justify-content: center;
@@ -438,6 +434,7 @@ img{
   background-color: #F5C722;
   color: #434343;
   padding: 10px 20px;
+  margin-top: 10px; /* ปรับตามความต้องการ */
   font-size: 18px;
   border: none;
   border-radius: 35px;
@@ -464,17 +461,6 @@ h3 {
   text-align: center;
   font-weight: bold;
   margin-top: 20px;
-}
-
-p{
-  background-color: #ffffff;
-  font-size: 15px;
-}
-
-h{
-  background-color: #ffffff;
-  font-size: 15px;
-  
 }
 
 .card {
