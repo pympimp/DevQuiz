@@ -23,35 +23,33 @@
 
 
 <template>
-    <div class="container">
+  <div class="container">
     <div class="content">
       <h1>{{ contentData.title }}</h1>
       <p>{{ contentData.description }}</p>
       <div v-for="(box, index) in contentData.boxes" :key="index" class="inner-box">
-      <h1>{{ box.boxTitle }}</h1>
-      <p>{{ box.boxText }}</p>
-    <button @click="toggleBox(index)">
-      <i :class="['fas', box.isExpanded ? 'fa-chevron-up' : 'fa-chevron-down']"></i>
-      </button>
-    </div>
+        <div class="box-content">
+          <h1>{{ box.boxTitle }}</h1>
+          <p>{{ box.boxText }}</p>
+        </div>
+        <button @click="toggleBox(index)">
+          <i :class="['fas', box.isExpanded ? 'fa-chevron-up' : 'fa-chevron-down']"></i>
+        </button>
+      </div>
     </div>
   </div>
-  </template>
+</template>
 
 
-  
-  
-
-  
-  <script>
-  export default {
-    props: {
-      contentData: {
-        type: Object,
-        default: () => ({}),
-      },
+<script>
+export default {
+  props: {
+    contentData: {
+      type: Object,
+      default: () => ({}),
     },
-    methods: {
+  },
+  methods: {
     toggleBox(index) {
       this.$set(this.contentData.boxes, index, {
         ...this.contentData.boxes[index],
@@ -60,7 +58,8 @@
     },
   },
 };
-  </script>
+</script>
+
 
 
   
@@ -124,7 +123,16 @@ h1{
 
 
 /* ปุ่ม */
-
+button {
+  position: absolute;
+  top: 50%;
+  right: 70px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 16px;
+}
 
   </style>
   

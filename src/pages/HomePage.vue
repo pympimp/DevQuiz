@@ -185,7 +185,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top:100px;
+  margin-top:170px;
   
 }
 
@@ -269,6 +269,8 @@ h3{
   padding-bottom:1px ;
   font-weight: bold;
   color: #ffffff;
+  margin-top: 10px;
+  
 }
 
 .card{
@@ -283,7 +285,7 @@ h3{
   border-radius: 20px;
   padding: 20px;
   margin: 20px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .card2{
@@ -292,7 +294,7 @@ h3{
   border-radius: 20px;
   padding: 20px;
   margin: 20px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 
@@ -302,7 +304,7 @@ h3{
   border-radius: 20px;
   padding: 20px;
   margin: 20px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 
