@@ -42,6 +42,12 @@ const router = createRouter({
       component: () => import('../pages/LogIn.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
     },
 
+    {
+      path: "/register",
+      name: 'RegisteR',
+      component: () => import('../pages/RegisteR.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
+    },
+
 
     {
       path: "/Articie",
