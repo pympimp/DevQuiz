@@ -1,67 +1,93 @@
 <template>
-    <!-- <NavBar/> -->
-    <body>
-  <section>
+  <!-- <NavBar/> -->
+  <!-- <NavBar/> -->
+  <body>
+    <router-link to="/"> </router-link>
+    <section>
       <form>
-          <h1>Register</h1>
-          <div class="inputbox">
-              <ion-icon name="mail-outline"></ion-icon>
-              <input type="email" required>
-              <label for="">Email</label>
-          </div>
-          <div class="inputbox">
-              <ion-icon name="lock-closed-outline"></ion-icon>
-              <input type="password" required>
-              <label for="">Password</label>
-          </div>
-          <div class="forget">
-              <label for=""><input type="checkbox">Remember Me</label>
-            <a href="#">Forget Password</a>
-          </div>
-          <button>Log in</button>
-          <div class="register">
-              <p>Don't have a account <a href="#">Register</a></p>
-          </div>
+        <router-link to="/" class="back-link">
+          <span class="bi bi-arrow-left back-icon"></span>
+          <!-- <p>back</p> -->
+        </router-link>
+        <br />
+        <h1>Register</h1>
+        <div class="inputbox">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="username" required />
+          <label for="">Username</label>
+        </div>
+        <div class="inputbox">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="email" required />
+          <label for="">Email</label>
+        </div>
+        <div class="inputbox">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" required />
+          <label for="">Password</label>
+        </div>
+        <button @click="login">Log in</button>
+        <div class="register" @click="login">
+          <p>Already have an account? <a href="#">Login</a></p>
+          <!-- <p class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</p> -->
+        </div>
       </form>
-  </section>
-</body>
+    </section>
+  </body>
 </template>
 
 <script>
 // import NavBar from "@/components/NavBar.vue";
+import 'bootstrap-icons/font/bootstrap-icons.css'
+
 export default {
-  name: "LogIn",
-//   components: {
-//   NavBar,
-// },
-};
+  name: 'LogIn',
+  components: {
+    // NavBar,
+  },
+  methods: {
+    login() {
+      // เพิ่มโค้ดที่คุณต้องการเมื่อปุ่มถูกคลิก
+      this.$router.push({ name: "LogIn" });
+    },
+  },
+}
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'poppins',sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
 }
 
 body {
-display: flex;
-align-items: center;
-justify-content: center;
-min-height: 100vh;
-background-image: url(https://user-images.githubusercontent.com/13468728/233847739-219cb494-c265-4554-820a-bd3424c59065.jpg);
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #1f1f1f;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.back-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  color: #ee5684;
+  cursor: pointer;
 }
 
 section {
   position: relative;
   max-width: 400px;
-  background-color: transparent;
+  background-color: rgb(246, 246, 246);
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   backdrop-filter: blur(55px);
@@ -73,7 +99,7 @@ section {
 
 h1 {
   font-size: 2rem;
-  color: #fff;
+  color: #000000;
   text-align: center;
 }
 
@@ -81,7 +107,7 @@ h1 {
   position: relative;
   margin: 30px 0;
   max-width: 310px;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #707070;
 }
 
 .inputbox label {
@@ -89,26 +115,26 @@ h1 {
   top: 50%;
   left: 5px;
   transform: translateY(-50%);
-  color: #fff;
-  font-size: 1rem;
+  color: #707070;
+  font-size: 0.85rem;
   pointer-events: none;
   transition: all 0.5s ease-in-out;
 }
 
-input:focus ~ label, 
+input:focus ~ label,
 input:valid ~ label {
   top: -5px;
 }
 
 .inputbox input {
   width: 100%;
-  height: 60px;
+  height: 40px;
   background: transparent;
   border: none;
   outline: none;
   font-size: 1rem;
   padding: 0 35px 0 5px;
-  color: #fff;
+  color: #707070;
 }
 
 .inputbox ion-icon {
@@ -119,65 +145,63 @@ input:valid ~ label {
   top: 20px;
 }
 
-.forget {
-  margin: 35px 0;
-  font-size: 0.85rem;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-
-}
-
-.forget label {
-  display: flex;
-  align-items: center;
-}
-
-.forget label input {
-  margin-right: 3px;
-}
-
-.forget a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.forget a:hover {
-  text-decoration: underline;
-}
-
 button {
   width: 100%;
-  height: 40px;
+  height: 45px;
   border-radius: 40px;
-  background-color: rgb(255, 255,255, 1);
+  background-color: #ee5684;
   border: none;
   outline: none;
   cursor: pointer;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.4s ease;
+  margin-top: 0.7rem;
 }
 
 button:hover {
-background-color: rgb(255, 255,255, 0.5);
+  background-color: #ae3458;
 }
 
 .register {
-  font-size: 0.9rem;
-  color: #fff;
-  text-align: center;
-  margin: 25px 0 10px;
+  color: #707070;
+  /* text-align: center; */
+  margin: 10px 0 10px;
 }
 
 .register p a {
   text-decoration: none;
-  color: #fff;
+  color: #ee5684;
   font-weight: 600;
+  text-align: center;
 }
 
 .register p a:hover {
   text-decoration: underline;
+}
+
+/* .register .more {
+    text-decoration: none;
+    color: #EE5684;
+    font-weight: 600;
+    text-align: center;
+} */
+
+.back-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #EE5684; /* สีของตัวหนังสือ */
+}
+
+.back-icon {
+  margin-right: 100px; /* ปรับความห่างระหว่างไอคอนกับตัวหนังสือตามต้องการ */
+  font-size: 1.5rem;
+}
+
+/* เพิ่มสไตล์สำหรับตัวหนังสือเพิ่มเติมตามที่คุณต้องการ */
+p {
+  font-size: 1rem;
 }
 </style>
