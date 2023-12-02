@@ -5,7 +5,7 @@
         <!-- <i class="bi bi-xbox"></i> -->
          <!-- <img src="images/removeLogo.png" alt="" class="w-15 h-10"> -->
       </span>
-      <p style="font-weight: bold; color: white;">DevQuiz</p>
+      <p style="font-weight: bold; color: white;" @click="main">DevQuiz</p>
       <!-- <h1 class="text-hl">Xbox</h1> -->
     </div>
 
@@ -42,6 +42,11 @@ export default {
     }
     return { Links , open, MenuOpen};
   },
+  methods: {
+    main(){
+      this.$router.push({ name: "HomePage"})
+    }
+  }
 };
 </script>
 
