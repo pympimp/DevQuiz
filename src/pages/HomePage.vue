@@ -1,4 +1,3 @@
-
 <script>
 import NavBar from "@/components/NavBar.vue";
 import BoxComponent from '@/components/BoxComponent.vue';
@@ -120,28 +119,25 @@ export default {
 </script>
 
 
-
-
-
 <template>
-  <div>
-    <NavBar />
+  <NavBar />
     <div class="container">
-  <div class="row">
-    <router-link v-for="box in boxes" :key="box.id" :to="box.link" class="box">
-      <BoxComponent :boxData="box" />
-    </router-link>
-  </div>
-    <div class="text">
+      <div class="row">
+        <router-link v-for="box in boxes" :key="box.id" :to="box.link" class="box">
+          <BoxComponent :boxData="box" />
+        </router-link>
+      </div>
+      <div class="text">
         <h1>เริ่มต้นการเรียน</h1>
         <h2>ภาษาคอมพิวเตอร์เบื้องต้น</h2>
-    </div>
-  </div>
+      </div>
+      </div>
 
     <div class="button">
     <button @click="scrollToAdditionalBox" class="scroll-button">อ่านบทความ</button>
     </div>
   
+
     <h3>บทความเบื้องต้น</h3>
 
 
@@ -165,30 +161,23 @@ export default {
   </div>
 </div>
 
-
-
-
-</div>
 </template>
 
-<style scoped>
 
-*{
+<style scoped>
+* {
   /* background-color: #FAF5FF; */
   /* margin: 0px;
   padding: 0px; */
   box-sizing: border-box;
 }
 
-
-
 /* ส่วนของปุ่ม */
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top:170px;
-  
+  margin-top: 170px;
 }
 
 /* .button1 {
@@ -199,9 +188,8 @@ export default {
   margin-bottom: -65px; 
 } */
 
-
 .scroll-button {
-  background-color: #F5C722;
+  background-color: #f5c722;
   color: #434343;
   padding: 10px 20px;
   margin-bottom: 140px; /* ปรับตามความต้องการ */
@@ -214,76 +202,99 @@ export default {
 }
 
 .scroll-button:hover {
-  background-color:#F5C722;
+  background-color: #f5c722;
 }
-
 
 /* กล่องแบบฝึก */
 
 .container {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    text-align: center;
-  }
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-align: center;
+}
 
-  
 .row {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items:self-end;
+  align-items: self-start;
   margin-right: 30px;
   margin-top: 35px;
 }
 
-
-
 /* ส่วนตัวหนังสือแนะนำ คู่กับแบบฝึก */
-.text{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 110px;
-    margin-left: 260px;
-     
+.text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20%;
+  margin-bottom: 15%;
+  margin-left: 260px;
 }
 
-h1{
+h1 {
   font-size: 40px;
   margin-right: 5px;
-  color:#EC4088 ;
+  color: #ec4088;
   font-weight: bold;
-
 }
 
-h2{
+h2 {
   font-size: 20px;
   margin-bottom: 20px;
-  color:#ffffff ;
+  color: #ffffff;
 }
 
-
-h3{
+h3 {
   font-size: 29px; /* ปรับค่าตามที่คุณต้องการ */
-  padding-bottom:1px ;
+  margin-left: 310px;
+  padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
-  margin-top: -50px;
-  margin-left: 310px;
-  
+  margin-top: 10px;
 }
 
+.card {
+  display: flex;
+  justify-content: center;
+}
 
+.card1 {
+  background-color: #ffffff;
+  width: 350px;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  margin-top: 30px;
+}
 
-p{
+.card2 {
+  background-color: #ffffff;
+  width: 350px;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  margin-top: 30px;
+}
+
+.card3 {
+  background-color: #ffffff;
+  width: 350px;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  margin-top: 30px;
+}
+
+p {
   background-color: #ffffff;
   font-size: 20px;
 }
 
-h{
+h {
   background-color: #ffffff;
   font-size: 20px;
   
@@ -292,6 +303,8 @@ h{
 
 
 /* เพิ่มสไตล์สำหรับกล่องบทความ */
+
+
 
 .article-container {
   display: flex;
@@ -340,17 +353,16 @@ h{
 
 .visible-text {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-direction: column; /* เพิ่มบรรทัดนี้เพื่อจัดเรียงให้เป็นคอลัมน์ */
   align-items: flex-start; /* เพิ่มบรรทัดนี้เพื่อจัดให้ตัวหนังสือชิดซ้าย */
 }
 
 .visible-text p {
-  font-size: 20px; /* ปรับขนาด font-size ตามต้องการ */
-  font-weight: 600; /* ทำตัวหนาเฉพาะ visibleText */
-  margin-bottom: 5px; /* เพิ่มระยะห่างด้านล่าง */
+  font-size: 18px; /* ปรับขนาด font-size ตามต้องการ */
+  font-weight:600;
 }
-
 
 .visible-text p:not(:first-child) {
   font-size: 16px; /* ปรับขนาด font-size ตามต้องการ */
@@ -358,16 +370,18 @@ h{
 }
 
 
+
 .hidden-text {
-  margin-top: -10px;
+  margin-top: 2px;
+  
+}
+
+.hidden-text p {
+  font-size: 16px; /* ปรับขนาด font-size ตามต้องการ */
   
 }
 
 
-
-.hidden-text p {
-  font-size: 16px; /* ปรับขนาด font-size ตามต้องการ */
-}
 
 
 .article-content {
@@ -378,32 +392,9 @@ h{
   cursor: pointer;
   font-size: 25px;
   margin-right: 15px;
-  margin-top: 10px;
+  margin-top: 20px;
   align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
-  margin-bottom: 5px; /* เพิ่มระยะห่างด้านล่าง */
 }
 
 
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

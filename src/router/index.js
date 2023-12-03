@@ -53,6 +53,12 @@ const router = createRouter({
       path: "/Articie",
       name: 'Articie',
       component: () => import('../pages/ArticIE.vue') 
+    },
+
+    {
+      path: "/Class",
+      name: 'Class',
+      component: () => import('../pages/ClasS.vue') 
     }
 
     
