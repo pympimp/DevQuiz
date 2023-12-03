@@ -175,17 +175,6 @@ img {
 }
 
 
-.main-title {
-  font-size: 21px; /* ขนาดตัวอักษรสำหรับ HTML */
-  font-weight: bold;
-  color: #CCCCCC;
-}
-
-
-.sub-title {
-  font-size: 15px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
-  color:#FFFFFF;
-}
 
 
 </style>
