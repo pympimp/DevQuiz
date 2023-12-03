@@ -138,7 +138,7 @@ img {
 
 
 
-@media (max-width: 728px) {
+@media (max-width: 767px) {
   .box {
     width: 340px;
     margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
@@ -151,19 +151,22 @@ img {
   box-sizing: border-box; /* เพิ่ม line นี้เพื่อปรับแก้ปัญหาการบีบกล่อง */
 }
 
-.image-container {
-  background-color: black;
-  width: 40px;
-  height: 40px;
+/* .img-container {
+  background-color: rgb(255, 255, 255);
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   overflow: hidden;
-  margin-left: 20px;
-}
+  margin-left: 28px;
+} */
 
-img {
-  max-width: 50px;
-  height: 50px;
-}
+
+
+
+/* img {
+  max-width: 40px;
+  height: 40px;
+} */
 
 .text-container {
   display: flex;
@@ -172,7 +175,17 @@ img {
 }
 
 
+.main-title {
+  font-size: 21px; /* ขนาดตัวอักษรสำหรับ HTML */
+  font-weight: bold;
+  color: #CCCCCC;
+}
 
+
+.sub-title {
+  font-size: 15px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+  color:#FFFFFF;
+}
 
 
 </style>
