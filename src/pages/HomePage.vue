@@ -229,7 +229,7 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items:self-end;
+  align-items:self-start;
   margin-right: 30px;
   margin-top: 35px;
 }
@@ -243,7 +243,8 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 20%;
+    margin-bottom: 15%;
     margin-left: 260px;
      
 }
