@@ -1,6 +1,8 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import BoxArticie from "@/components/BoxArticie.vue";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 export default {
   components: {
@@ -15,43 +17,48 @@ export default {
           title: "HTML (Hyper Text Markup Language)",
           description: "HTML (Hyper Text Markup Language) คือภาษาที่เขียนไว้เพื่อวาง โครงสร้างของโปรแกรมทั้งหมด เรียกได้ว่าเป็นภาษาแรกเริ่มของภาษาคอม เพราะ ช่วยให้โปรแกรมเมอร์สามารถวิเคราะห์โครงสร้างโปรแกรมได้ชัดเจนขึ้น",
           boxes: [
-          { boxTitle: "1. <Head> tag ", boxText: "มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์" },
-          { boxTitle: "HTML", boxText: "This is the second box." },
-          { boxTitle: "HTML", boxText: "This is the first box." },
-          { boxTitle: "HTML", boxText: "This is the second box." },
-          { boxTitle: "HTML", boxText: "This is the first box." },
-          { boxTitle: "HTML", boxText: "This is the second box." }, 
+          { boxTitle: "1. <Head> tag ", boxText: "มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์   มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์   มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์   มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์   ",isExpanded: false },
+          { boxTitle: "HTML", boxText: "This is the second box." ,isExpanded: false},
+          { boxTitle: "HTML", boxText: "This is the first box." ,isExpanded: false},
+          { boxTitle: "HTML", boxText: "This is the second box." ,isExpanded: false},
+          { boxTitle: "HTML", boxText: "This is the first box." ,isExpanded: false},
+          { boxTitle: "HTML", boxText: "This is the second box." ,isExpanded: false}, 
         ],
         },
+
+        
         css: {
           title: "CSS (Cascading Style Sheet)",
           description: "CSS (Cascading Style Sheet) มีไว้เพื่อกำหนดและระบุรูปแบบ หรือ Style ของเนื้อหาในเอกสาร เช่น สีของข้อความ สีพื้นหลัง ประเภทและขนาดของตัวอักษร การจัดวางข้อความ และตกแต่งส่วนต่างๆของหน้าเว็บให้มีความสวยงาม",
           boxes: [
-          { boxTitle: "CSS", boxText: "This is the first box." },
-          { boxTitle: "CSS", boxText: "This is the second box." },
-          { boxTitle: "CSS", boxText: "This is the first box." },
-          { boxTitle: "CSS", boxText: "This is the second box." },
-          { boxTitle: "CSS", boxText: "This is the first box." },
-          { boxTitle: "CSS", boxText: "This is the second box." },
+          { boxTitle: "CSS", boxText: "This is the first box." ,isExpanded: false},
+          { boxTitle: "CSS", boxText: "This is the second box.",isExpanded: false},
+          { boxTitle: "CSS", boxText: "This is the first box.",isExpanded: false},
+          { boxTitle: "CSS", boxText: "This is the second box.",isExpanded: false},
+          { boxTitle: "CSS", boxText: "This is the first box.",isExpanded: false},
+          { boxTitle: "CSS", boxText: "This is the second box.",isExpanded: false},
         ],
-
         },
+
+
         javascript: {
           title: "JavaScript ",
           description: "JavaScript เป็นภาษาสคริปต์ทีมีลักษณะการเขียนแบบโพรโทไทป์ ส่วนมากใช้ในหน้าเว็บเพื่อประมวลผลข้อมูลที่ฝั่งของผู้ใช้งาน แต่ก็ยังมีใช้เพื่อเพิ่มเติมความสามารถในการเขียนสคริปต์โดยฝังอยู่ในโปรแกรมอื่น ๆ",
           boxes: [
-          { boxTitle: "JavaScript", boxText: "This is the first box." },
-          { boxTitle: "JavaScript", boxText: "This is the second box." },
-          { boxTitle: "JavaScript", boxText: "This is the first box." },
-          { boxTitle: "JavaScript", boxText: "This is the second box." },
-          { boxTitle: "JavaScript", boxText: "This is the first box." },
-          { boxTitle: "JavaScript", boxText: "This is the second box." },
+          { boxTitle: "JavaScript", boxText: "This is the first box.",isExpanded: false},
+          { boxTitle: "JavaScript", boxText: "This is the second box.",isExpanded: false},
+          { boxTitle: "JavaScript", boxText: "This is the first box.",isExpanded: false},
+          { boxTitle: "JavaScript", boxText: "This is the second box.",isExpanded: false},
+          { boxTitle: "JavaScript", boxText: "This is the first box.",isExpanded: false},
+          { boxTitle: "JavaScript", boxText: "This is the second box.",isExpanded: false},
         ],
         },
       },
     };
   },
   
+
+
   methods: {
     scrollToAdditionalBox(contentId) {
       this.currentContent = contentId;
@@ -92,8 +99,11 @@ export default {
         </div>
       </div>
       
-      <!-- ตรวจสอบว่ามีข้อมูลใน languageData หรือไม่ และแสดงข้อมูล -->
-      <BoxArticie v-if="currentContent && languageData[currentContent]" :contentData="languageData[currentContent]" />
+     
+      <!-- <BoxArticie v-if="currentContent && languageData[currentContent]" :contentData="languageData[currentContent]" /> -->
+      <BoxArticie v-if="currentContent === 'html'" :contentData="languageData.html" />
+      <BoxArticie v-if="currentContent === 'css'" :contentData="languageData.css" />
+      <BoxArticie v-if="currentContent === 'javascript'" :contentData="languageData.javascript" />
       <!-- <div v-else class="container-no-data">
         <h1>No Data</h1>
       </div> -->

@@ -149,7 +149,8 @@
   background-color: #f5c722;
   color: #434343;
   padding: 10px 20px;
-  margin-bottom: 80px; /* ปรับตามความต้องการ */
+  margin-bottom: 140px; /* ปรับตามความต้องการ */
+ margin-top: -100px;
   font-size: 18px;
   border: none;
   border-radius: 35px;
