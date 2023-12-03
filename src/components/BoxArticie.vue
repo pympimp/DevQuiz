@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="container">
     <div class="content">
       <h1>{{ contentData.title }}</h1>
@@ -8,13 +8,38 @@
           <h1>{{ box.boxTitle }}</h1>
           <p v-if="box.isExpanded">{{ box.boxText }}</p>
         </div>
-        <button @click="toggleBox(index)">
+        <button @click="toggleBox(index) " >
           <i class="bi" :class="{'bi-chevron-up': box.isExpanded, 'bi-chevron-down': !box.isExpanded}"></i>
         </button>
       </div>
     </div>
   </div>
+</template> -->
+
+
+
+<template>
+  <div class="container">
+    <div class="content">
+      <h1>{{ contentData.title }}</h1>
+      <p>{{ contentData.description }}</p>
+      <div v-for="(box, index) in contentData.boxes" :key="index" class="inner-box" :style="{ height: box.isExpanded ? 'auto' : '50px' }">
+        <div class="box-content">
+          <div class="box-header">
+            <h1>{{ box.boxTitle }}</h1>
+            <button @click="toggleBox(index)">
+              <i class="bi" :class="{'bi-chevron-up': box.isExpanded, 'bi-chevron-down': !box.isExpanded}"></i>
+            </button>
+          </div>
+          <p v-if="box.isExpanded">{{ box.boxText }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
+
+
+
 
 
 <script>
@@ -97,6 +122,7 @@ p {
 .box-content {
   flex-grow: 1;
   padding-right: 20px;
+  margin-bottom: 10px;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
 }
@@ -117,12 +143,16 @@ p {
   overflow: hidden;
 }
 
+
+
 .bi-chevron-up {
   margin-right: 15px;
   font-size: 24px;
   color: #1f1f1f;
   cursor: pointer;
-  transition: transform 0.3s ease; /* เพิ่ม transition เพื่อทำให้เกิดการแอนิเมชัน */
+ 
+  
+  
 }
 
 .bi-chevron-down {
@@ -130,10 +160,15 @@ p {
   font-size: 24px;
   color: #1f1f1f;
   cursor: pointer;
-  transition: transform 0.3s ease; /* เพิ่ม transition เพื่อทำให้เกิดการแอนิเมชัน */
+  
   /* transform-origin: center;  */
 }
 
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 
 </style>

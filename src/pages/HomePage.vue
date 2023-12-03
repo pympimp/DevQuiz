@@ -41,22 +41,26 @@ export default {
         {
           id: 1,
           image: '/images/html.png',
-          visibleText: 'เอชทีเอ็มแอล (อังกฤษ: HTML: Hypertext Markup Language ภาษามาร์กอัปข้อความหลายมิติ) เป็นภาษามาร์กอัปหลักในปัจจุบันที่ใช้ในการสร้างเว็บเพจ หรือข้อมูลอื่นที่เรียกดูผ่านทางเว็บเบราว์เซอร์ ซึ่งตัวโค้ดจะแสดงโครงสร้างของข้อมูล ในการแสดง หัวข้อ ลิงก์ ย่อหน้า รายการ รวมถึงการสร้างแบบฟอร์ม เชื่อมโยงภาพหรือวิดีโอด้วย',
-          hiddenText: 'โครงสร้างหลักของภาษา HTML (Hyper Text Markup Language) จะแบ่งออกเป็น 3 ส่วน คือ 1. ส่วนประกาศ เป็นส่วนที่กำหนดให้บราวเซอร์ทราบว่า นี่คือภาษา HTML และจะต้องทำการแปรผลอย่างไรมีคำสั่งคู่เดียวคือ <html> และ </html> ปรากฏที่หัวและท้ายไฟล์ 2. ส่วนหัวเรื่อง (head)  เป็นส่วนที่แสดงผลข้อความบนไตเติ้ลบาร์ของบราวเซอร์ และอาจมีคำสั่งสำหรับกำหนดรายละเอียดด้านเทคนิคอื่นๆ อีก แทรกอยู่ระหว่างคำสั่ง <head> และ  </head> \n3. ส่วนเนื้อหา (body)  เป็นส่วนที่มีความซับซ้อนมากที่สุด และสามารถใส่เทคนิคลูกเล่นเพื่อดึงดูดความสนใจจากผู้ชมได้มาก ความแตกต่างระหว่างเว็บไซต์ต่างๆ แสดงความมีฝีมือของผู้จัดทำ ศิลปะในการออกแบบจะอยู่ในส่วนนี้ทั้งหมด ซึ่งจะแทรกอยู่ระหว่างคำสั่ง <body> และ  </body> ',
-          isExpanded: false,
+          visibleText:'เอชทีเอ็มแอล (อังกฤษ: HTML: Hypertext Markup Language)',
+          visibleText1:'เป็นภาษามาร์กอัปหลักในปัจจุบันที่ใช้ในการสร้างเว็บเพจ หรือข้อมูลอื่นที่เรียกดูผ่านทางเว็บเบราว์เซอร์ ซึ่งตัวโค้ดจะแสดงโครงสร้างของข้อมูล ในการแสดง หัวข้อ ลิงก์ ย่อหน้า รายการ รวมถึงการสร้างแบบฟอร์ม เชื่อมโยงภาพหรือวิดีโอด้วย',
+          hiddenText: 'โครงสร้างหลักของภาษา HTML (Hyper Text Markup Language) จะแบ่งออกเป็น 3 ส่วน คือ <br>1. ส่วนประกาศ เป็นส่วนที่กำหนดให้บราวเซอร์ทราบว่า นี่คือภาษา HTML และจะต้องทำการแปรผลอย่างไรมีคำสั่งคู่เดียวคือ &lt;html&gt; และ &lt;/html&gt; ปรากฏที่หัวและท้ายไฟล์ <br>2. ส่วนหัวเรื่อง (head) เป็นส่วนที่แสดงผลข้อความบนไตเติ้ลบาร์ของบราวเซอร์ และอาจมีคำสั่งสำหรับกำหนดรายละเอียดด้านเทคนิคอื่นๆ อีก แทรกอยู่ระหว่างคำสั่ง &lt;head&gt; และ &lt;/head&gt; <br> 3. ส่วนเนื้อหา (body) เป็นส่วนที่มีความซับซ้อนมากที่สุด และสามารถใส่เทคนิคลูกเล่นเพื่อดึงดูดความสนใจจากผู้ชมได้มาก ความแตกต่างระหว่างเว็บไซต์ต่างๆ แสดงความมีฝีมือของผู้จัดทำ ศิลปะในการออกแบบจะอยู่ในส่วนนี้ทั้งหมด ซึ่งจะแทรกอยู่ระหว่างคำสั่ง &lt;body&gt; และ &lt;/body&gt;',
         },
+        
         {
           id: 2,
           image: '/images/css.png',
-          visibleText: 'CSS (ภาษาอังกฤษ: Cascading Style Sheet) หรือที่มักเรียกสั้นๆ ว่า ‘สไตล์ชีต’ เป็นภาษาที่ใช้ส่วนของการจัดรูปแบบการแสดงผลเอกสาร HTML โดยที่ CSS กำหนดและระบุรูปแบบ หรือ Style ของเนื้อหาในเอกสาร เช่น สีของข้อความ สีพื้นหลัง ประเภทและขนาดของตัวอักษร การจัดวางข้อความ และตกแต่งส่วนต่างๆของหน้าเว็บให้มีความสวยงาม',
-          hiddenText: 'CSS สามารถกำหนดการแสดงผลของ HTML ได้หลายๆ หน้า โดยใช้ CSS เพียงไฟล์เดียว หรือ CSS ใส่ใน HTML ได้ 3 วิธีด้วยกัน คือ 1. Inline โดยใช้ Attribute style ใน HTML Element Inline CSS ใช้ในการตกแต่ง HTML Element นั้นๆ เพียงอันเดียว โดยกำหนดค่าใน Attribute style ของ Element นั้นๆ 2. Internal โดยใช้ Element <style> ในส่วนของ <head> Internal CSS ใช้ในการตกแต่งหน้าเว็บนั้นๆ เพียงหน้าเดียวโดยกำหนดค่าใน Element <style> ในส่วนของ <head> 3. External โดยใช้ไฟล์ CSS แล้วลิงก์ไฟล์เข้ามาใน HTML External CSS สามารถใช้ตกแต่งหน้าเว็บได้หลายๆ หน้าด้วยการแก้ External CSS เพียงไฟล์เดียว สามารถทำให้หน้าเว็บทั้งเว็บไซต์ซึ่งอาจมีหลายร้อยหลายพันหน้าเปลี่ยนได้ โดยลิงก์ไฟล์ CSS เข้ามาใน HTML ในส่วนของ </head>',
+          visibleText:'CSS (ภาษาอังกฤษ: Cascading Style Sheet)',
+          visibleText1:'หรือที่มักเรียกสั้นๆ ว่า ‘สไตล์ชีต’ เป็นภาษาที่ใช้ส่วนของการจัดรูปแบบการแสดงผลเอกสาร HTML โดยที่ CSS กำหนดและระบุรูปแบบ หรือ Style ของเนื้อหาในเอกสาร เช่น สีของข้อความ สีพื้นหลัง ประเภทและขนาดของตัวอักษร การจัดวางข้อความ และตกแต่งส่วนต่างๆของหน้าเว็บให้มีความสวยงาม',
+          hiddenText: 'CSS สามารถกำหนดการแสดงผลของ HTML ได้หลายๆ หน้า โดยใช้ CSS เพียงไฟล์เดียว หรือ CSS ใส่ใน HTML ได้ 3 วิธีด้วยกัน คือ <br>1. Inline โดยใช้ Attribute style ใน HTML Element Inline CSS ใช้ในการตกแต่ง HTML Element นั้นๆ เพียงอันเดียว โดยกำหนดค่าใน Attribute style ของ Element นั้นๆ <br>2. Internal โดยใช้ Element &lt;style&gt; ในส่วนของ &lt;head&gt;Internal CSS ใช้ในการตกแต่งหน้าเว็บนั้นๆ เพียงหน้าเดียวโดยกำหนดค่าใน Element &lt;style&gt; ในส่วนของ &lt;head&gt; <br>3. External โดยใช้ไฟล์ CSS แล้วลิงก์ไฟล์เข้ามาใน HTML External CSS สามารถใช้ตกแต่งหน้าเว็บได้หลายๆ หน้าด้วยการแก้ External CSS เพียงไฟล์เดียว สามารถทำให้หน้าเว็บทั้งเว็บไซต์ซึ่งอาจมีหลายร้อยหลายพันหน้าเปลี่ยนได้ โดยลิงก์ไฟล์ CSS เข้ามาใน HTML ในส่วนของ &lt;head&gt;</p>',
           isExpanded: false,
         },
+
         {
           id: 3,
           image: '/images/JavaScript.png',
-          visibleText: 'จาวาสคริปต์ (อังกฤษ: JavaScript) เป็นภาษาสคริปต์ทีมีลักษณะการเขียนแบบโพรโทไทป์ โดยมีโครงสร้างของภาษาและไวยกรณ์อยู่บนพื้นฐานของภาษาซี มีการใช้จาวาสคริปต์ที่ฝังอยู่ในเว็บเบราว์เซอร์ในหลายรูปแบบ เช่น ใช้เพื่อสร้างเนื้อหาที่เปลี่ยนแปลงเสมอภายในเว็บเพจ, ใช้เพื่อตรวจสอบความถูกต้องของข้อมูลที่ผู้ใช้กรอกก่อนนำเข้าระบบ',
-          hiddenText: 'จาวาสคริปต์ ส่วนมากใช้ในหน้าเว็บเพื่อประมวลผลข้อมูลที่ฝั่งของผู้ใช้งาน แต่ก็ยังมีใช้เพื่อเพิ่มเติมความสามารถในการเขียนสคริปต์โดยฝังอยู่ในโปรแกรมอื่น ๆ',
+          visibleText:'จาวาสคริปต์ (อังกฤษ: JavaScript) ',
+          visibleText1:'เป็นภาษาสคริปต์ทีมีลักษณะการเขียนแบบโพรโทไทป์ โดยมีโครงสร้างของภาษาและไวยกรณ์อยู่บนพื้นฐานของภาษาซี มีการใช้จาวาสคริปต์ที่ฝังอยู่ในเว็บเบราว์เซอร์ในหลายรูปแบบ ',
+          hiddenText: ' เช่น ใช้เพื่อสร้างเนื้อหาที่เปลี่ยนแปลงเสมอภายในเว็บเพจ, ใช้เพื่อตรวจสอบความถูกต้องของข้อมูลที่ผู้ใช้กรอกก่อนนำเข้าระบบ จาวาสคริปต์ ส่วนมากใช้ในหน้าเว็บเพื่อประมวลผลข้อมูลที่ฝั่งของผู้ใช้งาน แต่ก็ยังมีใช้เพื่อเพิ่มเติมความสามารถในการเขียนสคริปต์โดยฝังอยู่ในโปรแกรมอื่น ๆ',
           isExpanded: false,
         },
       ],
@@ -139,36 +143,33 @@ export default {
     </div>
   
     <h3>บทความเบื้องต้น</h3>
+
+
     <div class="article-container">
-      <div class="article-box" v-for="article in articles" :key="article.id">
-      <img :src="article.image" alt="Article Image" class="article-image" />
-      <div class="article-content">
-        <div class="visible-text">
-          <p>{{ article.visibleText }}</p>
-        </div>
-        <div class="hidden-text" v-if="article.isExpanded">
-          <p>{{ article.hiddenText }}</p>
-        </div>
+  <div class="article-box" v-for="article in articles" :key="article.id">
+    <img :src="article.image" alt="Article Image" class="article-image" />
+    <div class="article-content">
+      <div class="visible-text">
+        <p v-html="article.visibleText"></p>
+        <p v-html="article.visibleText1"></p>
       </div>
-      <div class="icon" @click="toggleArticle(article)">
-          <!-- ใช้ไอคอนเปิด-ปิดกล่อง -->
-          <i v-if="!article.isExpanded" class="bi bi-chevron-down"></i>
-          <i v-else class="bi bi-chevron-up"></i>
-        </div>
+      <div class="hidden-text" v-if="article.isExpanded">
+        <p v-html="article.hiddenText"></p>
+      </div>
     </div>
+    <div class="icon" @click="toggleArticle(article)">
+      <!-- ใช้ไอคอนเปิด-ปิดกล่อง -->
+      <i v-if="!article.isExpanded" class="bi bi-chevron-down"></i>
+      <i v-else class="bi bi-chevron-up"></i>
+    </div>
+  </div>
 </div>
 
+
+
+
 </div>
-
-
-
-
-  
-
-
-  
 </template>
-
 
 <style scoped>
 
@@ -292,8 +293,6 @@ h{
 
 /* เพิ่มสไตล์สำหรับกล่องบทความ */
 
-
-
 .article-container {
   display: flex;
   flex-direction: column;
@@ -326,7 +325,7 @@ h{
 .article-image {
   width: 70px;
   height: 70px;
-  margin-top: 40px;
+  margin-top: 17px;
   margin-left: 20px;
   margin-right: 10px;
   margin-bottom: 20px;
@@ -341,26 +340,34 @@ h{
 
 .visible-text {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  flex-direction: column; /* เพิ่มบรรทัดนี้เพื่อจัดเรียงให้เป็นคอลัมน์ */
+  align-items: flex-start; /* เพิ่มบรรทัดนี้เพื่อจัดให้ตัวหนังสือชิดซ้าย */
 }
 
+.visible-text p {
+  font-size: 20px; /* ปรับขนาด font-size ตามต้องการ */
+  font-weight: 600; /* ทำตัวหนาเฉพาะ visibleText */
+  margin-bottom: 5px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+
+.visible-text p:not(:first-child) {
+  font-size: 16px; /* ปรับขนาด font-size ตามต้องการ */
+  font-weight: normal; /* ทำตัวไม่หนาเฉพาะ visibleText1 */
+}
+
+
 .hidden-text {
-  margin-top: 10px;
+  margin-top: -10px;
   
 }
 
 
-.visible-text p {
-  font-size: 18px; /* ปรับขนาด font-size ตามต้องการ */
-  font-weight:600;
-}
 
 .hidden-text p {
-  font-size: 18px; /* ปรับขนาด font-size ตามต้องการ */
+  font-size: 16px; /* ปรับขนาด font-size ตามต้องการ */
 }
-
-
 
 
 .article-content {
@@ -371,8 +378,9 @@ h{
   cursor: pointer;
   font-size: 25px;
   margin-right: 15px;
-  margin-top: 20px;
+  margin-top: 10px;
   align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
+  margin-bottom: 5px; /* เพิ่มระยะห่างด้านล่าง */
 }
 
 
