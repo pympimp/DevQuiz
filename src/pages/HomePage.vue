@@ -177,7 +177,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 170px;
+  margin-top: 110px;
 }
 
 /* .button1 {
@@ -192,7 +192,7 @@ export default {
   background-color: #f5c722;
   color: #434343;
   padding: 10px 20px;
-  margin-bottom: 140px; /* ปรับตามความต้องการ */
+  margin-bottom: 110px; /* ปรับตามความต้องการ */
  margin-top: -100px;
   font-size: 18px;
   border: none;
@@ -311,6 +311,7 @@ h {
   flex-direction: column;
   margin: auto; /* เพิ่มบรรทัดนี้ */
   margin-top: 10px;
+  margin-bottom: 20px;
   background-color: #ffffff;
   overflow: hidden;
   transition: height 0.3s ease;
