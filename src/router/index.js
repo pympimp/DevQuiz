@@ -59,7 +59,22 @@ const router = createRouter({
       path: "/Class",
       name: 'Class',
       component: () => import('../pages/ClasS.vue') 
+    },
+
+    {
+      path: "/AdminDashboard",
+      name: "/AdminDashboard",
+      component: () => import('../pages/AdDashBoard.vue')
+    },
+
+    
+    {
+      path: "/AdminManageUser",
+      name: "/AdminManageUser",
+      component: () => import('../pages/AdManageUser.vue')
     }
+
+
 
     
 
