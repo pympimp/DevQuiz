@@ -56,13 +56,9 @@ export default {
 
 <style scoped>
 
-
 .box:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
-
-
-
 
 
 
@@ -78,8 +74,8 @@ export default {
   justify-content: center;
   background-color:  #1F1F1F;
   position: relative;
-  margin-top: 50px;
-  margin-bottom: 20px; /* ปรับตำแหน่งขึ้น 50px */
+  margin-top: 20px;
+  margin-bottom: 25px; /* ปรับตำแหน่งขึ้น 50px */
 ; /* กำหนดสีเทาให้กล่อง */
 }
 
@@ -138,35 +134,98 @@ img {
 
 
 
-@media (max-width: 767px) {
+
+
+
+
+@media screen and (max-width: 1465px) {
   .box {
-    width: 340px;
-    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
-    margin-top: 50px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+
+    width: 500px;
+    margin-bottom: 30px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: 20px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+    margin-left: 30px;
+    
   }
+  
 }
+
+
+
+@media screen and (max-width: 1441px) {
+  .box {
+
+    width: 550px;
+    height: 120px;
+    margin-bottom: 20px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: 20px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+    margin-left: 30px;
+    
+  }
+  
+  .img-container {
+  background-color: rgb(255, 255, 255);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 28px;
+}
+
+
+ img {
+  max-width: 70px;
+  height: 70px;
+} 
+
+.main-title {
+  font-size: 30px; /* ขนาดตัวอักษรสำหรับ HTML */
+  font-weight: bold;
+  color: #CCCCCC;
+}
+
+
+.sub-title {
+  font-size: 25px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+  color:#FFFFFF;
+}
+
+
+}
+
+
+
+@media screen and (max-width: 1025px) {
+  .box {
+
+    width: 520px;
+    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+    margin-left: 100px;
+    
+  }
+
 
 .flex-container {
   flex-direction: row;
   box-sizing: border-box; /* เพิ่ม line นี้เพื่อปรับแก้ปัญหาการบีบกล่อง */
 }
 
-/* .img-container {
+.img-container {
   background-color: rgb(255, 255, 255);
-  width: 70px;
-  height: 70px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
   overflow: hidden;
   margin-left: 28px;
-} */
+}
 
 
 
-
-/* img {
-  max-width: 40px;
-  height: 40px;
-} */
+ img {
+  max-width: 45px;
+  height: 45px;
+} 
 
 .text-container {
   display: flex;
@@ -174,7 +233,432 @@ img {
   align-items: flex-start; /* จัดเรียงข้อความไปทางด้านบน */
 }
 
+.main-title {
+  font-size: 25px; /* ขนาดตัวอักษรสำหรับ HTML */
+  font-weight: bold;
+  color: #CCCCCC;
+}
 
+
+.sub-title {
+  font-size: 18px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+  color:#FFFFFF;
+}
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 1014px) {
+  .box {
+    width: 400px;
+    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+    margin-left: 120px;
+    
+  }
+
+
+.flex-container {
+  flex-direction: row;
+  box-sizing: border-box; /* เพิ่ม line นี้เพื่อปรับแก้ปัญหาการบีบกล่อง */
+}
+
+.img-container {
+  background-color: rgb(255, 255, 255);
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 28px;
+}
+
+
+
+ img {
+  max-width: 45px;
+  height: 45px;
+} 
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* จัดเรียงข้อความไปทางด้านบน */
+}
+
+.main-title {
+  font-size: 25px; /* ขนาดตัวอักษรสำหรับ HTML */
+  font-weight: bold;
+  color: #CCCCCC;
+}
+
+
+.sub-title {
+  font-size: 18px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+  color:#FFFFFF;
+}
+
+}
+
+
+
+@media screen and (max-width: 769px) {
+  .box {
+    width: 400px;
+    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: -5px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+    margin-left: 100px;
+    
+  }
+
+
+.flex-container {
+  flex-direction: row;
+  box-sizing: border-box; /* เพิ่ม line นี้เพื่อปรับแก้ปัญหาการบีบกล่อง */
+}
+
+.img-container {
+  background-color: rgb(255, 255, 255);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 28px;
+}
+
+
+
+ img {
+  max-width: 45px;
+  height: 45px;
+} 
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* จัดเรียงข้อความไปทางด้านบน */
+}
+
+.main-title {
+  font-size: 25px; /* ขนาดตัวอักษรสำหรับ HTML */
+  font-weight: bold;
+  color: #CCCCCC;
+}
+
+
+.sub-title {
+  font-size: 18px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+  color:#FFFFFF;
+}
+
+}
+
+
+
+
+@media screen and (max-width: 715px) {
+  .box {
+
+    width: 340px;
+    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+    margin-left: 70px;
+    
+  }
+
+
+.flex-container {
+  flex-direction: row;
+  box-sizing: border-box; /* เพิ่ม line นี้เพื่อปรับแก้ปัญหาการบีบกล่อง */
+}
+
+.img-container {
+  background-color: rgb(255, 255, 255);
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 28px;
+}
+
+
+
+ img {
+  max-width: 45px;
+  height: 45px;
+} 
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* จัดเรียงข้อความไปทางด้านบน */
+}
+
+.main-title {
+  font-size: 25px; /* ขนาดตัวอักษรสำหรับ HTML */
+  font-weight: bold;
+  color: #CCCCCC;
+}
+
+
+.sub-title {
+  font-size: 18px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+  color:#FFFFFF;
+}
+
+}
+
+
+@media screen and (max-width: 648px){
+  .box {
+align-content: center;
+width: 340px;
+margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 40px;
+
+}
+
+}
+
+
+@media screen and (max-width: 595px){
+  .box {
+align-content: center;
+width: 340px;
+margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 50px;
+
+}
+
+}
+
+
+@media screen and (max-width: 558px){
+  .box {
+align-content: center;
+width: 340px;
+margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 40px;
+
+}
+
+}
+
+
+
+@media screen and (max-width: 535px) {
+  .box {
+align-content: center;
+width: 340px;
+margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 70px;
+
+}
+
+
+.img-container {
+background-color: rgb(255, 255, 255);
+width: 70px;
+height: 70px;
+border-radius: 50%;
+overflow: hidden;
+margin-left: 28px;
+}
+
+
+
+img {
+max-width: 41px;
+height: 41px;
+} 
+
+.text-container {
+display: flex;
+flex-direction: column;
+align-items: flex-start; /* จัดเรียงข้อความไปทางด้านบน */
+}
+
+.main-title {
+font-size: 22px; /* ขนาดตัวอักษรสำหรับ HTML */
+font-weight: bold;
+color: #CCCCCC;
+}
+
+
+.sub-title {
+font-size: 16px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+color:#FFFFFF;
+}
+
+}
+
+
+@media screen and (max-width: 515px){
+  .box {
+align-content: center;
+width: 340px;
+margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 35px;
+
+}
+
+}
+
+@media screen and (max-width: 477px){
+  .box {
+align-content: center;
+width: 340px;
+margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 30px;
+
+}
+
+}
+
+@media screen and (max-width: 438px){
+  .box {
+align-content: center;
+width: 340px;
+margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 25px;
+
+}
+
+}
+
+
+@media screen and (max-width: 426px){
+  .box {
+align-content: center;
+width: 340px;
+margin-bottom: -5px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 15px;
+
+
+}
+
+.main-title {
+font-size: 20px; /* ขนาดตัวอักษรสำหรับ HTML */
+font-weight: bold;
+color: #CCCCCC;
+}
+
+
+.sub-title {
+font-size: 15px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+color:#FFFFFF;
+}
+
+
+
+}
+
+@media screen and (max-width: 376px){
+  .box {
+align-content: center;
+width: 340px;
+margin-bottom: -5px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 8px;
+
+
+}
+
+.main-title {
+font-size: 20px; /* ขนาดตัวอักษรสำหรับ HTML */
+font-weight: bold;
+color: #CCCCCC;
+}
+
+
+.sub-title {
+font-size: 15px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+color:#FFFFFF;
+}
+
+
+
+}
+
+@media screen and (max-width: 359px){
+  .box {
+align-content: center;
+width: 320px;
+margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 8px;
+
+
+}
+
+.main-title {
+font-size: 20px; /* ขนาดตัวอักษรสำหรับ HTML */
+font-weight: bold;
+color: #CCCCCC;
+}
+
+
+.sub-title {
+font-size: 13px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+color:#FFFFFF;
+}
+
+
+
+}
+
+@media screen and (max-width: 359px){
+  .box {
+align-content: center;
+width: 305px;
+margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 8px;
+
+
+}
+}
+
+@media screen and (max-width: 322px){
+  .box {
+align-content: center;
+width: 295px;
+margin-bottom: -20px; /* ระยะห่างระหว่างกล่อง */
+margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+margin-left: 8px;
+
+
+}
+
+.img-container {
+background-color: rgb(255, 255, 255);
+width: 60px;
+height: 60px;
+border-radius: 50%;
+overflow: hidden;
+margin-left: 28px;
+}
+
+
+
+img {
+max-width: 41px;
+height: 41px;
+} 
+
+
+}
 
 
 </style>
