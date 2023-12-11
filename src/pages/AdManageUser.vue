@@ -4,14 +4,8 @@
     <p style="color: white; margin-top: 3vh; margin-left: 3vh; font-size: 3vh; font-weight: bold">
       จัดการรายชื่อผู้ใช้
     </p>
-    
-    <input type="text" v-model="input" placeholder="Search fruits..." />
-  <div class="item fruit" v-for="fruit in filteredList()" :key="fruit">
-    <p>{{ fruit }}</p>
-  </div>
-  <div class="item error" v-if="input&&!filteredList().length">
-     <p>No results found!</p>
-  </div>
+    <q-avatar color="red" text-color="white" icon="directions" />
+
 
   <div class="container"></div>
 </template>
