@@ -35,7 +35,7 @@ export default {
         <button @click="startQuiz">เริ่มต้นการเรียน</button>
       </div>
       <div class="about-image">
-        <img src="images/main.png" alt="" class="h-auto">
+        <img src="/images/main.png" alt="" class="h-auto">
       </div>
     </section>
 
