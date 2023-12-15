@@ -3,23 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
-
-
-
-  
     {
       path: '/',
       name: 'MainPage',
-      component: () => import('../pages/MainPage.vue'),
+      component: () => import('../pages/MainPage.vue')
       // children:
       // [
       //   {
@@ -37,55 +24,114 @@ const router = createRouter({
     },
 
     {
-      path: "/login",
+      path: '/login',
       name: 'LogIn',
       component: () => import('../pages/LogIn.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
     },
 
     {
-      path: "/register",
+      path: '/register',
       name: 'RegisteR',
       component: () => import('../pages/RegisteR.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
     },
 
-
     {
-      path: "/Articie",
+      path: '/Articie',
       name: 'Articie',
-      component: () => import('../pages/ArticIE.vue') 
+      component: () => import('../pages/ArticIE.vue')
     },
 
     {
-      path: "/Class",
+      path: '/Class',
       name: 'Class',
-      component: () => import('../pages/ClasS.vue') 
+      component: () => import('../pages/ClasS.vue')
     },
 
     {
-      path: "/AdminDashboard",
-      name: "/AdminDashboard",
+      path: '/AdminDashboard',
+      name: '/AdminDashboard',
       component: () => import('../pages/AdDashBoard.vue')
     },
 
-    
     {
-      path: "/AdminManageUser",
-      name: "/AdminManageUser",
+      path: '/AdminManageUser',
+      name: '/AdminManageUser',
       component: () => import('../pages/AdManageUser.vue')
+    },
+
+    {
+      path: '/AdminManageArticle',
+      name: '/AdminManageArticle',
+      component: () => import('../pages/AdManageArticle.vue')
+    },
+
+    {
+      path:'/Test',
+      name:'Test',
+      component:()=>import('../pages/PlayGround.vue')
     }
-
-
-
-    
-
-   
-    
   ]
-  
+})
 
+// const routes = [
+// {
+  // {
+  //   path: '/',
+  //   name: 'MainPage',
+  //   component: () => import('../pages/MainPage.vue')
+  // },
 
+  // {
+  //   path: '/HomePage',
+  //   name: 'HomePage',
+  //   component: () => import('../pages/HomePage.vue')
+  // },
 
-  
-});
+  // {
+  //   path: '/login',
+  //   name: 'LogIn',
+  //   component: () => import('../pages/LogIn.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
+  // },
 
- export default router
+  // {
+  //   path: '/register',
+  //   name: 'RegisteR',
+  //   component: () => import('../pages/RegisteR.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
+  // },
+
+  // {
+  //   path: '/Articie',
+  //   name: 'Articie',
+  //   component: () => import('../pages/ArticIE.vue')
+  // },
+
+  // {
+  //   path: '/Class',
+  //   name: 'Class',
+  //   component: () => import('../pages/ClasS.vue')
+  // },
+
+  // {
+  //   path: '/AdminDashboard',
+  //   name: '/AdminDashboard',
+  //   component: () => import('../pages/AdDashBoard.vue')
+  // },
+
+  // {
+  //   path: '/AdminManageUser',
+  //   name: '/AdminManageUser',
+  //   component: () => import('../pages/AdManageUser.vue')
+  // }
+// }
+// ]
+// const router = Router();
+// export default router;
+// function Router(){
+//   const router = new createRouter({
+//     history: createWebHistory(),
+//     routes,
+//   })
+    // return router;
+// }
+
+export default router
