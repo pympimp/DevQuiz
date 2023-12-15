@@ -8,6 +8,8 @@ import router from './router'
 import store from './store.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+import './assets/main.css'
+
 // import VueResponsiveImage from 'vue-responsive-image'
 
 

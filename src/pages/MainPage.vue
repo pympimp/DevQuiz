@@ -8,7 +8,7 @@ export default {
   components: {
     NavBar,
   },
- 
+
   methods: {
     startQuiz() {
       // เพิ่มโค้ดที่คุณต้องการเมื่อปุ่มถูกคลิก
@@ -35,7 +35,7 @@ export default {
         <button @click="startQuiz">เริ่มต้นการเรียน</button>
       </div>
       <div class="about-image">
-        <img src="/images/main.png" alt="" class="h-auto">
+        <img src="/images/main.png"  alt="Main Image" class="h-auto">
       </div>
     </section>
 
@@ -58,10 +58,10 @@ export default {
 } */
 
 /* .page {
-  display: flex; 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -82,14 +82,14 @@ export default {
     font-size: 25px; */
     /* margin-left: 70px;
     padding-top: 20px; */
-/*     
+/*
   } */
 
     /* .page h4{
     font-size: 25px; */
     /* margin-left: 70px; */
     /* padding-top: -5px;  */
-/*     
+/*
   } */
 
   /* .page button {
@@ -117,7 +117,7 @@ export default {
   margin: 14px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr 2fr 2fr 1fr; */
-/*   
+/*
 } */
 
 .about {
