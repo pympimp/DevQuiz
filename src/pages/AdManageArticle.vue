@@ -135,6 +135,6 @@
   
   <style>
     .admin{
-        background-color: aqua;
+        background-color: rgb(183, 229, 229);
     }
   </style>
