@@ -23,7 +23,7 @@
   export default {
     methods: {
       login() {
-        this.$router.push({ name: "/AdminDashboard"});
+        this.$router.push({ name: "LogIn"});
       }
     }
   }
