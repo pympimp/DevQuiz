@@ -59,8 +59,14 @@ const router = createRouter({
       path: "/Class",
       name: 'Class',
       component: () => import('../pages/ClasS.vue') 
-    }
+    },
 
+
+    {
+      path: "/EditUser",
+      name: 'EditUser',
+      component: () => import('../pages/EditUser.vue') 
+    }
     
 
    
