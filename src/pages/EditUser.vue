@@ -13,6 +13,11 @@ export default {
     HomePage() {
       this.$router.push({ name: "HomePage" });
     },
+
+    EditPassword() {
+      this.$router.push({ name: "EditPassword" });
+    },
+
   }
 };
 </script>
@@ -22,20 +27,29 @@ export default {
 <template>
     <div>
       <NavBar />
+      <h3>ย้อนกลับ</h3>
       <h1>แก้ไขข้อมูลผู้ใช้</h1>
       <div class="container">
       <section>
       <form>
         <div class="inputbox">
-          <ion-icon name="mail-outline"></ion-icon>
-          <input type="email" required />
-          <label for="">Email</label>
+          <p>Username : </p>
+          <ion-icon name="user-outline"></ion-icon>
+          <input type="user" required />
+          <!-- <label for="">Email</label> -->
         </div>
+
         <div class="inputbox">
-          <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="password" required />
-          <label for="">Password</label>
+          <p>E-mail : </p>
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="mail" required />
+          <!-- <label for="">Email</label> -->
         </div>
+
+        <div class="password" @click="EditPassword">
+           <a href="#"><i class="bi bi-key-fill"></i>Change Password</a>
+        </div>
+
         <button @click="HomePage">ยืนยัน</button>
       </form>
     </section>
@@ -80,10 +94,19 @@ section {
 h1 {
   font-size: 20px;
   color: #ffffff;
-  margin-left: 600px;
-  margin-top: 180px;
+  margin-left: 610px;
+  margin-top: 125px;
   margin-bottom: 10px;
+  font-weight: 600;
 }
+
+h3 {
+    font-size: 20px;
+    color: #ffffff;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
 
 .inputbox {
   position: relative;
@@ -94,8 +117,8 @@ h1 {
 
 .inputbox label {
   position: absolute;
-  top: 50%;
-  left: 5px;
+  top: 50px;
+  left: 2px;
   transform: translateY(-50%);
   color: #707070;
   font-size: 0.85rem;
@@ -103,10 +126,7 @@ h1 {
   transition: all 0.5s ease-in-out;
 }
 
-input:focus ~ label,
-input:valid ~ label {
-  top: -5px;
-}
+
 
 .inputbox input {
   width: 100%;
@@ -127,6 +147,29 @@ input:valid ~ label {
   top: 20px;
 }
 
+
+.password {
+    margin: 10px 0;
+  }
+
+  .password a {
+    text-decoration: none;
+    color: #ee5684;
+    font-weight: 1000;
+  }
+
+  .password a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2.5px;
+  }
+
+  .password i {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+
+
 button {
   width: 100%;
   height: 45px;
@@ -146,12 +189,12 @@ button:hover {
   background-color: #ae3458;
 }
 
-.register {
-  color: #707070;
-  /* text-align: center; */
-  margin: 10px 0 10px;
+/* ตัวอักษร */
+p{
+    font-size: 1rem;
+    color: #000;
+    font-weight: 900;
 }
-
 
 
 .back-link {
@@ -166,10 +209,7 @@ button:hover {
   font-size: 1.5rem;
 }
 
-/* เพิ่มสไตล์สำหรับตัวหนังสือเพิ่มเติมตามที่คุณต้องการ */
-p {
-  font-size: 1rem;
-}
+
 
 
 </style>

@@ -66,7 +66,14 @@ const router = createRouter({
       path: "/EditUser",
       name: 'EditUser',
       component: () => import('../pages/EditUser.vue') 
+    },
+
+    {
+      path: "/EditPassword",
+      name: 'EditPassword',
+      component: () => import('../pages/EditPassword.vue') 
     }
+    
     
 
    

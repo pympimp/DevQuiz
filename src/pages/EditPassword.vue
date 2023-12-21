@@ -1,75 +1,65 @@
-<template>
-  <!-- <NavBar/> -->
-  <!-- <NavBar/> -->
-  <body>
-    <router-link to="/"> </router-link>
-    <section>
-      <form>
-        <router-link to="/" class="back-link">
-          <span class="bi bi-arrow-left back-icon"></span>
-          <!-- <p>back</p> -->
-        </router-link>
-        <br />
-        <h1>Login</h1>
-        <div class="inputbox">
-          <ion-icon name="mail-outline"></ion-icon>
-          <input type="email" required />
-          <label for="">Email</label>
-        </div>
-        <div class="inputbox">
-          <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="password" required />
-          <label for="">Password</label>
-        </div>
-        <button @click="HomePage">Log in</button>
-        <div class="register" @click="regis">
-          <p>Don't have a account <a href="#">Register</a></p>
-          <!-- <p class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</p> -->
-        </div>
-      </form>
-    </section>
-  </body>
-</template>
-
 <script>
-// import NavBar from "@/components/NavBar.vue";
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import NavBar from "@/components/NavBar.vue";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 export default {
-  name: 'LogIn',
+    name: 'EditPAssword',
   components: {
-    // NavBar,
+    NavBar,
+   
   },
   methods: {
-    regis() {
-      this.$router.push({ name: "RegisteR" });
-    },
     HomePage() {
       this.$router.push({ name: "HomePage" });
     },
   }
-}
+};
 </script>
+
+
+
+<template>
+    <div>
+      <NavBar />
+      <h3>ย้อนกลับ</h3>
+      <h1>เปลี่ยนรหัสผ่าน</h1>
+      <div class="container">
+      <section>
+      <form>
+        <div class="inputbox">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <p>Old Password : </p>
+          <input type="password" required />
+
+        </div>
+        <div class="inputbox">
+            <p>New Password : </p>
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" required />
+          
+        </div>
+        
+          <h2 class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</h2>
+        
+
+        <button @click="HomePage">ยืนยัน</button>
+      </form>
+    </section>
+  </div>
+  </div>
+</template>
+
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'poppins', sans-serif;
-}
-
-body {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background-color: #1f1f1f;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+ 
 }
 
 .back-icon {
@@ -95,9 +85,12 @@ section {
 }
 
 h1 {
-  font-size: 2rem;
-  color: #000000;
-  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+  margin-left: 600px;
+  margin-top: 120px;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .inputbox {
@@ -142,10 +135,36 @@ input:valid ~ label {
   top: 20px;
 }
 
+
+h2 {
+  font-size: 12px;
+  text-decoration: none;
+  color: #707070;
+  margin-bottom: 20px;
+  
+}
+
+
+/* ตัวอักษร */
+p{
+    font-size: 1rem;
+    color: #000;
+    font-weight: 900;
+}
+
+h3 {
+    font-size: 20px;
+    color: #ffffff;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+
+
 button {
   width: 100%;
   height: 45px;
-  border-radius: 40px;
+  border-radius: 10px;
   background-color: #ee5684;
   border: none;
   outline: none;
@@ -161,30 +180,9 @@ button:hover {
   background-color: #ae3458;
 }
 
-.register {
-  color: #707070;
-  /* text-align: center; */
-  margin: 10px 0 10px;
-}
 
-.register p a {
-  text-decoration: none;
-  color: #ee5684;
-  font-weight: 600;
-  text-align: center;
-}
 
-.register p a:hover {
-  text-decoration: underline;
 
-}
-
-/* .register .more {
-    text-decoration: none;
-    color: #EE5684;
-    font-weight: 600;
-    text-align: center;
-} */
 
 .back-link {
   display: flex;
@@ -198,8 +196,11 @@ button:hover {
   font-size: 1.5rem;
 }
 
-/* เพิ่มสไตล์สำหรับตัวหนังสือเพิ่มเติมตามที่คุณต้องการ */
-p {
-  font-size: 1rem;
-}
+
+
 </style>
+
+
+
+
+
