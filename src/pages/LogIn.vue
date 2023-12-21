@@ -12,16 +12,16 @@
         <br />
         <h1>Login</h1>
         <div class="inputbox">
-          <ion-icon name="mail-outline"></ion-icon>
-          <input type="email" required />
-          <label for="">Email</label>
+          <!-- <ion-icon name="mail-outline"></ion-icon> -->
+          <input type="username" required v-model="username"/>
+          <label for="">username</label>
         </div>
         <div class="inputbox">
-          <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="password" required />
+          <!-- <ion-icon name="lock-closed-outline"></ion-icon> -->
+          <input type="password" required v-model="password"/>
           <label for="">Password</label>
         </div>
-        <button @click="HomePage">Log in</button>
+        <button @click="login()">Log in</button>
         <div class="register" @click="regis">
           <p>Don't have a account <a href="#">Register</a></p>
           <!-- <p class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</p> -->
@@ -33,10 +33,22 @@
 
 <script>
 // import NavBar from "@/components/NavBar.vue";
+import axios from 'axios';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 export default {
+  mounted(){
+    if(localStorage.getItem("Token")){
+      this.$router.push({ name: "HomePage" });
+    }
+  },
   name: 'LogIn',
+  data(){
+    return{
+      username:'',
+      password:''
+    }
+  },
   components: {
     // NavBar,
   },
@@ -44,8 +56,31 @@ export default {
     regis() {
       this.$router.push({ name: "RegisteR" });
     },
-    HomePage() {
-      this.$router.push({ name: "HomePage" });
+    async login() {
+      try {
+        const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/user/login",{
+          username:this.username,
+          password:this.password
+        });
+        if(result){
+          alert("Welcome "+ result.data.username)
+          localStorage.setItem("Token",JSON.stringify(result.data.token))
+          if(localStorage.setItem || result.data.role === 'user'){
+            this.$router.push({ name: "HomePage" });
+          }
+          if(localStorage.setItem || result.data.role === 'admin'){
+            this.$router.push({ name: "/AdminDashboard" });
+          }
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 401 && error.response.data.error === "Invalid username") {
+      alert("Invalid username");
+    }if(error.response && error.response.status === 401 && error.response.data.error === "wrong password"){
+      alert("Wrong password");
+    }else {
+      console.error("Error during signup:", error);
+    }
+      }
     },
   }
 }
