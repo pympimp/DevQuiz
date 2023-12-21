@@ -13,16 +13,13 @@
             <div>
             <textarea
             class="Text-area"
-            v-model="code"
-            @init="editorInit"
-            lang="javascript"
-            theme="chrome"
+            v-model="code.html"
             ></textarea>
         </div>
           </div>
           <div class="output-playground">
             <div style="font-size: medium; margin-left: 30px;color: white;">ผลลัพธ์</div>
-            <div class="Text-area" v-html="output"></div>
+            <iframe class="Text-area" ref="outputFrame"></iframe>
             <button @click="runCode" class="button">ตรวจสอบ ></button>
           </div>
         </div>
@@ -30,38 +27,39 @@
     </div>
   </template>
   
-  <script>
-  import NavBar from '@/components/NavBar.vue';
-  import { VAceEditor } from 'vue3-ace-editor';
+  <script setup>
+import NavBar from '@/components/NavBar.vue';
+import { ref } from 'vue';
 
-export default {
-  components: {
-    NavBar,
-  },
-  data() {
-    return {
-      code: 'console.log("Hello, World!");',
-      output: '',
-    };
-  },
-  methods: {
-    runCode() {
-      try {
-        const result = new Function(this.code)();
-        this.output = result.toString();
-      } catch (error) {
-        this.output = `Error: ${error.message}`;
-      }
-    },
-    editorInit(editor) {
-      // เมื่อโค้ดถูกโหลดเสร็จ
-      editor.on('change', () => {
-        this.runCode(); // เรียกใช้งานเมื่อโค้ดถูกเปลี่ยน
-      });
-    },
-  },
+const htmlstart = `<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>`;
+
+const code = ref({
+  html: htmlstart,
+  css: '',
+  javascript: '',
+});
+
+const outputFrame = ref(null);
+
+const runCode = () => {
+  const outputDocument = outputFrame.value.contentDocument || outputFrame.value.contentWindow.document;
+
+  outputDocument.open();
+  outputDocument.write(code.value.html);
+  outputDocument.close();
 };
-  </script>
+</script>
 
 <style scoped>
 .container-playground{
@@ -109,5 +107,11 @@ export default {
 .output-playground{
   display: flex;
   flex-direction: column;
+}
+
+iframe {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
 }
 </style>

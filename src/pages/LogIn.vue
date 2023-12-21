@@ -4,13 +4,13 @@
   <body>
     <router-link to="/"> </router-link>
     <section>
-      <form>
         <router-link to="/" class="back-link">
           <span class="bi bi-arrow-left back-icon"></span>
           <!-- <p>back</p> -->
         </router-link>
         <br />
         <h1>Login</h1>
+        <form>
         <div class="inputbox">
           <ion-icon name="mail-outline"></ion-icon>
           <input type="email" required />
@@ -22,11 +22,11 @@
           <label for="">Password</label>
         </div>
         <button @click="HomePage">Log in</button>
+      </form>
         <div class="register" @click="regis">
           <p>Don't have a account <a href="#">Register</a></p>
           <!-- <p class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</p> -->
         </div>
-      </form>
     </section>
   </body>
 </template>
