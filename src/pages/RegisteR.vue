@@ -74,8 +74,13 @@ export default {
       alert("Sign-up done");
     }
   } catch (error) {
-    // Handle errors here
-    console.error("Error during signup:", error);
+    if (error.response && error.response.status === 400 && error.response.data.error === "Email  already exists") {
+      alert("Email already exists. Please choose a different one.");
+    }if(error.response && error.response.status === 400 && error.response.data.error === "Username  already exists"){
+      alert("Username already exists. Please choose a different one.");
+    }else{
+      console.error("Error during signup:", error);
+    }
   }
     }
 
