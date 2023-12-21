@@ -4,7 +4,7 @@
   <body>
     <router-link to="/"> </router-link>
     <section>
-      <form>
+      <div>
         <router-link to="/" class="back-link">
           <span class="bi bi-arrow-left back-icon"></span>
           <!-- <p>back</p> -->
@@ -26,7 +26,7 @@
           <p>Don't have a account <a href="#">Register</a></p>
           <!-- <p class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</p> -->
         </div>
-      </form>
+      </div>
     </section>
   </body>
 </template>

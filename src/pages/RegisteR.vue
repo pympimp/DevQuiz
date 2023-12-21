@@ -4,7 +4,7 @@
   <body>
     <router-link to="/"> </router-link>
     <section>
-      <form>
+      <div>
         <router-link to="/" class="back-link">
           <span class="bi bi-arrow-left back-icon"></span>
           <!-- <p>back</p> -->
@@ -12,26 +12,26 @@
         <br />
         <h1>Register</h1>
         <div class="inputbox">
-          <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="username" required />
+          <!-- <ion-icon name="lock-closed-outline"></ion-icon> -->
+          <input type="username" required v-model="username"/>
           <label for="">Username</label>
         </div>
         <div class="inputbox">
-          <ion-icon name="mail-outline"></ion-icon>
-          <input type="email" required />
+          <!-- <ion-icon name="mail-outline"></ion-icon> -->
+          <input type="email" required v-model="email"/>
           <label for="">Email</label>
         </div>
         <div class="inputbox">
-          <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="password" required />
+          <!-- <ion-icon name="lock-closed-outline"></ion-icon> -->
+          <input type="password" required v-model="password"/>
           <label for="">Password</label>
         </div>
-        <button @click="login">Log in</button>
-        <div class="register" @click="login">
+        <button @click="signup()">Register</button>
+        <div class="register">
           <p>Already have an account? <a href="#">Login</a></p>
           <!-- <p class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</p> -->
         </div>
-      </form>
+      </div>
     </section>
   </body>
 </template>
@@ -39,9 +39,18 @@
 <script>
 // import NavBar from "@/components/NavBar.vue";
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import axios from 'axios'
 
 export default {
   name: 'LogIn',
+  data(){
+    return {
+      username:'',
+      email:'',
+      password:'',
+      role:'user'
+    }
+  },
   components: {
     // NavBar,
   },
@@ -50,6 +59,31 @@ export default {
       // เพิ่มโค้ดที่คุณต้องการเมื่อปุ่มถูกคลิก
       this.$router.push({ name: "LogIn" });
     },
+
+    async signup(){
+  try {
+    const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/user/register", {
+      email: this.email,
+      username: this.username,
+      password: this.password,
+      role: this.role,
+    });
+
+    if (result) {
+      console.log(result.data);
+      alert("Sign-up done");
+    }
+  } catch (error) {
+    if (error.response && error.response.status === 400 && error.response.data.error === "Email  already exists") {
+      alert("Email already exists. Please choose a different one.");
+    }if(error.response && error.response.status === 400 && error.response.data.error === "Username  already exists"){
+      alert("Username already exists. Please choose a different one.");
+    }else{
+      console.error("Error during signup:", error);
+    }
+  }
+    }
+
   },
 }
 </script>

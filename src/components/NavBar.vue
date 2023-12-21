@@ -34,7 +34,7 @@ export default {
     let Links = [
       { name: "บทเรียน", link: 'Class' },
       { name: "บทความ", link: 'Articie' },
-      { name: "เกี่ยวกับเรา", link: "#" },
+      // { name: "เกี่ยวกับเรา", link: "#" },
     ];
 
     function MenuOpen(){
