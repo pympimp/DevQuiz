@@ -54,8 +54,11 @@ export default {
       this.$router.push({ name: 'HomePage' })
     },
     logout() {
+      localStorage.removeItem("Token");
+      if(!localStorage.getItem("Token")){
       this.$router.push({ name: 'LogIn' })
-    }
+      }
+    เพิ่
   }
 }
 </script>
