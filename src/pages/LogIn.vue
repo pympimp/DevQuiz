@@ -211,6 +211,7 @@ button:hover {
 
 .register p a:hover {
   text-decoration: underline;
+
 }
 
 /* .register .more {

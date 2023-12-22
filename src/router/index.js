@@ -44,32 +44,26 @@ const router = createRouter({
     {
       path: '/Class',
       name: 'Class',
-      component: () => import('../pages/ClasS.vue')
+      component: () => import('../pages/ClasS.vue') 
+    },
+
+
+    {
+      path: "/EditUser",
+      name: 'EditUser',
+      component: () => import('../pages/EditUser.vue') 
     },
 
     {
-      path: '/AdminDashboard',
-      name: '/AdminDashboard',
-      component: () => import('../pages/AdDashBoard.vue')
-    },
-
-    {
-      path: '/AdminManageUser',
-      name: '/AdminManageUser',
-      component: () => import('../pages/AdManageUser.vue')
-    },
-
-    {
-      path: '/AdminManageArticle',
-      name: '/AdminManageArticle',
-      component: () => import('../pages/AdManageArticle.vue')
-    },
-
-    {
-      path:'/Test',
-      name:'Test',
-      component:()=>import('../pages/PlayGround.vue')
+      path: "/EditPassword",
+      name: 'EditPassword',
+      component: () => import('../pages/EditPassword.vue') 
     }
+    
+    
+
+   
+    
   ]
 })
 
