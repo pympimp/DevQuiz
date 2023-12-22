@@ -58,8 +58,8 @@ export default {
       if(!localStorage.getItem("Token")){
       this.$router.push({ name: 'LogIn' })
       }
-    เพิ่
   }
+}
 }
 </script>
 
