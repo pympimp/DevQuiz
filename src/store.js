@@ -1,5 +1,5 @@
 // store.js
-import { createStore } from 'vue';
+import { createStore } from 'vuex';
 
 export default createStore({
   state: {

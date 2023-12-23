@@ -58,7 +58,19 @@ const router = createRouter({
       path: "/EditPassword",
       name: 'EditPassword',
       component: () => import('../pages/EditPassword.vue') 
-    }
+    },
+
+    {
+      path: "/AdminDashboard",
+      name: 'AdminDashboard',
+      component: () => import('../pages/AdDashBoard.vue') 
+    },
+
+    {
+      path: "/AdminManageArticle",
+      name: 'AdminManageArticle',
+      component: () => import('../pages/AdManageArticle.vue') 
+    },
     
     
 
