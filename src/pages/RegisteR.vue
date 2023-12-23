@@ -26,8 +26,9 @@
           <input type="password" required v-model="password"/>
           <label for="">Password</label>
         </div>
+        <!-- ในส่วนการกดสมัครเมื่อสมัครแล้วจะทำฟังก์ชั่น signup -->
         <button @click="signup()">Register</button>
-        <div class="register">
+        <div class="register" @click="login()">
           <p>Already have an account? <a href="#">Login</a></p>
           <!-- <p class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</p> -->
         </div>
@@ -45,6 +46,7 @@ export default {
   name: 'LogIn',
   data(){
     return {
+      // ส่วนการเตรียมข้อมูล
       username:'',
       email:'',
       password:'',
@@ -59,21 +61,24 @@ export default {
       // เพิ่มโค้ดที่คุณต้องการเมื่อปุ่มถูกคลิก
       this.$router.push({ name: "LogIn" });
     },
-
+    // ฟังก์ชันการสมัคร
     async signup(){
   try {
+    // ส่วนของการส่งข้อมูล
     const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/user/register", {
       email: this.email,
       username: this.username,
       password: this.password,
       role: this.role,
     });
-
+    // เมื่อสมัครได้
     if (result) {
       console.log(result.data);
       alert("Sign-up done");
+      this.$router.push({ name: "LogIn" });
     }
   } catch (error) {
+    // ดักข้อมูลซ้ำและผิดพลาด
     if (error.response && error.response.status === 400 && error.response.data.error === "Email  already exists") {
       alert("Email already exists. Please choose a different one.");
     }if(error.response && error.response.status === 400 && error.response.data.error === "Username  already exists"){

@@ -4,6 +4,11 @@ import BoxComponent from '@/components/BoxComponent.vue';
 // import ItemhomeComponent from '../components/ItemhomeComponent.vue';
 
 export default {
+  mounted(){
+    if(!localStorage.getItem("Token")){
+      this.$router.push({ name: "LogIn" });
+    }
+  },
   components: {
     NavBar,
     BoxComponent,
