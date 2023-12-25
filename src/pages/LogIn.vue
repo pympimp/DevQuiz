@@ -65,10 +65,10 @@ export default {
         if(result){
           alert("Welcome "+ result.data.username)
           localStorage.setItem("Token",JSON.stringify(result.data.token))
-          if(localStorage.setItem || result.data.role === 'user'){
+          if(localStorage.setItem && result.data.role === 'user'){
             this.$router.push({ name: "HomePage" });
           }
-          if(localStorage.setItem || result.data.role === 'admin'){
+          if(localStorage.setItem && result.data.role === 'admin'){
             this.$router.push({ name: "/AdminDashboard" });
           }
         }

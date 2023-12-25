@@ -1,7 +1,9 @@
 <template>
-  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="login">
+  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="signout()" v-if='Token'>
+    <p>ออกจากระบบ</p>
+  </button>
+  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="login" v-if="!Token">
     <p>เข้าสู่ระบบ</p>
-    
   </button>
 </template>
 
@@ -21,9 +23,24 @@
 
 <script>
   export default {
+    data(){
+      return{
+        Token:null
+      }
+    },
+    mounted(){
+  if(localStorage.getItem("Token")){
+    this.Token = localStorage.getItem('Token')
+  }
+},
     methods: {
       login() {
         this.$router.push({ name: "LogIn"});
+      },
+      signout(){
+        this.Token = null;
+        localStorage.removeItem("Token")
+        window.location.reload();
       }
     }
   }

@@ -64,11 +64,21 @@ const router = createRouter({
       path: "/UserProfile",
       name: 'UserProfile',
       component: () => import('../pages/Userprofile.vue') 
-    }
-    
-    
+    },
 
-   
+
+    {
+      path: "/AdminDashboard",
+      name: 'AdminDashboard',
+      component: () => import('../pages/AdDashBoard.vue') 
+    },
+
+    {
+      path: "/AdminManageArticle",
+      name: 'AdminManageArticle',
+      component: () => import('../pages/AdManageArticle.vue') 
+    },
+    
     
   ]
 })
