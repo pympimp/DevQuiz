@@ -1,4 +1,6 @@
+<!-- eslint-disable no-undef -->
 <script>
+import axios from 'axios';
 import NavBar from "@/components/NavBar.vue";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -9,16 +11,57 @@ export default {
     NavBar,
    
   },
+
   methods: {
-    HomePage() {
-      this.$router.push({ name: "HomePage" });
+    UserProfile() {
+      this.$router.push({ name: "UserProfile" });
     },
 
     EditPassword() {
       this.$router.push({ name: "EditPassword" });
     },
 
+    async login() {
+  try {
+    const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/user/UserProfile", {
+      username: this.username,
+      Email: this.Email
+    });
+
+    if (result) {
+      let successMessage = "Data changed successfully:";
+      
+      if (this.username && !this.Email) {
+        successMessage += " Username";
+      } else if (!this.username && this.Email) {
+        successMessage += " Email";
+      } else if (this.username && this.Email) {
+        successMessage += " Username and Email";
+      } else {
+        // No data changes made
+        // Display an error or do something else as required
+        console.error("No data changes made");
+        return;
+      }
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: successMessage
+      });
+
+      // Your localStorage and router redirection logic here...
+    }
+  } catch (error) {
+    if (error.response && error.response.status === 401 && error.response.data.error === "wrong password") {
+      alert("Wrong password");
+    } else {
+      console.error("Error during change:", error);
+    }
   }
+}
+  }
+
 };
 </script>
 
@@ -27,7 +70,12 @@ export default {
 <template>
     <div>
       <NavBar />
-      <h3>ย้อนกลับ</h3>
+      <div id="app">
+          <a :href="link" class="custom-link">
+            <i class="bi bi-backspace-fill"></i>
+            <h3 @click="UserProfile">ย้อนกลับ</h3>
+          </a>
+      </div>
       <h1>แก้ไขข้อมูลผู้ใช้</h1>
       <div class="container">
       <section>
@@ -50,7 +98,7 @@ export default {
            <a href="#"><i class="bi bi-key-fill"></i>Change Password</a>
         </div>
 
-        <button @click="HomePage">ยืนยัน</button>
+        <button>ยืนยัน</button>
       </form>
     </section>
   </div>
@@ -100,12 +148,44 @@ h1 {
   font-weight: 600;
 }
 
-h3 {
-    font-size: 20px;
-    color: #ffffff;
-    margin-left: 40px;
-    margin-top: 20px;
+
+/* การตกแต่งลิงก์และข้อความ */
+.custom-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  color: #333; /* สีข้อความ */
+  font-family: Arial, sans-serif;
 }
+
+i {
+  /* ขนาดของไอคอน */
+  color: #EC4088;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-left: 20px; /* ระยะห่างของไอคอนกับข้อความ */
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 20px;
+    color: #EC4088;
+    margin-left: 2px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* เพิ่มสไตล์เมื่อผู้ใช้ชี้เมาส์เข้ามา
+h3:hover {
+  color: #FF0000; 
+  text-decoration: underline; 
+}
+
+i:hover {
+  color: #FF0000;
+  text-decoration: underline; 
+} */
+
 
 
 .inputbox {
