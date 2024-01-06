@@ -61,6 +61,13 @@ const router = createRouter({
     },
 
     {
+      path: "/UserProfile",
+      name: 'UserProfile',
+      component: () => import('../pages/Userprofile.vue') 
+    },
+
+
+    {
       path: "/AdminDashboard",
       name: 'AdminDashboard',
       component: () => import('../pages/AdDashBoard.vue') 
@@ -90,9 +97,6 @@ const router = createRouter({
       component: () => import('../pages/AdTest.vue') 
     },
     
-    
-
-   
     
   ]
 })
