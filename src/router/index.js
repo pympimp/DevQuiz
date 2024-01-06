@@ -71,6 +71,24 @@ const router = createRouter({
       name: 'AdminManageArticle',
       component: () => import('../pages/AdManageArticle.vue') 
     },
+
+    {
+      path: "/AdminManageUser",
+      name: 'AdminManageUser',
+      component: () => import('../pages/AdManageUser.vue') 
+    },
+
+    {
+      path: "/AdminManageClass",
+      name: 'AdminManageClass',
+      component: () => import('../pages/AdManageClass.vue') 
+    },
+
+    {
+      path: "/AdTest",
+      name: 'AdTest',
+      component: () => import('../pages/AdTest.vue') 
+    },
     
     
 
