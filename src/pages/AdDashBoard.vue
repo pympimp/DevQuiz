@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-<script>
-import AdNav from '@/components/AdNav.vue'
-import BoxAddash from '@/components/BoxAddash.vue'
-import 'bootstrap-icons/font/bootstrap-icons.css';
-
-export default {
-  components: {
-    AdNav,
-    BoxAddash
-  },
-  data() {
-    return {
-      currentContent: 'Dashboard', // กำหนดให้แสดงข้อมูล HTML เริ่มต้น
-      languageData: {
-        Dashboard: {
-          
-        },
-
-        Userlist: {
-          
-        },
-
-        Managearticles: {
-
-        },
-
-        Manageexercises: {
-
-        }
-      }
-=======
 <template>
   <!-- Add this line to your HTML file -->
   <link
@@ -163,7 +131,6 @@ export default {
     return {
       showDropDown: false,
       showSide: true
->>>>>>> f4e3d73a698e703bf1afb47f47fe45cbad992a20
     }
   },
   methods: {
@@ -182,7 +149,6 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
 
 
 
@@ -251,9 +217,6 @@ export default {
 
 
 <style scoped>
-=======
-<style>
->>>>>>> f4e3d73a698e703bf1afb47f47fe45cbad992a20
 h1 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -262,7 +225,6 @@ h1 {
   background-color: rgb(183, 229, 229);
 }
 
-<<<<<<< HEAD
 .button-image {
   transform: translateY(10%);
   width: 40px;
@@ -315,9 +277,6 @@ p {
   height: 1000px;
 }
 .container-no-data h1 {
-=======
-.grid-list {
->>>>>>> f4e3d73a698e703bf1afb47f47fe45cbad992a20
   display: flex;
   flex-wrap: wrap;
   list-style: none;
