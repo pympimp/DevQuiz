@@ -460,7 +460,7 @@ h{
 /*  responsive*/
 
 
-@media screen and (max-width: 2560px) {
+/* @media screen and (max-width: 2560px) {
 
 
 .container{
@@ -498,8 +498,7 @@ transition: background-color 0.1s ease;
 background-color: #f5c722;
 color: #434343;
 padding: 10px 20px;
-/* margin-top: -100px; */
-margin-bottom: 100px; /* ปรับตามความต้องการ */
+margin-bottom: 100px; 
 font-size: 42px;
 border: none;
 border-radius: 15px;
@@ -518,7 +517,7 @@ transition: background-color 0.1s ease;
 }
 
 h3 {
-font-size: 55px; /* ปรับค่าตามที่คุณต้องการ */
+font-size: 55px;
 padding-bottom: 1px;
 font-weight: bold;
 color: #ffffff;
@@ -532,7 +531,7 @@ margin-left: 390px;
 .article-container {
 display: flex;
 flex-direction: column;
-margin: auto; /* เพิ่มบรรทัดนี้ */
+margin: auto;
 margin-top: 10px;
 overflow: hidden;
 transition: height 0.3s ease;
@@ -549,10 +548,10 @@ margin-bottom: 35px;
 width: 50px;
 overflow: hidden;
 transition: height 0.3s ease;
-margin-left: auto; /* ทำให้กล่องอยู่กลางตามด้านซ้าย */
-margin-right: auto; /* ทำให้กล่องอยู่กลางตามด้านขวา */
-border-bottom: 1.5px solid #000; /* เพิ่มเส้นกั้นด้านล่าง */
-width: 90%; /* กำหนดความยาวของเส้นกั้น */
+margin-left: auto; 
+margin-right: auto; 
+border-bottom: 1.5px solid #000;
+width: 90%; 
 }
 
 .article-image {
@@ -562,11 +561,10 @@ margin-top: 17px;
 margin-left: 20px;
 margin-right: 10px;
 margin-bottom: 40px;
-align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
+align-self: flex-start; 
 }
 
 
-/* ปรับ font-size ของ .visible-text */
 .visible-text p {
   font-size: 40px;
 }
@@ -576,30 +574,29 @@ align-self: flex-start; /* ทำให้รูปอยู่ด้านบ�
 }
 
 
-/* ปรับ font-size ของ .hidden-text */
+
 .hidden-text p {
   font-size: 25px;
 }
 
-/* ปรับ font-size ของ .icon */
 .icon {
   font-size: 20px;
 }
 
 
-}
+} */
 
 
 
 
-@media screen and (max-width: 1891px) {
-/* ทำให้ .container เรียงแนวตั้ง */
+/* @media screen and (max-width: 1891px) {
+
 
 .container{
     margin-left: -10px;
   }
 
-/* ส่วนตัวหนังสือแนะนำ คู่กับแบบฝึก */
+
 .text{
     flex: 1;
     display: flex;
@@ -639,8 +636,8 @@ align-self: flex-start; /* ทำให้รูปอยู่ด้านบ�
   background-color: #f5c722;
   color: #434343;
   padding: 10px 20px;
-  /* margin-top: -100px; */
-  margin-bottom: 100px; /* ปรับตามความต้องการ */
+  
+  margin-bottom: 100px; 
   font-size: 18px;
   border: none;
   border-radius: 10px;
@@ -650,7 +647,7 @@ align-self: flex-start; /* ทำให้รูปอยู่ด้านบ�
 
 
 h3 {
-  font-size: 25px; /* ปรับค่าตามที่คุณต้องการ */
+  font-size: 25px; 
   padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
@@ -663,7 +660,7 @@ h3 {
 .article-container {
   display: flex;
   flex-direction: column;
-  margin: auto; /* เพิ่มบรรทัดนี้ */
+  margin: auto;
   margin-top: 10px;
   overflow: hidden;
   transition: height 0.3s ease;
@@ -680,10 +677,10 @@ h3 {
   width: 50px;
   overflow: hidden;
   transition: height 0.3s ease;
-  margin-left: auto; /* ทำให้กล่องอยู่กลางตามด้านซ้าย */
-  margin-right: auto; /* ทำให้กล่องอยู่กลางตามด้านขวา */
-  border-bottom: 1.5px solid #000; /* เพิ่มเส้นกั้นด้านล่าง */
-  width: 90%; /* กำหนดความยาวของเส้นกั้น */
+  margin-left: auto; 
+  margin-right: auto; 
+  border-bottom: 1.5px solid #000; 
+  width: 90%; 
 }
 
   .article-image {
@@ -693,11 +690,11 @@ h3 {
   margin-left: 20px;
   margin-right: 10px;
   margin-bottom: 20px;
-  align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
+  align-self: flex-start; 
 }
 
 
-  /* ปรับ font-size ของ .visible-text */
+
   .visible-text p {
     font-size: 16px;
   }
@@ -707,12 +704,12 @@ h3 {
   }
 
 
-  /* ปรับ font-size ของ .hidden-text */
+  
   .hidden-text p {
     font-size: 14px;
   }
 
-  /* ปรับ font-size ของ .icon */
+
   .icon {
     font-size: 20px;
   }
@@ -720,7 +717,7 @@ h3 {
 
 
 }
-
+ */
 
 
 

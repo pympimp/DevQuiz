@@ -110,6 +110,12 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
+
+* {
+  box-sizing: border-box;
+}
+
+
 .container {
   display: flex;
   align-items: center;
