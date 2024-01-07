@@ -69,6 +69,7 @@ export default {
 </script>
 
 <template>
+  <div>
     <NavBar />
     <div class="container">
       <div class="buttons">
@@ -116,6 +117,7 @@ export default {
         <h1>No Data</h1>
       </div> -->
     </div>
+  </div>
 </template>
 
 <style scoped>
@@ -163,9 +165,6 @@ p {
 }
 
 .container {
-  /* display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 150px; */
   display: flex;
   flex-direction: row;
   
@@ -186,9 +185,9 @@ p {
   color: #000;
 }
 
-.buttons {
+/* .buttons {
   grid-column: 1 / 2;
-}
+} */
 
 
 
@@ -201,14 +200,12 @@ p {
   
 }
 
-  .buttons{
-    width: 500px;
-  }
+
 
 
   h1 {
   margin-top: 150px;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
   margin-left: 35px;
   color: #fffdfd;
   font-size: 55px;
@@ -223,10 +220,9 @@ p {
 }
 
 .scroll-button {
-
   margin-top: -5px;
   margin-left: -40px;
-  width: 400px;
+  width: 450px;
   height: 100px;
   background-color: #1f1f1f;
   border-radius: 50px;
@@ -248,11 +244,6 @@ p {
 }
 
 
-
-
-.buttons {
-  grid-column: 1 / 2;
-} 
 
 }
 
