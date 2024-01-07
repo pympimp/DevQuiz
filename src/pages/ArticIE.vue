@@ -27,7 +27,6 @@ export default {
             { boxTitle: 'HTML', boxText: 'This is the first box.', isExpanded: false },
             { boxTitle: 'HTML', boxText: 'This is the second box.', isExpanded: false },
             { boxTitle: 'HTML', boxText: 'This is the first box.', isExpanded: false },
-            { boxTitle: 'HTML', boxText: 'This is the second box.', isExpanded: false }
           ]
         },
 
@@ -41,7 +40,7 @@ export default {
             { boxTitle: 'CSS', boxText: 'This is the first box.', isExpanded: false },
             { boxTitle: 'CSS', boxText: 'This is the second box.', isExpanded: false },
             { boxTitle: 'CSS', boxText: 'This is the first box.', isExpanded: false },
-            { boxTitle: 'CSS', boxText: 'This is the second box.', isExpanded: false }
+  
           ]
         },
 
@@ -55,7 +54,6 @@ export default {
             { boxTitle: 'JavaScript', boxText: 'This is the first box.', isExpanded: false },
             { boxTitle: 'JavaScript', boxText: 'This is the second box.', isExpanded: false },
             { boxTitle: 'JavaScript', boxText: 'This is the first box.', isExpanded: false },
-            { boxTitle: 'JavaScript', boxText: 'This is the second box.', isExpanded: false }
           ]
         }
       }
@@ -71,7 +69,6 @@ export default {
 </script>
 
 <template>
-  <div>
     <NavBar />
     <div class="container">
       <div class="buttons">
@@ -119,7 +116,6 @@ export default {
         <h1>No Data</h1>
       </div> -->
     </div>
-  </div>
 </template>
 
 <style scoped>
@@ -167,9 +163,12 @@ p {
 }
 
 .container {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 150px; */
+  display: flex;
+  flex-direction: row;
+  
 }
 
 /* หากต้องการให้เปิดมาแล้วเป็นกล่องเปล่าๆ */
@@ -190,6 +189,172 @@ p {
 .buttons {
   grid-column: 1 / 2;
 }
+
+
+
+/* responsive */
+@media screen and (max-width: 2560px) {
+
+  .container {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+  .buttons{
+    width: 500px;
+  }
+
+
+  h1 {
+  margin-top: 150px;
+  margin-bottom: 45px;
+  margin-left: 35px;
+  color: #fffdfd;
+  font-size: 55px;
+  font-weight: bolder;
+}
+
+.button-image {
+  transform: translateY(10%);
+  width: 75px;
+  height: 75px;
+  margin-left: 65px;
+}
+
+.scroll-button {
+
+  margin-top: -5px;
+  margin-left: -40px;
+  width: 400px;
+  height: 100px;
+  background-color: #1f1f1f;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.scroll-button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #ee5684;
+}
+
+p {
+  font-size: 45px;
+  margin-left: 155px;
+  transform: translateY(-95%);
+  font-weight: bolder;
+  color: #fffdfd;
+  width: 20px;
+}
+
+
+
+
+.buttons {
+  grid-column: 1 / 2;
+} 
+
+}
+
+
+@media screen and (max-width: 1890px) {
+
+  
+
+}
+
+@media screen and (max-width: 1440px) {
+
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 820px) {
+
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 425px) {
+
+}
+
+@media screen and (max-width: 376px) {
+
+  
+}
+
+
+
+@media screen and (max-width: 320px) {
+  .container {
+  display: flex;
+  flex-direction: column;
+}
+
+  .buttons{
+    width: 500px;
+  }
+
+
+  h1 {
+  margin-top: 20px;
+  margin-bottom: 45px;
+  margin-left: 85px;
+  color: #fffdfd;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.button-image {
+  transform: translateY(10%);
+  width: 35px;
+  height: 35px;
+  margin-left: 65px;
+}
+
+.scroll-button {
+  margin-top: -5px;
+  margin-left: -40px;
+  width: 250px;
+  height:45px;
+  background-color: #1f1f1f;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.scroll-button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #ee5684;
+}
+
+p {
+  font-size: 20px;
+  margin-left: 115px;
+  transform: translateY(-95%);
+  font-weight: bolder;
+  color: #fffdfd;
+  width: 20px;
+}
+
+
+
+
+.buttons {
+  grid-column: 1 / 2;
+} 
+ 
+}
+
+
+
+
+
+
 </style>
 
 <!-- 

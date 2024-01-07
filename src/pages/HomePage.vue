@@ -4,6 +4,7 @@ import BoxComponent from '@/components/BoxComponent.vue';
 // import ItemhomeComponent from '../components/ItemhomeComponent.vue';
 
 export default {
+  name: "HomePage",
   mounted(){
     if(!localStorage.getItem("Token")){
       this.$router.push({ name: "LogIn" });
@@ -455,8 +456,148 @@ h{
 
 
 
-@media screen and (max-width: 1441px) {
+
+/*  responsive*/
+
+
+@media screen and (max-width: 2560px) {
+
+
+.container{
+  margin-left: 200px;
+}
+
+
+.text{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  margin-left: 170px;
+  margin-right: 80px;
+   
+}
+
+
+.scroll-button {
+background-color: #f5c722;
+color: #434343;
+padding: 10px 20px;
+margin-top: 80px;
+margin-right: -10px;
+font-size: 40px;
+border: none;
+border-radius: 15px;
+cursor: pointer;
+transition: background-color 0.1s ease;
+}
+
+.scroll-button1 {
+background-color: #f5c722;
+color: #434343;
+padding: 10px 20px;
+/* margin-top: -100px; */
+margin-bottom: 100px; /* ปรับตามความต้องการ */
+font-size: 42px;
+border: none;
+border-radius: 15px;
+cursor: pointer;
+transition: background-color 0.1s ease;
+}
+
+.text h1 {
+  font-size: 85px;
+ 
+}
+
+.text h2 {
+  font-size: 45px;
+ 
+}
+
+h3 {
+font-size: 55px; /* ปรับค่าตามที่คุณต้องการ */
+padding-bottom: 1px;
+font-weight: bold;
+color: #ffffff;
+margin-top: 80px;
+margin-left: 390px;
+
+}
+
+
+
+.article-container {
+display: flex;
+flex-direction: column;
+margin: auto; /* เพิ่มบรรทัดนี้ */
+margin-top: 10px;
+overflow: hidden;
+transition: height 0.3s ease;
+width: 1800px;
+margin-bottom: 10px;
+border-radius: 20px;
+
+}
+
+.article-box {
+display: flex;
+margin-top: 10px;
+margin-bottom: 35px;
+width: 50px;
+overflow: hidden;
+transition: height 0.3s ease;
+margin-left: auto; /* ทำให้กล่องอยู่กลางตามด้านซ้าย */
+margin-right: auto; /* ทำให้กล่องอยู่กลางตามด้านขวา */
+border-bottom: 1.5px solid #000; /* เพิ่มเส้นกั้นด้านล่าง */
+width: 90%; /* กำหนดความยาวของเส้นกั้น */
+}
+
+.article-image {
+width: 70px;
+height: 70px;
+margin-top: 17px;
+margin-left: 20px;
+margin-right: 10px;
+margin-bottom: 40px;
+align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
+}
+
+
+/* ปรับ font-size ของ .visible-text */
+.visible-text p {
+  font-size: 40px;
+}
+
+.visible-text p:not(:first-child) {
+  font-size: 25px;
+}
+
+
+/* ปรับ font-size ของ .hidden-text */
+.hidden-text p {
+  font-size: 25px;
+}
+
+/* ปรับ font-size ของ .icon */
+.icon {
+  font-size: 20px;
+}
+
+
+}
+
+
+
+
+@media screen and (max-width: 1891px) {
 /* ทำให้ .container เรียงแนวตั้ง */
+
+.container{
+    margin-left: -10px;
+  }
 
 /* ส่วนตัวหนังสือแนะนำ คู่กับแบบฝึก */
 .text{
@@ -465,22 +606,9 @@ h{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
-    margin-left: 100px;
+    margin-top: 10px;
+    margin-left: 40px;
      
-}
-
-.scroll-button {
-  background-color: #f5c722;
-  color: #434343;
-  padding: 10px 20px;
- margin-top: 5px;
- margin-right: -10px;
-  font-size: 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.1s ease;
 }
 
 .text h1 {
@@ -488,53 +616,8 @@ h{
    
   }
 
- 
-
-}
-
-
-
-
-
-
-@media screen and (max-width: 1465px) {
-/* ทำให้ .container เรียงแนวตั้ง */
-
-/* ส่วนตัวหนังสือแนะนำ คู่กับแบบฝึก */
-.text{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 110px;
-    margin-left: 45px;
-     
-}
-}
-
-
-
-
-
-@media screen and (max-width: 1025px) {
-/* ทำให้ .container เรียงแนวตั้ง */
-
-/* ส่วนตัวหนังสือแนะนำ คู่กับแบบฝึก */
-.text{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 110px;
-    margin-left: 45px;
-     
-}
-
-
-.text h1 {
-    font-size: 35px;
+  .text h2 {
+    font-size:28px;
    
   }
 
@@ -543,28 +626,28 @@ h{
   background-color: #f5c722;
   color: #434343;
   padding: 10px 20px;
- margin-top: -35px;
+ margin-top: -30px;
  margin-right: -10px;
-  font-size: 16px;
+  font-size: 15px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.1s ease;
 }
 
-
-/* .scroll-button1 {
+.scroll-button1 {
   background-color: #f5c722;
   color: #434343;
   padding: 10px 20px;
-  margin-bottom: 100px; 
-  margin-top: -40px;
+  /* margin-top: -100px; */
+  margin-bottom: 100px; /* ปรับตามความต้องการ */
   font-size: 18px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.1s ease;
-} */
+}
+
 
 h3 {
   font-size: 25px; /* ปรับค่าตามที่คุณต้องการ */
@@ -572,10 +655,9 @@ h3 {
   font-weight: bold;
   color: #ffffff;
   margin-top: -50px;
-  margin-left: 180px;
+  margin-left: 420px;
   
 }
-
 
 
 .article-container {
@@ -643,12 +725,271 @@ h3 {
 
 
 
-@media screen and (max-width: 769px) {
+
+@media screen and (max-width: 1441px) {
 /* ทำให้ .container เรียงแนวตั้ง */
+.container{
+    margin-left: 70px;
+  }
+/* ส่วนตัวหนังสือแนะนำ คู่กับแบบฝึก */
+.text{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 10px;
+     
+}
+
+
+.scroll-button {
+  background-color: #f5c722;
+  color: #434343;
+  padding: 10px 20px;
+ margin-top: -20px;
+ margin-right: -10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.scroll-button1 {
+  background-color: #f5c722;
+  color: #434343;
+  padding: 10px 20px;
+  /* margin-top: -100px; */
+  margin-bottom: 100px; /* ปรับตามความต้องการ */
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.text h1 {
+    font-size: 45px;
+   
+  }
+
+  .text h2 {
+    font-size: 25px;
+   
+  }
+ 
+  h3 {
+  font-size: 25px; /* ปรับค่าตามที่คุณต้องการ */
+  padding-bottom: 1px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: -50px;
+  margin-left: 280px;
+  
+}
+
+.article-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto; /* เพิ่มบรรทัดนี้ */
+  margin-top: 10px;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  width: 900px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+ 
+}
+
+.article-box {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  width: 50px;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  margin-left: auto; /* ทำให้กล่องอยู่กลางตามด้านซ้าย */
+  margin-right: auto; /* ทำให้กล่องอยู่กลางตามด้านขวา */
+  border-bottom: 1.5px solid #000; /* เพิ่มเส้นกั้นด้านล่าง */
+  width: 90%; /* กำหนดความยาวของเส้นกั้น */
+}
+
+  .article-image {
+  width: 70px;
+  height: 70px;
+  margin-top: 17px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 40px;
+  align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
+}
+
+  /* ปรับ font-size ของ .visible-text */
+  .visible-text p {
+    font-size: 16px;
+  }
+
+  .visible-text p:not(:first-child) {
+    font-size: 14px;
+  }
+
+
+  /* ปรับ font-size ของ .hidden-text */
+  .hidden-text p {
+    font-size: 14px;
+  }
+
+  /* ปรับ font-size ของ .icon */
+  .icon {
+    font-size: 20px;
+  }
+
+
+}
+
+
+
+@media screen and (max-width: 1025px) {
+/* ทำให้ .container เรียงแนวตั้ง */
+
+.container{
+    margin-left: -10px;
+  }
+
+/* ส่วนตัวหนังสือแนะนำ คู่กับแบบฝึก */
+.text{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 40px;
+     
+}
+
+.text h1 {
+    font-size: 37px;
+   
+  }
+
+  .text h2 {
+    font-size:20px;
+   
+  }
+
+  .scroll-button {
+  background-color: #f5c722;
+  color: #434343;
+  padding: 10px 20px;
+ margin-top: -15px;
+ margin-right: -10px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.scroll-button1 {
+  background-color: #f5c722;
+  color: #434343;
+  padding: 10px 20px;
+  /* margin-top: -100px; */
+  margin-bottom: 100px; /* ปรับตามความต้องการ */
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+
+
+h3 {
+  font-size: 25px; /* ปรับค่าตามที่คุณต้องการ */
+  padding-bottom: 1px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: -50px;
+  margin-left: 180px;
+  
+}
+
+.article-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto; /* เพิ่มบรรทัดนี้ */
+  margin-top: 10px;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  width: 700px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+ 
+}
+
+.article-box {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  width: 50px;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  margin-left: auto; /* ทำให้กล่องอยู่กลางตามด้านซ้าย */
+  margin-right: auto; /* ทำให้กล่องอยู่กลางตามด้านขวา */
+  border-bottom: 1.5px solid #000; /* เพิ่มเส้นกั้นด้านล่าง */
+  width: 90%; /* กำหนดความยาวของเส้นกั้น */
+}
+
+  .article-image {
+  width: 60px;
+  height: 60px;
+  margin-top: 17px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
+}
+
+
+  /* ปรับ font-size ของ .visible-text */
+  .visible-text p {
+    font-size: 16px;
+  }
+
+  .visible-text p:not(:first-child) {
+    font-size: 14px;
+  }
+
+
+  /* ปรับ font-size ของ .hidden-text */
+  .hidden-text p {
+    font-size: 14px;
+  }
+
+  /* ปรับ font-size ของ .icon */
+  .icon {
+    font-size: 20px;
+  }
+
+
+
+}
+
+
+
+@media screen and (max-width: 820px) {
+/* ทำให้ .container เรียงแนวตั้ง */
+
 .container {
     flex-direction: column;
     text-align: left; /* จัดให้ตัวหนังสือชิดซ้าย */
     align-items: flex-start;
+    margin-left: -10px;
+    
   }
 
 /* ส่วนตัวหนังสือแนะนำ คู่กับแบบฝึก */
@@ -656,26 +997,39 @@ h3 {
     order: -1;
     margin-top: 20px;
     margin-left: 270px;
-    margin-bottom: -30px;
+    margin-bottom: -50px;
      
 }
 
 .text h1 {
-    font-size: 35px;
+    font-size: 33px;
    
   }
 
   .text h2 {
-    font-size: 20px;
+    font-size: 18px;
    
   }
 
   .scroll-button {
   background-color: #f5c722;
   color: #434343;
-  margin-top: -120px;
+  margin-top: -50px;
   margin-right: 10px;
-  font-size: 16px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.scroll-button1 {
+  background-color: #f5c722;
+  color: #434343;
+  padding: 10px 20px;
+  /* margin-top: -100px; */
+  margin-bottom: 100px; /* ปรับตามความต้องการ */
+  font-size: 18px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -757,7 +1111,134 @@ h3 {
 }
 
 
+@media screen and (max-width: 768px) {
+/* ทำให้ .container เรียงแนวตั้ง */
 
+.container {
+    flex-direction: column;
+    text-align: left; /* จัดให้ตัวหนังสือชิดซ้าย */
+    align-items: flex-start;
+    margin-left: -10px;
+    
+  }
+
+/* ส่วนตัวหนังสือแนะนำ คู่กับแบบฝึก */
+.text{
+    order: -1;
+    margin-top: 20px;
+    margin-left: 270px;
+    margin-bottom: -50px;
+     
+}
+
+.text h1 {
+    font-size: 33px;
+   
+  }
+
+  .text h2 {
+    font-size: 18px;
+   
+  }
+
+  .scroll-button {
+  background-color: #f5c722;
+  color: #434343;
+  margin-top: -50px;
+  margin-right: 10px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.scroll-button1 {
+  background-color: #f5c722;
+  color: #434343;
+  padding: 10px 20px;
+  /* margin-top: -100px; */
+  margin-bottom: 100px; /* ปรับตามความต้องการ */
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+
+h3 {
+  font-size: 25px; /* ปรับค่าตามที่คุณต้องการ */
+  padding-bottom: 1px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: -50px;
+  margin-left: 70px;
+  
+}
+
+
+.article-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto; /* เพิ่มบรรทัดนี้ */
+  margin-top: 10px;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  width: 650px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+ 
+}
+
+.article-box {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  width: 50px;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  margin-left: auto; /* ทำให้กล่องอยู่กลางตามด้านซ้าย */
+  margin-right: auto; /* ทำให้กล่องอยู่กลางตามด้านขวา */
+  border-bottom: 1.5px solid #000; /* เพิ่มเส้นกั้นด้านล่าง */
+  width: 90%; /* กำหนดความยาวของเส้นกั้น */
+}
+
+  .article-image {
+  width: 60px;
+  height: 60px;
+  margin-top: 17px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
+}
+
+
+  /* ปรับ font-size ของ .visible-text */
+  .visible-text p {
+    font-size: 16px;
+  }
+
+  .visible-text p:not(:first-child) {
+    font-size: 14px;
+  }
+
+
+  /* ปรับ font-size ของ .hidden-text */
+  .hidden-text p {
+    font-size: 14px;
+  }
+
+  /* ปรับ font-size ของ .icon */
+  .icon {
+    font-size: 20px;
+  }
+
+  
+
+
+}
 
 
 @media screen and (max-width: 715px) {
@@ -1060,9 +1541,9 @@ h3 {
   background-color: #f5c722;
   color: #434343;
   padding: 10px 20px;
- margin-top: 35px;
+ margin-top: 5px;
  margin-right: -10px;
-  font-size: 15px;
+  font-size: 13px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -1146,49 +1627,6 @@ h3 {
 
 }
 
-@media screen and (max-width: 402px){
-  .text {
-    order: -1;
-    margin-top: 15px;
-    margin-bottom: -30px;
-    margin-left: 113px;
-  
-  }
-
-  
-  .text h1 {
-    font-size: 27px;
-   
-  }
-
-  .text h2 {
-    font-size: 13px;
-   
-  }
-
-  .scroll-button {
-  background-color: #f5c722;
-  color: #434343;
-  padding: 10px 20px;
- margin-top: 13px;
- margin-right: -10px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.1s ease;
-}
-
-
-  /* ปรับ font-size ของปุ่ม */
-  .scroll-button,
-  .scroll-button1
-   {
-    font-size: 13px;
-  }
-
-}
-
-
 
 
 
@@ -1218,6 +1656,7 @@ h3 {
   color: #434343;
   padding: 10px 20px;
  margin-top: 10px;
+ font-size: 13px;
  margin-right: -10px;
   border: none;
   border-radius: 10px;
@@ -1298,28 +1737,25 @@ h3 {
 
 
 
-
-
-
 }
 
-@media screen and (max-width: 322px){
+@media screen and (max-width: 320px){
   .text {
     order: -1;
     margin-top: 15px;
-    margin-bottom: -30px;
-    margin-left: 75px;
+    margin-bottom: -50px;
+    margin-left: 110px;
   
   }
 
   
   .text h1 {
-    font-size: 27px;
+    font-size: 19px;
    
   }
 
   .text h2 {
-    font-size: 13px;
+    font-size: 11px;
    
   }
 
@@ -1327,6 +1763,7 @@ h3 {
   background-color: #f5c722;
   color: #434343;
   padding: 10px 20px;
+  font-size: 13px;
  margin-top: 95px;
  margin-right: -10px;
   border: none;
