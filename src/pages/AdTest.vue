@@ -62,6 +62,7 @@
   <script>
   import NavBar from '@/components/NavBar.vue'
   import UserList from '@/components/UserList.vue'
+  import Dashboard from '@/components/Dashboard.vue'
   
   export default {
     components: {
@@ -72,7 +73,7 @@
         currentContent: 'Dashboard',
         showSubContainer: false,
         tabs: {
-          Dashboard: null, // ใส่ component ที่ต้องการแสดงตาม Dashboard ไว้ที่นี่
+          Dashboard: Dashboard, // ใส่ component ที่ต้องการแสดงตาม Dashboard ไว้ที่นี่
           User: UserList,
           Article: null,
           Class:null
