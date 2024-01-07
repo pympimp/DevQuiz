@@ -82,6 +82,11 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
+
+* {
+  box-sizing: border-box;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -190,12 +195,8 @@ i {
 
 
 /* responsive */
-@media screen and (max-width: 2560px) {
+/* @media screen and (max-width: 2560px) {
 
-/* .app{
-  background-color: #02BDCC;
-  
-  } */
   .container {
  margin-left: 450px;
   margin-top: 30px;
@@ -205,21 +206,21 @@ i {
 .boxs {
   width: 700px;
   height: 400px;
-  margin-right: 20px; /* ปรับระยะห่างด้านขวาของกล่อง */
+  margin-right: 20px; 
   background-color: #F4F4F4;
-  border-top-left-radius: 15px; /* กำหนดความโค้งด้านซ้ายของกล่อง */
-  border-bottom-left-radius: 15px; /* กำหนดความโค้งด้านซ้ายของกล่อง */
+  border-top-left-radius: 15px; 
+  border-bottom-left-radius: 15px; 
 }
 
 .box {
   width: 1800px;
   height: 1200px;
   background-color:#F4F4F4;
-  border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
-  border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+  border-top-right-radius: 15px; 
+  border-bottom-right-radius: 15px; 
 }
 
-/* ลบระยะห่างของกล่องสุดท้าย */
+
 .box:last-child {
   margin-right: 0;
 }
@@ -235,7 +236,7 @@ h1{
 h3{
     font-size: 28px;
     margin-left: 20px;
-    /* line-height: 1.5; */
+    
     font-weight: 1000;
 }
 
@@ -247,29 +248,29 @@ h3{
     margin-left: 140px;
     color: #ffffff;
     background-color: #02BDCC;
-    box-shadow: 0px 5px px rgba(0, 0, 0, 0.4); /* เพิ่มเงาด้านล่างสีดำ */
+    box-shadow: 0px 5px px rgba(0, 0, 0, 0.4); 
     border-radius: 4px;
     width: 140px;
     height: 40px;
 }
 
-/* กล่องด้านในเก็บข้อมูล */
+
 .containers {
   display: flex;
   flex-direction: column;
-  margin-top: 10px; /* ระยะห่างด้านบน */
-  border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
-  border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+  margin-top: 10px; 
+  border-top-right-radius: 15px; 
+  border-bottom-right-radius: 15px;
 }
 
 .sub-box,
 .sub-boxs,
 .sub-boxss {
-  background-color: #F4F4F4; /* สีพื้นหลังของกล่อง */
+  background-color: #F4F4F4; 
   padding: 5px;
-  flex: 1; /* กำหนดให้กล่องขยายตามขนาดของพื้นที่ที่มี */
-  border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
-  border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+  flex: 1; 
+  border-top-right-radius: 15px; 
+  border-bottom-right-radius: 15px; 
 }
 
 
@@ -290,8 +291,8 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1.7px solid #B0B0B0; /* เพิ่มเส้นกั้นด้านล่าง */
-  width: 90%; /* กำหนดความยาวของเส้นกั้น */
+  border-bottom: 1.7px solid #B0B0B0; 
+  width: 90%; 
   
 }
 
@@ -303,12 +304,11 @@ i {
 
 }
 
-
-@media screen and (max-width: 1890px) {
-
+ */
 
 
-}
+
+
 
 @media screen and (max-width: 1440px) {
 /* .app{
@@ -323,7 +323,7 @@ i {
 
 .boxs {
   width: 700px;
-  height: 400px;
+  height: 335px;
   margin-right: 20px; /* ปรับระยะห่างด้านขวาของกล่อง */
   background-color: #F4F4F4;
   border-top-left-radius: 15px; /* กำหนดความโค้งด้านซ้ายของกล่อง */
@@ -332,7 +332,8 @@ i {
 
 .box {
   width: 1800px;
-  height: 1200px;
+  height: 1100px;
+  margin-bottom: 15px;
   background-color:#F4F4F4;
   border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
   border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
@@ -344,7 +345,7 @@ i {
 }
 
 h1{
-    font-size: 40px;
+    font-size: 30px;
     margin-top: 20px;
     margin-bottom: 35px;
     margin-left: 20px;
@@ -352,16 +353,17 @@ h1{
 }
 
 h3{
-    font-size: 28px;
+    font-size: 25px;
     margin-left: 20px;
     font-weight: 1000;
+
 }
 
 .button-container{
     text-align: center;
     font-size: 25px;
     font-weight: 1000;
-    margin-top: 90px;
+    margin-top: 65px;
     margin-left: 100px;
     color: #ffffff;
     background-color: #02BDCC;
@@ -393,7 +395,7 @@ h3{
 
 
 h2 {
-  font-size: 35px;
+  font-size: 28px;
   margin-left: 50px;
   margin-top: 20px;
   margin-bottom: 15px;
@@ -402,7 +404,7 @@ h2 {
 }
 
 p {
-  font-size: 30px;
+  font-size: 22px;
   margin-left: 55px;
   margin-bottom: 10px;
   display: flex;
@@ -427,23 +429,24 @@ i {
   
   } */
   .container {
- margin-left: 5px;
-  margin-top: 70px;
+ margin-left: 10px;
+  margin-top: 20px;
   width: auto;
 }
 
 .boxs {
-  width: 500px;
-  height: 400px;
-  margin-right: 20px; /* ปรับระยะห่างด้านขวาของกล่อง */
+  width: 700px;
+  height: 200px;
+  margin-right: 10px; /* ปรับระยะห่างด้านขวาของกล่อง */
   background-color: #F4F4F4;
   border-top-left-radius: 15px; /* กำหนดความโค้งด้านซ้ายของกล่อง */
   border-bottom-left-radius: 15px; /* กำหนดความโค้งด้านซ้ายของกล่อง */
 }
 
 .box {
-  width: 900px;
-  height: 1200px;
+  width: 1800px;
+  height: 1100px;
+  margin-bottom: 15px;
   background-color:#F4F4F4;
   border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
   border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
@@ -455,31 +458,32 @@ i {
 }
 
 h1{
-    font-size: 35px;
+    font-size: 25px;
     margin-top: 20px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
     margin-left: 20px;
     font-weight: 1000;
 }
 
 h3{
-    font-size: 25px;
+    font-size: 15px;
     margin-left: 20px;
     font-weight: 1000;
+
 }
 
 .button-container{
     text-align: center;
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 1000;
-    margin-top: 90px;
-    margin-left: 100px;
+    margin-top: 19px;
+    margin-left: 80px;
     color: #ffffff;
     background-color: #02BDCC;
     box-shadow: 0px 5px px rgba(0, 0, 0, 0.4); /* เพิ่มเงาด้านล่างสีดำ */
     border-radius: 4px;
-    width: 140px;
-    height: 40px;
+    width: 110px;
+    height: 28px;
 }
 
 /* กล่องด้านในเก็บข้อมูล */
@@ -502,9 +506,8 @@ h3{
 }
 
 
-
 h2 {
-  font-size: 30px;
+  font-size: 23px;
   margin-left: 50px;
   margin-top: 20px;
   margin-bottom: 15px;
@@ -513,9 +516,9 @@ h2 {
 }
 
 p {
-  font-size: 25px;
-  margin-left: 35px;
-  margin-bottom: 10px;
+  font-size: 17px;
+  margin-left: 55px;
+  margin-bottom: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -529,6 +532,7 @@ i {
   font-size: 25px;
   
 }
+
 
 }
 
@@ -552,29 +556,26 @@ i {
 }
 
 .boxs {
-  width: 500px;
+  width: 450px;
   height: 290px;
-  margin-left: 125px;
-  margin-bottom: 20px; /* ปรับระยะห่างด้านขวาของกล่อง */
+  margin-left: 145px;
+  margin-bottom: 10px; /* ปรับระยะห่างด้านขวาของกล่อง */
   background-color: #F4F4F4;
   border-radius: 20px;
 }
 
 .box {
   width: 710px;
-  height: 1000px;
+  height: 900px;
   margin-left: 25px;
   background-color:#F4F4F4;
   border-radius: 20px;
 }
 
 /* ลบระยะห่างของกล่องสุดท้าย */
-.box:last-child {
-  margin-right: 0;
-}
 
 h1{
-    font-size: 35px;
+    font-size: 25px;
     margin-top: 20px;
     margin-bottom: 5px;
     margin-left: 20px;
@@ -582,7 +583,7 @@ h1{
 }
 
 h3{
-    font-size: 25px;
+    font-size: 22px;
     margin-left: 20px;
     line-height: 1.8;
     font-weight: 1000;
@@ -590,16 +591,16 @@ h3{
 
 .button-container{
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 1000;
-    margin-top: 18px;
+    margin-top: 65px;
     margin-left: 160px;
     color: #ffffff;
     background-color: #02BDCC;
     box-shadow: 0px 5px px rgba(0, 0, 0, 0.4); /* เพิ่มเงาด้านล่างสีดำ */
     border-radius: 4px;
-    width: 140px;
-    height: 40px;
+    width: 120px;
+    height: 30px;
 }
 
 /* กล่องด้านในเก็บข้อมูล */
@@ -607,8 +608,7 @@ h3{
   display: flex;
   flex-direction: column;
   margin-top: 10px; /* ระยะห่างด้านบน */
-  border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
-  border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+  
 }
 
 .sub-box,
@@ -617,14 +617,13 @@ h3{
   background-color: #F4F4F4; /* สีพื้นหลังของกล่อง */
   padding: 5px;
   flex: 1; /* กำหนดให้กล่องขยายตามขนาดของพื้นที่ที่มี */
-  border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
-  border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+ 
 }
 
 
 
 h2 {
-  font-size: 30px;
+  font-size: 25px;
   margin-left: 50px;
   margin-top: 10px;
   margin-bottom: 8px;
@@ -633,9 +632,9 @@ h2 {
 }
 
 p {
-  font-size: 25px;
+  font-size: 18px;
   margin-left: 35px;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -652,7 +651,7 @@ i {
 
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
 
 /* .app{
   display: flex;
@@ -663,35 +662,30 @@ i {
   .container {
   display: flex;
   flex-direction: column;
- margin-left: 5px;
   margin-top: 20px;
-  width: auto;
 }
 
 .boxs {
-  width: 500px;
-  height: 290px;
-  margin-left: 125px;
-  margin-bottom: 20px; /* ปรับระยะห่างด้านขวาของกล่อง */
+  width: 400px;
+  height: 207px;
+  margin-left: 8px;
   background-color: #F4F4F4;
   border-radius: 20px;
 }
 
 .box {
-  width: 710px;
-  height: 1000px;
-  margin-left: 25px;
+  width: 400px;
+  height: 800px;
+  margin-left: 7px;
+  margin-top: 5px;
   background-color:#F4F4F4;
   border-radius: 20px;
 }
 
 /* ลบระยะห่างของกล่องสุดท้าย */
-.box:last-child {
-  margin-right: 0;
-}
 
 h1{
-    font-size: 25px;
+    font-size: 20px;
     margin-top: 20px;
     margin-bottom: 5px;
     margin-left: 20px;
@@ -699,7 +693,7 @@ h1{
 }
 
 h3{
-    font-size: 25px;
+    font-size: 17px;
     margin-left: 20px;
     line-height: 1.8;
     font-weight: 1000;
@@ -707,25 +701,23 @@ h3{
 
 .button-container{
     text-align: center;
-    font-size: 25px;
+    font-size: 16px;
     font-weight: 1000;
     margin-top: 18px;
-    margin-left: 160px;
+    margin-left: 150px;
     color: #ffffff;
     background-color: #02BDCC;
     box-shadow: 0px 5px px rgba(0, 0, 0, 0.4); /* เพิ่มเงาด้านล่างสีดำ */
     border-radius: 4px;
-    width: 140px;
-    height: 40px;
+    width: 100px;
+    height: 30px;
 }
 
 /* กล่องด้านในเก็บข้อมูล */
 .containers {
   display: flex;
   flex-direction: column;
-  margin-top: 10px; /* ระยะห่างด้านบน */
-  border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
-  border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+  margin-top: -10px; /* ระยะห่างด้านบน */
 }
 
 .sub-box,
@@ -734,15 +726,15 @@ h3{
   background-color: #F4F4F4; /* สีพื้นหลังของกล่อง */
   padding: 5px;
   flex: 1; /* กำหนดให้กล่องขยายตามขนาดของพื้นที่ที่มี */
-  border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
-  border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+  border-radius: 15px;
+  
 }
 
 
 
 h2 {
-  font-size: 20px;
-  margin-left: 50px;
+  font-size: 18px;
+  margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 8px;
   color: #333;
@@ -750,9 +742,9 @@ h2 {
 }
 
 p {
-  font-size: 25px;
-  margin-left: 35px;
-  margin-bottom: 8px;
+  font-size: 15px;
+  margin-left: 20px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -763,7 +755,7 @@ p {
 
 i {
   color: #00cc00;
-  font-size: 25px;
+  font-size: 22px;
   
 }
 
@@ -771,12 +763,216 @@ i {
 
 @media screen and (max-width: 376px) {
 
+  .container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.boxs {
+  width: 350px;
+  height: 190px;
+  margin-left: 8px;
+  background-color: #F4F4F4;
+  border-radius: 20px;
+}
+
+.box {
+  width: 360px;
+  height: 600px;
+  margin-left: 2px;
+  background-color:#F4F4F4;
+  border-radius: 20px;
+  margin-top: 2px;
+}
+
+/* ลบระยะห่างของกล่องสุดท้าย */
+.box:last-child {
+  margin-right: 0;
+}
+
+h1{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    font-weight: 1000;
+}
+
+h3{
+    font-size: 15px;
+    margin-left: 20px;
+    line-height: 1.8;
+    font-weight: 1000;
+}
+
+.button-container{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 1000;
+    margin-top: 18px;
+    margin-left: 120px;
+    color: #ffffff;
+    background-color: #02BDCC;
+    box-shadow: 0px 5px px rgba(0, 0, 0, 0.4); /* เพิ่มเงาด้านล่างสีดำ */
+    border-radius: 4px;
+    width: 100px;
+    height: 25px;
+}
+
+/* กล่องด้านในเก็บข้อมูล */
+.containers {
+  display: flex;
+  flex-direction: column;
+  margin-top: -5px; /* ระยะห่างด้านบน */
+  border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+  border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+}
+
+.sub-box,
+.sub-boxs,
+.sub-boxss {
+  background-color: #F4F4F4; /* สีพื้นหลังของกล่อง */
+  padding: 5px;
+  flex: 1; /* กำหนดให้กล่องขยายตามขนาดของพื้นที่ที่มี */
+}
+
+
+
+h2 {
+  font-size: 15px;
+  margin-left: 20px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: #333;
+  font-weight: 600;
+}
+
+p {
+  font-size: 13px;
+  margin-left: 20px;
+  margin-bottom: -1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.7px solid #B0B0B0; /* เพิ่มเส้นกั้นด้านล่าง */
+  width: 90%; /* กำหนดความยาวของเส้นกั้น */
+  
+}
+
+i {
+  color: #00cc00;
+  font-size: 18px;
+  
+}
+
 
 }
 
 
 
 @media screen and (max-width: 320px) {
+
+  .container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.boxs {
+  width: 300px;
+  height: 160px;
+  margin-left: 8px;
+  background-color: #F4F4F4;
+  border-radius: 20px;
+}
+
+.box {
+  width: 310px;
+  height: 500px;
+  margin-left: 2px;
+  background-color:#F4F4F4;
+  border-radius: 20px;
+  margin-top: 2px;
+}
+
+/* ลบระยะห่างของกล่องสุดท้าย */
+.box:last-child {
+  margin-right: 0;
+}
+
+h1{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    font-weight: 1000;
+}
+
+h3{
+    font-size: 12px;
+    margin-left: 20px;
+    line-height: 1.8;
+    font-weight: 1000;
+}
+
+.button-container{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 1000;
+    margin-top: 8px;
+    margin-left: 107px;
+    color: #ffffff;
+    background-color: #02BDCC;
+    box-shadow: 0px 5px px rgba(0, 0, 0, 0.4); /* เพิ่มเงาด้านล่างสีดำ */
+    border-radius: 4px;
+    width: 80px;
+    height: 23px;
+}
+
+/* กล่องด้านในเก็บข้อมูล */
+.containers {
+  display: flex;
+  flex-direction: column;
+  margin-top: -5px; /* ระยะห่างด้านบน */
+}
+
+.sub-box,
+.sub-boxs,
+.sub-boxss {
+  background-color: #F4F4F4; /* สีพื้นหลังของกล่อง */
+  padding: 1px;
+  flex: 1; /* กำหนดให้กล่องขยายตามขนาดของพื้นที่ที่มี */
+}
+
+
+
+h2 {
+  font-size: 15px;
+  margin-left: 20px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: #333;
+  font-weight: 600;
+}
+
+p {
+  font-size: 12px;
+  margin-left: 15px;
+  margin-bottom: -1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.7px solid #B0B0B0; /* เพิ่มเส้นกั้นด้านล่าง */
+  width: 90%; /* กำหนดความยาวของเส้นกั้น */
+  
+}
+
+i {
+  color: #00cc00;
+  font-size: 16px;
+  
+}
 
 
 }

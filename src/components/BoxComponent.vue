@@ -134,7 +134,7 @@ img {
 /* responsive */
 
 
-
+/* 
 @media screen and (max-width: 2561px) {
 
   .boxcontainer{
@@ -192,8 +192,8 @@ img {
   .box {
     width: 550px;
     height: 120px;
-    margin-bottom: 20px; /* ระยะห่างระหว่างกล่อง */
-    margin-top: 20px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+    margin-bottom: 20px; 
+    margin-top: 20px; 
     margin-left: -110px;
     
   }
@@ -214,19 +214,19 @@ img {
 } 
 
 .main-title {
-  font-size: 30px; /* ขนาดตัวอักษรสำหรับ HTML */
+  font-size: 30px; 
   font-weight: bold;
   color: #CCCCCC;
 }
 
 
 .sub-title {
-  font-size: 25px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+  font-size: 25px; 
   color:#FFFFFF;
 }
 
 
-}
+} */
 
 
 @media screen and (max-width: 1441px) {

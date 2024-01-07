@@ -70,7 +70,7 @@ export default {
 
 <template>
   <div>
-    <NavBar />
+  <NavBar />
     <div class="container">
       <div class="buttons">
         <h1>บทความทั้งหมด</h1>
@@ -121,6 +121,17 @@ export default {
 </template>
 
 <style scoped>
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.buttons {
+  width: auto;
+}
+
 h1 {
   margin-top: 50px;
   margin-left: 35px;
@@ -185,66 +196,14 @@ p {
   color: #000;
 }
 
-/* .buttons {
-  grid-column: 1 / 2;
-} */
+
 
 
 
 /* responsive */
 @media screen and (max-width: 2560px) {
 
-  .container {
-  display: flex;
-  flex-direction: row;
-  
-}
-
-
-
-
-  h1 {
-  margin-top: 150px;
-  margin-bottom: 25px;
-  margin-left: 35px;
-  color: #fffdfd;
-  font-size: 55px;
-  font-weight: bolder;
-}
-
-.button-image {
-  transform: translateY(10%);
-  width: 75px;
-  height: 75px;
-  margin-left: 65px;
-}
-
-.scroll-button {
-  margin-top: -5px;
-  margin-left: -40px;
-  width: 450px;
-  height: 100px;
-  background-color: #1f1f1f;
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.scroll-button:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-color: #ee5684;
-}
-
-p {
-  font-size: 45px;
-  margin-left: 155px;
-  transform: translateY(-95%);
-  font-weight: bolder;
-  color: #fffdfd;
-  width: 20px;
-}
-
-
-
+ 
 }
 
 
@@ -274,22 +233,11 @@ p {
 
 }
 
-@media screen and (max-width: 376px) {
-
-  
-}
-
-
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
   .container {
   display: flex;
   flex-direction: column;
 }
-
-  .buttons{
-    width: 500px;
-  }
 
 
   h1 {
@@ -331,13 +279,57 @@ p {
   color: #fffdfd;
   width: 20px;
 }
+  
+}
 
 
 
+@media screen and (max-width: 320px) {
+  .container {
+  display: flex;
+  flex-direction: column;
+}
 
-.buttons {
-  grid-column: 1 / 2;
-} 
+
+  h1 {
+  margin-top: 20px;
+  margin-bottom: 45px;
+  margin-left: 85px;
+  color: #fffdfd;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.button-image {
+  transform: translateY(10%);
+  width: 35px;
+  height: 35px;
+  margin-left: 65px;
+}
+
+.scroll-button {
+  margin-top: -5px;
+  margin-left: -40px;
+  width: 250px;
+  height:45px;
+  background-color: #1f1f1f;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.scroll-button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #ee5684;
+}
+
+p {
+  font-size: 20px;
+  margin-left: 115px;
+  transform: translateY(-95%);
+  font-weight: bolder;
+  color: #fffdfd;
+  width: 20px;
+}
  
 }
 
