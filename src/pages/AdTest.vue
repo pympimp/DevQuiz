@@ -27,6 +27,28 @@
               <p>ManageUser</p>
             </button>
           </div>
+
+          <div class="button">
+            <button
+              @click="scrollToAdditionalBox('Article')"
+              class="scroll-button"
+              :style="{ backgroundColor: currentContent === 'Article' ? '#EE5684' : '#1F1F1F' }"
+            >
+              <img src="/images/css.png" alt="Image" class="button-image" />
+              <p>ManageArticle</p>
+            </button>
+          </div>
+
+          <div class="button">
+            <button
+              @click="scrollToAdditionalBox('Class')"
+              class="scroll-button"
+              :style="{ backgroundColor: currentContent === 'Class' ? '#EE5684' : '#1F1F1F' }"
+            >
+              <img src="/images/css.png" alt="Image" class="button-image" />
+              <p>ManageClass</p>
+            </button>
+          </div>
   
           <!-- เพิ่มปุ่มสำหรับแท็บอื่นๆ ตามต้องการ -->
   
@@ -50,8 +72,10 @@
         currentContent: 'Dashboard',
         showSubContainer: false,
         tabs: {
-          Dashboard: UserList, // ใส่ component ที่ต้องการแสดงตาม Dashboard ไว้ที่นี่
-          User: null,
+          Dashboard: null, // ใส่ component ที่ต้องการแสดงตาม Dashboard ไว้ที่นี่
+          User: UserList,
+          Article: null,
+          Class:null
           // เพิ่ม component สำหรับแท็บอื่นๆ ตามต้องการ
         }
       }
