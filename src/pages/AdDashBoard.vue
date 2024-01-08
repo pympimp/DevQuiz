@@ -26,13 +26,6 @@ import Dashboard from '../components/DashBoard.vue'
 .about-image {
   width: 400px;
   height: 250px;
-<<<<<<< HEAD
-  margin-top: 15px;
-  /* background-color: #bfffbf; */
-  margin-right: 30px;
-}
-
-=======
   margin-top: -45px;
    /* background-color: #bfffbf; */
    margin-right: 30px;
@@ -43,7 +36,6 @@ import Dashboard from '../components/DashBoard.vue'
   
 }
 
->>>>>>> 7df665b1cea58e3768ee783a2bb86bfe7cd80dcc
 .about-text p {
   font-size: 40px;
   margin-left: 10px;

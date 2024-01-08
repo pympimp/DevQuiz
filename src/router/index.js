@@ -131,24 +131,23 @@ const router = createRouter({
       component: () => import('../layouts/AdNav.vue'),
       children:
       [
-        
-    {
-      path: "/AdminDashboard",
-      name: 'AdminDashboard',
-      component: () => import('../pages/AdDashBoard.vue') 
-    },
         {
-          path: "/AdminManageUser",
+          path: "AdminDashboard",
+          name: 'AdminDashboard',
+         component: () => import('../pages/AdDashBoard.vue') 
+       },
+        {
+          path: "AdminManageUser",
           name: 'AdminManageUser',
           component: () => import('../pages/AdManageUser.vue') 
         },
         {
-          path: "/AdminManageClass",
+          path: "AdminManageClass",
           name: 'AdminManageClass',
           component: () => import('../pages/AdManageClass.vue') 
         },
         {
-          path: "/AdminManageArticle",
+          path: "AdminManageArticle",
           name: 'AdminManageArticle',
           component: () => import('../pages/AdManageArticle.vue') 
         },

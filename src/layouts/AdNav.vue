@@ -18,26 +18,26 @@
         <div class="flex flex-col justify-between h-full px-[20px] space-y-[10px]" >
           <div class="flex flex-col justify-between space-y-[10px]">
             <router-link
-              to="/AdminDashboard"
+              to="/Admin/AdminDashboard"
               class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               <i class="fa-regular fa-image"></i>
               Dashboard
             </router-link>
             <router-link
-              to="/AdminManageUser"
+              to="/Admin/AdminManageUser"
               class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               User
             </router-link>
             <router-link
-              to="/AdminManageArticle"
+              to="/Admin/AdminManageArticle"
               class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 hover:text-gray-800 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               Article
             </router-link>
             <router-link
-              to="/AdminManageClass"
+              to="/Admin/AdminManageClass"
               class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md rounded-b-lg hover:bg-blue-300 hover:text-gray-800 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               Class
