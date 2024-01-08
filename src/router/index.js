@@ -58,8 +58,60 @@ const router = createRouter({
       path: "/EditPassword",
       name: 'EditPassword',
       component: () => import('../pages/EditPassword.vue') 
+    },
+
+    {
+      path: '/',
+      name: 'MainPage',
+      component: () => import('../pages/MainPage.vue')
+    },
+    {
+      path:'/play',
+      name:'plat',
+      component:()=> import('../pages/PlayGround.vue')
+    },
+  
+    {
+      path: '/HomePage',
+      name: 'HomePage',
+      component: () => import('../pages/HomePage.vue')
+    },
+  
+    {
+      path: '/login',
+      name: 'LogIn',
+      component: () => import('../pages/LogIn.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
+    },
+  
+    {
+      path: '/register',
+      name: 'RegisteR',
+      component: () => import('../pages/RegisteR.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
+    },
+  
+    {
+      path: '/Articie',
+      name: 'Articie',
+      component: () => import('../pages/ArticIE.vue')
+    },
+  
+    {
+      path: '/Class/:classId',
+      name: 'Class',
+      component: () => import('../pages/ClasS.vue')
+    },
+  
+    {
+      path: '/AdminDashboard',
+      name: '/AdminDashboard',
+      component: () => import('../pages/AdDashBoard.vue')
+    },
+  
+    {
+      path: '/AdminManageUser',
+      name: '/AdminManageUser',
+      component: () => import('../pages/AdManageUser.vue')
     }
-    
     
 
    
@@ -67,57 +119,6 @@ const router = createRouter({
   ]
 })
 
-// const routes = [
-// {
-  // {
-  //   path: '/',
-  //   name: 'MainPage',
-  //   component: () => import('../pages/MainPage.vue')
-  // },
-
-  // {
-  //   path: '/HomePage',
-  //   name: 'HomePage',
-  //   component: () => import('../pages/HomePage.vue')
-  // },
-
-  // {
-  //   path: '/login',
-  //   name: 'LogIn',
-  //   component: () => import('../pages/LogIn.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
-  // },
-
-  // {
-  //   path: '/register',
-  //   name: 'RegisteR',
-  //   component: () => import('../pages/RegisteR.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
-  // },
-
-  // {
-  //   path: '/Articie',
-  //   name: 'Articie',
-  //   component: () => import('../pages/ArticIE.vue')
-  // },
-
-  // {
-  //   path: '/Class',
-  //   name: 'Class',
-  //   component: () => import('../pages/ClasS.vue')
-  // },
-
-  // {
-  //   path: '/AdminDashboard',
-  //   name: '/AdminDashboard',
-  //   component: () => import('../pages/AdDashBoard.vue')
-  // },
-
-  // {
-  //   path: '/AdminManageUser',
-  //   name: '/AdminManageUser',
-  //   component: () => import('../pages/AdManageUser.vue')
-  // }
-// }
-// ]
 // const router = Router();
 // export default router;
 // function Router(){

@@ -6,8 +6,8 @@
           <img :src="box.imageSrc" alt="Box Image">
         </div>
         <div class="text-container">
-          <h2 class="main-title">{{ getHTMLTitle() }}</h2>
-          <p class="sub-title">{{ getHTMLSubtitle() }}</p>
+          <h2 class="main-title">{{box.name}}</h2>
+          <p class="sub-title">{{box.data}}</p>
         </div>
       </div>
     </div>
