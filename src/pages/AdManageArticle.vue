@@ -8,48 +8,46 @@
   <div class="w-screen h-screen flex">
     <!-- Side bar -->
     <div class="w-[400px] h-full bg-gray-200 text-white" v-show="showSide">
-      <div class="h-[50px] bg-gray-900 flex justify-start items-center">
+      <div class="h-[50px] bg-gray-900 flex justify-start items-center" style="background-color: #F5FCFF;" >
         <div class="px-[20px]">
-          <h3 class="font-bold text-xl">Menu</h3>
+          <h3 class="font-bold text-xl" style="color: #000000;" >Menu </h3>
         </div>
       </div>
-      <div class="h-[calc(100vh-50px)] bg-gray-800 py-[20px]">
-        <div class="flex flex-col justify-between h-full px-[20px] space-y-[10px]">
+      <div class="h-[calc(100vh-50px)] py-[20px] bg-gray-400 " style="background-color: #F5FCFF;" >
+        <div class="flex flex-col justify-between h-full px-[20px] space-y-[10px]" >
           <div class="flex flex-col justify-between space-y-[10px]">
             <router-link
               to="/AdminDashboard"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-200 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               <i class="fa-regular fa-image"></i>
               Dashboard
             </router-link>
             <router-link
               to="/AdminManageUser"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               User
             </router-link>
             <router-link
               to="/AdminManageArticle"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 hover:text-gray-800 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               Article
             </router-link>
             <router-link
               to="/AdminManageClass"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md rounded-b-lg hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md rounded-b-lg hover:bg-blue-300 hover:text-gray-800 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               Class
             </router-link>
           </div>
-
         </div>
       </div>
     </div>
-    <div class="w-full h-full bg-gray-400">
+    <div class="w-full h-full bg-gray-400" style="background-color: #F5FCFF;" >
       <div
-        class="h-[50px] bg-gray-100 flex items-center shadow-sm px-[20px] w-full py-[10px] z-10 border-b"
-      >
+        class="h-[50px] flex items-center shadow-sm px-[20px] w-full py-[10px] z-10 border-b" style="background-color: #F5FCFF;">
         <!-- Hambuger menu -->
         <div class="cursor-pointer w-[30px]" @click="toggleSideBar">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-[25px] h-[25px]">
@@ -84,7 +82,7 @@
                 <input
                   type="text"
                   id="voice-search"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" style="background-color: #F5FCFF;"
                   placeholder="Search..."
                   required
                 />
@@ -100,16 +98,17 @@
           <div class="relative inline-block text-left">
             <router-link to="/login">
               <button 
-                class="focus:outline-none text-white font-semibold hover:text-gray-300 px-3 py-2 rounded-md bg-blue-800 hover:bg-blue-900 transition duration-300"
+                class="focus:outline-none text-white font-semibold hover:text-gray-300 px-3 py-2 rounded-md bg-blue-800 hover:bg-blue-900 transition duration-300" style="background-color: #30aade;" 
               >
                 Sign out
               </button>
             </router-link>
-           
+            
+            
           </div>
         </div>
       </div>
-      <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
+      <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]" style="background-color: #F5FCFF;">
         <h1>Manage Article</h1>
         <div class="border border-gray-300 rounded-md p-[20px] h-full">
           <!-- หัวข้อ -->
