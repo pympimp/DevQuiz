@@ -6,9 +6,9 @@ import BoxComponent from '@/components/BoxComponent.vue';
 export default {
   name: "HomePage",
   mounted(){
-    // if(!localStorage.getItem("Token")){
-    //   this.$router.push({ name: "LogIn" });
-    // }
+    if(!localStorage.getItem("Token")){
+      this.$router.push({ name: "LogIn" });
+    }
   },
   components: {
     NavBar,

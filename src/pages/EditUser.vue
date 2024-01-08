@@ -12,6 +12,12 @@ export default {
    
   },
 
+  // mounted(){
+  //   if(localStorage.getItem("Token")){
+  //     this.$router.push({ name: "UserProfile" });
+  //   }
+  // },
+
   methods: {
     UserProfile() {
       this.$router.push({ name: "UserProfile" });

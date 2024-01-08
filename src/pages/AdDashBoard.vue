@@ -8,36 +8,36 @@
   <div class="w-screen h-screen flex">
     <!-- Side bar -->
     <div class="w-[400px] h-full bg-gray-200 text-white" v-show="showSide">
-      <div class="h-[50px] bg-gray-900 flex justify-start items-center">
+      <div class="h-[50px] bg-gray-900 flex justify-start items-center" style="background-color: #F5FCFF;" >
         <div class="px-[20px]">
-          <h3 class="font-bold text-xl">Menu</h3>
+          <h3 class="font-bold text-xl" style="color: #000000;" >Menu </h3>
         </div>
       </div>
-      <div class="h-[calc(100vh-50px)] bg-gray-800 py-[20px]">
-        <div class="flex flex-col justify-between h-full px-[20px] space-y-[10px]">
+      <div class="h-[calc(100vh-50px)] py-[20px] bg-gray-400 " style="background-color: #F5FCFF;" >
+        <div class="flex flex-col justify-between h-full px-[20px] space-y-[10px]" >
           <div class="flex flex-col justify-between space-y-[10px]">
             <router-link
               to="/AdminDashboard"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-200 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               <i class="fa-regular fa-image"></i>
               Dashboard
             </router-link>
             <router-link
               to="/AdminManageUser"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               User
             </router-link>
             <router-link
               to="/AdminManageArticle"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 hover:text-gray-800 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               Article
             </router-link>
             <router-link
               to="/AdminManageClass"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md rounded-b-lg hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md rounded-b-lg hover:bg-blue-300 hover:text-gray-800 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               Class
             </router-link>
@@ -45,10 +45,9 @@
         </div>
       </div>
     </div>
-    <div class="w-full h-full bg-gray-400">
+    <div class="w-full h-full bg-gray-400" style="background-color: #F5FCFF;" >
       <div
-        class="h-[50px] bg-gray-100 flex items-center shadow-sm px-[20px] w-full py-[10px] z-10 border-b"
-      >
+        class="h-[50px] flex items-center shadow-sm px-[20px] w-full py-[10px] z-10 border-b" style="background-color: #F5FCFF;">
         <!-- Hambuger menu -->
         <div class="cursor-pointer w-[30px]" @click="toggleSideBar">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-[25px] h-[25px]">
@@ -83,7 +82,7 @@
                 <input
                   type="text"
                   id="voice-search"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" style="background-color: #F5FCFF;"
                   placeholder="Search..."
                   required
                 />
@@ -99,7 +98,7 @@
           <div class="relative inline-block text-left">
             <router-link to="/login">
               <button 
-                class="focus:outline-none text-white font-semibold hover:text-gray-300 px-3 py-2 rounded-md bg-blue-800 hover:bg-blue-900 transition duration-300"
+                class="focus:outline-none text-white font-semibold hover:text-gray-300 px-3 py-2 rounded-md bg-blue-800 hover:bg-blue-900 transition duration-300" style="background-color: #30aade;" 
               >
                 Sign out
               </button>
@@ -109,11 +108,47 @@
           </div>
         </div>
       </div>
-      <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
+      <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]" style="background-color: #F5FCFF;">
         <h1>Dashboard</h1>
         <div class="border border-gray-300 rounded-md p-[20px] h-full">
           <!-- หัวข้อ -->
-          
+          <div class="containers">
+              <div class="box-container">
+                <div class="box-1">
+
+                  <div class="about-text">
+                        <h1>ยินดีต้อนรับ</h1>
+                        <p>ระบบ e-Laerning แบบ Interactive สำหรับวิชาการเขียนโปรแกรมเบื้องต้น</p>
+                      </div>
+                    <div class="about-content">
+                      <div class="about-image">
+                        <img src="/images/main.png" alt="Main Image" class="h-auto">
+                      </div>
+                      
+                    </div>
+                  </div>
+                <div class="box-2-3-container">
+                  <div class="box-2">จำนวนผู้ใช้งานวันนี้
+                    <p>40000 คน</p>
+                  </div>
+                  <div class="box-3">จำนวนสมาชิกที่เข้าใช้ระบบ
+                    <p>400000000000000000 คน</p>
+                  </div>
+                </div>
+                <div class="box-4">Box 4</div>
+              </div>
+            </div>
+
+            <!-- <div class="containers">
+                <div class="box-container">
+                  <div class="box box-1">Box 1</div>
+                  <div class="box box-2">Box 2</div>
+                  <div class="box box-3">Box 3</div>
+                  <div class="box box-4">Box 4</div>
+                </div>
+              </div> -->
+
+
         </div>
       </div>
     </div>
@@ -154,7 +189,172 @@ export default {
 
 
 
-<template>
+<style scoped>
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.admin {
+  background-color: rgb(183, 229, 229);
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+
+
+.col-1 {
+  flex-basis: calc(5% - 10px);
+}
+
+.col-4 {
+  flex-basis: calc(45% - 10px);
+}
+.col-2 {
+  flex-basis: calc(10% - 10px);
+}
+
+.col-3 {
+  flex-basis: calc(20% - 10px);
+}
+
+.bi{
+  padding: 3vh;
+}
+
+/* Customize as needed for other column sizes */
+
+
+
+
+/* ส่วน Dashbord */
+
+
+
+
+.box-1 {
+  background-color: #ECECEC;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  height: 250px;
+  display: flex;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  
+}
+
+.about-image {
+  width: 300px;
+  height: 250px;
+  margin-top: 15px;
+   /* background-color: #bfffbf; */
+   margin-right: 30px;
+}
+
+
+.about-text p {
+  font-size: 40px;
+  margin-left: 10px;
+  /* background-color: #bfffbf; */
+  
+}
+
+.about-text h1 {
+  font-size: 50px;
+  margin-left: 190px;
+}
+
+
+.box-2-3-container {
+  display: flex;
+  margin-bottom: 10px;
+  height: 150px;
+}
+
+.box-2 {
+  flex-grow: 1;
+  background-color:#ECECEC;
+  padding: 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
+}
+
+.box-2 p {
+  font-size: 50px;
+}
+
+.box-3 {
+  flex-grow: 1;
+  background-color: #ECECEC;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
+}
+
+.box-3 p {
+  font-size: 50px;
+}
+
+.box-4 {
+  background-color: #ECECEC;
+  padding: 20px;
+  border-radius: 5px;
+  height: 150px;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
+}
+
+
+
+/* .containers {
+  height: calc(97vh - 50px);
+  background-color: #f0f0f0;
+  padding: 20px;
+} */
+
+/* .box-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.box {
+  border-radius: 5px;
+}
+
+.box-1 {
+  background-color: #b3e0f2;
+}
+
+.box-2 {
+  background-color: #bfffbf;
+  height: 150px;
+}
+
+.box-3 {
+  background-color: #ffe0b3;
+  width: 250px;
+}
+
+.box-4 {
+  background-color: #ffb3b3;
+  width: 250px;
+} */
+
+
+</style>
+
+
+<!-- <template>
   <div>
     <AdNav />
     <div class="container">
@@ -203,110 +403,12 @@ export default {
 
       </div>
 
-      <!-- <BoxArticie v-if="currentContent && languageData[currentContent]" :contentData="languageData[currentContent]" /> -->
+     
       <BoxAddash v-if="currentContent === 'Dashboard'" :contentData="languageData.Dashboard" />
       <BoxAddash v-if="currentContent === 'Userlist'" :contentData="languageData.Userlist" />
       <BoxAddash v-if="currentContent === 'Managearticles'" :contentData="languageData.Managearticles" />
       <BoxAddash v-if="currentContent === 'Manageexercises'" :contentData="languageData.Manageexercises" />
-      <!-- <div v-else class="container-no-data">
-        <h1>No Data</h1>
-      </div> -->
+      
     </div>
   </div>
-</template>
-
-
-<style scoped>
-h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.admin {
-  background-color: rgb(183, 229, 229);
-}
-
-.button-image {
-  transform: translateY(10%);
-  width: 40px;
-  height: 40px;
-  margin-left: 65px;
-  /* background-color: aqua; */
-}
-
-.scroll-button {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  margin-left: -40px;
-  margin-bottom: 25px;
-  width: 300px;
-  height: 50px;
-  background-color: #1f1f1f;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  */
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.scroll-button:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-color: #ee5684;
-}
-
-p {
-  font-size: 20px;
-  margin-left: 120px;
-  transform: translateY(-105%);
-  font-weight: bolder;
-  text-align: left;
-  color: #fffdfd;
-  /* background-color: aqua; */
-}
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-/* หากต้องการให้เปิดมาแล้วเป็นกล่องเปล่าๆ */
-.container-no-data {
-  background-color: #f5f5f5;
-  margin-top: 50px;
-  margin-right: 50px;
-  width: 1000px;
-  height: 1000px;
-}
-.container-no-data h1 {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-}
-
-.grid-item {
-  /* background-color: #f2f2f2; */
-  padding: 10px;
-  text-align: center;
-}
-
-.col-1 {
-  flex-basis: calc(5% - 10px);
-}
-
-.col-4 {
-  flex-basis: calc(45% - 10px);
-}
-.col-2 {
-  flex-basis: calc(10% - 10px);
-}
-
-.col-3 {
-  flex-basis: calc(20% - 10px);
-}
-
-.bi{
-  padding: 3vh;
-}
-
-/* Customize as needed for other column sizes */
-</style>
+</template> -->
