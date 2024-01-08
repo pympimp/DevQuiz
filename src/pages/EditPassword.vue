@@ -1,7 +1,8 @@
 <script>
+import axios from 'axios';
 import NavBar from "@/components/NavBar.vue";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
+import Swal from 'sweetalert2';
 
 export default {
     name: 'EditPAssword',
@@ -10,9 +11,39 @@ export default {
    
   },
   methods: {
-    HomePage() {
-      this.$router.push({ name: "HomePage" });
+    EditUser() {
+      this.$router.push({ name: "EditUser" });
     },
+
+    async login() {
+  try {
+    const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/user/EditPAssword", {
+      OldPassword: this.OldPassword,
+      NewPassword: this.NewPassword
+    });
+
+    if (result) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Password Changed!',
+        text: 'Your password has been changed successfully.'
+      });
+      
+    }
+  } catch (error) {
+    if (error.response && error.response.status === 401 && error.response.data.error === "wrong password") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Wrong password'
+      });
+
+    } else {
+      console.error("Error during signup:", error);
+    }
+  }
+}
+
   }
 };
 </script>
@@ -22,7 +53,13 @@ export default {
 <template>
     <div>
       <NavBar />
-      <h3>ย้อนกลับ</h3>
+      <div id="app">
+          <a :href="link" class="custom-link">
+            <i class="bi bi-backspace-fill"></i>
+            <h3 @click="EditUser">ย้อนกลับ</h3>
+          </a>
+      </div>
+
       <h1>เปลี่ยนรหัสผ่าน</h1>
       <div class="container">
       <section>
@@ -42,8 +79,9 @@ export default {
         
           <h2 class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</h2>
         
-
-        <button @click="HomePage">ยืนยัน</button>
+          
+          <!-- กดแล้วไปหน้าอื่น @click="EditUser()" -->
+        <button>ยืนยัน</button>
       </form>
     </section>
   </div>
@@ -54,6 +92,13 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+
+
+* {
+  box-sizing: border-box;
+}
+
 
 .container {
   display: flex;
@@ -152,12 +197,44 @@ p{
     font-weight: 900;
 }
 
-h3 {
-    font-size: 20px;
-    color: #ffffff;
-    margin-left: 40px;
-    margin-top: 20px;
+/* การตกแต่งลิงก์และข้อความ */
+.custom-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  color: #333; /* สีข้อความ */
+  font-family: Arial, sans-serif;
 }
+
+i {
+  /* ขนาดของไอคอน */
+  color: #EC4088;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-left: 20px; /* ระยะห่างของไอคอนกับข้อความ */
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 20px;
+    color: #EC4088;
+    margin-left: 2px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* เพิ่มสไตล์เมื่อผู้ใช้ชี้เมาส์เข้ามา
+h3:hover {
+  color: #FF0000; 
+  text-decoration: underline; 
+}
+
+i:hover {
+  color: #FF0000;
+  text-decoration: underline; 
+} */
+
+
 
 
 

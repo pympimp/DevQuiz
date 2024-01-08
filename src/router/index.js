@@ -111,10 +111,46 @@ const router = createRouter({
       path: '/AdminManageUser',
       name: '/AdminManageUser',
       component: () => import('../pages/AdManageUser.vue')
-    }
+    },
     
 
-   
+    {
+      path: "/UserProfile",
+      name: 'UserProfile',
+      component: () => import('../pages/Userprofile.vue') 
+    },
+
+
+    {
+      path: "/AdminDashboard",
+      name: 'AdminDashboard',
+      component: () => import('../pages/AdDashBoard.vue') 
+    },
+
+    {
+      path: "/AdminManageArticle",
+      name: 'AdminManageArticle',
+      component: () => import('../pages/AdManageArticle.vue') 
+    },
+
+    {
+      path: "/AdminManageUser",
+      name: 'AdminManageUser',
+      component: () => import('../pages/AdManageUser.vue') 
+    },
+
+    {
+      path: "/AdminManageClass",
+      name: 'AdminManageClass',
+      component: () => import('../pages/AdManageClass.vue') 
+    },
+
+    {
+      path: "/AdTest",
+      name: 'AdTest',
+      component: () => import('../pages/AdTest.vue') 
+    },
+    
     
   ]
 })

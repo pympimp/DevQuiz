@@ -112,7 +112,7 @@ img {
 
 .text-container {
   text-align: left;
-  margin-left: 20px;
+  margin-left: 10px;
   flex: 1; /* ทำให้ text-container ยืดเต็มทั้งความกว้าง */
 }
 
@@ -131,35 +131,111 @@ img {
 
 
 
+/* responsive */
 
 
+/* 
+@media screen and (max-width: 2561px) {
 
+  .boxcontainer{
+    margin-right: -140px;
+  }
 
-
-
-
-@media screen and (max-width: 1465px) {
   .box {
+    width: 900px;
+    height: 150px;
+    margin-bottom: 50px; 
+    margin-top: 110px; 
+    margin-right: -250px;
+    
+  }
 
-    width: 500px;
-    margin-bottom: 30px; /* ระยะห่างระหว่างกล่อง */
-    margin-top: 20px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
-    margin-left: 30px;
+  .img-container {
+  background-color: rgb(255, 255, 255);
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 50px;
+}
+
+
+ img {
+  max-width: 120px;
+  height: 120px;
+} 
+
+.text-container {
+  text-align: left;
+  margin-left: 30px;
+  flex: 1; 
+}
+
+
+.main-title {
+  font-size: 60px; 
+  font-weight: bold;
+  color: #CCCCCC;
+}
+
+
+.sub-title {
+  font-size: 45px; 
+  color:#FFFFFF;
+}
+
+
+}
+
+
+@media screen and (max-width: 1891px) {
+  .box {
+    width: 550px;
+    height: 120px;
+    margin-bottom: 20px; 
+    margin-top: 20px; 
+    margin-left: -110px;
     
   }
   
+  .img-container {
+  background-color: rgb(255, 255, 255);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 28px;
 }
 
+
+ img {
+  max-width: 70px;
+  height: 70px;
+} 
+
+.main-title {
+  font-size: 30px; 
+  font-weight: bold;
+  color: #CCCCCC;
+}
+
+
+.sub-title {
+  font-size: 25px; 
+  color:#FFFFFF;
+}
+
+
+} */
 
 
 @media screen and (max-width: 1441px) {
   .box {
-
     width: 550px;
     height: 120px;
     margin-bottom: 20px; /* ระยะห่างระหว่างกล่อง */
     margin-top: 20px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
-    margin-left: 30px;
+    margin-left: -110px;
     
   }
   
@@ -195,13 +271,13 @@ img {
 
 
 
+
 @media screen and (max-width: 1025px) {
   .box {
-
-    width: 520px;
-    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
-    margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
-    margin-left: 100px;
+    width: 500px;
+    margin-bottom: 20px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: -15px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+    margin-left: -90px;
     
   }
 
@@ -213,8 +289,8 @@ img {
 
 .img-container {
   background-color: rgb(255, 255, 255);
-  width: 75px;
-  height: 75px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
   overflow: hidden;
   margin-left: 28px;
@@ -223,8 +299,8 @@ img {
 
 
  img {
-  max-width: 45px;
-  height: 45px;
+  max-width: 60px;
+  height: 60px;
 } 
 
 .text-container {
@@ -247,70 +323,15 @@ img {
 
 }
 
-
-
-
-
-
-@media screen and (max-width: 1014px) {
-  .box {
-    width: 400px;
-    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
-    margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
-    margin-left: 120px;
-    
-  }
-
-
-.flex-container {
-  flex-direction: row;
-  box-sizing: border-box; /* เพิ่ม line นี้เพื่อปรับแก้ปัญหาการบีบกล่อง */
-}
-
-.img-container {
-  background-color: rgb(255, 255, 255);
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-left: 28px;
-}
-
-
-
- img {
-  max-width: 45px;
-  height: 45px;
-} 
-
-.text-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* จัดเรียงข้อความไปทางด้านบน */
-}
-
-.main-title {
-  font-size: 25px; /* ขนาดตัวอักษรสำหรับ HTML */
-  font-weight: bold;
-  color: #CCCCCC;
-}
-
-
-.sub-title {
-  font-size: 18px; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
-  color:#FFFFFF;
-}
-
-}
 
 
 
 @media screen and (max-width: 769px) {
   .box {
-    width: 400px;
-    margin-bottom: 10px; /* ระยะห่างระหว่างกล่อง */
-    margin-top: -5px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
-    margin-left: 100px;
+    width: 600px;
+    margin-bottom: -18px; /* ระยะห่างระหว่างกล่อง */
+    margin-top: 10px; /* ปรับตำแหน่งของกล่องเมื่อ responsive */
+    margin-left: 150px;
     
   }
 
@@ -332,8 +353,8 @@ img {
 
 
  img {
-  max-width: 45px;
-  height: 45px;
+  max-width: 35px;
+  height: 35px;
 } 
 
 .text-container {
