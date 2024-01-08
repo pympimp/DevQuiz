@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div class="bg-gray-50 ">
+  <div class="byd">
+    <div class="container">
       <h1>Manage User</h1>
       <div class="border border-gray-300 rounded-md h-full w-full">
         <!-- หัวข้อ -->
@@ -52,12 +52,10 @@ h1 {
 }
 
 .border {
-  margin: 2vh;
-  max-width: fit-content;
   max-height: 20vh;
 }
 
-.bg-gray-50 {
+.container {
   width: 100%;
   height: 100%;
 }
@@ -68,10 +66,11 @@ h1 {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-direction: row;
 }
 
 .grid-item {
-  padding: 15px;
+  padding: 0px;
   text-align: center;
   margin: 5px;
 }
@@ -94,5 +93,11 @@ h1 {
 
 .bi {
   padding: 3vh;
+}
+.byd{
+  height: 100vh;
+  width: 100vh;
+  background-color: white;
+  padding: 20px;
 }
 </style>
