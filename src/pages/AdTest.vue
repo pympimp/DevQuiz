@@ -117,6 +117,11 @@ h1 {
   /* background-color: aqua; */
 }
 
+.container{
+  width: fit-content;
+  height: fit-content;
+}
+
 .scroll-button {
   margin-top: 5px;
   margin-left: -40px;
