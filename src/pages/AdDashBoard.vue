@@ -10,9 +10,10 @@ import Dashboard from '../components/DashBoard.vue'
 .box-1 {
   background-color: #ececec;
   padding: 20px;
-  margin-bottom: 10px;
+  margin-top: -5px;
+  margin-bottom: 20px;
   border-radius: 5px;
-  height: 250px;
+  height: 350px;
   display: flex;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
 }
@@ -23,13 +24,26 @@ import Dashboard from '../components/DashBoard.vue'
 }
 
 .about-image {
-  width: 300px;
+  width: 400px;
   height: 250px;
+<<<<<<< HEAD
   margin-top: 15px;
   /* background-color: #bfffbf; */
   margin-right: 30px;
 }
 
+=======
+  margin-top: -45px;
+   /* background-color: #bfffbf; */
+   margin-right: 30px;
+}
+
+.about-text {
+ margin-top: 55px;
+  
+}
+
+>>>>>>> 7df665b1cea58e3768ee783a2bb86bfe7cd80dcc
 .about-text p {
   font-size: 40px;
   margin-left: 10px;
@@ -43,21 +57,22 @@ import Dashboard from '../components/DashBoard.vue'
 
 .box-2-3-container {
   display: flex;
-  margin-bottom: 10px;
-  height: 150px;
+  margin-bottom: 20px;
+  height: 220px;
 }
 
 .box-2 {
   flex-grow: 1;
   background-color: #ececec;
   padding: 20px;
-  margin-right: 10px;
+  margin-right: 25px;
   border-radius: 5px;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
 }
 
 .box-2 p {
   font-size: 50px;
+  color: #2685ad;
 }
 
 .box-3 {
@@ -70,6 +85,7 @@ import Dashboard from '../components/DashBoard.vue'
 
 .box-3 p {
   font-size: 50px;
+  color: #2685ad;
 }
 
 .box-4 {

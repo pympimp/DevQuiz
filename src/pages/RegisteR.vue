@@ -65,7 +65,7 @@ export default {
     async signup(){
   try {
     // ส่วนของการส่งข้อมูล
-    const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/user/register", {
+    const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/api/user/register", {
       email: this.email,
       username: this.username,
       password: this.password,

@@ -1,8 +1,8 @@
 <template>
-  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="signout()" v-if='Token'>
+  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="signout()" v-if='authenKey'>
     <p>ออกจากระบบ</p>
   </button>
-  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="login" v-if="!Token">
+  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="login()" v-if="!authenKey">
     <p>เข้าสู่ระบบ</p>
   </button>
 </template>
@@ -22,25 +22,22 @@
 </style>
 
 <script>
+import { useAuthenStore } from "../stores/auth";
+import { authenKey } from "../utils/config";
   export default {
     data(){
       return{
-        Token:null
+        authenStore:useAuthenStore(),
+        authenKey:localStorage.getItem(authenKey)
       }
     },
-    mounted(){
-  if(localStorage.getItem("Token")){
-    this.Token = localStorage.getItem('Token')
-  }
-},
     methods: {
       login() {
         this.$router.push({ name: "LogIn"});
       },
       signout(){
-        this.Token = null;
-        localStorage.removeItem("Token")
-        window.location.reload();
+        this.authenStore.logout()
+        this.$router.push({ name: "LogIn"});
       }
     }
   }

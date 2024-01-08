@@ -21,9 +21,9 @@
 <template>
   <div class="container">
     <div class="content">
-      <h1>{{ contentData.title }}</h1>
-      <p>{{ contentData.description }}</p>
-      <div v-for="(box, index) in contentData.boxes" :key="index" class="inner-box" >
+      <h1>{{ contentData.fullname }}</h1>
+      <p>{{ contentData.discription }}</p>
+      <!-- <div v-for="(box, index) in contentData.boxes" :key="index" class="inner-box" :style="{ height: box.isExpanded ? 'auto' : '50px' }">
         <div class="box-content">
           <div class="box-header">
             <h1>{{ box.boxTitle }}</h1>
@@ -33,7 +33,7 @@
           </div>
           <p v-if="box.isExpanded">{{ box.boxText }}</p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

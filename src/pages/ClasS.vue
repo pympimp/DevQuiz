@@ -5,15 +5,25 @@
       <div class="buttons">
         <h1>บทเรียน</h1>
 
-        <div class="button">
-          <button @click="toggleSubContainer('html')" class="scroll-button" :style="{ backgroundColor: currentContent === 'html' ? '#EE5684' : '#1F1F1F' }">
+        <div class="button" v-for="(item, index) in classAllData" :key="index + 1">
+          <button @click="scrollToAdditionalBox('html',item.classID)" 
+          class="scroll-button" 
+          :style="{ backgroundColor: currentContent === 'html' ? '#EE5684' : '#1F1F1F' }">
             <img src="/images/html.png" alt="Image" class="button-image">
-            <p>HTML</p>
-            <i v-if="showSubContainer && currentContent === 'html'" class="icon-down"></i>
+            <p>{{item.name}}</p>
           </button>
         </div>
 
-        <div class="button">
+        <!-- <div class="button">
+          <button @click="scrollToAdditionalBox('html')" 
+          class="scroll-button" 
+          :style="{ backgroundColor: currentContent === 'html' ? '#EE5684' : '#1F1F1F' }">
+            <img src="/images/html.png" alt="Image" class="button-image">
+            <p>HTML</p>
+          </button>
+        </div> -->
+
+        <!-- <div class="button">
           <button
             @click="scrollToAdditionalBox('css')"
             class="scroll-button"
@@ -33,14 +43,17 @@
             <img src="/images/javascript.png" alt="Image" class="button-image" />
             <p>JavaScript</p>
           </button>
-        </div>
+        </div> -->
       </div>
 
       <!-- ตรวจสอบว่ามีข้อมูลใน languageData หรือไม่ และแสดงข้อมูล -->
-      <BoxArticie
+      <!-- <BoxArticie
         v-if="currentContent && languageData[currentContent]"
         :contentData="languageData[currentContent]"
-      />
+      /> -->
+      <BoxArticie v-if="currentContent === 'html'" :contentData="classData" :couresData=""/>
+      <BoxArticie v-if="currentContent === 'css'" :contentData="classData" />
+      <BoxArticie v-if="currentContent === 'javascript'" :contentData="classData" />
       <!-- <div v-else class="container-no-data">
         <h1>No Data</h1>
       </div> -->
@@ -51,16 +64,34 @@
 <script>
 import NavBar from '@/components/NavBar.vue'
 import BoxArticie from '@/components/BoxArticie.vue'
+import { useRoute,useRouter} from 'vue-router'
+import axios from 'axios';
+
 
 export default {
+  mounted(){
+    if(this.route.params.classId){
+      this.classId = this.route.params.classId
+    }
+    if(this.classId){
+      this.fetchOneClass(this.classId);
+      this.fetchData()
+    }
+  },
   components: {
     NavBar,
     BoxArticie
   },
   data() {
     return {
+      classId:'',
+      route:useRoute(),
       currentContent: 'html', // กำหนดให้แสดงข้อมูล HTML เริ่มต้น
       showSubContainer: false,
+      classData:{},
+      router:useRouter(),
+      classAllData:[],
+      isLoading: false,
       languageData: {
         html: {
           title: 'HTML (Hyper Text Markup Language)',
@@ -110,13 +141,46 @@ export default {
   },
 
   methods: {
-    scrollToAdditionalBox(contentId) {
+    scrollToAdditionalBox(contentId,id) {
       this.currentContent = contentId
+      this.router.push(`/class/${id}`)
+      if(this.router.push){
+        this.fetchOneClass(id)
+      }
     },
     toggleSubContainer(contentId) {
       this.currentContent = contentId
       this.showSubContainer = !this.showSubContainer
-    }
+    },
+    async fetchOneClass(id){
+      try {
+        const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/class/${id}`)
+      if(result){
+        this.classData = result.data
+        console.log(this.classData)
+      }
+      } catch (error) {
+        console.error("Error during getdata:", error);
+      }
+    },
+    async fetchData() {
+      if (this.isLoading) {
+        return;
+      }
+
+      try {
+        this.isLoading = true;
+        const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/class/');
+        if (result) {
+          this.classAllData = result.data;
+          console.log("classAllData", this.classAllData);
+        }
+      } catch (error) {
+        console.error("Error during getdata:", error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
   }
 }
 </script>

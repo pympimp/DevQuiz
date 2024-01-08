@@ -35,6 +35,7 @@
 // import NavBar from "@/components/NavBar.vue";
 import axios from 'axios';
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import { useAuthenStore } from "../stores/auth";
 
 export default {
   mounted(){
@@ -46,7 +47,8 @@ export default {
   data(){
     return{
       username:'',
-      password:''
+      password:'',
+     authenStore:useAuthenStore()
     }
   },
   components: {
@@ -58,13 +60,13 @@ export default {
     },
     async login() {
       try {
-        const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/user/login",{
+        const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/api/user/login",{
           username:this.username,
           password:this.password
         });
-        if(result){
+        if(result && result.data && result.data.token){
+          this.authenStore.setAuthen(result.data)
           alert("Welcome "+ result.data.username)
-          localStorage.setItem("Token",JSON.stringify(result.data.token))
           if(localStorage.setItem && result.data.role === 'user'){
             this.$router.push({ name: "HomePage" });
           }

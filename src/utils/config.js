@@ -1,0 +1,1 @@
+export const authenKey = "_auth_key"
