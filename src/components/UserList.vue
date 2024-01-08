@@ -41,7 +41,7 @@
   
   <script setup>
   // eslint-disable-next-line no-unused-vars
-  import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from 'radix-vue'
+  // import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from 'radix-vue'
   import 'bootstrap-icons/font/bootstrap-icons.css';
 
   </script>

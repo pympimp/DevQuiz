@@ -94,6 +94,13 @@
   </script>
 
 <style scoped>
+
+.container{
+  width: fit-content;
+  height: fit-content;
+}
+
+
 h1 {
   margin-top: 50px;
   margin-left: 35px;
