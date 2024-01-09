@@ -121,11 +121,6 @@ const router = createRouter({
     },
 
     {
-      path: "/AdTest",
-      name: 'AdTest',
-      component: () => import('../pages/AdTest.vue') 
-    },
-    {
       path:'/Admin',
       name:'admin',
       component: () => import('../layouts/AdNav.vue'),
@@ -151,6 +146,11 @@ const router = createRouter({
           name: 'AdminManageArticle',
           component: () => import('../pages/AdManageArticle.vue') 
         },
+        {
+          path: "AdminEditUser",
+          name: "AdminEditUser",
+          component: () => import('../pages/AdEditUser.vue') 
+        }
       ]
     }
     

@@ -1,9 +1,37 @@
-<template>
-<UserList/>
+<template><div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
+  <h1>Manage User</h1>
+  <div class="border border-gray-300 rounded-md p-[20px] h-full">
+    <!-- หัวข้อ -->
+    <ul class="grid-list" >
+      <li class="grid-item col-1" style="font-weight: bold;">ID</li>
+      <li class="grid-item col-4" style="font-weight: bold;">Username</li>
+      <li class="grid-item col-3" style="font-weight: bold;">Email</li>
+      <li class="grid-item col-2" style="font-weight: bold;">Role</li>
+      <li class="grid-item col-3" style="font-weight: bold;">Tools</li>
+    </ul>
+    
+    <!-- ตัวอย่างรายชื่อ -->
+    <ul class="grid-list">
+      <li class="grid-item col-1">1</li>
+      <li class="grid-item col-4">User01</li>
+      <li class="grid-item col-3">User01@gmail.com</li>
+      <li class="grid-item col-2">Admin</li>
+      <li class="grid-item col-3"><router-link to="/Admin/AdminEditUser"><i class="bi bi-pencil "/></router-link><i class="bi bi-trash "/></li>
+    </ul>
+
+    <ul class="grid-list">
+      <li class="grid-item col-1">2</li>
+      <li class="grid-item col-4">User02</li>
+      <li class="grid-item col-3">User02@gmail.com</li>
+      <li class="grid-item col-2">User</li>
+      <li class="grid-item col-3"><i class="bi bi-pencil "/><i class="bi bi-trash "/></li>
+    </ul>
+  </div>
+</div>
 </template>
 
 <script setup>
-import UserList from '../components/UserList.vue';
+
 
 </script>
 

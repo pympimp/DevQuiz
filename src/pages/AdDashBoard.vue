@@ -1,9 +1,38 @@
-<template>
-  <Dashboard />
+<template>    <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]" style="background-color: #F5FCFF;">
+  <h1>Dashboard</h1>
+  <div class="border border-gray-300 rounded-md p-[20px] h-full">
+    <!-- หัวข้อ -->
+    <div class="containers">
+        <div class="box-container">
+          <div class="box-1">
+
+            <div class="about-text">
+                  <h1>ยินดีต้อนรับ</h1>
+                  <p>ระบบ e-Laerning แบบ Interactive สำหรับวิชาการเขียนโปรแกรมเบื้องต้น</p>
+                </div>
+              <div class="about-content">
+                <div class="about-image">
+                  <img src="/images/main.png" alt="Main Image" class="h-auto">
+                </div>
+                
+              </div>
+            </div>
+          <div class="box-2-3-container">
+            <div class="box-2">จำนวนผู้ใช้งานวันนี้
+              <p>40000 คน</p>
+            </div>
+            <div class="box-3">จำนวนสมาชิกที่เข้าใช้ระบบ
+              <p>400000000000000000 คน</p>
+            </div>
+          </div>
+          <div class="box-4">Box 4</div>
+        </div>
+      </div>
+  </div>
+</div>
 </template>
 
 <script setup>
-import Dashboard from '../components/DashBoard.vue'
 </script>
 
 <style scoped>

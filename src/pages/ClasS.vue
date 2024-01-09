@@ -51,7 +51,7 @@
         v-if="currentContent && languageData[currentContent]"
         :contentData="languageData[currentContent]"
       /> -->
-      <BoxArticie v-if="currentContent === 'html'" :contentData="classData" :couresData=""/>
+      <BoxArticie v-if="currentContent === 'html'" :contentData="classData" />
       <BoxArticie v-if="currentContent === 'css'" :contentData="classData" />
       <BoxArticie v-if="currentContent === 'javascript'" :contentData="classData" />
       <!-- <div v-else class="container-no-data">
