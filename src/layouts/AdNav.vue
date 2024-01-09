@@ -21,7 +21,7 @@
               to="/Admin/AdminDashboard"
               class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 transition duration-400 ease-in-out"  style="color: #000000;"
             >
-              <i class="fa-regular fa-image"></i>
+              
               Dashboard
             </router-link>
             <router-link
@@ -31,7 +31,7 @@
               User
             </router-link>
             <router-link
-              to="/Admin/AdminManageArticle"
+              to="/Admin/ArticleList"
               class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 hover:text-gray-800 transition duration-400 ease-in-out"  style="color: #000000;"
             >
               Article

@@ -1,6 +1,12 @@
 <template><div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
+  <div class="top-sec">
   <h1>Manage User</h1>
+  <router-link to="AdminAddUser">
+  <button class="btn"><i class="fa fa-plus"></i></button>
+</router-link>
+</div>
   <div class="border border-gray-300 rounded-md p-[20px] h-full">
+
     <!-- หัวข้อ -->
     <ul class="grid-list" >
       <li class="grid-item col-1" style="font-weight: bold;">ID</li>
@@ -36,7 +42,20 @@
 </script>
 
 
-<style>
+<style scoped>
+
+.top-sec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+btn{
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 20px;
+}
+
 h1 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -75,6 +94,28 @@ h1 {
 
 .bi{
   padding: 3vh;
+}
+
+button {
+  width: fit-content;
+  height: fit-content;
+  background-color: #EC4088; /* สีพื้นหลัง */
+  color: white; /* สีตัวอักษร */
+  border: none; /* ไม่มีเส้นขอบ */
+  border-radius: 15px; /* มุมทรงกลม */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงา */
+  padding: 10px 20px; /* การเว้นระยะขอบของปุ่ม */
+  cursor: pointer; /* เปลี่ยนรูปลูกศรเป็นหลังคา */
+
+}
+
+button:hover {
+  background-color: #D32F6A; /* สีพื้นหลังเมื่อ hover */
+}
+
+button i {
+  width: fit-content;
+  height: fit-content;
 }
 
 /* Customize as needed for other column sizes */

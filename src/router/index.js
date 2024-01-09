@@ -150,6 +150,17 @@ const router = createRouter({
           path: "AdminEditUser",
           name: "AdminEditUser",
           component: () => import('../pages/AdEditUser.vue') 
+        },
+        {
+          path: "AdminAddUser",
+          name: "AdminAddUser",
+          component: () => import('../pages/AdAddUser.vue') 
+        },
+
+        {
+          path: "ArticleList",
+          name: "ArticleList",
+          component: () => import('../pages/ArticleList.vue') 
         }
       ]
     }

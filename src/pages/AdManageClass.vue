@@ -2,6 +2,7 @@
   <div class="h-[calc(98vh-50px)] bg-gray-50 p-[20px] ">
             <h1>Manage Class</h1>
             <div class="border border-gray-300 rounded-md p-[20px] h-full">
+              
               <!-- หัวข้อ -->
               <ul class="grid-list" >
                 <li class="grid-item col-1" style="font-weight: bold;">ID</li>
