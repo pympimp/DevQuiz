@@ -23,17 +23,25 @@
     <div class="content">
       <h1>{{ contentData.fullname }}</h1>
       <p>{{ contentData.discription }}</p>
-      <!-- <div v-for="(box, index) in contentData.boxes" :key="index" class="inner-box" :style="{ height: box.isExpanded ? 'auto' : '50px' }">
+      <div  v-for="(box, index) in unitData" :key="index" >
+      <div class="inner-box" :style="{ height: isExpanded ? 'auto' : '50px' }">
         <div class="box-content">
           <div class="box-header">
-            <h1>{{ box.boxTitle }}</h1>
+            <h1>{{ box.nameLesson }}</h1>
             <button @click="toggleBox(index)">
-              <i class="bi" :class="{'bi-chevron-up': box.isExpanded, 'bi-chevron-down': !box.isExpanded}"></i>
+              <i class="bi" :class="{'bi-chevron-up': isExpanded == true, 'bi-chevron-down': isExpanded == false}"></i>
             </button>
           </div>
-          <p v-if="box.isExpanded">{{ box.boxText }}</p>
         </div>
-      </div> -->
+      </div>
+      <div v-for="(subitem, subindex) in box.units" :key="subindex">
+      <div v-if="isExpanded == true" class="card-unit">
+            <div>
+            <h1 @click="check(contentData.name,box.nameLesson,subitem.nameUnit)" style="cursor: pointer;">{{ subitem.nameUnit }}</h1>
+          </div>
+          </div>
+        </div>
+    </div>
     </div>
   </div>
 </template>
@@ -44,6 +52,7 @@
 
 <script>
 import { reactive } from 'vue';
+import { useAuthenStore } from '../stores/auth';
 
 export default {
   props: {
@@ -51,26 +60,45 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    unitData:{
+      type: Object,
+      default:()=>({})
+    }
+  },
+  data(){
+    return{
+      isExpanded:false,
+      authenStore:useAuthenStore(),
+    }
   },
   setup(props) {
 
-
     // กำหนด reactive object ที่เก็บข้อมูล
     const internalContentData = reactive(props.contentData);
+    const unitData1 = reactive(props.unitData);
+
 
     // ฟังก์ชันสำหรับการเปลี่ยนสถานะของกล่อง
-    const toggleBox = (index) => {
-      console.log('Toggle Box Clicked', index);
-      
-      // ให้ Vue ทราบถึงการเปลี่ยนแปลงค่า isExpanded
-      internalContentData.boxes[index].isExpanded = !internalContentData.boxes[index].isExpanded;
-    };
 
     return {
       internalContentData,
-      toggleBox,
+      unitData1,
     };
   },
+  methods:{
+    toggleBox(index) {
+      console.log('Toggle Box Clicked', index);
+      if(this.isExpanded == false){
+        this.isExpanded = true
+      }else{
+        this.isExpanded = false
+      }
+    
+    },
+    check(coures,lesson,unit){
+      console.log(this.authenStore.auth)
+    }
+  }
 };
 
 </script>
@@ -84,6 +112,8 @@ export default {
   /* background-color: #bd6a6a; */
   margin-left: 250px;
 }
+
+
 
 .inner-box {
   background-color: #f5f5f5;
@@ -391,6 +421,17 @@ p {
   justify-content: space-between;
   align-items: center;
 } 
+
+.card-unit{
+  background-color: red;
+  width: 1000px;
+  height: 1000px;
+}
+
+.card-unit:hover{
+color: red;
+cursor: pointer;
+}
 
 }
 

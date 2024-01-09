@@ -36,10 +36,11 @@
 import axios from 'axios';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useAuthenStore } from "../stores/auth";
+import { authenKey } from '../utils/config';
 
 export default {
   mounted(){
-    if(localStorage.getItem("Token")){
+    if(localStorage.getItem(authenKey)){
       this.$router.push({ name: "HomePage" });
     }
   },

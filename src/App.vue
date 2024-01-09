@@ -1,4 +1,7 @@
 <script>
+import axios from 'axios';
+import { useAuthenStore } from './stores/auth';
+import { Id_Key } from './utils/config';
 // import MainPage from "./pages/MainPage.vue";
 
 // export default {
@@ -9,6 +12,18 @@
 // };
 
 export default {
+  mounted(){
+    if(localStorage.getItem(Id_Key)){
+      this.id = localStorage.getItem(Id_Key)
+      this.fetchUser(this.id)
+    }
+  },
+  data(){
+    return{
+    authenStore:useAuthenStore(),
+    Id:''
+    }
+  },
   computed: {
     darkTheme() {
       return this.$store.state.darkTheme;
@@ -18,6 +33,12 @@ export default {
     toggleTheme() {
       this.$store.commit('toggleTheme');
     },
+    async fetchUser(id) {
+      const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${id}`)
+      if(result && result.data){
+        this.authenStore.setAuthen(result.data)
+      }
+    }
   },
   created() {
     this.$store.commit('initializeTheme');

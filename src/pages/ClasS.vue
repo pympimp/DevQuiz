@@ -6,9 +6,9 @@
         <h1>บทเรียน</h1>
 
         <div class="button" v-for="(item, index) in classAllData" :key="index + 1">
-          <button @click="scrollToAdditionalBox('html',item.classID)" 
+          <button @click="scrollToAdditionalBox('HTML',item.classID)" 
           class="scroll-button" 
-          :style="{ backgroundColor: currentContent === 'html' ? '#EE5684' : '#1F1F1F' }">
+          :style="{ backgroundColor: currentContent === 'HTML' ? '#EE5684' : '#1F1F1F' }">
             <img src="/images/html.png" alt="Image" class="button-image">
             <p>{{item.name}}</p>
           </button>
@@ -51,9 +51,11 @@
         v-if="currentContent && languageData[currentContent]"
         :contentData="languageData[currentContent]"
       /> -->
-      <BoxArticie v-if="currentContent === 'html'" :contentData="classData" :couresData=""/>
-      <BoxArticie v-if="currentContent === 'css'" :contentData="classData" />
-      <BoxArticie v-if="currentContent === 'javascript'" :contentData="classData" />
+      <div v-for="(item, index) in unitData " :key="index">
+      <BoxArticie v-if="currentContent ===  item.name " :contentData="classData" :unitData="item.lessons"/>
+    </div>
+      <!-- <BoxArticie v-if="currentContent === 'css'" :contentData="classData" :unitData="unitData.lessons"/>
+      <BoxArticie v-if="currentContent === 'javascript'" :contentData="classData" :unitData="unitData.lessons"/> -->
       <!-- <div v-else class="container-no-data">
         <h1>No Data</h1>
       </div> -->
@@ -66,6 +68,7 @@ import NavBar from '@/components/NavBar.vue'
 import BoxArticie from '@/components/BoxArticie.vue'
 import { useRoute,useRouter} from 'vue-router'
 import axios from 'axios';
+import { useAuthenStore } from '../stores/auth';
 
 
 export default {
@@ -76,6 +79,7 @@ export default {
     if(this.classId){
       this.fetchOneClass(this.classId);
       this.fetchData()
+      this.fetchUnitData()
     }
   },
   components: {
@@ -86,12 +90,14 @@ export default {
     return {
       classId:'',
       route:useRoute(),
-      currentContent: 'html', // กำหนดให้แสดงข้อมูล HTML เริ่มต้น
+      currentContent: 'HTML', // กำหนดให้แสดงข้อมูล HTML เริ่มต้น
       showSubContainer: false,
       classData:{},
+      authenStore:useAuthenStore(),
       router:useRouter(),
       classAllData:[],
       isLoading: false,
+      unitData:{},
       languageData: {
         html: {
           title: 'HTML (Hyper Text Markup Language)',
@@ -181,6 +187,17 @@ export default {
         this.isLoading = false;
       }
     },
+    async fetchUnitData(){
+      try {
+        const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
+        if(result){
+          this.unitData = result.data
+          console.log('unitData', this.unitData)
+        }
+      } catch (error) {
+        console.error("Error during getdata:", error);
+      }
+    }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { authenKey} from "../utils/config";
+import { authenKey,Id_Key} from "../utils/config";
 export const useAuthenStore = defineStore("authenStore", {
   state: () => ({
     auth: undefined,
@@ -9,6 +9,7 @@ export const useAuthenStore = defineStore("authenStore", {
     setAuthen(userData) {
       if (userData && userData.token) {
         localStorage.setItem(authenKey, userData.token);
+        localStorage.setItem(Id_Key,userData.uid)
       }
 
       this.auth = userData;
@@ -17,6 +18,7 @@ export const useAuthenStore = defineStore("authenStore", {
     logout() {
       this.auth = undefined;
       localStorage.removeItem(authenKey);
+      localStorage.removeItem(Id_Key)
     },
   },
 });
