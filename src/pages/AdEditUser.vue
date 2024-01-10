@@ -41,7 +41,7 @@ h3 {
   font-size: 1rem;
 }
 input {
-  width: 20%;
+  width: 25%;
   border-radius: 15px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1); /* กำหนดเงา */
   border: none; /* กำหนดไม่มีเส้นขอบ */
@@ -56,7 +56,7 @@ button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงา */
   padding: 10px 20px; /* การเว้นระยะขอบของปุ่ม */
   cursor: pointer; /* เปลี่ยนรูปลูกศรเป็นหลังคา */
-  margin-left: 23vh;
+  margin-left: 31vh;
   margin-top: 1.5vh;
 }
 

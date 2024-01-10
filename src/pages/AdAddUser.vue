@@ -41,24 +41,24 @@
       font-size: 1rem;
     }
     input {
-      width: 20%;
-      border-radius: 15px;
-      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1); /* กำหนดเงา */
-      border: none; /* กำหนดไม่มีเส้นขอบ */
-      margin: 5px; /* กำหนดการเว้นระยะขอบของ input */
-    }
-    
-    button {
-      background-color: #EC4088; /* สีพื้นหลัง */
-      color: white; /* สีตัวอักษร */
-      border: none; /* ไม่มีเส้นขอบ */
-      border-radius: 15px; /* มุมทรงกลม */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงา */
-      padding: 10px 20px; /* การเว้นระยะขอบของปุ่ม */
-      cursor: pointer; /* เปลี่ยนรูปลูกศรเป็นหลังคา */
-      margin-left: 23vh;
-      margin-top: 1.5vh;
-    }
+  width: 25%;
+  border-radius: 15px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1); /* กำหนดเงา */
+  border: none; /* กำหนดไม่มีเส้นขอบ */
+  margin: 5px; /* กำหนดการเว้นระยะขอบของ input */
+}
+
+button {
+  background-color: #EC4088; /* สีพื้นหลัง */
+  color: white; /* สีตัวอักษร */
+  border: none; /* ไม่มีเส้นขอบ */
+  border-radius: 15px; /* มุมทรงกลม */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงา */
+  padding: 10px 20px; /* การเว้นระยะขอบของปุ่ม */
+  cursor: pointer; /* เปลี่ยนรูปลูกศรเป็นหลังคา */
+  margin-left: 31vh;
+  margin-top: 1.5vh;
+}
     
     button:hover {
       background-color: #D32F6A; /* สีพื้นหลังเมื่อ hover */

@@ -25,13 +25,13 @@
       <li class="grid-item col-3"><router-link to="/Admin/AdminEditUser"><i class="bi bi-pencil "/></router-link><i class="bi bi-trash "/></li>
     </ul>
 
-    <ul class="grid-list">
+    <!-- <ul class="grid-list">
       <li class="grid-item col-1">2</li>
       <li class="grid-item col-4">User02</li>
       <li class="grid-item col-3">User02@gmail.com</li>
       <li class="grid-item col-2">User</li>
       <li class="grid-item col-3"><i class="bi bi-pencil "/><i class="bi bi-trash "/></li>
-    </ul>
+    </ul> -->
   </div>
 </div>
 </template>
