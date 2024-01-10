@@ -4,19 +4,22 @@
       rel="stylesheet"
     />
     <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
-      <router-link to="/Admin/AdminManageArticle" class="back-link">
+      <router-link to="/Admin/AdminManageClass" class="back-link">
         <!-- <i class="bi bi-arrow-left"></i> -->
         <i class="fa fa-arrow-left"></i>
         <p>Back</p>
       </router-link>
   
       <div class="border border-gray-300 rounded-md p-[20px] h-full">
-        <h1>Add Article</h1>
+        <h1>Edit Class</h1>
+        <h3>Article :</h3>
+        <h4 style="font-weight: bold;"> p Tag</h4>
+        <h4>มีไว้เพื่อกำหนดย่อหน้า เมื่อมีแท็กครอบที่ข้อความจะทำให้ขึ้นบรรทัดใหม่เสมอ </h4>
         <div>
-          <h3>Header :</h3>
+          <h3>Class</h3>
           <input type="text" v-model="header" />
   
-          <h3>Body :</h3>
+          <h3 >Code format :</h3>
           <textarea v-model="body" class="body"></textarea>
   
           <br />

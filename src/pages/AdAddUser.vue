@@ -9,7 +9,7 @@
           <div class="border border-gray-300 rounded-md p-[20px] h-full">
             <h1>Add User</h1>
             <div>
-        <h3>ID : 1</h3>
+        <h2>ID : 1</h2>
         <h3>Username :</h3>
         <input type="text" v-model="username" >
     
@@ -38,8 +38,10 @@
       margin-bottom: 1vh;
     }
     h3 {
-      font-size: 1rem;
-    }
+    font-size: 1rem;
+    color: #089DAA;
+    font-weight: bold;
+  }
     input {
   width: 25%;
   border-radius: 15px;

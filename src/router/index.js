@@ -173,7 +173,26 @@ const router = createRouter({
           path: "AdminAddArticle",
           name: "AdminAddArticle",
           component: () => import('../pages/AdAddArticle.vue') 
-        }
+        },
+
+        {
+          path: "ClassList",
+          name: "ClassList",
+          component: () => import('../pages/ClassList.vue') 
+        },
+
+        {
+          path: "AdminEditClass",
+          name: "AdminEditClass",
+          component: () => import('../pages/AdEditClass.vue') 
+        },
+
+        
+        {
+          path: "AdminAddClass",
+          name: "AdminAddClass",
+          component: () => import('../pages/AdAddClass.vue') 
+        },
       ]
     }
     

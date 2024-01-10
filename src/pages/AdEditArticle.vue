@@ -37,8 +37,10 @@ h1 {
 }
 
 h3 {
-  font-size: 1rem;
-}
+    font-size: 1rem;
+    color: #089DAA;
+    font-weight: bold;
+  }
 
 input {
   width: 50%;
