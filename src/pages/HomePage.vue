@@ -81,68 +81,6 @@ export default {
       }
     },
 
-
-
-//     scrollToAdditionalBox() {
-//   console.log('scrollToAdditionalBox is called');
-
-//   // ใช้ this.$nextTick เพื่อทำให้แน่ใจว่า DOM ได้ถูกอัปเดตและพร้อมใช้งาน
-//   this.$nextTick(() => {
-//     const boxes = document.querySelectorAll('.box');
-//     const lastBox = boxes[boxes.length - 1]; // เลือกกล่องล่าสุด
-
-//     console.log('lastBox:', lastBox);
-//     console.log('isScrolledDown:', this.isScrolledDown);
-
-//     if (lastBox) {
-//       const scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
-//       const windowHeight = window.innerHeight;
-
-//       if (this.isScrolledDown) {
-//         // ถ้ามีการเลื่อนลงอยู่ในขณะนี้ ให้เลื่อนขึ้น
-//         window.scrollTo({ top: 0, behavior: 'smooth' });
-//       } else {
-//         // ถ้าไม่ได้เลื่อนลง ให้เลื่อนลง
-//         window.scrollTo({ top: scrollHeight - windowHeight, behavior: 'smooth' });
-//       }
-
-//       // สลับสถานะการเลื่อน
-//       this.isScrolledDown = !this.isScrolledDown;
-
-//       // เพิ่ม Console Log ที่คาดหวังว่าควรทำงาน
-//       setTimeout(() => {
-//         console.log('After scrolling:', window.scrollY);
-//       }, 1000); // ระยะเวลาที่ให้ตัวควบคุมรอ
-//     }
-//   });
-// },
-
-
-// scrollToAdditionalBox() {
-//   console.log('scrollToAdditionalBox is called');
-
-//   // ใช้ this.$nextTick เพื่อทำให้แน่ใจว่า DOM ได้ถูกอัปเดตและพร้อมใช้งาน
-//   this.$nextTick(() => {
-//     const container = document.querySelector('.container');
-//     const articleContainer = document.querySelector('.article-container');
-
-//     if (container && articleContainer) {
-//       const targetElement = this.isScrolledDown ? articleContainer : container;
-//       targetElement.scrollIntoView({ behavior: 'smooth' });
-
-//       // สลับสถานะการเลื่อน
-//       this.isScrolledDown = !this.isScrolledDown;
-
-//       // เพิ่ม Console Log ที่คาดหวังว่าควรทำงาน
-//       setTimeout(() => {
-//         console.log('After scrolling:', window.scrollY);
-//       }, 1000); // ระยะเวลาที่ให้ตัวควบคุมรอ
-//     }
-//   });
-// },
-
-
-
 toggleSection() {
       this.currentSection = this.currentSection === 1 ? 2 : 1;
     },
@@ -220,9 +158,11 @@ toggleSection() {
                 <p v-html="article.visibleText"></p>
                 <p v-html="article.visibleText1"></p>
             </div>
+            <Transition name="slide-fade">
             <div class="hidden-text" v-if="article.isExpanded">
                 <p v-html="article.hiddenText"></p>
             </div>
+          </Transition>
          </div>
         <div class="icon" @click="toggleArticle(article)">
       <!-- ใช้ไอคอนเปิด-ปิดกล่อง -->
@@ -254,6 +194,19 @@ toggleSection() {
   margin-top: 110px;
 }
 
+.slide-fade-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
 
 
 .scroll-button {
@@ -391,7 +344,7 @@ h{
   /* margin: 10px; */
   margin-left: auto; /* ทำให้กล่องอยู่กลางตามด้านซ้าย */
   margin-right: auto; /* ทำให้กล่องอยู่กลางตามด้านขวา */
-  border-bottom: 1.5px solid #000; /* เพิ่มเส้นกั้นด้านล่าง */
+  border-bottom: 1.5px solid #777777; 
   width: 90%; /* กำหนดความยาวของเส้นกั้น */
 }
 
@@ -454,274 +407,6 @@ h{
   margin-top: 20px;
   align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
 }
-
-
-
-
-
-/*  responsive*/
-
-
-/* @media screen and (max-width: 2560px) {
-
-
-.container{
-  margin-left: 200px;
-}
-
-
-.text{
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 100px;
-  margin-left: 170px;
-  margin-right: 80px;
-   
-}
-
-
-.scroll-button {
-background-color: #f5c722;
-color: #434343;
-padding: 10px 20px;
-margin-top: 80px;
-margin-right: -10px;
-font-size: 40px;
-border: none;
-border-radius: 15px;
-cursor: pointer;
-transition: background-color 0.1s ease;
-}
-
-.scroll-button1 {
-background-color: #f5c722;
-color: #434343;
-padding: 10px 20px;
-margin-bottom: 100px; 
-font-size: 42px;
-border: none;
-border-radius: 15px;
-cursor: pointer;
-transition: background-color 0.1s ease;
-}
-
-.text h1 {
-  font-size: 85px;
- 
-}
-
-.text h2 {
-  font-size: 45px;
- 
-}
-
-h3 {
-font-size: 55px;
-padding-bottom: 1px;
-font-weight: bold;
-color: #ffffff;
-margin-top: 80px;
-margin-left: 390px;
-
-}
-
-
-
-.article-container {
-display: flex;
-flex-direction: column;
-margin: auto;
-margin-top: 10px;
-overflow: hidden;
-transition: height 0.3s ease;
-width: 1800px;
-margin-bottom: 10px;
-border-radius: 20px;
-
-}
-
-.article-box {
-display: flex;
-margin-top: 10px;
-margin-bottom: 35px;
-width: 50px;
-overflow: hidden;
-transition: height 0.3s ease;
-margin-left: auto; 
-margin-right: auto; 
-border-bottom: 1.5px solid #000;
-width: 90%; 
-}
-
-.article-image {
-width: 70px;
-height: 70px;
-margin-top: 17px;
-margin-left: 20px;
-margin-right: 10px;
-margin-bottom: 40px;
-align-self: flex-start; 
-}
-
-
-.visible-text p {
-  font-size: 40px;
-}
-
-.visible-text p:not(:first-child) {
-  font-size: 25px;
-}
-
-
-
-.hidden-text p {
-  font-size: 25px;
-}
-
-.icon {
-  font-size: 20px;
-}
-
-
-} */
-
-
-
-
-/* @media screen and (max-width: 1891px) {
-
-
-.container{
-    margin-left: -10px;
-  }
-
-
-.text{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    margin-left: 40px;
-     
-}
-
-.text h1 {
-    font-size: 45px;
-   
-  }
-
-  .text h2 {
-    font-size:28px;
-   
-  }
-
-
-  .scroll-button {
-  background-color: #f5c722;
-  color: #434343;
-  padding: 10px 20px;
- margin-top: -30px;
- margin-right: -10px;
-  font-size: 15px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.1s ease;
-}
-
-.scroll-button1 {
-  background-color: #f5c722;
-  color: #434343;
-  padding: 10px 20px;
-  
-  margin-bottom: 100px; 
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.1s ease;
-}
-
-
-h3 {
-  font-size: 25px; 
-  padding-bottom: 1px;
-  font-weight: bold;
-  color: #ffffff;
-  margin-top: -50px;
-  margin-left: 420px;
-  
-}
-
-
-.article-container {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 10px;
-  overflow: hidden;
-  transition: height 0.3s ease;
-  width: 700px;
-  margin-bottom: 10px;
-  border-radius: 20px;
- 
-}
-
-.article-box {
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: -10px;
-  width: 50px;
-  overflow: hidden;
-  transition: height 0.3s ease;
-  margin-left: auto; 
-  margin-right: auto; 
-  border-bottom: 1.5px solid #000; 
-  width: 90%; 
-}
-
-  .article-image {
-  width: 60px;
-  height: 60px;
-  margin-top: 17px;
-  margin-left: 20px;
-  margin-right: 10px;
-  margin-bottom: 20px;
-  align-self: flex-start; 
-}
-
-
-
-  .visible-text p {
-    font-size: 16px;
-  }
-
-  .visible-text p:not(:first-child) {
-    font-size: 14px;
-  }
-
-
-  
-  .hidden-text p {
-    font-size: 14px;
-  }
-
-
-  .icon {
-    font-size: 20px;
-  }
-
-
-
-}
- */
-
-
 
 
 

@@ -1,34 +1,100 @@
 <template>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
-<div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
-  <router-link to="/Admin/AdminManageUser" class="back-link">
-          <!-- <i class="bi bi-arrow-left"></i> -->
-          <i class="fa fa-arrow-left"></i> <p>Back</p>
-        </router-link>
+  <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
+    <router-link to="/Admin/AdminManageUser" class="back-link">
+      <i class="fa fa-arrow-left"></i>
+      <p>Back</p>
+    </router-link>
 
-      <div class="border border-gray-300 rounded-md p-[20px] h-full">
-        <h1>Edit User</h1>
-        <div>
-    <h2>ID : 1</h2>
-    <h3>Username :</h3>
-    <input type="text" v-model="username" >
+    <div class="border border-gray-300 rounded-md p-[20px] h-full">
+      <h1>Edit User</h1>
 
-    <h3>Email :</h3>
-    <input type="text" v-model="email" >
+      <div>
+        <h2>ID: {{ user.id }}</h2>
+        <h3>Username:</h3>
+        <input type="text" v-model="user.username" />
 
-    <h3>Password :</h3>
-    <input type="password" v-model="password" >
+        <h3>Email:</h3>
+        <input type="text" v-model="user.email" />
 
-    <br>
+        <h3>Password:</h3>
+        <input type="password" v-model="user.password" />
 
-    <button type="submit">Submit</button>
+        <br />
 
-  </div>
-        </div>
+        <button @click="handleSubmit">Submit</button>
+      </div>
     </div>
+  </div>
 </template>
 
 <script setup>
+import axios from 'axios'
+import { ref, onMounted } from 'vue'
+import { useRoute,useRouter } from 'vue-router'
+
+const user = ref({
+  id: '',
+  username: '',
+  email: '',
+  password: ''
+})
+
+const router = useRouter()
+const route = useRoute()
+
+const fetchData = async () => {
+  try {
+    const userId = route.params.Id
+
+    if (userId) {
+      const result = await axios.get(
+        `http://localhost:5000/test-elearning-b0646/us-central1/api/user/${userId}`
+      )
+
+      if (result.data) {
+        user.value = result.data
+      }
+    } else {
+      console.error('User ID is undefined')
+    }
+  } catch (error) {
+    console.error('Error during getdata:', error)
+  }
+}
+
+const handleSubmit = () => {
+  // Handle form submission or any other logic
+  // editUser();
+  editUser()
+  console.log(user.value)
+}
+
+const editUser = async () => {
+  const userId = user.value.id
+  try {
+    const result = await axios.put(
+      `http://localhost:5000/test-elearning-b0646/us-central1/api/admin/edit/${userId}`,
+      {
+        username: user.value.username,
+        email: user.value.email,
+        password: user.value.password
+      }
+    )
+    if (result) {
+      fetchData();
+      alert("Update Successed!")
+      router.push('/Admin/AdminManageUser');
+    }
+  } catch (error) {
+    console.error('Error during getdata:', error)
+  }
+}
+
+onMounted(() => {
+  if (route.params.Id) {
+    fetchData()
+  }
+})
 </script>
 
 <style scoped>
@@ -38,10 +104,10 @@ h1 {
   margin-bottom: 1vh;
 }
 h3 {
-    font-size: 1rem;
-    color: #089DAA;
-    font-weight: bold;
-  }
+  font-size: 1rem;
+  color: #089daa;
+  font-weight: bold;
+}
 input {
   width: 25%;
   border-radius: 15px;
@@ -51,7 +117,7 @@ input {
 }
 
 button {
-  background-color: #EC4088; /* สีพื้นหลัง */
+  background-color: #ec4088; /* สีพื้นหลัง */
   color: white; /* สีตัวอักษร */
   border: none; /* ไม่มีเส้นขอบ */
   border-radius: 15px; /* มุมทรงกลม */
@@ -63,7 +129,7 @@ button {
 }
 
 button:hover {
-  background-color: #D32F6A; /* สีพื้นหลังเมื่อ hover */
+  background-color: #d32f6a; /* สีพื้นหลังเมื่อ hover */
 }
 
 .back-link {
@@ -75,12 +141,12 @@ button:hover {
 }
 
 .back-link i {
-color: #D32F6A;
+  color: #d32f6a;
   font-size: 2vh;
 }
 
 .back-link p {
-  color: #D32F6A;
+  color: #d32f6a;
   font-weight: bolder;
   margin-left: 2vh;
   font-size: 2vh;

@@ -17,12 +17,15 @@
     </ul>
     
     <!-- ตัวอย่างรายชื่อ -->
-    <ul class="grid-list">
-      <li class="grid-item col-1">1</li>
-      <li class="grid-item col-4">User01</li>
-      <li class="grid-item col-3">User01@gmail.com</li>
-      <li class="grid-item col-2">Admin</li>
-      <li class="grid-item col-3"><router-link to="/Admin/AdminEditUser"><i class="bi bi-pencil "/></router-link><i class="bi bi-trash" style="color: rgb(163, 22, 22);"/></li>
+    <ul class="grid-list" v-for="(item, index) in user" :key="index">
+      <li class="grid-item col-1">{{ index + 1 }}</li>
+      <li class="grid-item col-4">{{ item.username }}</li>
+      <li class="grid-item col-3">{{ item.email }}</li>
+      <li class="grid-item col-2">{{ item.role }}</li>
+      <li  class="grid-item col-3">
+        <router-link :to="`/Admin/AdminEditUser/${item.id}`"><i class="bi bi-pencil"></i></router-link>
+        <i class="bi bi-trash" style="color: rgb(163, 22, 22);"></i>
+      </li>
     </ul>
 
     <!-- <ul class="grid-list">
@@ -37,9 +40,28 @@
 </template>
 
 <script setup>
+import axios from "axios";
+import { ref, onMounted } from "vue";
 
+const user = ref([]);
 
+const fetchData = async () => {
+  try {
+    const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/admin');
+    if (result){
+    user.value = result.data
+    console.log("data",user.value)
+      }
+  } catch (error) {
+    console.error("Error during getdata:", error);
+  }
+};
+
+onMounted(() => {
+  fetchData();
+});
 </script>
+
 
 
 <style scoped>
@@ -75,6 +97,7 @@ h1 {
   /* background-color: #f2f2f2; */
   padding: 10px;
   text-align: center;
+  color: black;
 }
 
 .col-1 {
