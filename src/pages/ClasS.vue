@@ -3,13 +3,13 @@
     <NavBar />
     <div class="container">
       <div class="buttons">
-        <h1>บทเรียน</h1>
+        <h1>บทเรียน </h1>
 
         <div class="button" v-for="(item, index) in classAllData" :key="index + 1">
-          <button @click="scrollToAdditionalBox('HTML',item.classID)" 
+          <button @click="scrollToAdditionalBox('HTML',item.classID,item.name)" 
           class="scroll-button" 
-          :style="{ backgroundColor: currentContent === 'HTML' ? '#EE5684' : '#1F1F1F' }">
-            <img src="/images/html.png" alt="Image" class="button-image">
+          :style="{ backgroundColor: changeColor === item.name ? '#EE5684' : '#1F1F1F' }">
+            <img :src="item.img" alt="Image" class="button-image">
             <p>{{item.name}}</p>
           </button>
         </div>
@@ -52,7 +52,7 @@
         :contentData="languageData[currentContent]"
       /> -->
       <div v-for="(item, index) in unitData " :key="index">
-      <BoxArticie v-if="currentContent ===  item.name " :contentData="classData" :unitData="item.lessons"/>
+      <BoxArticie v-if="currentContent ===  item.name " :contentData="classData" :unitData="item.lessons" :ProgressIndex="ProgressIndex"/>
     </div>
       <!-- <BoxArticie v-if="currentContent === 'css'" :contentData="classData" :unitData="unitData.lessons"/>
       <BoxArticie v-if="currentContent === 'javascript'" :contentData="classData" :unitData="unitData.lessons"/> -->
@@ -63,142 +63,99 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import NavBar from '@/components/NavBar.vue'
 import BoxArticie from '@/components/BoxArticie.vue'
 import { useRoute,useRouter} from 'vue-router'
 import axios from 'axios';
 import { useAuthenStore } from '../stores/auth';
+import { ref, onMounted } from 'vue';
 
+const  classId = ref('');
+const route = useRoute();
+const authenStore = useAuthenStore();
+const currentContent = ref('HTML')
+const changeColor = ref('')
+const classData = ref({})
+const router = useRouter();
+const classAllData = ref([])
+const unitData = ref({})
+const ProgressIndex = ref('')
 
-export default {
-  mounted(){
-    if(this.route.params.classId){
-      this.classId = this.route.params.classId
+   onMounted(() => {
+    setTimeout(() => {
+    if(route.params.classId){
+      classId.value = route.params.classId
     }
-    if(this.classId){
-      this.fetchOneClass(this.classId);
-      this.fetchData()
-      this.fetchUnitData()
+    if(classId.value){
+      fetchOneClass(classId.value);
+      fetchData();
+      fetchUnitData();
     }
-  },
-  components: {
-    NavBar,
-    BoxArticie
-  },
-  data() {
-    return {
-      classId:'',
-      route:useRoute(),
-      currentContent: 'HTML', // กำหนดให้แสดงข้อมูล HTML เริ่มต้น
-      showSubContainer: false,
-      classData:{},
-      authenStore:useAuthenStore(),
-      router:useRouter(),
-      classAllData:[],
-      isLoading: false,
-      unitData:{},
-      languageData: {
-        html: {
-          title: 'HTML (Hyper Text Markup Language)',
-          description:
-            'HTML (Hyper Text Markup Language) คือภาษาที่เขียนไว้เพื่อวาง โครงสร้างของโปรแกรมทั้งหมด เรียกได้ว่าเป็นภาษาแรกเริ่มของภาษาคอม เพราะ ช่วยให้โปรแกรมเมอร์สามารถวิเคราะห์โครงสร้างโปรแกรมได้ชัดเจนขึ้น',
-          boxes: [
-            {
-              boxTitle: '1. Lesson',
-              boxText:
-                'มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์'
-            },
-            { boxTitle: 'HTML', boxText: 'This is the second box.' },
-            { boxTitle: 'HTML', boxText: 'This is the first box.' },
-            { boxTitle: 'HTML', boxText: 'This is the second box.' },
-            { boxTitle: 'HTML', boxText: 'This is the first box.' },
-            { boxTitle: 'HTML', boxText: 'This is the second box.' }
-          ]
-        },
-        css: {
-          title: 'CSS (Cascading Style Sheet)',
-          description:
-            'CSS (Cascading Style Sheet) มีไว้เพื่อกำหนดและระบุรูปแบบ หรือ Style ของเนื้อหาในเอกสาร เช่น สีของข้อความ สีพื้นหลัง ประเภทและขนาดของตัวอักษร การจัดวางข้อความ และตกแต่งส่วนต่างๆของหน้าเว็บให้มีความสวยงาม',
-          boxes: [
-            { boxTitle: 'CSS', boxText: 'This is the first box.' },
-            { boxTitle: 'CSS', boxText: 'This is the second box.' },
-            { boxTitle: 'CSS', boxText: 'This is the first box.' },
-            { boxTitle: 'CSS', boxText: 'This is the second box.' },
-            { boxTitle: 'CSS', boxText: 'This is the first box.' },
-            { boxTitle: 'CSS', boxText: 'This is the second box.' }
-          ]
-        },
-        javascript: {
-          title: 'JavaScript ',
-          description:
-            'JavaScript เป็นภาษาสคริปต์ทีมีลักษณะการเขียนแบบโพรโทไทป์ ส่วนมากใช้ในหน้าเว็บเพื่อประมวลผลข้อมูลที่ฝั่งของผู้ใช้งาน แต่ก็ยังมีใช้เพื่อเพิ่มเติมความสามารถในการเขียนสคริปต์โดยฝังอยู่ในโปรแกรมอื่น ๆ',
-          boxes: [
-            { boxTitle: 'JavaScript', boxText: 'This is the first box.' },
-            { boxTitle: 'JavaScript', boxText: 'This is the second box.' },
-            { boxTitle: 'JavaScript', boxText: 'This is the first box.' },
-            { boxTitle: 'JavaScript', boxText: 'This is the second box.' },
-            { boxTitle: 'JavaScript', boxText: 'This is the first box.' },
-            { boxTitle: 'JavaScript', boxText: 'This is the second box.' }
-          ]
-        }
+  },800);
+  })
+
+  const scrollToAdditionalBox = (contentId,id,name) =>{
+      currentContent.value = contentId
+      changeColor.value = name
+      router.push(`/class/${id}`)
+      if(router.push){
+        fetchOneClass(id)
       }
-    }
-  },
+    };
 
-  methods: {
-    scrollToAdditionalBox(contentId,id) {
-      this.currentContent = contentId
-      this.router.push(`/class/${id}`)
-      if(this.router.push){
-        this.fetchOneClass(id)
-      }
-    },
-    toggleSubContainer(contentId) {
-      this.currentContent = contentId
-      this.showSubContainer = !this.showSubContainer
-    },
-    async fetchOneClass(id){
+    const fetchOneClass = async(id) =>{
       try {
         const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/class/${id}`)
       if(result){
-        this.classData = result.data
-        console.log(this.classData)
+        classData.value = result.data
+        changeColor.value = classData.value.name
+        console.log(classData.value)
+        if(classData.value){
+          userProgress(classData.value.name)
+        }
       }
       } catch (error) {
         console.error("Error during getdata:", error);
       }
-    },
-    async fetchData() {
-      if (this.isLoading) {
-        return;
-      }
+    };
 
+    const fetchData = async() =>{
       try {
-        this.isLoading = true;
         const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/class/');
         if (result) {
-          this.classAllData = result.data;
-          console.log("classAllData", this.classAllData);
+          classAllData.value = result.data;
+          console.log("classAllData", classAllData.value);
         }
       } catch (error) {
         console.error("Error during getdata:", error);
-      } finally {
-        this.isLoading = false;
       }
-    },
-    async fetchUnitData(){
+    };
+
+    const fetchUnitData = async() => {
       try {
         const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
         if(result){
-          this.unitData = result.data
-          console.log('unitData', this.unitData)
+          unitData.value = result.data
+          console.log('unitData', unitData.value)
         }
       } catch (error) {
         console.error("Error during getdata:", error);
       }
-    }
-  }
+    };
+
+   const userProgress = (contentName) =>{
+      try {
+        const foundIndex = authenStore.auth.progress.findIndex((item) => item.name === contentName);
+          if (foundIndex !== -1) {
+              ProgressIndex.value = foundIndex;
+              console.log(ProgressIndex.value)
+          } else {
+              console.log("Not found");
+          }
+      }catch(error){
+        console.error("Error loading progress data: ", error);
+      }
 }
 </script>
 
@@ -216,6 +173,7 @@ h1 {
   width: 40px;
   height: 40px;
   margin-left: 65px;
+  object-fit: cover;
   /* background-color: aqua; */
 }
 
@@ -249,7 +207,7 @@ p {
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 150px;
 }
 
 /* หากต้องการให้เปิดมาแล้วเป็นกล่องเปล่าๆ */

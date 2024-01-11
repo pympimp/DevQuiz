@@ -11,7 +11,6 @@ export default {
     if(!localStorage.getItem(authenKey)){
       this.$router.push({ name: "LogIn" });
     };
-
     this.fetchData()
   },
   components: {
