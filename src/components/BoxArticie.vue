@@ -57,7 +57,7 @@
       <div class="inner-box" :style="{ height: subitem.isExpanded? 'auto' : '50px' }">
         <div class="box-content">
           <div class="box-header">
-            <h1>{{ (++Numaa) + '. ' + subitem.header }}</h1>
+            <h1> {{subitem.header }}</h1>
             <button @click="toggleBoxUnit(index,subindex)">
               <i class="bi" :class="{'bi-chevron-up': subitem.isExpanded , 'bi-chevron-down': !subitem.isExpanded}"></i>
             </button>
