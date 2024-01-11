@@ -22,16 +22,16 @@
       <li class="grid-item col-4">User01</li>
       <li class="grid-item col-3">User01@gmail.com</li>
       <li class="grid-item col-2">Admin</li>
-      <li class="grid-item col-3"><router-link to="/Admin/AdminEditUser"><i class="bi bi-pencil "/></router-link><i class="bi bi-trash "/></li>
+      <li class="grid-item col-3"><router-link to="/Admin/AdminEditUser"><i class="bi bi-pencil "/></router-link><i class="bi bi-trash" style="color: rgb(163, 22, 22);"/></li>
     </ul>
 
-    <ul class="grid-list">
+    <!-- <ul class="grid-list">
       <li class="grid-item col-1">2</li>
       <li class="grid-item col-4">User02</li>
       <li class="grid-item col-3">User02@gmail.com</li>
       <li class="grid-item col-2">User</li>
       <li class="grid-item col-3"><i class="bi bi-pencil "/><i class="bi bi-trash "/></li>
-    </ul>
+    </ul> -->
   </div>
 </div>
 </template>
@@ -116,6 +116,10 @@ button:hover {
 button i {
   width: fit-content;
   height: fit-content;
+}
+
+.btn{
+  margin-bottom: 0.5vh;
 }
 
 /* Customize as needed for other column sizes */

@@ -16,7 +16,7 @@
             <li class="grid-item col-3" style="display: flex; justify-self: center;"><img src="C:\Users\Pymmie\Desktop\html\TestTer\images\html.png" alt="html icon" style="width: 2vh;"></li>
             <li class="grid-item col-4">HTML (Hypertext Markup Language)</li>
             <router-link to="/Admin/AdminManageArticle">
-            <li class="grid-item col-3"><i class="bi bi-caret-right-fill"></i></li>
+            <li class="grid-item col-3"><i class="bi bi-caret-right-fill" ></i></li>
           </router-link>
           </ul>
   
@@ -24,14 +24,18 @@
             <li class="grid-item col-1">2</li>
             <li class="grid-item col-3"><img src="C:\Users\Pymmie\Desktop\html\TestTer\images\css.png" alt="css icon" style="width: 2vh;"></li>
             <li class="grid-item col-4">CSS (Cascading Style Sheets)</li>
+            <router-link to="/Admin/AdminManageArticle">
             <li class="grid-item col-3"><i class="bi bi-caret-right-fill"></i></li>
+          </router-link>
           </ul>
   
           <ul class="grid-list">
             <li class="grid-item col-1">3</li>
             <li class="grid-item col-3"><img src="C:\Users\Pymmie\Desktop\html\TestTer\images\javascript.png" alt="css icon" style="width: 2vh;"></li>
             <li class="grid-item col-4">JavaScript</li>
+            <router-link to="/Admin/AdminManageArticle">
             <li class="grid-item col-3"><i class="bi bi-caret-right-fill"></i></li>
+          </router-link>
           </ul>
   
         </div>

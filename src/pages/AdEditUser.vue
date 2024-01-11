@@ -9,7 +9,7 @@
       <div class="border border-gray-300 rounded-md p-[20px] h-full">
         <h1>Edit User</h1>
         <div>
-    <h3>ID : 1</h3>
+    <h2>ID : 1</h2>
     <h3>Username :</h3>
     <input type="text" v-model="username" >
 
@@ -38,10 +38,12 @@ h1 {
   margin-bottom: 1vh;
 }
 h3 {
-  font-size: 1rem;
-}
+    font-size: 1rem;
+    color: #089DAA;
+    font-weight: bold;
+  }
 input {
-  width: 20%;
+  width: 25%;
   border-radius: 15px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1); /* กำหนดเงา */
   border: none; /* กำหนดไม่มีเส้นขอบ */
@@ -56,7 +58,7 @@ button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงา */
   padding: 10px 20px; /* การเว้นระยะขอบของปุ่ม */
   cursor: pointer; /* เปลี่ยนรูปลูกศรเป็นหลังคา */
-  margin-left: 23vh;
+  margin-left: 31vh;
   margin-top: 1.5vh;
 }
 

@@ -1,8 +1,14 @@
 <template>
   <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
     <div class="top-sec">
+      <router-link to="/Admin/ArticleList" class="back-link">
+        <!-- <i class="bi bi-arrow-left"></i> -->
+        <i class="fa fa-arrow-left"></i>
+        <p>Back</p>
+      </router-link>
     <div class="line"><img src="C:\Users\Pymmie\Desktop\html\TestTer\images\html.png" alt="" > <h1>HTML : Hypertext Markup Language</h1></div>
-    <button class="btn"><i class="fa fa-plus"></i></button>
+    <router-link to="/Admin/AdminAddArticle">
+    <button class="btn" ><i class="fa fa-plus"></i></button></router-link>
   </div>
       <div class="border border-gray-300 rounded-md p-[20px] h-full">
 
@@ -20,15 +26,15 @@
   <li class="grid-item col-1">1</li>
   <li class="grid-item col-4">User01</li>
 
-  <li class="grid-item col-3"><router-link to="/Admin/AdminEditUser"><i class="bi bi-pencil "/></router-link><i class="bi bi-trash "/></li>
+  <li class="grid-item col-3"><router-link to="/Admin/AdminEditArticle"><i class="bi bi-pencil "/></router-link><i class="bi bi-trash" style="color: rgb(163, 22, 22);"/></li>
 </ul>
 
-<ul class="grid-list">
+<!-- <ul class="grid-list">
   <li class="grid-item col-1">2</li>
   <li class="grid-item col-4">User02</li>
 
   <li class="grid-item col-3"><i class="bi bi-pencil "/><i class="bi bi-trash "/></li>
-</ul>
+</ul> -->
 </div>
       </div>
 
@@ -112,5 +118,35 @@ button:hover {
   background-color: #D32F6A; /* สีพื้นหลังเมื่อ hover */
 }
 
+.btn {
+  margin-bottom: 0.5vh;
+}
 
+.back-link {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vh;
+}
+
+.back-link i {
+  color: #d32f6a;
+  font-size: 2vh;
+}
+
+.back-link p {
+  color: #d32f6a;
+  font-weight: bolder;
+  margin-left: 2vh;
+  font-size: 2vh;
+}
 </style>
+
+
+
+
+
+
+
+
