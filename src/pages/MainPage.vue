@@ -178,10 +178,10 @@ export default {
   border-radius: 8px;
   font-size: 18px;*/
   cursor: pointer;
-  background-color: #EC4088;
+  background-color: #F5C722;
   display: inline-block;
   padding: 10px 20px;
-  color: #fff;
+  color: #434343;
   font-size: 19px;
   text-decoration: none;
   border-radius: 25px;
@@ -191,7 +191,7 @@ export default {
 }
 
 .about button:hover{
-  background-color: #7f113f;
+  background-color: #cda000;
   transform: scale(1.1);
 }
 

@@ -1,8 +1,8 @@
 <template>
-  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="signout()" v-if='authenKey'>
+  <button class="btn duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="signout()" v-if='authenKey'>
     <p>ออกจากระบบ</p>
   </button>
-  <button class="hover:bg-white duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="login()" v-if="!authenKey">
+  <button class="btn duration-300 font-md text-white rounded py-2 px-5 custom-button" @click="login()" v-if="!authenKey">
     <p>เข้าสู่ระบบ</p>
   </button>
 </template>
@@ -18,6 +18,14 @@
 
 .custom-button p {
   font-size: 17px;
+}
+
+.btn{
+  background-color: #27D9D3;
+}
+
+.btn:hover{
+  background-color: #02BDCC;
 }
 </style>
 
