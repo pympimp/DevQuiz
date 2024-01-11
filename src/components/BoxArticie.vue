@@ -23,6 +23,7 @@
     <div class="content">
       <h1>{{ contentData.fullname }}</h1>
       <p>{{ contentData.discription }}</p>
+      <div v-if="unitData && ProgressIndex">
       <div v-for="(box, index) in unitData" :key="index" >
       <div class="inner-box" :style="{ height: box.isExpanded? 'auto' : '50px' }">
         <div class="box-content">
@@ -35,19 +36,42 @@
         </div>
       </div>
       <Transition name="slide-fade">
-      <div class="card-container" v-if="box.isExpanded">
+      <div class="card-container" v-if="box.isExpanded ">
       <div v-for="(subitem, subindex) in box.units" :key="subindex">
-      <div @click="console.log('click')" class="card-unit" :style="{backgroundColor:authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(237, 237, 237, 1)' : 'rgba(209, 209, 209, 1)'}" :class="{'not-clickable' : !authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]}">
+      <div  @click="console.log(subitem.unitId)" class="card-unit" :style="{backgroundColor:authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(237, 237, 237, 1)' : 'rgba(209, 209, 209, 0.7)'}" :class="{'not-clickable' : authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] == false}">
             <div style="align-self: center;">{{ subitem.nameUnit }}</div>
-            <div class="icon-card" :style="{backgroundColor: authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(151, 221, 118, 1)' : 'rgba(223, 115, 115, 1)'}">
+            <div class="icon-card" :style="{backgroundColor: authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(151, 221, 118, 1)' : 'rgba(223, 115, 115, 0.7)'}">
               <FontAwesomeIcon icon="fa-solid fa-check" v-if="authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] == true"/>
-            <FontAwesomeIcon icon="fa-solid fa-xmark" v-else></FontAwesomeIcon>
+              <FontAwesomeIcon icon="fa-solid fa-xmark" v-else></FontAwesomeIcon>
           </div>
           </div>
         </div>
       </div>
     </Transition>
     </div>
+  </div>
+
+  <div v-else>
+      <div v-for="(box, index) in unitData" :key="index" >
+        <div v-for="(subitem, subindex) in box.units" :key="subindex">
+      <div class="inner-box" :style="{ height: subitem.isExpanded? 'auto' : '50px' }">
+        <div class="box-content">
+          <div class="box-header">
+            <h1>{{ (++Numaa) + '. ' + subitem.header }}</h1>
+            <button @click="toggleBoxUnit(index,subindex)">
+              <i class="bi" :class="{'bi-chevron-up': subitem.isExpanded , 'bi-chevron-down': !subitem.isExpanded}"></i>
+            </button>
+          </div>
+          <Transition name="slide-fade">
+            <div v-if="subitem.isExpanded" class="Description">
+            <div>{{ subitem.discription }}</div>
+          </div>
+        </Transition>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
     </div>
   </div>
 </template>
@@ -82,6 +106,7 @@ export default {
   data(){
     return{
       authenStore:useAuthenStore(),
+      Numaa:0,
     }
   },
   setup(props) {
@@ -108,6 +133,13 @@ export default {
         this.unitData1[index].isExpanded = false
       }
     
+    },
+    toggleBoxUnit(index,subindex){
+      if(this.unitData1[index].units[subindex].isExpanded == false){
+        this.unitData1[index].units[subindex].isExpanded = true
+      }else{
+        this.unitData1[index].units[subindex].isExpanded = false
+      }
     },
     async check(coures,lesson,unit){
   try {
@@ -136,6 +168,11 @@ export default {
   flex-direction: column;
   width: auto;
   /* background-color: #bd6a6a; */
+}
+
+.Description{
+  margin-left: 26px;
+  margin-top: 5px;
 }
 
 .card-container{

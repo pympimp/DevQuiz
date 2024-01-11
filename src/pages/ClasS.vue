@@ -6,44 +6,13 @@
         <h1>บทเรียน </h1>
 
         <div class="button" v-for="(item, index) in classAllData" :key="index + 1">
-          <button @click="scrollToAdditionalBox('HTML',item.classID,item.name)" 
+          <button @click="scrollToAdditionalBox(item.classID,item.name)" 
           class="scroll-button" 
           :style="{ backgroundColor: changeColor === item.name ? '#EE5684' : '#1F1F1F' }">
             <img :src="item.img" alt="Image" class="button-image">
             <p>{{item.name}}</p>
           </button>
         </div>
-
-        <!-- <div class="button">
-          <button @click="scrollToAdditionalBox('html')" 
-          class="scroll-button" 
-          :style="{ backgroundColor: currentContent === 'html' ? '#EE5684' : '#1F1F1F' }">
-            <img src="/images/html.png" alt="Image" class="button-image">
-            <p>HTML</p>
-          </button>
-        </div> -->
-
-        <!-- <div class="button">
-          <button
-            @click="scrollToAdditionalBox('css')"
-            class="scroll-button"
-            :style="{ backgroundColor: currentContent === 'css' ? '#EE5684' : '#1F1F1F' }"
-          >
-            <img src="/images/css.png" alt="Image" class="button-image" />
-            <p>CSS</p>
-          </button>
-        </div>
-
-        <div class="button">
-          <button
-            @click="scrollToAdditionalBox('javascript')"
-            class="scroll-button"
-            :style="{ backgroundColor: currentContent === 'javascript' ? '#EE5684' : '#1F1F1F' }"
-          >
-            <img src="/images/javascript.png" alt="Image" class="button-image" />
-            <p>JavaScript</p>
-          </button>
-        </div> -->
       </div>
 
       <!-- ตรวจสอบว่ามีข้อมูลใน languageData หรือไม่ และแสดงข้อมูล -->
@@ -51,9 +20,8 @@
         v-if="currentContent && languageData[currentContent]"
         :contentData="languageData[currentContent]"
       /> -->
-      <div v-for="(item, index) in unitData " :key="index">
-      <BoxArticie v-if="currentContent ===  item.name " :contentData="classData" :unitData="item.lessons" :ProgressIndex="ProgressIndex"/>
-    </div>
+      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData.lessons" :ProgressIndex="ProgressIndex"/>
+
       <!-- <BoxArticie v-if="currentContent === 'css'" :contentData="classData" :unitData="unitData.lessons"/>
       <BoxArticie v-if="currentContent === 'javascript'" :contentData="classData" :unitData="unitData.lessons"/> -->
       <!-- <div v-else class="container-no-data">
@@ -74,29 +42,28 @@ import { ref, onMounted } from 'vue';
 const  classId = ref('');
 const route = useRoute();
 const authenStore = useAuthenStore();
-const currentContent = ref('HTML')
+const currentContent = ref('')
 const changeColor = ref('')
 const classData = ref({})
 const router = useRouter();
 const classAllData = ref([])
 const unitData = ref({})
-const ProgressIndex = ref('')
+const ProgressIndex = ref()
 
    onMounted(() => {
     setTimeout(() => {
     if(route.params.classId){
       classId.value = route.params.classId
+      fetchData();
     }
     if(classId.value){
       fetchOneClass(classId.value);
-      fetchData();
-      fetchUnitData();
     }
   },800);
   })
 
-  const scrollToAdditionalBox = (contentId,id,name) =>{
-      currentContent.value = contentId
+  const scrollToAdditionalBox = (id,name) =>{
+      currentContent.value = name
       changeColor.value = name
       router.push(`/class/${id}`)
       if(router.push){
@@ -107,13 +74,18 @@ const ProgressIndex = ref('')
     const fetchOneClass = async(id) =>{
       try {
         const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/class/${id}`)
-      if(result){
-        classData.value = result.data
-        changeColor.value = classData.value.name
-        console.log(classData.value)
-        if(classData.value){
-          userProgress(classData.value.name)
-        }
+          if(result){
+            classData.value = result.data
+            changeColor.value = classData.value.name
+            console.log(classData.value)
+              if(classData.value){
+                if(!authenStore.auth.progress){
+                  window.location.reload()
+                }else{
+                  userProgress(classData.value.name)
+                  fetchUnitData(classData.value.name);
+                }
+              }
       }
       } catch (error) {
         console.error("Error during getdata:", error);
@@ -132,12 +104,16 @@ const ProgressIndex = ref('')
       }
     };
 
-    const fetchUnitData = async() => {
+    const fetchUnitData = async(name) => {
       try {
         const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
         if(result){
-          unitData.value = result.data
+          const Index = result.data.findIndex((item) => item.name === name)
+          if(Index !== -1){
+            unitData.value = result.data[Index]
+            currentContent.value = unitData.value.name
           console.log('unitData', unitData.value)
+          }
         }
       } catch (error) {
         console.error("Error during getdata:", error);
@@ -145,8 +121,9 @@ const ProgressIndex = ref('')
     };
 
    const userProgress = (contentName) =>{
+    const userIndex = authenStore.auth.progress
       try {
-        const foundIndex = authenStore.auth.progress.findIndex((item) => item.name === contentName);
+        const foundIndex = userIndex.findIndex((item) => item.name === contentName);
           if (foundIndex !== -1) {
               ProgressIndex.value = foundIndex;
               console.log(ProgressIndex.value)

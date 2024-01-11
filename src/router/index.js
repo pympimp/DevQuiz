@@ -35,17 +35,17 @@ const router = createRouter({
       component: () => import('../pages/RegisteR.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
     },
 
-    {
-      path: '/Articie',
-      name: 'Articie',
-      component: () => import('../pages/ArticIE.vue')
-    },
+    // {
+    //   path: '/Articie',
+    //   name: 'Articie',
+    //   component: () => import('../pages/ArticIE.vue')
+    // },
 
-    {
-      path: '/Class',
-      name: 'Class',
-      component: () => import('../pages/ClasS.vue') 
-    },
+    // {
+    //   path: '/Class',
+    //   name: 'Class',
+    //   component: () => import('../pages/ClasS.vue') 
+    // },
 
 
     {
@@ -90,7 +90,7 @@ const router = createRouter({
     },
   
     {
-      path: '/Articie',
+      path: '/Articie/:ArticieId',
       name: 'Articie',
       component: () => import('../pages/ArticIE.vue')
     },
