@@ -23,25 +23,55 @@
     <div class="content">
       <h1>{{ contentData.fullname }}</h1>
       <p>{{ contentData.discription }}</p>
-      <div  v-for="(box, index) in unitData" :key="index" >
-      <div class="inner-box" :style="{ height: isExpanded ? 'auto' : '50px' }">
+      <div v-if="unitData && ProgressIndex">
+      <div v-for="(box, index) in unitData" :key="index" >
+      <div class="inner-box" :style="{ height: box.isExpanded? 'auto' : '50px' }">
         <div class="box-content">
           <div class="box-header">
             <h1>{{ box.nameLesson }}</h1>
             <button @click="toggleBox(index)">
-              <i class="bi" :class="{'bi-chevron-up': isExpanded == true, 'bi-chevron-down': isExpanded == false}"></i>
+              <i class="bi" :class="{'bi-chevron-up': box.isExpanded , 'bi-chevron-down': !box.isExpanded}"></i>
             </button>
           </div>
         </div>
       </div>
+      <Transition name="slide-fade">
+      <div class="card-container" v-if="box.isExpanded ">
       <div v-for="(subitem, subindex) in box.units" :key="subindex">
-      <div v-if="isExpanded == true" class="card-unit">
-            <div>
-            <h1 @click="check(contentData.name,box.nameLesson,subitem.nameUnit)" style="cursor: pointer;">{{ subitem.nameUnit }}</h1>
+      <div  @click="console.log(subitem.unitId)" class="card-unit" :style="{backgroundColor:authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(237, 237, 237, 1)' : 'rgba(209, 209, 209, 0.7)'}" :class="{'not-clickable' : authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] == false}">
+            <div style="align-self: center;">{{ subitem.nameUnit }}</div>
+            <div class="icon-card" :style="{backgroundColor: authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(151, 221, 118, 1)' : 'rgba(223, 115, 115, 0.7)'}">
+              <FontAwesomeIcon icon="fa-solid fa-check" v-if="authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] == true"/>
+              <FontAwesomeIcon icon="fa-solid fa-xmark" v-else></FontAwesomeIcon>
           </div>
           </div>
         </div>
+      </div>
+    </Transition>
     </div>
+  </div>
+
+  <div v-else>
+      <div v-for="(box, index) in unitData" :key="index" >
+        <div v-for="(subitem, subindex) in box.units" :key="subindex">
+      <div class="inner-box" :style="{ height: subitem.isExpanded? 'auto' : '50px' }">
+        <div class="box-content">
+          <div class="box-header">
+            <h1>{{ (++Numaa) + '. ' + subitem.header }}</h1>
+            <button @click="toggleBoxUnit(index,subindex)">
+              <i class="bi" :class="{'bi-chevron-up': subitem.isExpanded , 'bi-chevron-down': !subitem.isExpanded}"></i>
+            </button>
+          </div>
+          <Transition name="slide-fade">
+            <div v-if="subitem.isExpanded" class="Description">
+            <div>{{ subitem.discription }}</div>
+          </div>
+        </Transition>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
     </div>
   </div>
 </template>
@@ -53,8 +83,13 @@
 <script>
 import { reactive } from 'vue';
 import { useAuthenStore } from '../stores/auth';
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
+  components:{
+    FontAwesomeIcon
+  },
   props: {
     contentData: {
       type: Object,
@@ -63,12 +98,15 @@ export default {
     unitData:{
       type: Object,
       default:()=>({})
+    },
+    ProgressIndex:{
+      type: Number,
     }
   },
   data(){
     return{
-      isExpanded:false,
       authenStore:useAuthenStore(),
+      Numaa:0,
     }
   },
   setup(props) {
@@ -88,16 +126,36 @@ export default {
   methods:{
     toggleBox(index) {
       console.log('Toggle Box Clicked', index);
-      if(this.isExpanded == false){
-        this.isExpanded = true
+      if(this.unitData1[index].isExpanded == false){
+        this.unitData1[index].isExpanded = true
+        console.log(this.ProgressIndex)
       }else{
-        this.isExpanded = false
+        this.unitData1[index].isExpanded = false
       }
     
     },
-    check(coures,lesson,unit){
-      console.log(this.authenStore.auth)
+    toggleBoxUnit(index,subindex){
+      if(this.unitData1[index].units[subindex].isExpanded == false){
+        this.unitData1[index].units[subindex].isExpanded = true
+      }else{
+        this.unitData1[index].units[subindex].isExpanded = false
+      }
+    },
+    async check(coures,lesson,unit){
+  try {
+      const result = await axios.put(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/Test/${this.authenStore.auth.id}/${coures}`, {
+      [lesson]: {
+        [unit]: true
+      }
+    });
+
+    if (result) {
+      console.log("Update:", result.data.message);
     }
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+    },
   }
 };
 
@@ -110,10 +168,21 @@ export default {
   flex-direction: column;
   width: auto;
   /* background-color: #bd6a6a; */
-  margin-left: 250px;
 }
 
+.Description{
+  margin-left: 26px;
+  margin-top: 5px;
+}
 
+.card-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 80%;
+  margin-left: 4%;
+  
+}
 
 .inner-box {
   background-color: #f5f5f5;
@@ -146,6 +215,17 @@ p {
   margin-top: 50px;
   /* background-color: #6b0000; */
   width: 900px;
+}
+
+.icon-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  width: 40px; /* ปรับขนาดตามที่ต้องการ */
+  height: 40px; /* ปรับขนาดตามที่ต้องการ */
+  border-radius: 50%; /* ทำให้เป็นวงกลม */
+  box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25); /* inner shadow */
 }
 
 .box-content {
@@ -199,6 +279,41 @@ p {
   align-items: center;
 }
 
+.card-unit{
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease
+}
+
+.not-clickable {
+  pointer-events: none;
+}
+
+.card-unit:hover {
+  background-color: white;
+  transform: scale(0.98);
+}
+
+.slide-fade-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
 
 
 
@@ -243,6 +358,8 @@ p {
   /* background-color: #bd6a6a; */
   margin-left: 20px;
 }
+
+
 
 .content {
   display: flex;
@@ -421,17 +538,6 @@ p {
   justify-content: space-between;
   align-items: center;
 } 
-
-.card-unit{
-  background-color: red;
-  width: 1000px;
-  height: 1000px;
-}
-
-.card-unit:hover{
-color: red;
-cursor: pointer;
-}
 
 }
 

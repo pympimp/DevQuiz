@@ -2,6 +2,10 @@
 import NavBar from '@/components/NavBar.vue'
 import BoxArticie from '@/components/BoxArticie.vue'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import { useRoute,useRouter} from 'vue-router'
+import axios from 'axios';
+import { useAuthenStore } from '../stores/auth';
+import { ref } from 'vue';
 
 export default {
   components: {
@@ -10,60 +14,83 @@ export default {
   },
   data() {
     return {
-      currentContent: 'html', // กำหนดให้แสดงข้อมูล HTML เริ่มต้น
-      languageData: {
-        html: {
-          title: 'HTML (Hyper Text Markup Language)',
-          description:
-            'HTML (Hyper Text Markup Language) คือภาษาที่เขียนไว้เพื่อวาง โครงสร้างของโปรแกรมทั้งหมด เรียกได้ว่าเป็นภาษาแรกเริ่มของภาษาคอม เพราะ ช่วยให้โปรแกรมเมอร์สามารถวิเคราะห์โครงสร้างโปรแกรมได้ชัดเจนขึ้น',
-          boxes: [
-            {
-              boxTitle: '1. <Head> tag ',
-              boxText:
-                'มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์   มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์   มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์   มีไว้เพื่อเป็นส่วนหัวของโครงสร้าง นิยมใส่ <title> เพื่อบ่งบอกเป็น Title หลักของเว็บไซต์   ',
-              isExpanded: false
-            },
-            { boxTitle: 'HTML', boxText: 'This is the second box.', isExpanded: false },
-            { boxTitle: 'HTML', boxText: 'This is the first box.', isExpanded: false },
-            { boxTitle: 'HTML', boxText: 'This is the second box.', isExpanded: false },
-            { boxTitle: 'HTML', boxText: 'This is the first box.', isExpanded: false },
-          ]
-        },
-
-        css: {
-          title: 'CSS (Cascading Style Sheet)',
-          description:
-            'CSS (Cascading Style Sheet) มีไว้เพื่อกำหนดและระบุรูปแบบ หรือ Style ของเนื้อหาในเอกสาร เช่น สีของข้อความ สีพื้นหลัง ประเภทและขนาดของตัวอักษร การจัดวางข้อความ และตกแต่งส่วนต่างๆของหน้าเว็บให้มีความสวยงาม',
-          boxes: [
-            { boxTitle: 'CSS', boxText: 'This is the first box.', isExpanded: false },
-            { boxTitle: 'CSS', boxText: 'This is the second box.', isExpanded: false },
-            { boxTitle: 'CSS', boxText: 'This is the first box.', isExpanded: false },
-            { boxTitle: 'CSS', boxText: 'This is the second box.', isExpanded: false },
-            { boxTitle: 'CSS', boxText: 'This is the first box.', isExpanded: false },
-  
-          ]
-        },
-
-        javascript: {
-          title: 'JavaScript ',
-          description:
-            'JavaScript เป็นภาษาสคริปต์ทีมีลักษณะการเขียนแบบโพรโทไทป์ ส่วนมากใช้ในหน้าเว็บเพื่อประมวลผลข้อมูลที่ฝั่งของผู้ใช้งาน แต่ก็ยังมีใช้เพื่อเพิ่มเติมความสามารถในการเขียนสคริปต์โดยฝังอยู่ในโปรแกรมอื่น ๆ',
-          boxes: [
-            { boxTitle: 'JavaScript', boxText: 'This is the first box.', isExpanded: false },
-            { boxTitle: 'JavaScript', boxText: 'This is the second box.', isExpanded: false },
-            { boxTitle: 'JavaScript', boxText: 'This is the first box.', isExpanded: false },
-            { boxTitle: 'JavaScript', boxText: 'This is the second box.', isExpanded: false },
-            { boxTitle: 'JavaScript', boxText: 'This is the first box.', isExpanded: false },
-          ]
-        }
-      }
+      currentContent: 'HTML', // กำหนดให้แสดงข้อมูล HTML เริ่มต้น
+      authenStore:useAuthenStore(),
+      classAllData:ref(),
+      changeColor:ref(''),
+      route:useRoute(),
+      classId:ref(''),
+      classData:ref({}),
+      unitData:ref({}),
+      router:useRouter(),
     }
   },
 
-  methods: {
-    scrollToAdditionalBox(contentId) {
-      this.currentContent = contentId
+  mounted(){
+    setTimeout(() => {
+    if(this.route.params.ArticieId){
+      this.classId = this.route.params.ArticieId
+      this.fetchData();
     }
+    if(this.classId){
+      this.fetchOneClass(this.classId);
+      // fetchUnitData();
+    }
+  },300);
+  },
+  methods: {
+    scrollToAdditionalBox(contentId,id,name) {
+      this.currentContent = contentId
+      this.changeColor = name
+      this.router.push(`/Articie/${id}`)
+      if(this.router.push){
+        this.fetchOneClass(id)
+      }
+    },
+
+    async fetchData(){
+    try {
+        const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/class/');
+        if (result) {
+          this.classAllData = result.data;
+          console.log("classAllData", this.classAllData);
+        }
+      } catch (error) {
+        console.error("Error during getdata:", error);
+      }
+  },
+
+  async fetchOneClass(id) {
+      try {
+        const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/class/${id}`)
+          if(result){
+            this.classData = result.data
+            this.changeColor = this.classData.name
+            console.log("sadasd",this.classData)
+            if(this.classData){
+              this.fetchUnitData(this.classData.name);
+            }
+      }
+      } catch (error) {
+        console.error("Error during getdata:", error);
+      }
+    },
+
+    async fetchUnitData (name) {
+      try {
+        const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
+        if(result){
+          const Index = result.data.findIndex((item) => item.name === name)
+          if(Index !== -1){
+            this.unitData = result.data[Index]
+            this.currentContent = this.unitData.name
+          console.log('unitData', this.unitData)
+          }
+        }
+      } catch (error) {
+        console.error("Error during getdata:", error);
+      }
+    },
   }
 }
 </script>
@@ -75,44 +102,21 @@ export default {
       <div class="buttons">
         <h1>บทความทั้งหมด</h1>
 
-        <div class="button">
-          <button
-            @click="scrollToAdditionalBox('html')"
-            class="scroll-button"
-            :style="{ backgroundColor: currentContent === 'html' ? '#EE5684' : '#1F1F1F' }"
-          >
-            <img src="/images/html.png" alt="Image" class="button-image" />
-            <p>HTML</p>
-          </button>
-        </div>
-
-        <div class="button">
-          <button
-            @click="scrollToAdditionalBox('css')"
-            class="scroll-button"
-            :style="{ backgroundColor: currentContent === 'css' ? '#EE5684' : '#1F1F1F' }"
-          >
-            <img src="/images/css.png" alt="Image" class="button-image" />
-            <p>CSS</p>
-          </button>
-        </div>
-
-        <div class="button">
-          <button
-            @click="scrollToAdditionalBox('javascript')"
-            class="scroll-button"
-            :style="{ backgroundColor: currentContent === 'javascript' ? '#EE5684' : '#1F1F1F' }"
-          >
-            <img src="/images/javascript.png" alt="Image" class="button-image" />
-            <p>JavaScript</p>
+        <div class="button" v-for="(item, index) in classAllData" :key="index + 1">
+          <button @click="scrollToAdditionalBox('HTML',item.classID,item.name)" 
+          class="scroll-button" 
+          :style="{ backgroundColor: changeColor === item.name ? '#EE5684' : '#1F1F1F' }">
+            <img :src="item.img" alt="Image" class="button-image">
+            <p>{{item.name}}</p>
           </button>
         </div>
       </div>
 
       <!-- <BoxArticie v-if="currentContent && languageData[currentContent]" :contentData="languageData[currentContent]" /> -->
-      <BoxArticie v-if="currentContent === 'html'" :contentData="languageData.html" />
+      <!-- <BoxArticie v-if="currentContent === 'html'" :contentData="languageData.html" />
       <BoxArticie v-if="currentContent === 'css'" :contentData="languageData.css" />
-      <BoxArticie v-if="currentContent === 'javascript'" :contentData="languageData.javascript" />
+      <BoxArticie v-if="currentContent === 'javascript'" :contentData="languageData.javascript" /> -->
+      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData.lessons"/>
       <!-- <div v-else class="container-no-data">
         <h1>No Data</h1>
       </div> -->
