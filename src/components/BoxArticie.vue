@@ -23,7 +23,7 @@
     <div class="content">
       <h1>{{ contentData.fullname }}</h1>
       <p>{{ contentData.discription }}</p>
-      <div v-if="unitData && ProgressIndex">
+      <div v-if="unitData && ProgressIndex != null">
       <div v-for="(box, index) in unitData" :key="index" >
       <div class="inner-box" :style="{ height: box.isExpanded? 'auto' : '50px' }">
         <div class="box-content">
