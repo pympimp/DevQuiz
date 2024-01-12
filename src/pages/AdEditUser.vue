@@ -30,7 +30,10 @@
 <script setup>
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
-import { useRoute,useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
+
 
 const user = ref({
   id: '',
@@ -82,11 +85,20 @@ const editUser = async () => {
     )
     if (result) {
       fetchData();
-      alert("Update Successed!")
+      Swal.fire({
+        title: "แก้ไขข้อมูลผู้ใช้งานสำเร็จ!",
+        // text: "You clicked the button!",
+        icon: "success",
+
+      });
       router.push('/Admin/AdminManageUser');
     }
   } catch (error) {
-    console.error('Error during getdata:', error)
+    Swal.fire({
+      icon: "error",
+      title: "เกิดข้อผิดพลาด",
+      text: "โปรดลองใหม่อีกครั้ง",
+    });
   }
 }
 
@@ -103,33 +115,46 @@ h1 {
   font-weight: bold;
   margin-bottom: 1vh;
 }
+
 h3 {
   font-size: 1rem;
   color: #089daa;
   font-weight: bold;
 }
+
 input {
   width: 25%;
   border-radius: 15px;
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1); /* กำหนดเงา */
-  border: none; /* กำหนดไม่มีเส้นขอบ */
-  margin: 5px; /* กำหนดการเว้นระยะขอบของ input */
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+  /* กำหนดเงา */
+  border: none;
+  /* กำหนดไม่มีเส้นขอบ */
+  margin: 5px;
+  /* กำหนดการเว้นระยะขอบของ input */
 }
 
 button {
-  background-color: #ec4088; /* สีพื้นหลัง */
-  color: white; /* สีตัวอักษร */
-  border: none; /* ไม่มีเส้นขอบ */
-  border-radius: 15px; /* มุมทรงกลม */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงา */
-  padding: 10px 20px; /* การเว้นระยะขอบของปุ่ม */
-  cursor: pointer; /* เปลี่ยนรูปลูกศรเป็นหลังคา */
+  background-color: #ec4088;
+  /* สีพื้นหลัง */
+  color: white;
+  /* สีตัวอักษร */
+  border: none;
+  /* ไม่มีเส้นขอบ */
+  border-radius: 15px;
+  /* มุมทรงกลม */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* เงา */
+  padding: 10px 20px;
+  /* การเว้นระยะขอบของปุ่ม */
+  cursor: pointer;
+  /* เปลี่ยนรูปลูกศรเป็นหลังคา */
   margin-left: 31vh;
   margin-top: 1.5vh;
 }
 
 button:hover {
-  background-color: #d32f6a; /* สีพื้นหลังเมื่อ hover */
+  background-color: #d32f6a;
+  /* สีพื้นหลังเมื่อ hover */
 }
 
 .back-link {

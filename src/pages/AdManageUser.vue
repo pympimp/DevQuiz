@@ -25,7 +25,7 @@
         <li class="grid-item col-2">{{ item.role }}</li>
         <li class="grid-item col-3">
           <router-link :to="`/Admin/AdminEditUser/${item.id}`"><i class="bi bi-pencil"></i></router-link>
-          <i class="bi bi-trash" style="color: rgb(163, 22, 22); cursor: pointer;" @click="deleteUser(item.id)"></i>
+          <i class="bi bi-trash" style="color: rgb(163, 22, 22); cursor: pointer;" @click="beforeDelete(item.id)"></i>
         </li>
       </ul>
 
@@ -36,6 +36,8 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 const user = ref([]);
 
@@ -50,15 +52,34 @@ const fetchData = async () => {
     console.error("Error during getdata:", error);
   }
 };
+const beforeDelete =(id)=>{
+  Swal.fire({
+        title: "ยืนยันลบข้อมูลผู้ใช้?",
+        text: "ไม่สามารถย้อนกลับการกระทำนี้ได้",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "ลบ",
+        cancelButtonText: "ยกเลิก"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteUser(id)
+          if(deleteUser()){
+            Swal.fire({
+            title: "ลบข้อมูลผู้ใช้สำเร็จ",
+            icon: "success"
+          });
+          }
+        }
+      });
+}
 
 const deleteUser = async (id) => {
   try {
     const result = await axios.delete(`http://localhost:5000/test-elearning-b0646/us-central1/api/admin/delete/${id}`);
-
-    if (result) {
-      window.confirm("Are you sure you want to delete this user?")
-      alert('Delete successed!')
-      fetchData();
+    if(result){
+      fetchData();  
     }
   }
   catch (error) {
@@ -163,4 +184,5 @@ button i {
   margin-bottom: 0.5vh;
 }
 
-/* Customize as needed for other column sizes */</style>
+/* Customize as needed for other column sizes */
+</style>

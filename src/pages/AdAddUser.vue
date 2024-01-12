@@ -29,6 +29,8 @@
 import axios from "axios";
 import { ref, reactive } from "vue";
 import { useRoute,useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 const user = ref([]);
 
@@ -51,11 +53,20 @@ const submitForm = async () => {
       formData.value.username = '';
       formData.value.email = '';
       formData.value.password = '';
-      alert('Add user successed!');
+      Swal.fire({
+        title: "เพิ่มผู้ใช้สำเร็จ!",
+        // text: "You clicked the button!",
+        icon: "success",
+
+      });
       router.push('/Admin/AdminManageUser');
     }
   } catch (error) {
-    console.error("Error during form submission:", error);
+    Swal.fire({
+      icon: "error",
+      title: "เกิดข้อผิดพลาด",
+      text: "โปรดลองใหม่อีกครั้ง",
+    });
   }
 };
 </script>
