@@ -6,7 +6,7 @@
         <i class="fa fa-arrow-left"></i>
         <p>Back</p>
       </router-link>
-    <div class="line"><img src="C:\Users\Pymmie\Desktop\html\TestTer\images\html.png" alt="" > <h1>HTML : Hypertext Markup Language</h1></div>
+    <div class="line"><img src="\images\html.png" alt="" > <h1>HTML : Hypertext Markup Language</h1></div>
     <router-link to="/Admin/AdminAddArticle">
     <button class="btn" ><i class="fa fa-plus"></i></button></router-link>
   </div>

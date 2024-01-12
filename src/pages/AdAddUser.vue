@@ -1,36 +1,65 @@
 <template>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
-    <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
-      <router-link to="/Admin/AdminManageUser" class="back-link">
-              <!-- <i class="bi bi-arrow-left"></i> -->
-              <i class="fa fa-arrow-left"></i> <p>Back</p>
-            </router-link>
-    
-          <div class="border border-gray-300 rounded-md p-[20px] h-full">
-            <h1>Add User</h1>
-            <div>
-        <h2>ID : 1</h2>
+  <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
+    <router-link to="/Admin/AdminManageUser" class="back-link">
+      <i class="fa fa-arrow-left"></i> <p>Back</p>
+    </router-link>
+
+    <div class="border border-gray-300 rounded-md p-[20px] h-full">
+      <h1>Add User</h1>
+      <div>
+        <h3>ID: </h3>
         <h3>Username :</h3>
-        <input type="text" v-model="username" >
-    
+        <input type="text" v-model="formData.username">
+
         <h3>Email :</h3>
-        <input type="text" v-model="email" >
-    
+        <input type="text" v-model="formData.email">
+
         <h3>Password :</h3>
-        <input type="password" v-model="password" >
-    
+        <input type="password" v-model="formData.password">
+
         <br>
-    
-        <button type="submit">Submit</button>
-    
+
+        <button @click="submitForm">Submit</button>
       </div>
-            </div>
-        </div>
-    </template>
-    
-    <script setup>
-    </script>
-    
+    </div>
+  </div>
+</template>
+
+<script setup>
+import axios from "axios";
+import { ref, reactive } from "vue";
+import { useRoute,useRouter } from 'vue-router'
+
+const user = ref([]);
+
+
+const router = useRouter()
+const route = useRoute()
+
+const formData = ref({
+  username: '',
+  email: '',
+  password: '',
+  role: 'user'
+});
+
+const submitForm = async () => {
+  try {
+    const result = await axios.post('http://localhost:5000/test-elearning-b0646/us-central1/api/admin/createUser', formData.value);
+    if (result) {
+      // If successful, update the user list and clear the form
+      formData.value.username = '';
+      formData.value.email = '';
+      formData.value.password = '';
+      alert('Add user successed!');
+      router.push('/Admin/AdminManageUser');
+    }
+  } catch (error) {
+    console.error("Error during form submission:", error);
+  }
+};
+</script>
+
     <style scoped>
     h1 {
       font-size: 1.5rem;
