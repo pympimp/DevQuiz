@@ -7,7 +7,7 @@
         <p>Back</p>
       </router-link>
       <div class="line">
-        <img src="C:\Users\Pymmie\Desktop\html\TestTer\images\html.png" alt="" />
+        <img src="\images\html.png" alt="" />
         <h1>HTML : Hypertext Markup Language</h1>
       </div>
       <router-link to="/Admin/AdminAddClass">

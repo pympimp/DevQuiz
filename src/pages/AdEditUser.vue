@@ -1,34 +1,112 @@
 <template>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
-<div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
-  <router-link to="/Admin/AdminManageUser" class="back-link">
-          <!-- <i class="bi bi-arrow-left"></i> -->
-          <i class="fa fa-arrow-left"></i> <p>Back</p>
-        </router-link>
+  <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
+    <router-link to="/Admin/AdminManageUser" class="back-link">
+      <i class="fa fa-arrow-left"></i>
+      <p>Back</p>
+    </router-link>
 
-      <div class="border border-gray-300 rounded-md p-[20px] h-full">
-        <h1>Edit User</h1>
-        <div>
-    <h2>ID : 1</h2>
-    <h3>Username :</h3>
-    <input type="text" v-model="username" >
+    <div class="border border-gray-300 rounded-md p-[20px] h-full">
+      <h1>Edit User</h1>
 
-    <h3>Email :</h3>
-    <input type="text" v-model="email" >
+      <div>
+        <h2>ID: {{ user.id }}</h2>
+        <h3>Username:</h3>
+        <input type="text" v-model="user.username" />
 
-    <h3>Password :</h3>
-    <input type="password" v-model="password" >
+        <h3>Email:</h3>
+        <input type="text" v-model="user.email" />
 
-    <br>
+        <h3>Password:</h3>
+        <input type="password" v-model="user.password" />
 
-    <button type="submit">Submit</button>
+        <br />
 
-  </div>
-        </div>
+        <button @click="handleSubmit">Submit</button>
+      </div>
     </div>
+  </div>
 </template>
 
 <script setup>
+import axios from 'axios'
+import { ref, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
+
+
+const user = ref({
+  id: '',
+  username: '',
+  email: '',
+  password: ''
+})
+
+const router = useRouter()
+const route = useRoute()
+
+const fetchData = async () => {
+  try {
+    const userId = route.params.Id
+
+    if (userId) {
+      const result = await axios.get(
+        `http://localhost:5000/test-elearning-b0646/us-central1/api/user/${userId}`
+      )
+
+      if (result.data) {
+        user.value = result.data
+      }
+    } else {
+      console.error('User ID is undefined')
+    }
+  } catch (error) {
+    console.error('Error during getdata:', error)
+  }
+}
+
+const handleSubmit = () => {
+  // Handle form submission or any other logic
+  // editUser();
+  editUser()
+  console.log(user.value)
+}
+
+const editUser = async () => {
+  const userId = user.value.id
+  try {
+    const result = await axios.put(
+      `http://localhost:5000/test-elearning-b0646/us-central1/api/admin/edit/${userId}`,
+      {
+        username: user.value.username,
+        email: user.value.email,
+        password: user.value.password
+      }
+    )
+    if (result) {
+      fetchData();
+      Swal.fire({
+        title: "แก้ไขข้อมูลผู้ใช้งานสำเร็จ!",
+        // text: "You clicked the button!",
+        icon: "success",
+
+      });
+      router.push('/Admin/AdminManageUser');
+    }
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "เกิดข้อผิดพลาด",
+      text: "โปรดลองใหม่อีกครั้ง",
+    });
+  }
+}
+
+onMounted(() => {
+  if (route.params.Id) {
+    fetchData()
+  }
+})
 </script>
 
 <style scoped>
@@ -37,33 +115,46 @@ h1 {
   font-weight: bold;
   margin-bottom: 1vh;
 }
+
 h3 {
-    font-size: 1rem;
-    color: #089DAA;
-    font-weight: bold;
-  }
+  font-size: 1rem;
+  color: #089daa;
+  font-weight: bold;
+}
+
 input {
   width: 25%;
   border-radius: 15px;
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1); /* กำหนดเงา */
-  border: none; /* กำหนดไม่มีเส้นขอบ */
-  margin: 5px; /* กำหนดการเว้นระยะขอบของ input */
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+  /* กำหนดเงา */
+  border: none;
+  /* กำหนดไม่มีเส้นขอบ */
+  margin: 5px;
+  /* กำหนดการเว้นระยะขอบของ input */
 }
 
 button {
-  background-color: #EC4088; /* สีพื้นหลัง */
-  color: white; /* สีตัวอักษร */
-  border: none; /* ไม่มีเส้นขอบ */
-  border-radius: 15px; /* มุมทรงกลม */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงา */
-  padding: 10px 20px; /* การเว้นระยะขอบของปุ่ม */
-  cursor: pointer; /* เปลี่ยนรูปลูกศรเป็นหลังคา */
+  background-color: #ec4088;
+  /* สีพื้นหลัง */
+  color: white;
+  /* สีตัวอักษร */
+  border: none;
+  /* ไม่มีเส้นขอบ */
+  border-radius: 15px;
+  /* มุมทรงกลม */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* เงา */
+  padding: 10px 20px;
+  /* การเว้นระยะขอบของปุ่ม */
+  cursor: pointer;
+  /* เปลี่ยนรูปลูกศรเป็นหลังคา */
   margin-left: 31vh;
   margin-top: 1.5vh;
 }
 
 button:hover {
-  background-color: #D32F6A; /* สีพื้นหลังเมื่อ hover */
+  background-color: #d32f6a;
+  /* สีพื้นหลังเมื่อ hover */
 }
 
 .back-link {
@@ -75,12 +166,12 @@ button:hover {
 }
 
 .back-link i {
-color: #D32F6A;
+  color: #d32f6a;
   font-size: 2vh;
 }
 
 .back-link p {
-  color: #D32F6A;
+  color: #d32f6a;
   font-weight: bolder;
   margin-left: 2vh;
   font-size: 2vh;

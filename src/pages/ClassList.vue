@@ -15,7 +15,7 @@
         <li class="grid-item col-1">1</li>
         <li class="grid-item col-3" style="display: flex; justify-self: center">
           <img
-            src="C:\Users\Pymmie\Desktop\html\TestTer\images\html.png"
+            src="\images\html.png"
             alt="html icon"
             style="width: 2vh"
           />
@@ -30,7 +30,7 @@
         <li class="grid-item col-1">2</li>
         <li class="grid-item col-3">
           <img
-            src="C:\Users\Pymmie\Desktop\html\TestTer\images\css.png"
+            src="\images\css.png"
             alt="css icon"
             style="width: 2vh"
           />
@@ -45,7 +45,7 @@
         <li class="grid-item col-1">3</li>
         <li class="grid-item col-3">
           <img
-            src="C:\Users\Pymmie\Desktop\html\TestTer\images\javascript.png"
+            src="\images\javascript.png"
             alt="css icon"
             style="width: 2vh"
           />
