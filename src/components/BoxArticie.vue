@@ -24,7 +24,7 @@
       <h1>{{ contentData.fullname }}</h1>
       <p>{{ contentData.discription }}</p>
       <div v-if="unitData && ProgressIndex != null">
-      <div v-for="(box, index) in unitData" :key="index" >
+      <div v-for="(box, index) in lessonData" :key="index" >
       <div class="inner-box" :style="{ height: box.isExpanded? 'auto' : '50px' }">
         <div class="box-content">
           <div class="box-header">
@@ -38,7 +38,7 @@
       <Transition name="slide-fade">
       <div class="card-container" v-if="box.isExpanded ">
       <div v-for="(subitem, subindex) in box.units" :key="subindex">
-      <div  @click="console.log(subitem.unitId)" class="card-unit" :style="{backgroundColor:authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(237, 237, 237, 1)' : 'rgba(209, 209, 209, 0.7)'}" :class="{'not-clickable' : authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] == false}">
+      <div  @click="goto(unitData.courseId, box.lessonId, subitem.unitId,unitData.name);" class="card-unit" :style="{backgroundColor:authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(237, 237, 237, 1)' : 'rgba(209, 209, 209, 0.7)'}" :class="{'not-clickable' : authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] == false}">
             <div style="align-self: center;">{{ subitem.nameUnit }}</div>
             <div class="icon-card" :style="{backgroundColor: authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(151, 221, 118, 1)' : 'rgba(223, 115, 115, 0.7)'}">
               <FontAwesomeIcon icon="fa-solid fa-check" v-if="authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] == true"/>
@@ -52,7 +52,7 @@
   </div>
 
   <div v-else>
-      <div v-for="(box, index) in unitData" :key="index" >
+      <div v-for="(box, index) in lessonData" :key="index" >
         <div v-for="(subitem, subindex) in box.units" :key="subindex">
       <div class="inner-box" :style="{ height: subitem.isExpanded? 'auto' : '50px' }">
         <div class="box-content">
@@ -83,10 +83,14 @@
 <script>
 import { reactive } from 'vue';
 import { useAuthenStore } from '../stores/auth';
-import axios from 'axios';
+// import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { useRouter } from 'vue-router';
 
 export default {
+  mounted(){
+    console.log(this.lessonData)
+  },
   components:{
     FontAwesomeIcon
   },
@@ -107,6 +111,7 @@ export default {
     return{
       authenStore:useAuthenStore(),
       Numaa:0,
+      router:useRouter(),
     }
   },
   setup(props) {
@@ -114,6 +119,7 @@ export default {
     // กำหนด reactive object ที่เก็บข้อมูล
     const internalContentData = reactive(props.contentData);
     const unitData1 = reactive(props.unitData);
+    const lessonData = reactive(props.unitData.lessons)
 
 
     // ฟังก์ชันสำหรับการเปลี่ยนสถานะของกล่อง
@@ -121,41 +127,30 @@ export default {
     return {
       internalContentData,
       unitData1,
+      lessonData,
     };
   },
   methods:{
     toggleBox(index) {
       console.log('Toggle Box Clicked', index);
-      if(this.unitData1[index].isExpanded == false){
-        this.unitData1[index].isExpanded = true
+      if(this.unitData1.lessons[index].isExpanded == false){
+        this.unitData1.lessons[index].isExpanded = true
         console.log(this.ProgressIndex)
       }else{
-        this.unitData1[index].isExpanded = false
+        this.unitData1.lessons[index].isExpanded = false
       }
     
     },
     toggleBoxUnit(index,subindex){
-      if(this.unitData1[index].units[subindex].isExpanded == false){
-        this.unitData1[index].units[subindex].isExpanded = true
+      if(this.unitData1.lessons[index].units[subindex].isExpanded == false){
+        this.unitData1.lessons[index].units[subindex].isExpanded = true
       }else{
-        this.unitData1[index].units[subindex].isExpanded = false
+        this.unitData1.lessons[index].units[subindex].isExpanded = false
       }
     },
-    async check(coures,lesson,unit){
-  try {
-      const result = await axios.put(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/Test/${this.authenStore.auth.id}/${coures}`, {
-      [lesson]: {
-        [unit]: true
-      }
-    });
-
-    if (result) {
-      console.log("Update:", result.data.message);
+    goto(couresId,lessonId,unitId,name){
+      this.router.push(`/unit/${couresId}/${lessonId}/${unitId}/${name}`)
     }
-  } catch (error) {
-    console.error("Error:", error.message);
-  }
-    },
   }
 };
 
