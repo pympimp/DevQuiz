@@ -429,7 +429,7 @@ i {
   
   } */
   .container {
- margin-left: 10px;
+ margin-left: 5px;
   margin-top: 20px;
   width: auto;
 }
@@ -437,7 +437,7 @@ i {
 .boxs {
   width: 700px;
   height: 200px;
-  margin-right: 10px; /* ปรับระยะห่างด้านขวาของกล่อง */
+  margin-right: 5px; /* ปรับระยะห่างด้านขวาของกล่อง */
   background-color: #F4F4F4;
   border-top-left-radius: 15px; /* กำหนดความโค้งด้านซ้ายของกล่อง */
   border-bottom-left-radius: 15px; /* กำหนดความโค้งด้านซ้ายของกล่อง */
@@ -445,7 +445,7 @@ i {
 
 .box {
   width: 1800px;
-  height: 1100px;
+  height: 1000px;
   margin-bottom: 15px;
   background-color:#F4F4F4;
   border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */

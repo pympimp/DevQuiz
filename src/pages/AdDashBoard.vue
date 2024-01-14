@@ -25,7 +25,7 @@
               <p>400000000000000000 คน</p>
             </div>
           </div>
-          <div class="box-4">Box 4</div>
+          <!-- <div class="box-4">Box 4</div> -->
         </div>
       </div>
   </div>
