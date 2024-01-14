@@ -357,9 +357,9 @@ p {
 
 h1 {
   color: #ffffff;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
-  margin-top: -20px;
+  margin-top: 0;
 }
 
 p {

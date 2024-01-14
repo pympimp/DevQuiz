@@ -213,7 +213,6 @@ h1 {
 
 .articleBox{
 margin-left: 5%;
-
 }
 }
 
