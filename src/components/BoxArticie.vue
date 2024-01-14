@@ -1,28 +1,9 @@
-<!-- <template>
-  <div class="container">
-    <div class="content">
-      <h1>{{ contentData.title }}</h1>
-      <p>{{ contentData.description }}</p>
-      <div v-for="(box, index) in contentData.boxes" :key="index" class="inner-box" :style="{ height: box.isExpanded ? 'auto' : '50px' }">
-        <div class="box-content">
-          <h1>{{ box.boxTitle }}</h1>
-          <p v-if="box.isExpanded">{{ box.boxText }}</p>
-        </div>
-        <button @click="toggleBox(index) " >
-          <i class="bi" :class="{'bi-chevron-up': box.isExpanded, 'bi-chevron-down': !box.isExpanded}"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</template> -->
-
-
 
 <template>
   <div class="container">
     <div class="content">
       <h1>{{ contentData.fullname }}</h1>
-      <p>{{ contentData.discription }}</p>
+      <p style="max-width: 87%;">{{ contentData.discription }}</p>
       <div v-if="unitData && ProgressIndex != null">
       <div v-for="(box, index) in lessonData" :key="index" >
       <div class="inner-box" :style="{ height: box.isExpanded? 'auto' : '50px' }">
@@ -258,9 +239,7 @@ p {
   font-size: 24px;
   color: #1f1f1f;
   cursor: pointer;
- 
-  
-  
+
 }
 
 .bi-chevron-down {
@@ -358,21 +337,19 @@ p {
   margin-left: 20px;
 }
 
-
-
 .content {
   display: flex;
   flex-direction: column;
   margin-left: -1px;
-  width: auto;
+  max-width:50vh;
   /* background-color: #e52626; */
 }
 
 .inner-box {
   background-color: #f5f5f5;
-  margin-bottom: -5px;
-  margin-top: 25px;
-  width: 270px;
+  /* margin-bottom: -5px; */
+  /* margin-top: 25px; */
+  width: 50vh;
   border-radius: 10px;
   overflow: hidden;
   transition: height 0.3s ease;
@@ -430,7 +407,7 @@ p {
 
 .bi-chevron-down {
   margin-right: 15px;
-  font-size: 24px;
+  font-size: 15px;
   color: #1f1f1f;
   cursor: pointer;
   
@@ -442,9 +419,24 @@ p {
   align-items: center;
 } 
 
-  
+.card-unit{
+  font-size: 12px;
 }
 
+.card-container{
+  max-width: 90%;
+}
+
+.bi-chevron-up {
+  font-size: 24px;
+}
+
+.bi-chevron-down {
+  font-size: 24px;
+}
+
+  
+}
 
 @media screen and (max-width: 320px) {
 
