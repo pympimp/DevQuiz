@@ -11,16 +11,16 @@
           </ul>
           
           <!-- ตัวอย่างรายชื่อ -->
-          <ul class="grid-list">
-            <li class="grid-item col-1">1</li>
-            <li class="grid-item col-3" style="display: flex; justify-self: center;"><img src="\images\html.png" alt="html icon" style="width: 2vh;"></li>
-            <li class="grid-item col-4">HTML (Hypertext Markup Language)</li>
-            <router-link to="/Admin/AdminManageArticle">
+          <ul class="grid-list" v-for="(item, index) in course" :key="index">
+            <li class="grid-item col-1">{{ index + 1 }}</li>
+            <li class="grid-item col-3" style="display: flex; justify-self: center;"><img :src="item.img" alt="html icon" style="width: 2vh;"></li>
+            <li class="grid-item col-4" > {{item.fullname }}</li>
+            <router-link :to="`/Admin/AdminManageArticle/${item.courseId}`">
             <li class="grid-item col-3"><i class="bi bi-caret-right-fill" ></i></li>
           </router-link>
           </ul>
   
-          <ul class="grid-list">
+          <!-- <ul class="grid-list">
             <li class="grid-item col-1">2</li>
             <li class="grid-item col-3"><img src="\images\css.png" alt="css icon" style="width: 2vh;"></li>
             <li class="grid-item col-4">CSS (Cascading Style Sheets)</li>
@@ -36,13 +36,39 @@
             <router-link to="/Admin/AdminManageArticle">
             <li class="grid-item col-3"><i class="bi bi-caret-right-fill"></i></li>
           </router-link>
-          </ul>
+          </ul> -->
   
         </div>
       </div>
   </template>
   
   <script setup>
+  import axios from "axios";
+import { ref, onMounted } from "vue";
+
+const course = ref({
+  classID: '',
+  name: '',
+  fullname: '',
+  discription: '',
+  img: ''
+})
+
+const fetchData = async () => {
+  try {
+    const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
+    if (result) {
+      course.value = result.data
+      console.log("data", course.value)
+    }
+  } catch (error) {
+    console.error("Error during getdata:", error);
+  }
+};
+
+onMounted(() => {
+  fetchData();
+});
   </script>
   
   <style scoped>
