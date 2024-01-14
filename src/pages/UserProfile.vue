@@ -429,13 +429,14 @@ i {
   
   } */
   .container {
- margin-left: 5px;
+ margin-left: 80px;
+ margin-right: 70px;
   margin-top: 20px;
   width: auto;
 }
 
 .boxs {
-  width: 700px;
+  /* width: 700px; */
   height: 200px;
   margin-right: 5px; /* ปรับระยะห่างด้านขวาของกล่อง */
   background-color: #F4F4F4;
@@ -444,7 +445,7 @@ i {
 }
 
 .box {
-  width: 1800px;
+  /* width: 1500px; */
   height: 1000px;
   margin-bottom: 15px;
   background-color:#F4F4F4;
@@ -458,7 +459,7 @@ i {
 }
 
 h1{
-    font-size: 25px;
+    font-size: 23px;
     margin-top: 20px;
     margin-bottom: 15px;
     margin-left: 20px;
@@ -466,7 +467,7 @@ h1{
 }
 
 h3{
-    font-size: 15px;
+    font-size: 14px;
     margin-left: 20px;
     font-weight: 1000;
 
@@ -507,8 +508,8 @@ h3{
 
 
 h2 {
-  font-size: 23px;
-  margin-left: 50px;
+  font-size: 20px;
+  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 15px;
   color: #333;
@@ -516,8 +517,8 @@ h2 {
 }
 
 p {
-  font-size: 17px;
-  margin-left: 55px;
+  font-size: 16px;
+  margin-left: 40px;
   margin-bottom: 6px;
   display: flex;
   justify-content: space-between;
@@ -557,7 +558,7 @@ i {
 
 .boxs {
   width: 450px;
-  height: 290px;
+  height: 250px;
   margin-left: 145px;
   margin-bottom: 10px; /* ปรับระยะห่างด้านขวาของกล่อง */
   background-color: #F4F4F4;
@@ -566,7 +567,7 @@ i {
 
 .box {
   width: 710px;
-  height: 900px;
+  height: 700px;
   margin-left: 25px;
   background-color:#F4F4F4;
   border-radius: 20px;
@@ -575,15 +576,15 @@ i {
 /* ลบระยะห่างของกล่องสุดท้าย */
 
 h1{
-    font-size: 25px;
+    font-size: 20px;
     margin-top: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     margin-left: 20px;
     font-weight: 1000;
 }
 
 h3{
-    font-size: 22px;
+    font-size: 17px;
     margin-left: 20px;
     line-height: 1.8;
     font-weight: 1000;
@@ -591,15 +592,15 @@ h3{
 
 .button-container{
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 1000;
-    margin-top: 65px;
+    margin-top: 40px;
     margin-left: 160px;
     color: #ffffff;
     background-color: #02BDCC;
     box-shadow: 0px 5px px rgba(0, 0, 0, 0.4); /* เพิ่มเงาด้านล่างสีดำ */
     border-radius: 4px;
-    width: 120px;
+    width: 100px;
     height: 30px;
 }
 
@@ -623,7 +624,7 @@ h3{
 
 
 h2 {
-  font-size: 25px;
+  font-size: 18px;
   margin-left: 50px;
   margin-top: 10px;
   margin-bottom: 8px;
@@ -632,7 +633,7 @@ h2 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 15px;
   margin-left: 35px;
   margin-bottom: 2px;
   display: flex;
@@ -645,7 +646,7 @@ p {
 
 i {
   color: #00cc00;
-  font-size: 25px;
+  font-size: 18px;
   
 }
 
