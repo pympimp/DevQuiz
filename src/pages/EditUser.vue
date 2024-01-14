@@ -76,12 +76,15 @@ export default {
 <template>
     <div>
       <NavBar />
+      <router-link to="/UserProfile">
       <div id="app">
           <a :href="link" class="custom-link">
             <i class="bi bi-backspace-fill"></i>
             <h3 @click="UserProfile">ย้อนกลับ</h3>
           </a>
       </div>
+    </router-link>
+
       <h1>แก้ไขข้อมูลผู้ใช้</h1>
       <div class="container">
       <section>

@@ -53,12 +53,14 @@ export default {
 <template>
     <div>
       <NavBar />
+      <router-link to="/EditUser">
       <div id="app">
           <a :href="link" class="custom-link">
             <i class="bi bi-backspace-fill"></i>
             <h3 @click="EditUser">ย้อนกลับ</h3>
           </a>
       </div>
+    </router-link>
 
       <h1>เปลี่ยนรหัสผ่าน</h1>
       <div class="container">
