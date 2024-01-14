@@ -20,7 +20,7 @@
         v-if="currentContent && languageData[currentContent]"
         :contentData="languageData[currentContent]"
       /> -->
-      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData.lessons" :ProgressIndex="ProgressIndex"/>
+      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData" :ProgressIndex="ProgressIndex"/>
 
       <!-- <BoxArticie v-if="currentContent === 'css'" :contentData="classData" :unitData="unitData.lessons"/>
       <BoxArticie v-if="currentContent === 'javascript'" :contentData="classData" :unitData="unitData.lessons"/> -->

@@ -66,8 +66,8 @@ const router = createRouter({
       component: () => import('../pages/MainPage.vue')
     },
     {
-      path:'/play',
-      name:'plat',
+      path:'/unit/:couresId/:lessonId/:unitId/:name',
+      name:'unit',
       component:()=> import('../pages/PlayGround.vue')
     },
   

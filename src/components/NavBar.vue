@@ -17,6 +17,9 @@
       <li class="md:mx-4 md:my-0 my-6" v-for="link in Links" :key="link.name">
         <a :href="link.link" class="text-xl hover:text-blue-200">{{ link.name }}</a>
       </li>
+      <router-link to="/UserProfile">
+      <i class="bi bi-person-circle" style="margin-right: 3vh;"></i>  
+    </router-link>
       <ButTon/>
     </ul>
   </div>
