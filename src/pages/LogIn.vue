@@ -72,7 +72,7 @@ export default {
             this.$router.push({ name: "HomePage" });
           }
           if(localStorage.setItem && result.data.role === 'admin'){
-            this.$router.push({ name: "/AdminDashboard" });
+            this.$router.push({ name: "/Admin/AdminDashboard" });
           }
         }
       } catch (error) {

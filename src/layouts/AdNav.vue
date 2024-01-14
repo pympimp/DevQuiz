@@ -6,7 +6,7 @@
     rel="stylesheet"
   />
 
-  <div class="w-screen h-screen flex">
+  <div class="w-screen h-screen flex ">
     <!-- Side bar -->
     <div class="w-[400px] h-full bg-gray-200 text-white" v-show="showSide">
       <div class="h-[50px] bg-gray-900 flex justify-start items-center" style="background-color: #F5FCFF;" >
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full h-full bg-gray-400" style="background-color: #F5FCFF;" >
+    <div class="w-full h-full overflow-auto" style="background-color: #F5FCFF;" >
       <div
         class="h-[50px] flex items-center shadow-sm px-[20px] w-full py-[10px] z-10 border-b" style="background-color: #F5FCFF;">
         <!-- Hambuger menu -->

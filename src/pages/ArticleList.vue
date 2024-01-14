@@ -13,7 +13,7 @@
           <!-- ตัวอย่างรายชื่อ -->
           <ul class="grid-list" v-for="(item, index) in course" :key="index">
             <li class="grid-item col-1">{{ index + 1 }}</li>
-            <li class="grid-item col-3" style="display: flex; justify-self: center;"><img :src="item.img" alt="html icon" style="width: 2vh;"></li>
+            <li class="grid-item col-3" style="display: flex; justify-self: center;"><img :src="item.img" alt="html icon" style="width: 10%;"></li>
             <li class="grid-item col-4" > {{item.fullname }}</li>
             <router-link :to="`/Admin/AdminManageArticle/${item.courseId}`">
             <li class="grid-item col-3"><i class="bi bi-caret-right-fill" ></i></li>
