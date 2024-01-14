@@ -39,7 +39,7 @@
       <div class="card-container" v-if="box.isExpanded ">
       <div v-for="(subitem, subindex) in box.units" :key="subindex">
       <div  @click="goto(unitData.courseId, box.lessonId, subitem.unitId,unitData.name);" class="card-unit" :style="{backgroundColor:authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(237, 237, 237, 1)' : 'rgba(209, 209, 209, 0.7)'}" :class="{'not-clickable' : authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] == false}">
-            <div style="align-self: center;">{{ subitem.nameUnit }}</div>
+            <div style="align-self: center;">{{ (index + 1) + '.' + (subindex + 1) + ' '}}{{ subitem.header }}</div>
             <div class="icon-card" :style="{backgroundColor: authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit]? 'rgba(151, 221, 118, 1)' : 'rgba(223, 115, 115, 0.7)'}">
               <FontAwesomeIcon icon="fa-solid fa-check" v-if="authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] == true"/>
               <FontAwesomeIcon icon="fa-solid fa-xmark" v-else></FontAwesomeIcon>
@@ -52,12 +52,12 @@
   </div>
 
   <div v-else>
-      <div v-for="(box, index) in lessonData" :key="index" >
+      <div v-for="(box, index) in unitData" :key="index" >
         <div v-for="(subitem, subindex) in box.units" :key="subindex">
       <div class="inner-box" :style="{ height: subitem.isExpanded? 'auto' : '50px' }">
         <div class="box-content">
           <div class="box-header">
-            <h1> {{subitem.header }}</h1>
+            <h1> {{ getContinuousIndex(index, subindex) + '. ' }}{{ subitem.header }}</h1>
             <button @click="toggleBoxUnit(index,subindex)">
               <i class="bi" :class="{'bi-chevron-up': subitem.isExpanded , 'bi-chevron-down': !subitem.isExpanded}"></i>
             </button>
@@ -89,7 +89,7 @@ import { useRouter } from 'vue-router';
 
 export default {
   mounted(){
-    console.log(this.lessonData)
+    console.log("maja",this.unitData)
   },
   components:{
     FontAwesomeIcon
@@ -112,6 +112,7 @@ export default {
       authenStore:useAuthenStore(),
       Numaa:0,
       router:useRouter(),
+      continuousIndex:0,
     }
   },
   setup(props) {
@@ -142,15 +143,18 @@ export default {
     
     },
     toggleBoxUnit(index,subindex){
-      if(this.unitData1.lessons[index].units[subindex].isExpanded == false){
-        this.unitData1.lessons[index].units[subindex].isExpanded = true
+      if(this.unitData1[index].units[subindex].isExpanded == false){
+        this.unitData1[index].units[subindex].isExpanded = true
       }else{
-        this.unitData1.lessons[index].units[subindex].isExpanded = false
+        this.unitData1[index].units[subindex].isExpanded = false
       }
     },
     goto(couresId,lessonId,unitId,name){
       this.router.push(`/unit/${couresId}/${lessonId}/${unitId}/${name}`)
-    }
+    },
+      getContinuousIndex(boxIndex, subindex){
+        return (boxIndex * 5) + subindex + 1;
+    },
   }
 };
 

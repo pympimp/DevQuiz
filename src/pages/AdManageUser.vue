@@ -52,6 +52,7 @@ const fetchData = async () => {
     console.error("Error during getdata:", error);
   }
 };
+
 const beforeDelete =(id)=>{
   Swal.fire({
         title: "ยืนยันลบข้อมูลผู้ใช้?",

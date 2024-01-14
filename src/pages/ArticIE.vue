@@ -133,7 +133,7 @@ export default {
 
 
 .buttons {
-  width: auto;
+  grid-column: 1 / 2;
 }
 
 h1 {
@@ -180,9 +180,9 @@ p {
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
-  
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 150px;
 }
 
 /* หากต้องการให้เปิดมาแล้วเป็นกล่องเปล่าๆ */
