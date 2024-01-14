@@ -1,7 +1,8 @@
 <template>
   <div>
     <NavBar />
-    <div class="container">
+  <div class="container" >
+
       <div class="buttons">
         <h1>บทเรียน </h1>
 
@@ -15,20 +16,10 @@
         </div>
       </div>
 
-      <!-- ตรวจสอบว่ามีข้อมูลใน languageData หรือไม่ และแสดงข้อมูล -->
-      <!-- <BoxArticie
-        v-if="currentContent && languageData[currentContent]"
-        :contentData="languageData[currentContent]"
-      /> -->
-      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData" :ProgressIndex="ProgressIndex"/>
-
-      <!-- <BoxArticie v-if="currentContent === 'css'" :contentData="classData" :unitData="unitData.lessons"/>
-      <BoxArticie v-if="currentContent === 'javascript'" :contentData="classData" :unitData="unitData.lessons"/> -->
-      <!-- <div v-else class="container-no-data">
-        <h1>No Data</h1>
-      </div> -->
+      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData" :ProgressIndex="ProgressIndex" style="background-color: aqua;" class="articleBox"/>
     </div>
-  </div>
+    </div>
+
 </template>
 
 <script setup>
@@ -138,7 +129,7 @@ const ProgressIndex = ref()
 
 <style scoped>
 h1 {
-  margin-top: 50px;
+  margin-top: 3%;
   margin-left: 35px;
   color: #fffdfd;
   font-size: 27px;
@@ -155,10 +146,10 @@ h1 {
 }
 
 .scroll-button {
-  margin-top: 5px;
-  margin-left: -40px;
-  margin-bottom: 15px;
-  width: 270px;
+  /* margin-top: 5px; */
+  margin-left: -15%;
+  /* margin-bottom: 15px; */
+  width: 32vh;
   height: 50px;
   background-color: #1f1f1f;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  */
@@ -182,36 +173,49 @@ p {
 }
 
 .container {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 150px;
+  gap: 150px; */
+  display: flex; flex-direction: row;
 }
 
-/* หากต้องการให้เปิดมาแล้วเป็นกล่องเปล่าๆ */
-.container-no-data {
-  background-color: #f5f5f5;
-  margin-top: 50px;
-  margin-right: 50px;
-  width: 1000px;
-  height: 1000px;
-}
-.container-no-data h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-}
 
 .buttons {
-  grid-column: 1 / 2;
+  max-width: 30vh;
 }
 
-.sub-container {
-  background-color: #f5f5f5;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
+.articleBox{
+width: fit-content;
+margin-left: 2%;
+
 }
+
+@media only screen and (max-width: 375px) {
+  .container {
+  display: flex; flex-direction: column;
+}
+
+h1 {
+
+  font-size: 20px;
+
+}
+
+.button p{
+  font-size: 15px;
+}
+
+.button-image{
+  width: 5vh;
+  height: 5vh;
+  margin-top: 1vh;
+}
+
+.articleBox{
+margin-left: 5%;
+}
+}
+
 </style>
 
 
