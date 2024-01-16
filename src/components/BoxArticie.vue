@@ -520,7 +520,7 @@ p {
   }
 
   .card-container {
-    max-width: 45%;
+    max-width: 75%;
     margin-left: 2rem;
   }
 
