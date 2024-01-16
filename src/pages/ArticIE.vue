@@ -204,142 +204,27 @@ p {
 
 
 
-/* responsive */
-@media screen and (max-width: 2560px) {
+/* reponsive */
+@media only screen and (max-width: 480px) {
 
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+
+}
+
+@media screen and (min-width: 1200px)  {
  
 }
-
-
-@media screen and (max-width: 1890px) {
-
-  
-
-}
-
-@media screen and (max-width: 1440px) {
-
-}
-
-@media screen and (max-width: 1024px) {
-
-}
-
-@media screen and (max-width: 820px) {
-
-}
-
-@media screen and (max-width: 768px) {
-
-}
-
-@media screen and (max-width: 425px) {
-
-}
-
-@media screen and (max-width: 375px) {
-  .container {
-  display: flex;
-  flex-direction: column;
-}
-
-
-  h1 {
-  margin-top: 20px;
-  margin-bottom: 45px;
-  margin-left: 85px;
-  color: #fffdfd;
-  font-size: 20px;
-  font-weight: bolder;
-}
-
-.button-image {
-  transform: translateY(10%);
-  width: 35px;
-  height: 35px;
-  margin-left: 65px;
-}
-
-.scroll-button {
-  margin-top: -5px;
-  margin-left: -40px;
-  width: 250px;
-  height:45px;
-  background-color: #1f1f1f;
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.scroll-button:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-color: #ee5684;
-}
-
-p {
-  font-size: 20px;
-  margin-left: 115px;
-  transform: translateY(-95%);
-  font-weight: bolder;
-  color: #fffdfd;
-  width: 20px;
-}
-  
-}
-
-
-
-@media screen and (max-width: 320px) {
-  .container {
-  display: flex;
-  flex-direction: column;
-}
-
-
-  h1 {
-  margin-top: 20px;
-  margin-bottom: 45px;
-  margin-left: 85px;
-  color: #fffdfd;
-  font-size: 20px;
-  font-weight: bolder;
-}
-
-.button-image {
-  transform: translateY(10%);
-  width: 35px;
-  height: 35px;
-  margin-left: 65px;
-}
-
-.scroll-button {
-  margin-top: -5px;
-  margin-left: -40px;
-  width: 250px;
-  height:45px;
-  background-color: #1f1f1f;
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.scroll-button:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-color: #ee5684;
-}
-
-p {
-  font-size: 20px;
-  margin-left: 115px;
-  transform: translateY(-95%);
-  font-weight: bolder;
-  color: #fffdfd;
-  width: 20px;
-}
- 
-}
-
-
-
-
 
 
 </style>
