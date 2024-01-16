@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData" :ProgressIndex="ProgressIndex" style="background-color: aqua;" class="articleBox"/>
+      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData" :ProgressIndex="ProgressIndex" class="articleBox"/>
     </div>
     </div>
 
@@ -187,7 +187,7 @@ p {
 .articleBox{
 width: fit-content;
 margin-left: 2%;
-
+margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 375px) {
