@@ -17,7 +17,13 @@
         </div>
       </div>
 
-      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData" :ProgressIndex="ProgressIndex" class="articleBox"/>
+      <BoxArticie
+        v-if="currentContent === unitData.name"
+        :contentData="classData"
+        :unitData="unitData"
+        :ProgressIndex="ProgressIndex"
+        class="articleBox"
+      />
     </div>
   </div>
 </template>
@@ -196,10 +202,10 @@ p {
   max-width: 30vh;
 }
 
-.articleBox{
-width: fit-content;
-margin-left: 2%;
-margin-bottom: 10px;
+.articleBox {
+  width: fit-content;
+  margin-left: 2%;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 480px) {
@@ -217,7 +223,7 @@ margin-bottom: 10px;
   }
 
   .scroll-button {
-   width: 14rem;
+    width: 14rem;
   }
 
   .button-image {
@@ -232,9 +238,8 @@ margin-bottom: 10px;
   }
 }
 
-
 @media screen and (min-width: 481px) and (max-width: 768px) {
-  .container{
+  .container {
     max-width: 100%;
   }
 
@@ -247,7 +252,7 @@ margin-bottom: 10px;
   }
 
   .scroll-button {
-   width: 14rem;
+    width: 14rem;
   }
 
   .button-image {
@@ -262,7 +267,7 @@ margin-bottom: 10px;
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  .container{
+  .container {
     max-width: 100%;
   }
 
@@ -275,7 +280,7 @@ margin-bottom: 10px;
   }
 
   .scroll-button {
-   width: 13.5rem;
+    width: 13.5rem;
   }
 
   .button-image {
@@ -290,9 +295,8 @@ margin-bottom: 10px;
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
-  .container{
+  .container {
     max-width: 100%;
-
   }
 
   h1 {
@@ -318,10 +322,9 @@ margin-bottom: 10px;
   }
 }
 
-@media screen and (min-width: 1200px)  {
-  .container{
+@media screen and (min-width: 1200px) {
+  .container {
     max-width: 100%;
-
   }
 
   h1 {

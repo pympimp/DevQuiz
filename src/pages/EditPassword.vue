@@ -1,51 +1,61 @@
-<script>
+<script setup> 
 import axios from 'axios';
 import NavBar from "@/components/NavBar.vue";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Swal from 'sweetalert2';
+import { useAuthenStore } from '../stores/auth';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-export default {
-    name: 'EditPAssword',
-  components: {
-    NavBar,
-   
-  },
-  methods: {
-    EditUser() {
+const authenStore = useAuthenStore()
+const oldPassword = ref();
+const newPassword = ref();
+const router = useRouter();
+
+    const EditUser=()=> {
       this.$router.push({ name: "EditUser" });
-    },
-
-    async login() {
-  try {
-    const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/user/EditPAssword", {
-      OldPassword: this.OldPassword,
-      NewPassword: this.NewPassword
-    });
-
-    if (result) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Password Changed!',
-        text: 'Your password has been changed successfully.'
-      });
-      
     }
-  } catch (error) {
-    if (error.response && error.response.status === 401 && error.response.data.error === "wrong password") {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Wrong password'
-      });
 
-    } else {
-      console.error("Error during signup:", error);
+    const onSubmit = () => {
+  Swal.fire({
+    title: 'ยืนยันการแก้ไขข้อมูล?',
+    text: 'ไม่สามารถย้อนกลับการกระทำนี้ได้',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'ตกลง',
+    cancelButtonText: 'ยกเลิก'
+  }).then((result) => {
+    if (result.isConfirmed) {
+       updateUser()
     }
+  })
+}
+
+const updateUser = async () => {
+  if(oldPassword.value === authenStore.auth.password){
+    const result = await axios.put(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`,{
+      password:newPassword.value
+    })
+    if(result){
+      authenStore.logout()
+      Swal.fire({
+          title: 'แก้ไขข้อมูลสำเร็จ',
+          icon: 'success'
+        },router.push("/login"))
+    }
+  }else{
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Invalid Password',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 }
 
-  }
-};
 </script>
 
 
@@ -65,26 +75,23 @@ export default {
       <h1>เปลี่ยนรหัสผ่าน</h1>
       <div class="container">
       <section>
-      <form>
+      <div>
         <div class="inputbox">
-          <ion-icon name="lock-closed-outline"></ion-icon>
           <p>Old Password : </p>
-          <input type="password" required />
+          <input type="password" required v-model="oldPassword"/>
 
         </div>
         <div class="inputbox">
             <p>New Password : </p>
-          <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="password" required />
-          
+          <input type="password" required v-model="newPassword"/>
         </div>
         
           <h2 class="more">หมายเหตุ : หากลืมรหัสผ่านโปรดติดต่อผู้ดูแลระบบ</h2>
         
           
           <!-- กดแล้วไปหน้าอื่น @click="EditUser()" -->
-        <button>ยืนยัน</button>
-      </form>
+        <button @click="onSubmit()">ยืนยัน</button>
+      </div>
     </section>
   </div>
   </div>

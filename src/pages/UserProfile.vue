@@ -6,23 +6,31 @@ import { useAuthenStore } from "../stores/auth";
 import axios from "axios";
 import { ref } from "vue";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { HalfCircleSpinner } from 'epic-spinners'
 
 
 export default {
   mounted(){
+  setTimeout(() => {
+    this.isLoading = true
+    this.fetchOneUser()
     this.fetchCourses()
+  }, 200)
+  
   },
     name: 'UserProfile',
     components: {
     NavBar,
     FontAwesomeIcon,
-   
+    HalfCircleSpinner,
   },
   data(){
     return{
       authenStore:useAuthenStore(),
       courses:ref(),
-      ProgressIndex:ref([])
+      ProgressIndex:ref([]),
+      userData:ref(),
+      isLoading:ref(false)
     }
   },
   methods: {
@@ -34,7 +42,7 @@ export default {
         const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
         if(result){
           this.courses = result.data
-          console.log("DATA",this.courses)
+          this.isLoading = false
         }
       } catch (error) {
         console.error("Error during getdata:", error);
@@ -42,7 +50,7 @@ export default {
     },
 
     userProgress(courseName){
-    const userIndex = this.authenStore.auth.progress
+    const userIndex = this.userData.progress
       try {
           const foundIndex = userIndex.findIndex((item) => item.name === courseName);
           if (foundIndex !== -1) {
@@ -56,6 +64,15 @@ export default {
       }
 },
 
+  async fetchOneUser(){
+    if(this.authenStore.auth){
+      const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${this.authenStore.auth.id}`)
+    if(result){
+      this.userData = result.data
+    }
+    }
+  }
+
   }
 };
 </script>
@@ -65,12 +82,19 @@ export default {
 <template>
   <div>
       <NavBar />
-      <div class="app">
+      <half-circle-spinner
+      :animation-duration="1000"
+      :size="60"
+      color="#ff1d5e"
+      class="loading"
+      v-if="isLoading"
+    />
+      <div class="app" v-if="userData && !isLoading">
   <div class="container">
     <div class="boxs">
         <h1>ข้อมูลผู้ใช้</h1>
-        <h3>Username : {{ authenStore.auth.username }}</h3>
-        <h3>Email : {{ authenStore.auth.email }}</h3>
+        <h3 >Username : {{ userData.username }}</h3>
+        <h3>Email : {{ userData.email }}</h3>
         <div class="button-container">
         <button @click="EditUser" class="button">แก้ไขข้อมูล</button>
       </div>
@@ -84,8 +108,8 @@ export default {
       <h2>{{subitem.nameLesson}} {{ item.name }}</h2>
       <div style="display: flex;flex-direction: row;justify-content: center;" v-for="(thirditem, thirdindex) in subitem.units" :key="thirdindex">
       <div class="row-content"><span>{{ (index + 1) + '.' + (thirdindex + 1) }} {{thirditem.header}}</span> 
-        <div class="icon-card" :style="{backgroundColor: authenStore.auth.progress[userProgress(item.name)][subitem.nameLesson][thirditem.nameUnit]? 'rgba(151, 221, 118, 1)' : 'rgba(223, 115, 115, 1) '}">
-              <FontAwesomeIcon icon="fa-solid fa-check" v-if="authenStore.auth.progress[userProgress(item.name)][subitem.nameLesson][thirditem.nameUnit] == true"/>
+        <div class="icon-card" :style="{backgroundColor: userData.progress[userProgress(item.name)][subitem.nameLesson][thirditem.nameUnit]? 'rgba(151, 221, 118, 1)' : 'rgba(223, 115, 115, 1) '}">
+              <FontAwesomeIcon icon="fa-solid fa-check" v-if="userData.progress[userProgress(item.name)][subitem.nameLesson][thirditem.nameUnit] == true"/>
               <FontAwesomeIcon icon="fa-solid fa-xmark" v-else></FontAwesomeIcon>
           </div>
       </div>
@@ -93,28 +117,6 @@ export default {
     </div>
     </div>
     </div>
-
-    <!-- <div class="sub-boxs">
-    <div class="sub-items">
-      <h2>Lesson 1 CSS</h2>
-      <p><span>1.1 การตกแต่งสี</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.2 การเว้นระยะ </span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.3 การจัดแถว</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.4 alignment ของ flexbox</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.5 การจัดรูปแบบตัวอักษร</span> <i class="bi bi-check-circle"></i></p>
-    </div>
-    </div>
-
-    <div class="sub-boxss">
-    <div class="sub-itemss">
-      <h2>Lesson 3 JavaScript</h2>
-      <p><span>1.1 การใช้งานและการแสดงผลบนหน้า HTML</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.2 ตัวแปรจาวาสคริปต์</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.3 JavaScript Operators</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.4 Data types</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.5 function</span> <i class="bi bi-check-circle"></i></p>
-    </div>
-    </div> -->
 </div>
 
     </div>
@@ -131,6 +133,14 @@ export default {
 
 * {
   box-sizing: border-box;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* ตัวอย่างการกำหนดสไตล์เพิ่มเติมสำหรับ Spinner หากต้องการ */
 }
 
 
