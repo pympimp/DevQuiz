@@ -1,3 +1,33 @@
+
+
+<template>
+  <div>
+  <NavBar />
+    <div class="container">
+      <div class="buttons">
+        <h1>บทความทั้งหมด</h1>
+
+        <div class="button" v-for="(item, index) in classAllData" :key="index + 1">
+          <button @click="scrollToAdditionalBox('HTML',item.classID,item.name)" 
+          class="scroll-button" 
+          :style="{ backgroundColor: changeColor === item.name ? '#EE5684' : '#1F1F1F' }">
+            <img :src="item.img" alt="Image" class="button-image">
+            <p>{{item.name}}</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- <BoxArticie v-if="currentContent && languageData[currentContent]" :contentData="languageData[currentContent]" /> -->
+      <!-- <BoxArticie v-if="currentContent === 'html'" :contentData="languageData.html" />
+      <BoxArticie v-if="currentContent === 'css'" :contentData="languageData.css" />
+      <BoxArticie v-if="currentContent === 'javascript'" :contentData="languageData.javascript" /> -->
+      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData.lessons" class="articleBox"/>
+      <!-- <div v-else class="container-no-data">
+        <h1>No Data</h1>
+      </div> -->
+    </div>
+  </div>
+</template>
 <script>
 import NavBar from '@/components/NavBar.vue'
 import BoxArticie from '@/components/BoxArticie.vue'
@@ -95,42 +125,11 @@ export default {
 }
 </script>
 
-<template>
-  <div>
-  <NavBar />
-    <div class="container">
-      <div class="buttons">
-        <h1>บทความทั้งหมด</h1>
-
-        <div class="button" v-for="(item, index) in classAllData" :key="index + 1">
-          <button @click="scrollToAdditionalBox('HTML',item.classID,item.name)" 
-          class="scroll-button" 
-          :style="{ backgroundColor: changeColor === item.name ? '#EE5684' : '#1F1F1F' }">
-            <img :src="item.img" alt="Image" class="button-image">
-            <p>{{item.name}}</p>
-          </button>
-        </div>
-      </div>
-
-      <!-- <BoxArticie v-if="currentContent && languageData[currentContent]" :contentData="languageData[currentContent]" /> -->
-      <!-- <BoxArticie v-if="currentContent === 'html'" :contentData="languageData.html" />
-      <BoxArticie v-if="currentContent === 'css'" :contentData="languageData.css" />
-      <BoxArticie v-if="currentContent === 'javascript'" :contentData="languageData.javascript" /> -->
-      <BoxArticie v-if="currentContent ===  unitData.name " :contentData="classData" :unitData="unitData.lessons"/>
-      <!-- <div v-else class="container-no-data">
-        <h1>No Data</h1>
-      </div> -->
-    </div>
-  </div>
-</template>
-
 <style scoped>
 
 * {
   box-sizing: border-box;
 }
-
-
 
 .buttons {
   grid-column: 1 / 2;
@@ -179,11 +178,13 @@ p {
   /* background-color: aqua; */
 }
 
-.container {
-  display: grid;
+ .container { 
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 150px;
-}
+  gap: 150px; */
+  display: flex;
+  flex-direction: row;
+} 
 
 /* หากต้องการให้เปิดมาแล้วเป็นกล่องเปล่าๆ */
 .container-no-data {
@@ -200,12 +201,183 @@ p {
   color: #000;
 }
 
+.articleBox {
+  width: fit-content;
+  margin-left: 2%;
+}
 
+@media only screen and (max-width: 480px) {
 
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin-top: -2.3rem;
+  }
 
+  h1 {
+    font-size: 1.2rem;
+  }
 
-/* responsive */
-@media screen and (max-width: 2560px) {
+  .button p {
+    font-size: 1rem;
+  }
+
+  .scroll-button {
+   width: 14rem;
+  }
+
+  .button-image {
+    max-width: 2rem;
+    max-height: 2rem;
+    margin-top: 5px;
+  }
+
+.articleBox {
+    margin-left: 5%;
+    margin-top: 0%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+ 
+  .container{
+    max-width: 100%;
+  }
+  .buttons {
+    margin-top: -2rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+
+  }
+
+  .button p {
+    font-size: 1rem;
+  }
+
+  .scroll-button {
+   width: 14rem;
+  }
+
+  .button-image {
+    max-width: 2rem;
+    max-height: 2rem;
+    margin-top: 5px;
+  }
+
+.articleBox {
+    margin-left: 5%;
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .container{
+    max-width: 100%;
+  }
+ .buttons {
+   margin-top: -2rem;
+ }
+
+ h1 {
+    font-size: 1.2rem;
+
+ }
+
+ .button p {
+    font-size: 1.2rem;
+ }
+
+ .scroll-button {
+  width: 14rem;
+ }
+
+ .button-image {
+   max-width: 2rem;
+   max-height: 2rem;
+   margin-top: 5px;
+ }
+
+.articleBox {
+   margin-left: 5%;
+   margin-top: 2rem;
+   width: 100%;
+   
+ }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .container{
+    width: 100%;
+  }
+ .buttons {
+   margin-top: -2rem;
+ }
+
+ h1 {
+    font-size: 1.7rem;
+
+ }
+
+ .button p {
+    font-size: 1.4rem;
+ }
+
+ .scroll-button {
+    max-width: 27vh;
+ }
+
+ .button-image {
+   max-width: 2rem;
+   max-height: 2rem;
+   margin-top: 5px;
+ }
+
+.articleBox {
+   margin-left: 5%;
+   margin-top: 2rem;
+   width: 100%;
+   
+ }
+}
+
+@media screen and (min-width: 1201px) {
+  .container{
+    width: 100%;
+  }
+ .buttons {
+   margin-top: -2.5rem;
+ }
+
+ h1 {
+    font-size: 1.7rem;
+
+ }
+
+ .button p {
+    font-size: 1.4rem;
+ }
+
+ .scroll-button {
+    max-width: 27vh;
+ }
+
+ .button-image {
+   max-width: 2rem;
+   max-height: 2rem;
+   margin-top: 5px;
+ }
+
+.articleBox {
+   margin-left: 5%;
+   margin-top: 2rem;
+   width: 100%;
+   
+ }
+}
+
+/* @media screen and (max-width: 2560px) {
 
  
 }
@@ -335,7 +507,7 @@ p {
   width: 20px;
 }
  
-}
+} */
 
 
 
@@ -344,38 +516,3 @@ p {
 
 </style>
 
-<!-- 
-<template>
-    <div>
-      <NavBar />
-      <div style="display: flex;">
-        <BoxArticie />
-      <h1>บทความทั้งหมด</h1>
-      <div class="button">
-      <button @click="scrollToAdditionalBox('html')" class="scroll-button" :style="{ backgroundColor: currentContent === 'html' ? '#EE5684' : '#1F1F1F' }">
-        <img src="/images/html.png" alt="Image" class="button-image">
-        <p>HTML</p>
-      </button>
-      
-    </div>
-
-    <div class="button">
-      <button @click="scrollToAdditionalBox('css')" class="scroll-button" :style="{ backgroundColor: currentContent === 'css' ? '#EE5684' : '#1F1F1F' }">
-        <img src="/images/css.png" alt="Image" class="button-image">
-        <p>CSS</p>
-      </button>
-    </div>
-
-    <div class="button">
-      <button @click="scrollToAdditionalBox('javascript')" class="scroll-button" :style="{ backgroundColor: currentContent === 'javascript' ? '#EE5684' : '#1F1F1F' }">
-        <img src="/images/javascript.png" alt="Image" class="button-image">
-        <p>JavaScript</p>
-      </button>
-    </div>
-
-  </div>
-</div>
-
-
-
-</template> -->

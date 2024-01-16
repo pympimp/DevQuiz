@@ -323,12 +323,12 @@ p {
   }
 }
 
-@media screen and (min-width: 1200px)  {
+@media screen and (min-width: 1201px)  {
   .container{
     max-width: 100%;
 
   }
-
+ 
   h1 {
     font-size: 1.7rem;
   }
