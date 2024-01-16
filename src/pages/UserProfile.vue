@@ -664,6 +664,7 @@ i {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  width: auto;
 }
 
 .boxs {
@@ -768,6 +769,7 @@ i {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  width: auto;
 }
 
 .boxs {
@@ -878,6 +880,7 @@ i {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+  width: auto;
 }
 
 .boxs {
