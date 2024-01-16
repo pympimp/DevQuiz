@@ -89,7 +89,7 @@ const fetchOneCourses = async() =>{
 
 const submit = () =>{
   Swal.fire({
-        title: "ยืนยันแก้ไขข้อมูลผู้ใช้?",
+        title: "ยืนยันแก้ไขข้อมูลบทเรียน?",
         text: "ไม่สามารถย้อนกลับการกระทำนี้ได้",
         icon: "warning",
         showCancelButton: true,
