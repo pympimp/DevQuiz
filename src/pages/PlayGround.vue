@@ -15,10 +15,24 @@
           <div class="input-playground">
             <div style="font-size: medium; margin-left: 30px;color: white;">พื้นที่เขียนโค้ด</div>
             <div>
-            <textarea
-            class="Text-area"
-            v-model="code.html"
-            ></textarea>
+              <ScrollAreaRoot 
+              style="--scrollbar-size:10px"
+              class="Text-area"
+              >
+              <ScrollAreaViewport>
+                    <textarea
+                    v-model="code.html"
+                    ></textarea>
+              </ScrollAreaViewport>
+              <ScrollAreaScrollbar
+                class="ScrollAreaScrollbar"
+                orientation="horizontal"
+                >
+              <ScrollAreaThumb
+                class="ScrollAreaThumb"
+              />
+    </ScrollAreaScrollbar>
+          </ScrollAreaRoot>
         </div>
           </div>
           <div class="output-playground">
@@ -39,6 +53,9 @@ import { onMounted } from 'vue';
 import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router';
 import { useAuthenStore } from '../stores/auth';
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
+import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from 'radix-vue'
 
 const authenStore = useAuthenStore();
 const route = useRoute();
@@ -94,6 +111,20 @@ const runCode = () => {
 
     const hasBTags = code.value.html.includes('<b>') && code.value.html.includes('</b>');
   corrcet.value = hasBTags
+  if(corrcet.value === true){
+    Swal.fire({
+        title: "คำตอบถูกต้อง!",
+        // text: "You clicked the button!",
+        icon: "success",
+
+      });
+  }else{
+    Swal.fire({
+      icon: "error",
+      title: "ตอบผิด",
+      text: "โปรดลองใหม่อีกครั้ง",
+    });
+  }
   console.log(corrcet.value)
 
 };
@@ -184,11 +215,12 @@ const fetchUnitData = async() => {
     border-radius: 30px;
     padding: 15px;
     margin: 0px 10px 0px 10px;
+    resize: none;
 }
 
 .Text-area textarea{
     width: 100%;
-    height: 100%;
+    height: 270px;
     overflow-y: auto;
     border: none; /* เพิ่มบรรทัดนี้ถ้าคุณต้องการลบเส้นขอบ */
 }
@@ -225,4 +257,29 @@ iframe {
   height: 300px;
   border: 1px solid #ccc;
 }
+
+.ScrollAreaScrollbar[data-orientation='horizontal'] {
+  flex-direction: column;
+  height: var(--scrollbar-size);
+}
+
+.ScrollAreaThumb {
+  flex: 1;
+  background: var(--mauve-10);
+  border-radius: var(--scrollbar-size);
+  position: relative;
+}
+/* increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html */
+.ScrollAreaThumb::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  min-width: 44px;
+  min-height: 44px;
+}
+
 </style>

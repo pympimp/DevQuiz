@@ -2,18 +2,60 @@
 
 import NavBar from "@/components/NavBar.vue";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useAuthenStore } from "../stores/auth";
+import axios from "axios";
+import { ref } from "vue";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 
 export default {
+  mounted(){
+    this.fetchCourses()
+  },
     name: 'UserProfile',
     components: {
     NavBar,
+    FontAwesomeIcon,
    
+  },
+  data(){
+    return{
+      authenStore:useAuthenStore(),
+      courses:ref(),
+      ProgressIndex:ref([])
+    }
   },
   methods: {
     EditUser() {
       this.$router.push({ name: "EditUser" });
     },
+    async fetchCourses(){
+      try {
+        const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
+        if(result){
+          this.courses = result.data
+          console.log("DATA",this.courses)
+        }
+      } catch (error) {
+        console.error("Error during getdata:", error);
+      }
+    },
+
+    userProgress(courseName){
+    const userIndex = this.authenStore.auth.progress
+      try {
+          const foundIndex = userIndex.findIndex((item) => item.name === courseName);
+          if (foundIndex !== -1) {
+              return foundIndex
+          } else {
+              console.log("Not found");
+          }
+        console.log('content1',this.ProgressIndex)
+      }catch(error){
+        console.error("Error loading progress data: ", error);
+      }
+},
+
   }
 };
 </script>
@@ -27,9 +69,8 @@ export default {
   <div class="container">
     <div class="boxs">
         <h1>ข้อมูลผู้ใช้</h1>
-        <h3>Username :</h3>
-        <h3>Email :</h3>
-        <h3>Password :</h3>
+        <h3>Username : {{ authenStore.auth.username }}</h3>
+        <h3>Email : {{ authenStore.auth.email }}</h3>
         <div class="button-container">
         <button @click="EditUser" class="button">แก้ไขข้อมูล</button>
       </div>
@@ -38,17 +79,22 @@ export default {
         <h1>ประวัติการเรียน</h1>
     <div class="containers">
     <div class="sub-box">
-    <div class="sub-item">
-      <h2>Lesson 1 HTML</h2>
-      <p><span>1.1 การกำหนดรูปแบบอักษร</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.2 การใส่รูปภาพการสร้างลิงค์ด้วยรูปภาพ</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.3 การจัดย่อหน้าข้อความ</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.4 Lists:หัวข้อแบบรายการ</span> <i class="bi bi-check-circle"></i></p>
-      <p><span>1.5 การอ้างถึง</span> <i class="bi bi-check-circle"></i></p>
+    <div class="sub-item" v-for="(item, index) in courses" :key="index">
+      <div v-for="(subitem, subindex) in item.lessons" :key="subindex">
+      <h2>{{subitem.nameLesson}} {{ item.name }}</h2>
+      <div style="display: flex;flex-direction: row;justify-content: center;" v-for="(thirditem, thirdindex) in subitem.units" :key="thirdindex">
+      <div class="row-content"><span>{{ (index + 1) + '.' + (thirdindex + 1) }} {{thirditem.header}}</span> 
+        <div class="icon-card" :style="{backgroundColor: authenStore.auth.progress[userProgress(item.name)][subitem.nameLesson][thirditem.nameUnit]? 'rgba(151, 221, 118, 1)' : 'rgba(223, 115, 115, 1) '}">
+              <FontAwesomeIcon icon="fa-solid fa-check" v-if="authenStore.auth.progress[userProgress(item.name)][subitem.nameLesson][thirditem.nameUnit] == true"/>
+              <FontAwesomeIcon icon="fa-solid fa-xmark" v-else></FontAwesomeIcon>
+          </div>
+      </div>
+    </div>
+    </div>
     </div>
     </div>
 
-    <div class="sub-boxs">
+    <!-- <div class="sub-boxs">
     <div class="sub-items">
       <h2>Lesson 1 CSS</h2>
       <p><span>1.1 การตกแต่งสี</span> <i class="bi bi-check-circle"></i></p>
@@ -68,7 +114,7 @@ export default {
       <p><span>1.4 Data types</span> <i class="bi bi-check-circle"></i></p>
       <p><span>1.5 function</span> <i class="bi bi-check-circle"></i></p>
     </div>
-    </div>
+    </div> -->
 </div>
 
     </div>
@@ -87,10 +133,37 @@ export default {
   box-sizing: border-box;
 }
 
+.icon-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  width: 30px; /* ปรับขนาดตามที่ต้องการ */
+  height: 30px; /* ปรับขนาดตามที่ต้องการ */
+  border-radius: 50%; /* ทำให้เป็นวงกลม */
+  box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25); /* inner shadow */
+}
+
+.row-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 18px;
+  border-bottom: 1px solid gray;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+}
 .container {
   display: flex;
   justify-content: center;
   margin-top: 40px;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  background-color: red;
 }
 
 .boxs {

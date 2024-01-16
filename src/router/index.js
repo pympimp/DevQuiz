@@ -142,7 +142,7 @@ const router = createRouter({
           component: () => import('../pages/AdManageClass.vue') 
         },
         {
-          path: "AdminManageArticle",
+          path: "AdminManageArticle/:id",
           name: 'AdminManageArticle',
           component: () => import('../pages/AdManageArticle.vue') 
         },
@@ -164,7 +164,7 @@ const router = createRouter({
         },
 
         {
-          path: "AdminEditArticle",
+          path: "AdminEditArticle/:coursesId/:lessonId/:unitId",
           name: "AdminEditArticle",
           component: () => import('../pages/AdEditArticle.vue') 
         },
