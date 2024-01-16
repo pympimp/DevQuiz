@@ -326,7 +326,7 @@ p {
   .container {
     max-width: 100%;
   }
-
+ 
   h1 {
     font-size: 1.7rem;
   }

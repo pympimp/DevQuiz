@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <div v-else>
+      <div style="width: 100%;" v-else>
         <div v-for="(box, index) in unitData" :key="index">
           <div v-for="(subitem, subindex) in box.units" :key="subindex">
             <div class="inner-box" :style="{ height: subitem.isExpanded ? 'auto' : '50px' }">
@@ -325,7 +325,7 @@ p {
   .content {
     display: flex;
     flex-direction: column;
-    margin-left: -1px;
+    margin-left: 1px;
     max-width: 50vh;
   }
 
@@ -532,4 +532,28 @@ p {
     font-size: 1.2rem;
   }
 }
+
+
+/* reponsive */
+@media only screen and (max-width: 480px) {
+
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+
+}
+
+@media screen and (min-width: 1200px)  {
+ 
+}
+
 </style>
