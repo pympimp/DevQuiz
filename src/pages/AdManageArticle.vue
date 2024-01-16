@@ -10,9 +10,9 @@
         <img :src="data.img" alt="" />
         <h1>{{ data.fullname }}</h1>
       </div>
-      <router-link to="/Admin/AdminAddArticle">
-        <button class="btn"><i class="fa fa-plus"></i></button
-      ></router-link>
+      <button v-if="data" class="btn" style="margin-bottom: 0.5vh" @click="changeName()">
+        <i class="fa fa-plus"></i>
+      </button>
     </div>
     <div class="border border-gray-300 rounded-md p-[20px] h-full">
       <!-- หัวข้อ -->
@@ -28,24 +28,36 @@
         <div class="card-container" v-for="(item, index) in data.lessons" :key="index">
           <div class="card-lesson">
             <h1>{{ item.nameLesson }}</h1>
-            <button @click="toggleBox(index)" class="button-icon">
+            <div class="button-box">
               <i
-                :class="{ 'bi-chevron-up': item.isExpanded, 'bi-chevron-down': !item.isExpanded }"
+                class="bi bi-trash"
+                style="padding: 0; cursor: pointer; color: rgb(163, 22, 22); font-size: 20px; margin-top: 0.5vh"
+                v-if="!item.isExpanded"
+                @click="preDelete(data.CoursesId, item.lessonId)"
               ></i>
-            </button>
+              <router-link :to="`/Admin/AdminAddArticle/${data.CoursesId}/${item.lessonId}`" v-if="item.isExpanded">
+                <button class="btn"><i class="fa fa-plus"></i></button>
+              </router-link>
+              <button @click="toggleBox(index)" class="button-icon">
+                <i
+                  :class="{ 'bi-chevron-up': item.isExpanded, 'bi-chevron-down': !item.isExpanded }"
+                ></i>
+              </button>
+            </div>
           </div>
           <Transition name="slide-fade">
             <div v-if="item.isExpanded" class="unit-container">
               <div v-for="(subitem, subindex) in item.units" :key="subindex" class="unit-card">
                 <h2>{{ subindex + 1 }} {{ subitem.header }}</h2>
                 <div>
-                  <router-link :to="`/Admin/AdminEditArticle/${data.CoursesId}/${item.lessonId}/${subitem.unitId}`"
+                  <router-link
+                    :to="`/Admin/AdminEditArticle/${data.CoursesId}/${item.lessonId}/${subitem.unitId}`"
                     ><i class="bi bi-pencil"></i
                   ></router-link>
                   <i
                     class="bi bi-trash"
                     style="color: rgb(163, 22, 22); cursor: pointer"
-                    @click="preDelete(data.CoursesId,item.lessonId,subitem.unitId)"
+                    @click="preDelete(data.CoursesId, item.lessonId, subitem.unitId, 'unit')"
                   ></i>
                 </div>
               </div>
@@ -86,6 +98,7 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 const route = useRoute()
 const courses = ref()
 const data = ref()
+const isLoading = ref(false)
 
 onMounted(() => {
   if (route.params.id) {
@@ -101,7 +114,6 @@ const fetchOneCourses = async () => {
   if (result) {
     data.value = result.data
     console.log('data', data.value)
-    
   }
 }
 
@@ -113,35 +125,101 @@ const toggleBox = (index) => {
   }
 }
 
-const preDelete = (coursesId,lessonId,unitId)=>{
-  Swal.fire({
-        title: "ยืนยันลบข้อมูลผู้ใช้?",
-        text: "ไม่สามารถย้อนกลับการกระทำนี้ได้",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "ลบ",
-        cancelButtonText: "ยกเลิก"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          deleteUnit(coursesId,lessonId,unitId)
-          if(deleteUnit()){
-            Swal.fire({
-            title: "ลบข้อมูลผู้ใช้สำเร็จ",
-            icon: "success"
-          });
-          }
+const preDelete = (coursesId, lessonId, unitId, auth) => {
+  if (auth === 'unit') {
+    Swal.fire({
+      title: 'ยืนยันลบข้อมูลแบบทดสอบ?',
+      text: 'ไม่สามารถย้อนกลับการกระทำนี้ได้',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ลบ',
+      cancelButtonText: 'ยกเลิก'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteUnit(coursesId, lessonId, unitId)
+        if (deleteUnit()) {
+          Swal.fire({
+            title: 'ลบข้อมูลแบบทดสอบสำเร็จ',
+            icon: 'success'
+          })
         }
-      });
+      }
+    })
+  } else {
+    Swal.fire({
+      title: 'ยืนยันลบข้อมูลบทเรียน?',
+      text: 'ไม่สามารถย้อนกลับการกระทำนี้ได้',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ลบ',
+      cancelButtonText: 'ยกเลิก'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteLesson(coursesId, lessonId)
+        if (deleteLesson()) {
+          Swal.fire({
+            title: 'ลบข้อมูลบทเรียนสำเร็จ',
+            icon: 'success'
+          })
+        }
+      }
+    })
   }
+}
 
-  const deleteUnit = async(coursesId,lessonId,unitId) =>{
-    const result = await axios.delete(` http://localhost:5000/test-elearning-b0646/us-central1/api/coures/deleteCourse/${coursesId}/${lessonId}/${unitId}`)
-    if(result){
-      fetchOneCourses()
-    }
+const deleteUnit = async (coursesId, lessonId, unitId) => {
+  const result = await axios.delete(
+    ` http://localhost:5000/test-elearning-b0646/us-central1/api/coures/deleteCourse/${coursesId}/${lessonId}/${unitId}`
+  )
+  if (result) {
+    fetchOneCourses()
   }
+}
+
+const changeName = () => {
+  isLoading.value = true
+  const lessonIndex = data.value.lessons.length - 1
+  const lessonName = data.value.lessons[lessonIndex].nameLesson
+  const match = lessonName.match(/(\d+)/)
+  const number = parseInt(match[0], 10)
+  const finalName = `lesson${number + 1}`
+  if (finalName) {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Add Lesson Success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    addLesson(finalName)
+  }
+}
+
+const addLesson = async (finalName) => {
+  const result = await axios.post(
+    `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/addLesson/${data.value.CoursesId}`,
+    {
+      nameLesson: finalName
+    }
+  )
+  if (result) {
+    fetchOneCourses()
+    isLoading.value = false
+  }
+}
+
+const deleteLesson = async (coursesId, lessonId) => {
+  const result = await axios.delete(
+    `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/deleteLesson/${coursesId}/${lessonId}`
+  )
+  if (result) {
+    fetchOneCourses()
+  }
+}
 </script>
 
 <style scoped>
@@ -194,9 +272,11 @@ h1 {
 .button-icon {
   background-color: #ffffff;
   color: #000000;
-  width: 5%;
   padding: 10px;
   cursor: pointer;
+  margin-left: 10px;
+  width: 40px;
+  height: 90%;
 }
 
 .button-icon:hover {
@@ -261,7 +341,6 @@ button:hover {
 }
 
 .btn {
-  margin-bottom: 0.5vh;
 }
 
 .back-link {
@@ -296,5 +375,12 @@ button:hover {
 .slide-fade-leave-to {
   transform: translateY(-20px);
   opacity: 0;
+}
+
+.button-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 </style>

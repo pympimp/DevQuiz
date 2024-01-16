@@ -1,74 +1,73 @@
 <!-- eslint-disable no-undef -->
-<script>
+<script setup>
 import axios from 'axios';
 import NavBar from "@/components/NavBar.vue";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { ref } from 'vue';
+import { useAuthenStore } from '../stores/auth';
+import { onMounted } from 'vue';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
+const InputData = ref({
+    email:"",
+    username:"",
+});
 
-export default {
-    name: 'EditUser',
-  components: {
-    NavBar,
-   
-  },
+const authenStore = useAuthenStore()
 
-  // mounted(){
-  //   if(localStorage.getItem("Token")){
-  //     this.$router.push({ name: "UserProfile" });
-  //   }
-  // },
+onMounted(()=>{
+  setTimeout(() =>{
+    if(authenStore.auth){
+    InputData.value = ({
+      email:authenStore.auth.email,
+      username:authenStore.auth.username,
+    })
+  }
+  },800)
+})
 
-  methods: {
-    UserProfile() {
+   const UserProfile =()=> {
       this.$router.push({ name: "UserProfile" });
-    },
+    };
 
-    EditPassword() {
+    const EditPassword=()=> {
       this.$router.push({ name: "EditPassword" });
-    },
+    };
 
-    async login() {
-  try {
-    const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/user/UserProfile", {
-      username: this.username,
-      Email: this.Email
-    });
-
-    if (result) {
-      let successMessage = "Data changed successfully:";
-      
-      if (this.username && !this.Email) {
-        successMessage += " Username";
-      } else if (!this.username && this.Email) {
-        successMessage += " Email";
-      } else if (this.username && this.Email) {
-        successMessage += " Username and Email";
-      } else {
-        // No data changes made
-        // Display an error or do something else as required
-        console.error("No data changes made");
-        return;
-      }
-
+    const onSubmit =()=>{
       Swal.fire({
-        icon: 'success',
-        title: 'Success!',
-        text: successMessage
+        title: "ยืนยันการแก้ไขข้อมูล?",
+        text: "ไม่สามารถย้อนกลับการกระทำนี้ได้",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "ตกลง",
+        cancelButtonText: "ยกเลิก"
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+          const result = await updateUser()
+          if(result){
+            Swal.fire({
+            title: "แก้ไขข้อมูลสำเร็จ",
+            icon: "success"
+          });
+          }
+        }
       });
-
-      // Your localStorage and router redirection logic here...
     }
-  } catch (error) {
-    if (error.response && error.response.status === 401 && error.response.data.error === "wrong username") {
-      alert("Wrong username");
-    } else {
-      console.error("Error during change:", error);
-    }
-  }
-}
-  }
 
-};
+    const updateUser = async()=>{
+      const result = await axios.put(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`,InputData.value)
+      if(result){
+        UserProfile()
+      }
+    }
+
+    // const fetchOneUser = async()=>{
+    //   const result = await axios
+    // }
 </script>
 
 
@@ -88,18 +87,16 @@ export default {
       <h1>แก้ไขข้อมูลผู้ใช้</h1>
       <div class="container">
       <section>
-      <form>
+      <div>
         <div class="inputbox">
           <p>Username : </p>
-          <ion-icon name="user-outline"></ion-icon>
-          <input type="user" required />
+          <input type="user" v-model="InputData.username" required />
           <!-- <label for="">Email</label> -->
         </div>
 
         <div class="inputbox">
           <p>E-mail : </p>
-          <ion-icon name="mail-outline"></ion-icon>
-          <input type="mail" required />
+          <input type="mail" v-model="InputData.email" required />
           <!-- <label for="">Email</label> -->
         </div>
 
@@ -107,8 +104,8 @@ export default {
            <a href="#"><i class="bi bi-key-fill"></i>Change Password</a>
         </div>
 
-        <button>ยืนยัน</button>
-      </form>
+        <button @click="onSubmit() ">ยืนยัน</button>
+      </div>
     </section>
   </div>
   </div>

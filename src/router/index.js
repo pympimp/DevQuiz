@@ -170,7 +170,7 @@ const router = createRouter({
         },
 
         {
-          path: "AdminAddArticle",
+          path: "AdminAddArticle/:coursesId/:lessonId",
           name: "AdminAddArticle",
           component: () => import('../pages/AdAddArticle.vue') 
         },

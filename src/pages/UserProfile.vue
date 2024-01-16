@@ -133,6 +133,7 @@ export default {
   box-sizing: border-box;
 }
 
+
 .icon-card {
   display: flex;
   justify-content: center;
@@ -177,10 +178,10 @@ export default {
 
 .box {
   width: 800px;
-  height: 600px;
   background-color:#F4F4F4;
   border-top-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
   border-bottom-right-radius: 15px; /* กำหนดความโค้งด้านขวาของกล่อง */
+  margin-bottom: 1%;
 }
 
 /* ลบระยะห่างของกล่องสุดท้าย */
@@ -737,6 +738,7 @@ i {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  width: auto;
 }
 
 .boxs {
@@ -841,6 +843,7 @@ i {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  width: auto;
 }
 
 .boxs {
@@ -951,6 +954,7 @@ i {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+  width: auto;
 }
 
 .boxs {
