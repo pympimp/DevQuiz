@@ -60,18 +60,23 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
+.boxcontainer{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 
 /* กล่องแบบฝึก */
 .box {
-  width: 700px;
-  height: 100px;
-  margin: 15px;
-  margin-left: 25px;
-  border: 1px solid #1F1F1F;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 700px;
+  height: 100px;
+  margin: 15px;
+  border: 1px solid #1F1F1F;
   background-color:  #1F1F1F;
   position: relative;
   margin-top: 20px;
@@ -137,22 +142,26 @@ img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
-
+.boxcontainer{
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* กล่องแบบฝึก */
 .box {
   width: 400px;
   height: 100px;
   margin: 15px;
-  margin-left: 25px;
   border: 1px solid #1F1F1F;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color:  #1F1F1F;
   position: relative;
-  margin-top: 20px;
-  margin-bottom: 15px; /* ปรับตำแหน่งขึ้น 50px */
+  margin-top: 1%;
+  margin-bottom: 25px; /* ปรับตำแหน่งขึ้น 50px */
 ; /* กำหนดสีเทาให้กล่อง */
 }
 
@@ -213,22 +222,25 @@ img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
-
+.boxcontainer{
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* กล่องแบบฝึก */
 .box {
-  width: 650px;
+  width: 500px;
   height: 100px;
   margin: 15px;
-  margin-left: 45px;
   border: 1px solid #1F1F1F;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color:  #1F1F1F;
   position: relative;
-  margin-top: 20px;
-  margin-bottom: 10px; /* ปรับตำแหน่งขึ้น 50px */
+  margin-bottom: 3%; /* ปรับตำแหน่งขึ้น 50px */
 ; /* กำหนดสีเทาให้กล่อง */
 }
 
@@ -287,11 +299,16 @@ img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
-
+.boxcontainer{
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* กล่องแบบฝึก */
 .box {
-  width: 700px;
+  width: 550px;
   height: 110px;
   margin: 15px;
   margin-left: 135px;
@@ -301,8 +318,8 @@ img {
   justify-content: center;
   background-color:  #1F1F1F;
   position: relative;
-  margin-top: 20px;
-  margin-bottom: 10px; /* ปรับตำแหน่งขึ้น 50px */
+  margin-top: 1%;
+  margin-bottom: 2.5%; /* ปรับตำแหน่งขึ้น 50px */
 ; /* กำหนดสีเทาให้กล่อง */
 }
 
@@ -363,16 +380,15 @@ img {
 }
 
 .boxcontainer{
-  /* background-color: #FFFFFF; */
-  width: 8px;
+   display: flex;
+    flex-direction: column;
 }
-
 /* กล่องแบบฝึก */
 .box {
   width: 600px;
   height: 110px;
   margin: 15px;
-
+ margin-left: 30%;
   border: 1px solid #1F1F1F;
   display: flex;
   flex-direction: column;
@@ -440,16 +456,19 @@ img {
 }
 
 .boxcontainer{
-  /* background-color: #FFFFFF; */
-  width: 8px;
+   display: flex;
+    flex-direction: column;
+    
 }
+
+
 
 /* กล่องแบบฝึก */
 .box {
   width: 600px;
   height: 110px;
   margin: 15px;
-
+  margin-left: 30%;
   border: 1px solid #1F1F1F;
   display: flex;
   flex-direction: column;

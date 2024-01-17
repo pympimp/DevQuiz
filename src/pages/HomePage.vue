@@ -148,8 +148,11 @@ toggleSection() {
       <div class="button">
           <button @click="toggleSection" class="scroll-button1">ย้อนกลับ</button>
         </div>
- 
-      <h3>บทความเบื้องต้น</h3>
+  
+        <div class="contai">
+          <div class="containers">
+            <h3>บทความเบื้องต้น</h3>
+        </div>
       <div class="article-container">
         <div class="article-box" v-for="article in articles" :key="article.id">
           <img :src="article.image" alt="Article Image" class="article-image" />
@@ -172,7 +175,8 @@ toggleSection() {
        </div>
       </div>
     </div>
-  </div>
+    </div>
+    </div>
 </template>
 
 
@@ -252,9 +256,11 @@ toggleSection() {
 /* กล่องแบบฝึก */
 .container {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   text-align: center;
+  justify-content: center;
+  
 }
 
 .row {
@@ -273,14 +279,12 @@ toggleSection() {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
-    margin-left: -40px;
+   
      
 }
 
 h1 {
   font-size: 65px;
-  margin-right: 5px;
   color: #ec4088;
   font-weight: bold;
 }
@@ -293,12 +297,11 @@ h2 {
 
 h3 {
   font-size: 29px; /* ปรับค่าตามที่คุณต้องการ */
-  margin-left: 310px;
-  padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
-  margin-top: -50px;
-  margin-left: 130px;
+
+  
+ 
   
 }
 
@@ -318,11 +321,28 @@ h{
 
 
 /* เพิ่มสไตล์สำหรับกล่องบทความ */
+.contai {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #f5c722; */
+  margin: auto;
+  width: 1300px;
+  
+  
+}
+
+.containers h3 {
+  display: flex;
+  align-items: flex-start;
+  margin-top: -30px;
+}
+
 
 .article-container {
   display: flex;
   flex-direction: column;
-  margin: auto; /* เพิ่มบรรทัดนี้ */
+  align-items: center;
+  justify-content: center;
   margin-top: 10px;
   background-color: #ffffff;
   overflow: hidden;
@@ -416,16 +436,17 @@ h{
 @media only screen and (max-width: 480px) {
   .container {
     flex-direction: column;
-    text-align: left; /* จัดให้ตัวหนังสือชิดซ้าย */
-    align-items: flex-start;
+  
   }
 
 
   .text {
     order: -1;
-    margin-top: 15px;
-    margin-bottom: -30px;
-    margin-left: 100px;
+    display: flex;
+    margin-top: 2%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
    
   }
 
@@ -436,6 +457,7 @@ h{
 
   .text h2 {
     font-size: 1rem;
+    margin-bottom: 5%;
    
   }
 
@@ -459,17 +481,31 @@ h{
 
    /* ปรับ margin ของ .button และ .text */
    .button {
-    margin-top: 15%;
+    margin-top: 20%;
   }
 
 /* เพิ่มสไตล์สำหรับกล่องบทความ */
 
+.contai {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #f5c722; */
+  margin: auto;
+  width: 420px;
+  
+}
+
+.containers h3 {
+  display: flex;
+  align-items: flex-start;
+
+}
+
+
 .article-container {
   display: flex;
   flex-direction: column;
-  margin: auto; /* เพิ่มบรรทัดนี้ */
   margin-top: 10px;
-  margin-bottom: 10px;
   background-color: #ffffff;
   overflow: hidden;
   transition: height 0.3s ease;
@@ -484,8 +520,7 @@ h3 {
   padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
-  margin-top: -50px;
-  margin-left: 35px;
+
   
 }
 
@@ -569,16 +604,16 @@ h3 {
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .container {
     flex-direction: column;
-    text-align: left; /* จัดให้ตัวหนังสือชิดซ้าย */
-    align-items: flex-start;
+    
   }
-
 
   .text {
     order: -1;
-    margin-top: 15px;
-    margin-bottom: -30px;
-    margin-left: 230px;
+    margin-top: 1.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
    
   }
 
@@ -589,6 +624,7 @@ h3 {
 
   .text h2 {
     font-size: 1.2rem;
+    margin-bottom: 1%;
    
   }
 
@@ -618,10 +654,26 @@ h3 {
 
 /* เพิ่มสไตล์สำหรับกล่องบทความ */
 
+.contai {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #f5c722; */
+  margin: auto;
+  width: 650px;
+  
+}
+
+.containers h3 {
+  display: flex;
+  align-items: flex-start;
+
+}
+
 .article-container {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  justify-content: center;
+  margin-top: 0px;
   background-color: #ffffff;
   overflow: hidden;
   transition: height 0.3s ease;
@@ -636,9 +688,7 @@ h3 {
   padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
-  margin-top: -50px;
-  margin-left: 65px;
-  
+ 
 }
 
 .article-box {
@@ -719,16 +769,17 @@ h3 {
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .container {
     flex-direction: column;
-    text-align: left; 
-    align-items: flex-start;
+  
   }
 
 
   .text {
     order: -1;
-    margin-top: 15px;
-    margin-bottom: -30px;
-    margin-left: 350px;
+    margin-top: 1.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
    
   }
 
@@ -739,6 +790,7 @@ h3 {
 
   .text h2 {
     font-size: 1.3rem;
+    margin-bottom: 1%;
    
   }
 
@@ -767,7 +819,20 @@ h3 {
   }
 
 /* เพิ่มสไตล์สำหรับกล่องบทความ */
+.contai {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #f5c722; */
+  margin: auto;
+  width: 900px;
+  
+}
 
+.containers h3 {
+  display: flex;
+  align-items: flex-start;
+
+}
 .article-container {
   display: flex;
   flex-direction: column;
@@ -786,8 +851,7 @@ h3 {
   padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
-  margin-top: -50px;
-  margin-left: 65px;
+ 
   
 }
 
@@ -872,12 +936,12 @@ h3 {
     
   }
 
-
   .text{
     order: -1;
-    flex: 1;
-    margin-top: 85px;
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
      
 }
 
@@ -917,6 +981,21 @@ h3 {
 
 /* เพิ่มสไตล์สำหรับกล่องบทความ */
 
+.contai {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #f5c722; */
+  margin: auto;
+  width: 1100px;
+  
+}
+
+.containers h3 {
+  display: flex;
+  align-items: flex-start;
+
+}
+
 .article-container {
   display: flex;
   flex-direction: column;
@@ -935,8 +1014,7 @@ h3 {
   padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
-  margin-top: -50px;
-  margin-left: 65px;
+ 
   
 }
 
@@ -1014,6 +1092,7 @@ h3 {
 
 }
 
+
 @media screen and (min-width: 1200px)  {
   .container {
     flex-direction: row;
@@ -1022,9 +1101,10 @@ h3 {
 
   .text{
     order: -1;
-    flex: 1;
-    margin-top: 85px;
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
      
 }
 
@@ -1062,32 +1142,49 @@ h3 {
     margin-top: 8%;
   }
 
-  .article-container {
+  /* เพิ่มสไตล์สำหรับกล่องบทความ */
+
+.contai {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #f5c722; */
+  margin: auto;
+  width: 1200px;
+  
+}
+
+.containers h3 {
+  display: flex;
+  align-items: flex-start;
+
+}
+
+.article-container {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
   background-color: #ffffff;
   overflow: hidden;
   transition: height 0.3s ease;
-  width: 1100px;
+  width: 1200px;
   border-radius: 20px;
  
 }
 
-  h3 {
+
+h3 {
   font-size: 1.7rem; /* ปรับค่าตามที่คุณต้องการ */
   padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
-  margin-top: -50px;
-  margin-left: 50px;
+ 
   
 }
 
 .article-box {
   display: flex;
   margin-top: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 12px;
   background-color: #ffffff;
   overflow: hidden;
   transition: height 0.3s ease;
@@ -1155,7 +1252,7 @@ h3 {
   margin-top: 20px;
   align-self: flex-start; /* ทำให้รูปอยู่ด้านบน */
 }
-
+  
 }
   
 </style>
