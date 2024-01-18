@@ -2,7 +2,7 @@
 import NavBar from "@/components/NavBar.vue";
 import BoxComponent from '@/components/BoxComponent.vue';
 import axios from "axios";
-import { authenKey } from "../utils/config";
+import { authenKey } from '../utils/config';
 // import ItemhomeComponent from '../components/ItemhomeComponent.vue';
 
 export default {

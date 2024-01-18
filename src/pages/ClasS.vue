@@ -158,7 +158,7 @@ h1 {
   transform: translateY(10%);
   width: 40px;
   height: 40px;
-  margin-left: 65px;
+  margin-left: 45px;
   object-fit: cover;
   /* background-color: aqua; */
 }
@@ -167,7 +167,7 @@ h1 {
   /* margin-top: 5px; */
   margin-left: -15%;
   /* margin-bottom: 15px; */
-  width: 32vh;
+  width: 35vh;
   height: 50px;
   background-color: #1f1f1f;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  */
@@ -182,8 +182,8 @@ h1 {
 
 p {
   font-size: 20px;
-  margin-left: 115px;
-  transform: translateY(-105%);
+  margin-left: 85px;
+  transform: translateY(-95%);
   font-weight: bolder;
   color: #fffdfd;
   width: 20px;
@@ -199,8 +199,9 @@ p {
 }
 
 .buttons {
-  max-width: 30vh;
+  width: 35vh;
 }
+
 
 .articleBox {
   width: fit-content;
@@ -217,6 +218,7 @@ p {
   h1 {
     font-size: 1.2rem;
   }
+
 
   .button p {
     font-size: 1rem;

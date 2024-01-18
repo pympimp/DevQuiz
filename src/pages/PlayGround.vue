@@ -20,8 +20,8 @@
               class="Text-area"
               >
               <ScrollAreaViewport>
-                    <textarea
-                    v-model="code.html"
+                    <textarea v-if="unitData"
+                    v-model="code[unitData.name]"
                     ></textarea>
               </ScrollAreaViewport>
               <ScrollAreaScrollbar
@@ -68,6 +68,7 @@ const lessonName = ref();
 const unitId = ref();
 const course = ref();
 const nextUnit = ref(); 
+const unitData = ref();
 onMounted(()=>{
   if(route.params.couresId && route.params.lessonId && route.params.unitId && route.params.name){
     couresId.value = route.params.couresId;
@@ -81,7 +82,7 @@ onMounted(()=>{
   }
 })
 
-const htmlstart = `<!DOCTYPE html>
+const htmlstart = ref(`<!DOCTYPE html>
 <html>
 <head>
 <title>Page Title</title>
@@ -92,12 +93,44 @@ const htmlstart = `<!DOCTYPE html>
 <p>This is a paragraph.</p>
 
 </body>
-</html>`;
+</html>`)
+
+const cssstart = ref(`<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+  font-family: verdana;
+  font-size: 300%;
+}
+</style>
+</head>
+<body>
+
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>`)
+
+const javascriptstart = ref(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML with JavaScript</title>
+</head>
+<body>
+
+    <h1>Hello, World!</h1>
+
+</body>
+</html>`)
 
 const code = ref({
-  html: htmlstart,
-  css: '',
-  javascript: '',
+  HTML: htmlstart,
+  CSS: cssstart,
+  JavaScript: javascriptstart,
 });
 
 const outputFrame = ref(null);
@@ -106,11 +139,16 @@ const runCode = () => {
   const outputDocument = outputFrame.value.contentDocument || outputFrame.value.contentWindow.document;
 
   outputDocument.open();
-  outputDocument.write(code.value.html);
+  outputDocument.write(code.value[unitData.value.name]);
   outputDocument.close();
 
-    const hasBTags = code.value.html.includes('<b>') && code.value.html.includes('</b>');
-  corrcet.value = hasBTags
+  if(unit.value.answer[0] && unit.value.answer[1]){
+    const hasBTags = code.value[unitData.value.name].includes(unit.value.answer[0]) && code.value[unitData.value.name].includes(unit.value.answer[1]);
+    corrcet.value = hasBTags
+  }else{
+    const hasBTags = code.value[unitData.value.name].includes(unit.value.answer[0]);
+    corrcet.value = hasBTags
+  }
   if(corrcet.value === true){
     Swal.fire({
         title: "คำตอบถูกต้อง!",
@@ -133,7 +171,7 @@ const fetchOneUnit = async(couresId,lessonId,unitId) =>{
   const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/coures/${couresId}/${lessonId}/${unitId}`)
   if(result){
     unit.value = result.data
-    console.log(unit.value)
+    console.log("unit",unit.value)
   }
 }
 
@@ -154,6 +192,7 @@ const unitParts = unit.value.nameUnit.match(/(\D+)(\d+)/); // ใช้ regex �
       }
     });
     if (result) {
+corrcet.value = false
       router.push(`/unit/${couresId.value}/${lessonId.value}/${nextUnit.value}/${course.value}`)
       if(router.push){
         fetchOneUnit(couresId.value,lessonId.value,nextUnit.value)
@@ -171,18 +210,18 @@ const fetchUnitData = async() => {
         if(result){
           const Index = result.data.findIndex((item) => item.name === course.value)
           if(Index !== -1){
-            const unitData = result.data[Index]
-            const lessonIndex = unitData.lessons.findIndex((item) => item.lessonId === lessonId.value)
+            unitData.value = result.data[Index]
+            const lessonIndex = unitData.value.lessons.findIndex((item) => item.lessonId === lessonId.value)
             if(lessonIndex !== -1){
-              lessonName.value = unitData.lessons[lessonIndex].nameLesson;
+              lessonName.value = unitData.value.lessons[lessonIndex].nameLesson;
               console.log('lessonName',lessonName.value)
-              const unitIndex = unitData.lessons[lessonIndex].units.findIndex((item) => item.unitId === unitId.value)
+              const unitIndex = unitData.value.lessons[lessonIndex].units.findIndex((item) => item.unitId === unitId.value)
               if(unitIndex !== -1){
-                nextUnit.value = unitData.lessons[lessonIndex].units[unitIndex + 1].unitId
+                nextUnit.value = unitData.value.lessons[lessonIndex].units[unitIndex + 1].unitId
                 console.log(nextUnit.value)
               }
             }
-          console.log('unitData', unitData)
+          console.log('unitData', unitData.value)
           }
         }
       } catch (error) {

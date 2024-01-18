@@ -9,10 +9,13 @@ Project Description
 
 ### In Progress
 
-- [ ] Fix output cant read  
-- [ ] unlock level with pinia  
+- [ ] ทำเสร็จสองงาน นอนพัก 1.30  
 
 ### Done ✓
 
+- [x] ทำหน้า PlayGround ให้สมบูรณ์  
+- [x] ทำตัวหหนังสือวิ่งโดยใช้ชื่อ โครงงานเรา  
+- [x] Fix output cant read  
+- [x] unlock level with pinia  
 - [x] Edit code playground  
 
