@@ -1,83 +1,77 @@
 <template>
-    <div>
-      <NavBar/>
-      <div class="container-playground">
-        <div class="discription" v-if="unit">
-          <div style="font-size: 24px;"><b>{{ unit.nameUnit + ' '}}</b>{{ unit.header }}</div>
-          <div style="font-size: 16px;">{{ unit.discription }}</div>
-          <div style="font-size: 16px;display: flex;flex-direction: row;">
-            <div style="color: #C53636;font-weight: bold;">โจทย์: </div>
-            <div style="margin-left: 5px;">{{ unit.question }}</div>
-          </div>    
+  <div>
+    <NavBar />
+    <div class="container-playground">
+      <div class="discription" v-if="unit">
+        <div style="font-size: 24px">
+          <b>{{ unit.nameUnit + ' ' }}</b
+          >{{ unit.header }}
         </div>
-  
-        <div class="box-playground">
-          <div class="input-playground">
-            <div style="font-size: medium; margin-left: 30px;color: white;">พื้นที่เขียนโค้ด</div>
-            <div>
-              <ScrollAreaRoot 
-              style="--scrollbar-size:10px"
-              class="Text-area"
-              >
+        <div style="font-size: 16px">{{ unit.discription }}</div>
+        <div style="font-size: 16px; display: flex; flex-direction: row">
+          <div style="color: #c53636; font-weight: bold">โจทย์:</div>
+          <div style="margin-left: 5px">{{ unit.question }}</div>
+        </div>
+      </div>
+
+      <div class="box-playground">
+        <div class="input-playground">
+          <div style="font-size: medium; margin-left: 30px; color: white">พื้นที่เขียนโค้ด</div>
+          <div>
+            <ScrollAreaRoot style="--scrollbar-size: 10px" class="Text-area">
               <ScrollAreaViewport>
-                    <textarea v-if="unitData"
-                    v-model="code[unitData.name]"
-                    ></textarea>
+                <textarea v-if="unitData" v-model="code[unitData.name]"></textarea>
               </ScrollAreaViewport>
-              <ScrollAreaScrollbar
-                class="ScrollAreaScrollbar"
-                orientation="horizontal"
-                >
-              <ScrollAreaThumb
-                class="ScrollAreaThumb"
-              />
-    </ScrollAreaScrollbar>
-          </ScrollAreaRoot>
+              <ScrollAreaScrollbar class="ScrollAreaScrollbar" orientation="horizontal">
+                <ScrollAreaThumb class="ScrollAreaThumb" />
+              </ScrollAreaScrollbar>
+            </ScrollAreaRoot>
+          </div>
         </div>
-          </div>
-          <div class="output-playground">
-            <div style="font-size: medium; margin-left: 30px;color: white;">ผลลัพธ์</div>
-            <iframe class="Text-area" ref="outputFrame"></iframe>
-            <button @click="runCode" class="button" v-if="!corrcet"><b> ตรวจสอบ </b></button>
-            <button @click="check()" class="button" v-if="corrcet"><b> ต่อไป </b></button>
-          </div>
+        <div class="output-playground">
+          <div style="font-size: medium; margin-left: 30px; color: white">ผลลัพธ์</div>
+          <iframe class="Text-area" ref="outputFrame"></iframe>
+          <button @click="runCode" class="button" v-if="!corrcet"><b> ตรวจสอบ </b></button>
+          <button @click="check()" class="button" v-if="corrcet && nextUnit != null"><b> ต่อไป </b></button>
+          <button @click="endLesson()" class="button" v-if="corrcet && nextUnit == null"><b> จบแบบทดสอบ </b></button>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-import NavBar from '@/components/NavBar.vue';
-import { ref } from 'vue';
-import { onMounted } from 'vue';
-import axios from 'axios';
-import { useRouter, useRoute } from 'vue-router';
-import { useAuthenStore } from '../stores/auth';
+  </div>
+</template>
+
+<script setup>
+import NavBar from '@/components/NavBar.vue'
+import { ref } from 'vue'
+import { onMounted } from 'vue'
+import axios from 'axios'
+import { useRouter, useRoute } from 'vue-router'
+import { useAuthenStore } from '../stores/auth'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from 'radix-vue'
 
-const authenStore = useAuthenStore();
-const route = useRoute();
-const router = useRouter();
-const unit = ref();
-const corrcet = ref();
-const couresId = ref();
-const lessonId = ref();
-const lessonName = ref();
-const unitId = ref();
-const course = ref();
-const nextUnit = ref(); 
-const unitData = ref();
-onMounted(()=>{
-  if(route.params.couresId && route.params.lessonId && route.params.unitId && route.params.name){
-    couresId.value = route.params.couresId;
-    lessonId.value = route.params.lessonId;
-    unitId.value = route.params.unitId;
-    course.value = route.params.name;
-    fetchUnitData();
-    if(couresId.value && lessonId.value && unitId.value){
-      fetchOneUnit(couresId.value,lessonId.value,unitId.value)
+const authenStore = useAuthenStore()
+const route = useRoute()
+const router = useRouter()
+const unit = ref()
+const corrcet = ref()
+const couresId = ref()
+const lessonId = ref()
+const lessonName = ref()
+const unitId = ref()
+const course = ref()
+const nextUnit = ref()
+const unitData = ref()
+onMounted(() => {
+  if (route.params.couresId && route.params.lessonId && route.params.unitId && route.params.name) {
+    couresId.value = route.params.couresId
+    lessonId.value = route.params.lessonId
+    unitId.value = route.params.unitId
+    course.value = route.params.name
+    fetchUnitData()
+    if (couresId.value && lessonId.value && unitId.value) {
+      fetchOneUnit(couresId.value, lessonId.value, unitId.value)
     }
   }
 })
@@ -130,148 +124,193 @@ const javascriptstart = ref(`<!DOCTYPE html>
 const code = ref({
   HTML: htmlstart,
   CSS: cssstart,
-  JavaScript: javascriptstart,
-});
+  JavaScript: javascriptstart
+})
 
-const outputFrame = ref(null);
+const outputFrame = ref(null)
 
 const runCode = () => {
-  const outputDocument = outputFrame.value.contentDocument || outputFrame.value.contentWindow.document;
+  const outputDocument =
+    outputFrame.value.contentDocument || outputFrame.value.contentWindow.document
 
-  outputDocument.open();
-  outputDocument.write(code.value[unitData.value.name]);
-  outputDocument.close();
+  outputDocument.open()
+  outputDocument.write(code.value[unitData.value.name])
+  outputDocument.close()
 
-  if(unit.value.answer[0] && unit.value.answer[1]){
-    const hasBTags = code.value[unitData.value.name].includes(unit.value.answer[0]) && code.value[unitData.value.name].includes(unit.value.answer[1]);
+  const userAnswer = code.value[unitData.value.name]
+  const step1 = userAnswer.replace(/".*?"/g, '')
+  const step2 =  step1.replace(/:\s*([^;]+)\s*;/g, ':')
+  const answer = step2
+  console.log("test",answer)
+  if (unit.value.answer[0] && unit.value.answer[1]) {
+    const hasBTags = answer.includes(unit.value.answer[0]) && answer.includes(unit.value.answer[1])
     corrcet.value = hasBTags
-  }else{
-    const hasBTags = code.value[unitData.value.name].includes(unit.value.answer[0]);
+  } else {
+    const hasBTags = answer.includes(unit.value.answer[0])
     corrcet.value = hasBTags
   }
-  if(corrcet.value === true){
-    Swal.fire({
-        title: "คำตอบถูกต้อง!",
-        // text: "You clicked the button!",
-        icon: "success",
 
-      });
-  }else{
+  if (corrcet.value === true) {
     Swal.fire({
-      icon: "error",
-      title: "ตอบผิด",
-      text: "โปรดลองใหม่อีกครั้ง",
-    });
+      title: 'คำตอบถูกต้อง!',
+      // text: "You clicked the button!",
+      icon: 'success'
+    })
+  } else {
+    Swal.fire({
+      icon: 'error',
+      title: 'ตอบผิด',
+      text: 'โปรดลองใหม่อีกครัง'
+    })
   }
   console.log(corrcet.value)
+}
 
-};
-
-const fetchOneUnit = async(couresId,lessonId,unitId) =>{
-  const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/coures/${couresId}/${lessonId}/${unitId}`)
-  if(result){
+const fetchOneUnit = async (couresId, lessonId, unitId) => {
+  const result = await axios.get(
+    `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/${couresId}/${lessonId}/${unitId}`
+  )
+  if (result) {
     unit.value = result.data
-    console.log("unit",unit.value)
+    console.log('unit', unit.value)
   }
 }
 
-const check = async() =>{
+const check = async () => {
   const lesson = lessonName.value
-const unitParts = unit.value.nameUnit.match(/(\D+)(\d+)/); // ใช้ regex เพื่อแยกตัวเลขและตัวอักษร
-  let units = '';
+  const unitParts = unit.value.nameUnit.match(/(\D+)(\d+)/) // ใช้ regex เพื่อแยกตัวเลขและตัวอักษร
+  let units = ''
 
   if (unitParts) {
-    const unitText = unitParts[1]; // ส่วนของตัวอักษร
-    const unitNumber = parseInt(unitParts[2]); // ส่วนของตัวเลข
-    units = unitText + (unitNumber + 1);
+    const unitText = unitParts[1] // ส่วนของตัวอักษร
+    const unitNumber = parseInt(unitParts[2]) // ส่วนของตัวเลข
+    units = unitText + (unitNumber + 1)
   }
   try {
-      const result = await axios.put(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/Test/${authenStore.auth.id}/${course.value}`, {
-      [lesson]: {
-        [units]: true
+    const result = await axios.put(
+      `http://localhost:5000/test-elearning-b0646/us-central1/api/user/Test/${authenStore.auth.id}/${course.value}`,
+      {
+        [lesson]: {
+          [units]: true
+        }
       }
-    });
+    )
     if (result) {
-corrcet.value = false
+      corrcet.value = false
       router.push(`/unit/${couresId.value}/${lessonId.value}/${nextUnit.value}/${course.value}`)
-      if(router.push){
-        fetchOneUnit(couresId.value,lessonId.value,nextUnit.value)
-        console.log("เปลี่ยนหน้า")
+      if (router.push) {
+        fetchOneUnit(couresId.value, lessonId.value, nextUnit.value)
+        console.log('เปลี่ยนหน้า')
       }
     }
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error('Error:', error.message)
   }
 }
 
-const fetchUnitData = async() => {
-      try {
-        const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
-        if(result){
-          const Index = result.data.findIndex((item) => item.name === course.value)
-          if(Index !== -1){
-            unitData.value = result.data[Index]
-            const lessonIndex = unitData.value.lessons.findIndex((item) => item.lessonId === lessonId.value)
-            if(lessonIndex !== -1){
-              lessonName.value = unitData.value.lessons[lessonIndex].nameLesson;
-              console.log('lessonName',lessonName.value)
-              const unitIndex = unitData.value.lessons[lessonIndex].units.findIndex((item) => item.unitId === unitId.value)
-              if(unitIndex !== -1){
-                nextUnit.value = unitData.value.lessons[lessonIndex].units[unitIndex + 1].unitId
-                console.log(nextUnit.value)
-              }
-            }
-          console.log('unitData', unitData.value)
+const fetchUnitData = async () => {
+  try {
+    const result = await axios.get(
+      'http://localhost:5000/test-elearning-b0646/us-central1/api/coures/'
+    )
+    if (result) {
+      const Index = result.data.findIndex((item) => item.name === course.value)
+      if (Index !== -1) {
+        unitData.value = result.data[Index]
+        const lessonIndex = unitData.value.lessons.findIndex(
+          (item) => item.lessonId === lessonId.value
+        )
+        if (lessonIndex !== -1) {
+          lessonName.value = unitData.value.lessons[lessonIndex].nameLesson
+          console.log('lessonName', lessonName.value)
+          const unitIndex = unitData.value.lessons[lessonIndex].units.findIndex(
+            (item) => item.unitId === unitId.value
+          )
+          if (
+            unitIndex !== -1 &&
+            unitIndex + 1 !== unitData.value.lessons[lessonIndex].units.length
+          ) {
+            nextUnit.value = unitData.value.lessons[lessonIndex].units[unitIndex + 1].unitId
+            console.log(nextUnit.value)
+          }else{
+            nextUnit.value = null
           }
         }
-      } catch (error) {
-        console.error("Error during getdata:", error);
+        console.log('unitData', unitData.value)
       }
-    };
+    }
+  } catch (error) {
+    console.error('Error during getdata:', error)
+  }
+}
 
+const endLesson = async()=>{
+  const lesson = lessonName.value.match(/(\D+)(\d+)/);
+  let lessons = '';
+  if(lesson){
+    const lessonText = lesson[1];
+    const lessonNumber = parseInt(lesson[2]);
+    lessons = lessonText + (lessonNumber + 1)
+  }
+  try {
+    const result = await axios.put(
+      `http://localhost:5000/test-elearning-b0646/us-central1/api/user/Test/${authenStore.auth.id}/${course.value}`,
+      {
+        [lessons]: {
+          unit1: true
+        }
+      }
+    )
+    if(result){
+      router.go(-1)
+    }
+  } catch (error) {
+    console.error('Error:', error.message)
+  }
+}
 </script>
 
 <style scoped>
-.container-playground{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.container-playground {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.discription{
-    background-color: white;
-    width: 1000px;
-    max-height: 150px;
-    border-radius: 30px;
-    padding: 15px;
-    margin-top: 60px;
+.discription {
+  background-color: white;
+  width: 1000px;
+  max-height: 150px;
+  border-radius: 30px;
+  padding: 15px;
+  margin-top: 60px;
 }
-.Text-area{
-    background-color: white;
-    width: 500px;
-    height: 300px;
-    border-radius: 30px;
-    padding: 15px;
-    margin: 0px 10px 0px 10px;
-    resize: none;
-}
-
-.Text-area textarea{
-    width: 100%;
-    height: 270px;
-    overflow-y: auto;
-    border: none; /* เพิ่มบรรทัดนี้ถ้าคุณต้องการลบเส้นขอบ */
+.Text-area {
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  border-radius: 30px;
+  padding: 15px;
+  margin: 0px 10px 0px 10px;
+  resize: none;
 }
 
-.box-playground{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 20px;
+.Text-area textarea {
+  width: 100%;
+  height: 270px;
+  overflow-y: auto;
+  border: none; /* เพิ่มบรรทัดนี้ถ้าคุณต้องการลบเส้นขอบ */
 }
-.button{
+
+.box-playground {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+.button {
   background-color: rgba(245, 199, 34, 1);
   border-radius: 15px;
   width: 104px;
@@ -279,15 +318,14 @@ const fetchUnitData = async() => {
   padding: 5px;
   margin: 20px;
   align-self: flex-end;
-
 }
 
-.output-playground{
+.output-playground {
   display: flex;
   flex-direction: column;
 }
 
-.input-playground{
+.input-playground {
   overflow: hidden;
 }
 
@@ -320,5 +358,4 @@ iframe {
   min-width: 44px;
   min-height: 44px;
 }
-
 </style>

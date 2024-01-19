@@ -22,6 +22,7 @@
         :contentData="classData"
         :unitData="unitData"
         :ProgressIndex="ProgressIndex"
+        :userData="userData"
         class="articleBox"
       />
     </div>
@@ -46,15 +47,17 @@ const router = useRouter()
 const classAllData = ref([])
 const unitData = ref({})
 const ProgressIndex = ref()
+const userData = ref()
 
 onMounted(() => {
-  setTimeout(() => {
+  setTimeout(async() => {
     if (route.params.classId) {
       classId.value = route.params.classId
       fetchData()
-    }
-    if (classId.value) {
+      await fetchOneUser()
+      if (classId.value ) {
       fetchOneClass(classId.value)
+    }
     }
   }, 800)
 })
@@ -124,7 +127,8 @@ const fetchUnitData = async (name) => {
 }
 
 const userProgress = (contentName) => {
-  const userIndex = authenStore.auth.progress
+  if(unitData.value){
+  const userIndex = userData.value.progress
   try {
     const foundIndex = userIndex.findIndex((item) => item.name === contentName)
     if (foundIndex !== -1) {
@@ -135,6 +139,14 @@ const userProgress = (contentName) => {
     }
   } catch (error) {
     console.error('Error loading progress data: ', error)
+  }
+}
+}
+
+const fetchOneUser = async()=>{
+  const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`)
+  if(result){
+    userData.value = result.data
   }
 }
 </script>
