@@ -22,6 +22,7 @@
         :contentData="classData"
         :unitData="unitData"
         :ProgressIndex="ProgressIndex"
+        :userData="userData"
         class="articleBox"
       />
     </div>
@@ -46,15 +47,17 @@ const router = useRouter()
 const classAllData = ref([])
 const unitData = ref({})
 const ProgressIndex = ref()
+const userData = ref()
 
 onMounted(() => {
-  setTimeout(() => {
+  setTimeout(async() => {
     if (route.params.classId) {
       classId.value = route.params.classId
       fetchData()
-    }
-    if (classId.value) {
+      await fetchOneUser()
+      if (classId.value ) {
       fetchOneClass(classId.value)
+    }
     }
   }, 800)
 })
@@ -124,7 +127,8 @@ const fetchUnitData = async (name) => {
 }
 
 const userProgress = (contentName) => {
-  const userIndex = authenStore.auth.progress
+  if(unitData.value){
+  const userIndex = userData.value.progress
   try {
     const foundIndex = userIndex.findIndex((item) => item.name === contentName)
     if (foundIndex !== -1) {
@@ -135,6 +139,14 @@ const userProgress = (contentName) => {
     }
   } catch (error) {
     console.error('Error loading progress data: ', error)
+  }
+}
+}
+
+const fetchOneUser = async()=>{
+  const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`)
+  if(result){
+    userData.value = result.data
   }
 }
 </script>
@@ -158,7 +170,7 @@ h1 {
   transform: translateY(10%);
   width: 40px;
   height: 40px;
-  margin-left: 65px;
+  margin-left: 45px;
   object-fit: cover;
   /* background-color: aqua; */
 }
@@ -167,7 +179,7 @@ h1 {
   /* margin-top: 5px; */
   margin-left: -15%;
   /* margin-bottom: 15px; */
-  width: 32vh;
+  width: 35vh;
   height: 50px;
   background-color: #1f1f1f;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  */
@@ -182,8 +194,8 @@ h1 {
 
 p {
   font-size: 20px;
-  margin-left: 115px;
-  transform: translateY(-105%);
+  margin-left: 85px;
+  transform: translateY(-95%);
   font-weight: bolder;
   color: #fffdfd;
   width: 20px;
@@ -199,8 +211,9 @@ p {
 }
 
 .buttons {
-  max-width: 30vh;
+  width: 35vh;
 }
+
 
 .articleBox {
   width: fit-content;
@@ -217,6 +230,7 @@ p {
   h1 {
     font-size: 1.2rem;
   }
+
 
   .button p {
     font-size: 1rem;

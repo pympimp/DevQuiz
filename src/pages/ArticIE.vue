@@ -147,7 +147,7 @@ h1 {
   transform: translateY(10%);
   width: 40px;
   height: 40px;
-  margin-left: 65px;
+  margin-left: 45px;
   /* background-color: aqua; */
 }
 
@@ -170,8 +170,8 @@ h1 {
 
 p {
   font-size: 20px;
-  margin-left: 115px;
-  transform: translateY(-105%);
+  margin-left: 85px;
+  transform: translateY(-85%);
   font-weight: bolder;
   color: #fffdfd;
   width: 20px;
