@@ -9,9 +9,10 @@ export default {
   components: {
     NavBar
   },
-  data(){
-    return{
-      message:"การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น / จัดทำโดยนักศึกษาชั้นประกาศนียบัตรวิชาชีพชั้นสูง สาขาวิชาเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาอุดรธานี"
+  data() {
+    return {
+      message:
+        'การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น'
     }
   },
   methods: {
@@ -24,13 +25,13 @@ export default {
       // เพิ่มโค้ดที่คุณต้องการเมื่อปุ่มถูกคลิก
     },
     mounted() {
-    // ทำการลบ scrollbar ของ body เมื่อ component นี้ถูก mounted
-    document.body.style.overflow = 'hidden';
-  },
-  beforeDestroy() {
-    // ทำการคืนค่า overflow ของ body เมื่อ component นี้ถูก destroy
-    document.body.style.overflow = '';
-  }
+      // ทำการลบ scrollbar ของ body เมื่อ component นี้ถูก mounted
+      document.body.style.overflow = 'hidden'
+    },
+    beforeDestroy() {
+      // ทำการคืนค่า overflow ของ body เมื่อ component นี้ถูก destroy
+      document.body.style.overflow = ''
+    }
   }
 }
 </script>
@@ -39,22 +40,35 @@ export default {
   <NavBar />
   <!-- <div class="screen" id="screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center;"> -->
   <!-- <div class="page"> -->
-    <div class="container">
-  <h1 class="running-text" id="text-run">
-    {{ message }}
-  </h1>
-  <section class="about">
-    <div class="about-content">
-      <h1>DevQuiz</h1>
-      <h3>Web Application ระบบ e-Learning</h3>
-      <h3>สำหรับเรียนการเขียนโปรแกรมเบื้องต้น</h3>
-      <button @click="startQuiz()">เริ่มต้นการเรียน</button>
+  <div class="container">
+    <h1 class="running-text" id="text-run">
+      {{ message }}
+    </h1>
+    <section class="about">
+      <div class="about-content">
+        <h1>DevQuiz</h1>
+        <h3>Web Application ระบบ e-Learning</h3>
+        <h3>สำหรับเรียนการเขียนโปรแกรมเบื้องต้น</h3>
+        <button @click="startQuiz()">เริ่มต้นการเรียน</button>
+      </div>
+      <div class="about-image">
+        <img src="/images/main.png" alt="Main Image" class="h-auto" />
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2024 By</p>
+      <div class="credit">
+        <p>นักศึกษาชั้นประกาศนียบัตรวิชาชีพชั้นสูง สาขาวิชาเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาอุดรธานี</p>
+        <!-- <ol type="1">
+          <li>นาย พงศธรณ์ พลแสง</li>
+          <li>นางสาว พิมพ์มาดา สุระดนัย</li>
+          <li>นางสาว ณัฐวดี อินทพุทธ</li>
+        </ol> -->
+      </div>
     </div>
-    <div class="about-image">
-      <img src="/images/main.png" alt="Main Image" class="h-auto" />
-    </div>
-  </section>
-</div>
+  </footer>
 
   <!-- </div> -->
 
@@ -69,9 +83,31 @@ export default {
   box-sizing: border-box;
 }
 
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
 
-#text-run{
+#text-run {
   overflow: hidden;
+}
+
+.footer-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.credit{
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  margin-left: 0.5%;
 }
 
 /* body {
@@ -140,14 +176,14 @@ export default {
 /*
 } */
 
-.container{
+.container {
   width: 100%;
   overflow: hidden;
 }
 
 .about {
   width: 100%;
-  min-height: 80vh;
+  min-height: 78vh;
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -222,8 +258,8 @@ export default {
 .running-text {
   font-size: 1.1rem;
   margin-top: 0.5rem;
-  white-space: nowrap; 
-  overflow: hidden; 
+  white-space: nowrap;
+  overflow: hidden;
   animation: runText 16s linear infinite; /* 5s คือ ระยะเวลา, linear คือ การเคลื่อนไหวเป็นเส้นตรง, infinite คือ เล่นซ้ำ */
   color: #ec4088;
 }
