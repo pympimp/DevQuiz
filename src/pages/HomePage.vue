@@ -135,17 +135,17 @@ toggleSection() {
     <div v-if="currentSection === 1">
       <NavBar />
       <div class="container">
-        <div v-if="boxes != null || boxes != ''" class="row">
+        <div class="text">
+          <h1>เริ่มต้นการเรียน</h1>
+          <h2>ภาษาคอมพิวเตอร์เบื้องต้น</h2>
+        </div>
+        <div v-if="boxes != null || boxes != ''" class="row" style="background-color: aqua;">
           <router-link v-for="box in boxes" :key="box.id" :to="`/class/${box.link}`" class="box">
             <BoxComponent :boxData="box" />
           </router-link>
         </div>
         <div v-else class="row">
           <h1>Data not available</h1>
-        </div>
-        <div class="text">
-          <h1>เริ่มต้นการเรียน</h1>
-          <h2>ภาษาคอมพิวเตอร์เบื้องต้น</h2>
         </div>
       </div>
 
@@ -471,7 +471,7 @@ h{
   }
 
   .text h1 {
-    font-size: 2.5rem;
+    font-size: 1.7rem;
    
   }
 
@@ -536,12 +536,11 @@ h{
 
 
 h3 {
-  font-size: 1.5rem; /* ปรับค่าตามที่คุณต้องการ */
+  font-size: 1.9rem; /* ปรับค่าตามที่คุณต้องการ */
   padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
 
-  
 }
 
 .article-box {

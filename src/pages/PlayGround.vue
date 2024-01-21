@@ -3,12 +3,12 @@
     <NavBar />
     <div class="container-playground">
       <div class="discription" v-if="unit">
-        <div style="font-size: 24px">
+        <div clas="UnitName" style="font-size: 24px">
           <b>{{ unit.nameUnit + ' ' }}</b
           >{{ unit.header }}
         </div>
-        <div style="font-size: 16px">{{ unit.discription }}</div>
-        <div style="font-size: 16px; display: flex; flex-direction: row">
+        <div class="DescText">{{ unit.discription }}</div>
+        <div class="TestText">
           <div style="color: #c53636; font-weight: bold">โจทย์:</div>
           <div style="margin-left: 5px">{{ unit.question }}</div>
         </div>
@@ -16,7 +16,7 @@
 
       <div class="box-playground">
         <div class="input-playground">
-          <div style="font-size: medium; margin-left: 30px; color: white">พื้นที่เขียนโค้ด</div>
+          <div class="AboveText">พื้นที่เขียนโค้ด</div>
           <div>
             <ScrollAreaRoot style="--scrollbar-size: 10px" class="Text-area">
               <ScrollAreaViewport>
@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="output-playground">
-          <div style="font-size: medium; margin-left: 30px; color: white">ผลลัพธ์</div>
+          <div class="AboveText">ผลลัพธ์</div>
           <iframe class="Text-area" ref="outputFrame"></iframe>
           <button @click="runCode" class="button" v-if="!corrcet"><b> ตรวจสอบ </b></button>
           <button @click="check()" class="button" v-if="corrcet && nextUnit != null"><b> ต่อไป </b></button>
@@ -276,11 +276,23 @@ const endLesson = async()=>{
   align-items: center;
 }
 
+.UnitName{
+  font-size: 1.4rem;
+}
+
+.DescText{
+  font-size: 1rem;
+}
+
+.TestText{
+  font-size: 1rem;
+}
+
 .discription {
   background-color: white;
   width: 1000px;
   max-height: 150px;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 15px;
   margin-top: 60px;
 }
@@ -288,7 +300,7 @@ const endLesson = async()=>{
   background-color: white;
   width: 500px;
   height: 300px;
-  border-radius: 30px;
+  border-radius: 20px;
   padding: 15px;
   margin: 0px 10px 0px 10px;
   resize: none;
@@ -323,6 +335,9 @@ const endLesson = async()=>{
   flex-direction: column;
 }
 
+.AboveText{
+  font-size: 1.3rem; margin-left: 30px; color: white
+}
 .input-playground {
   overflow: hidden;
 }
@@ -355,5 +370,200 @@ iframe {
   height: 100%;
   min-width: 44px;
   min-height: 44px;
+}
+
+
+@media only screen and (max-width: 480px) {
+
+
+.box-playground {
+  width: 90%;
+  display: flex;
+  flex-direction:column;
+  margin-top: 20px;
+}
+
+.discription{
+  max-width: 90%;
+  margin-top: 5%;
+}
+
+.UnitName{
+  font-size: 1.2rem;
+}
+
+.DescText{
+  font-size: 0.9rem;
+}
+
+.TestText{
+  font-size: 1rem;
+}
+
+.Text-area{
+ max-width: 90%;
+ font-size: 0.2rem;
+}
+
+.AboveText{
+  font-size: 1.1rem;
+}
+.input-playground, .output-playground{
+ width: 100%;
+}
+
+
+.Text-area textarea{
+font-size: 0.9rem;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .box-playground {
+  width: 90%;
+  display: flex;
+  flex-direction:column;
+  margin-top: 20px;
+}
+
+.discription{
+  max-width: 90%;
+  margin-top: 3%;
+}
+
+.UnitName{
+  font-size: 1.2rem;
+}
+
+.DescText{
+  font-size: 1rem;
+}
+
+.TestText{
+  font-size: 1rem;
+}
+
+.Text-area{
+ width: 97%;
+ font-size: 0.2rem;
+}
+
+.AboveText{
+  font-size: 1.1rem;
+}
+
+.box-playground{
+  width: 86%;
+}
+.input-playground, .output-playground{
+ width: 100%;
+}
+
+.Text-area textarea{
+font-size: 0.9rem;
+}
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .box-playground {
+  width: 90%;
+  display: flex;
+  flex-direction:row;
+  margin-top: 20px;
+}
+
+.discription{
+  max-width: 90%;
+  margin-top: 5%;
+  
+}
+
+.UnitName{
+  font-size: 1.3rem;
+}
+
+.DescText{
+  font-size: 1.1rem;
+}
+
+.TestText{
+  font-size: 1.2rem;
+}
+
+.Text-area{
+ width: 97%;
+ height: 25rem;
+ font-size: 0.2rem;
+ 
+}
+
+.AboveText{
+  font-size: 1.2rem;
+}
+
+.input-playground, .output-playground{
+ width: 100%;
+}
+
+.Text-area textarea{
+font-size: 1.2rem;
+height: 25rem;
+}
+
+.button {
+  font-size: 1rem;
+
+}
+}
+
+@media screen and (min-width: 1025px) {
+  .box-playground {
+  width: 58rem;
+  display: flex;
+  flex-direction:row;
+  margin-top: 35px;
+}
+
+.discription{
+  max-width: 90%;
+  margin-top: 5%;
+}
+
+.UnitName{
+  font-size: 1.4rem;
+}
+
+.DescText{
+  font-size: 1.2rem;
+}
+
+.TestText{
+  font-size: 1.3rem;
+}
+
+.Text-area{
+ width: 97%;
+ height: 25rem;
+ font-size: 0.2rem;
+ 
+}
+
+.AboveText{
+  font-size: 1.2rem;
+}
+
+.input-playground, .output-playground{
+ width: 100%;
+}
+
+.Text-area textarea{
+font-size: 1.1rem;
+height: 25rem;
+}
+
+.button {
+  font-size: 1rem;
+
+}
 }
 </style>

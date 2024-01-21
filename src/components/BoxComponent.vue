@@ -3,7 +3,7 @@
     <div class="box">
       <div class="flex-container">
         <div class="img-container">
-          <img :src="box.imageSrc" alt="Box Image">
+          <img :src="box.imageSrc" alt="Box Image" class="Langimg">
         </div>
         <div class="text-container">
           <h2 class="main-title">{{box.name}}</h2>
@@ -158,7 +158,6 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color:  #1F1F1F;
   position: relative;
   margin-top: 1%;
   margin-bottom: 25px; /* ปรับตำแหน่งขึ้น 50px */
@@ -184,14 +183,14 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  /* margin-left: 15%; */
 }
 
 
 /* ส่วนข้างในแบบฝึก */
 
 img {
-  max-width: 40px;
+  width: 40px;
   height: 40px;
   /* margin-left: 40px; */
 }
@@ -203,14 +202,14 @@ img {
 }
 
 .main-title {
-  font-size: 1.5rem; /* ขนาดตัวอักษรสำหรับ HTML */
+  font-size: 1.2rem; /* ขนาดตัวอักษรสำหรับ HTML */
   font-weight: bold;
   color: #CCCCCC;
 }
 
 
 .sub-title {
-  font-size: 1rem; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
+  font-size: 0.9rem; /* ขนาดตัวอักษรสำหรับ Hypertext Markup Language */
   color:#FFFFFF;
 }
 
