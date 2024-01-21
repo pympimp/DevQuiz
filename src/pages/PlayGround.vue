@@ -82,7 +82,7 @@ const htmlstart = ref(`<!DOCTYPE html>
 <title>Page Title</title>
 </head>
 <body>
-
+  
 <h1>This is a Heading</h1>
 <p>This is a paragraph.</p>
 
@@ -108,10 +108,8 @@ h1 {
 </html>`)
 
 const javascriptstart = ref(`<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML with JavaScript</title>
 </head>
 <body>

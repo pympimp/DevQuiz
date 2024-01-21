@@ -2,19 +2,26 @@
   <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
     <div class="top-sec">
       <h1>Manage User</h1>
-      <router-link to="AdminAddUser">
-        <button class="btn"><i class="fa fa-plus"></i></button>
-      </router-link>
+      <!-- search bar -->
+      <div class="right-end">
+        <div class="search-container">
+          <input v-model="Search" class="input1" />
+          <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="search-icon" v-if="!Search"/>
+          <FontAwesomeIcon @click="Search = ''" icon="fa-solid fa-xmark" class="search-icon" v-else style="cursor: pointer;"/>
+        </div>
+        <router-link to="AdminAddUser">
+          <button class="btn"><i class="fa fa-plus"></i></button>
+        </router-link>
+      </div>
     </div>
     <div class="border border-gray-300 rounded-md p-[20px] h-full">
-
       <!-- หัวข้อ -->
       <ul class="grid-list">
-        <li class="grid-item col-1" style="font-weight: bold;">Number</li>
-        <li class="grid-item col-4" style="font-weight: bold;">Username</li>
-        <li class="grid-item col-3" style="font-weight: bold;">Email</li>
-        <li class="grid-item col-2" style="font-weight: bold;">Role</li>
-        <li class="grid-item col-3" style="font-weight: bold;">Tools</li>
+        <li class="grid-item col-1" style="font-weight: bold">Number</li>
+        <li class="grid-item col-4" style="font-weight: bold">Username</li>
+        <li class="grid-item col-3" style="font-weight: bold">Email</li>
+        <li class="grid-item col-2" style="font-weight: bold">Role</li>
+        <li class="grid-item col-3" style="font-weight: bold">Tools</li>
       </ul>
 
       <!-- ตัวอย่างรายชื่อ -->
@@ -24,82 +31,121 @@
         <li class="grid-item col-3">{{ item.email }}</li>
         <li class="grid-item col-2">{{ item.role }}</li>
         <li class="grid-item col-3">
-          <router-link :to="`/Admin/AdminEditUser/${item.id}`"><i class="bi bi-pencil"></i></router-link>
-          <i class="bi bi-trash" style="color: rgb(163, 22, 22); cursor: pointer;" @click="beforeDelete(item.id)"></i>
+          <router-link :to="`/Admin/AdminEditUser/${item.id}`"
+            ><i class="bi bi-pencil"></i
+          ></router-link>
+          <i
+            class="bi bi-trash"
+            style="color: rgb(163, 22, 22); cursor: pointer"
+            @click="beforeDelete(item.id)"
+          ></i>
         </li>
       </ul>
-
     </div>
   </div>
 </template>
 
 <script setup>
-import axios from "axios";
-import { ref, onMounted } from "vue";
+import axios from 'axios'
+import { ref, onMounted } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
-const user = ref([]);
+const user = ref([])
+const Search = ref()
 
 const fetchData = async () => {
   try {
-    const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/admin');
+    const result = await axios.get(
+      'http://localhost:5000/test-elearning-b0646/us-central1/api/admin'
+    )
     if (result) {
       user.value = result.data
-      console.log("data", user.value)
+      console.log('data', user.value)
     }
   } catch (error) {
-    console.error("Error during getdata:", error);
+    console.error('Error during getdata:', error)
   }
-};
+}
 
-const beforeDelete =(id)=>{
+const beforeDelete = (id) => {
   Swal.fire({
-        title: "ยืนยันลบข้อมูลผู้ใช้?",
-        text: "ไม่สามารถย้อนกลับการกระทำนี้ได้",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "ลบ",
-        cancelButtonText: "ยกเลิก"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          deleteUser(id)
-          if(deleteUser()){
-            Swal.fire({
-            title: "ลบข้อมูลผู้ใช้สำเร็จ",
-            icon: "success"
-          });
-          }
-        }
-      });
+    title: 'ยืนยันลบข้อมูลผู้ใช้?',
+    text: 'ไม่สามารถย้อนกลับการกระทำนี้ได้',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'ลบ',
+    cancelButtonText: 'ยกเลิก'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteUser(id)
+      if (deleteUser()) {
+        Swal.fire({
+          title: 'ลบข้อมูลผู้ใช้สำเร็จ',
+          icon: 'success'
+        })
+      }
+    }
+  })
 }
 
 const deleteUser = async (id) => {
   try {
-    const result = await axios.delete(`http://localhost:5000/test-elearning-b0646/us-central1/api/admin/delete/${id}`);
-    if(result){
-      fetchData();  
+    const result = await axios.delete(
+      `http://localhost:5000/test-elearning-b0646/us-central1/api/admin/delete/${id}`
+    )
+    if (result) {
+      fetchData()
     }
-  }
-  catch (error) {
-    console.error("Error during getdata:", error);
+  } catch (error) {
+    console.error('Error during getdata:', error)
   }
 }
 
 onMounted(() => {
-  fetchData();
-});
+  fetchData()
+})
 </script>
-
-
 
 <style scoped>
 .top-sec {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.right-end {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.search-container {
+  position: relative;
+  width: 90%;
+  margin-right: 10%;
+}
+
+.input1 {
+  width: 100%;
+  height: 35px;
+  align-self: flex-start;
+  margin-right: 5%;
+  border-radius: 24.5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 0 0 0 40px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-80%);
+  width: 20px; /* ปรับขนาดไอคอนตามต้องการ */
+  height: 20px;
 }
 
 btn {
@@ -154,7 +200,7 @@ h1 {
 button {
   width: fit-content;
   height: fit-content;
-  background-color: #EC4088;
+  background-color: #ec4088;
   /* สีพื้นหลัง */
   color: white;
   /* สีตัวอักษร */
@@ -168,11 +214,10 @@ button {
   /* การเว้นระยะขอบของปุ่ม */
   cursor: pointer;
   /* เปลี่ยนรูปลูกศรเป็นหลังคา */
-
 }
 
 button:hover {
-  background-color: #D32F6A;
+  background-color: #d32f6a;
   /* สีพื้นหลังเมื่อ hover */
 }
 

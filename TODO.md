@@ -6,16 +6,17 @@ Project Description
 
 ### Todo
 
-- [ ] ใส่ loading  
 
 ### In Progress
 
+- [ ] search bar  
 - [ ] ทำระบบ feedback สามารถ report bug ได้  
 - [ ] เติมข้อมูลใน firebase  
 - [ ] ทำเสร็จสองงาน นอนพัก 1.30  
 
 ### Done ✓
 
+- [x] ใส่ loading  
 - [x] ทำ footer  
 - [x] ทำระบบเช็คคำตอบให้ครบถ้วนและสามารถใช้งานได้ทุกบทเรียน  
 - [x] เมื่อทำแบบทดสอบของบทสุดท้ายจะกลับมาหน้าบทเรียน  
