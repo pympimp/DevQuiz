@@ -1,7 +1,14 @@
 <template>
   <div>
     <NavBar />
-    <div class="container">
+    <half-circle-spinner
+      :animation-duration="1000"
+      :size="60"
+      color="#ff1d5e"
+      class="loading"
+      v-if="isLoading"
+    />
+    <div class="container" v-if="!isLoading">
       <div class="buttons">
         <h1>บทเรียน</h1>
 
@@ -22,6 +29,7 @@
         :contentData="classData"
         :unitData="unitData"
         :ProgressIndex="ProgressIndex"
+        :userData="userData"
         class="articleBox"
       />
     </div>
@@ -35,6 +43,7 @@ import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
 import { useAuthenStore } from '../stores/auth'
 import { ref, onMounted } from 'vue'
+import { HalfCircleSpinner } from 'epic-spinners'
 
 const classId = ref('')
 const route = useRoute()
@@ -46,15 +55,20 @@ const router = useRouter()
 const classAllData = ref([])
 const unitData = ref({})
 const ProgressIndex = ref()
+const userData = ref()
+const isLoading = ref(false)
 
 onMounted(() => {
-  setTimeout(() => {
+  isLoading.value = true
+  setTimeout(async() => {
     if (route.params.classId) {
       classId.value = route.params.classId
       fetchData()
-    }
-    if (classId.value) {
+      await fetchOneUser()
+      if (classId.value ) {
       fetchOneClass(classId.value)
+      isLoading.value = false
+    }
     }
   }, 800)
 })
@@ -124,7 +138,8 @@ const fetchUnitData = async (name) => {
 }
 
 const userProgress = (contentName) => {
-  const userIndex = authenStore.auth.progress
+  if(unitData.value){
+  const userIndex = userData.value.progress
   try {
     const foundIndex = userIndex.findIndex((item) => item.name === contentName)
     if (foundIndex !== -1) {
@@ -137,6 +152,14 @@ const userProgress = (contentName) => {
     console.error('Error loading progress data: ', error)
   }
 }
+}
+
+const fetchOneUser = async()=>{
+  const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`)
+  if(result){
+    userData.value = result.data
+  }
+}
 </script>
 
 <style scoped>
@@ -144,6 +167,14 @@ const userProgress = (contentName) => {
   /* margin: 0;
   padding: 0; */
   box-sizing: border-box;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* ตัวอย่างการกำหนดสไตล์เพิ่มเติมสำหรับ Spinner หากต้องการ */
 }
 
 h1 {
@@ -158,7 +189,7 @@ h1 {
   transform: translateY(10%);
   width: 40px;
   height: 40px;
-  margin-left: 65px;
+  margin-left: 45px;
   object-fit: cover;
   /* background-color: aqua; */
 }
@@ -167,7 +198,7 @@ h1 {
   /* margin-top: 5px; */
   margin-left: -15%;
   /* margin-bottom: 15px; */
-  width: 32vh;
+  width: 35vh;
   height: 50px;
   background-color: #1f1f1f;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  */
@@ -182,8 +213,8 @@ h1 {
 
 p {
   font-size: 20px;
-  margin-left: 115px;
-  transform: translateY(-105%);
+  margin-left: 85px;
+  transform: translateY(-95%);
   font-weight: bolder;
   color: #fffdfd;
   width: 20px;
@@ -199,8 +230,9 @@ p {
 }
 
 .buttons {
-  max-width: 30vh;
+  width: 35vh;
 }
+
 
 .articleBox {
   width: fit-content;
@@ -217,6 +249,7 @@ p {
   h1 {
     font-size: 1.2rem;
   }
+
 
   .button p {
     font-size: 1rem;

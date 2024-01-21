@@ -2,7 +2,8 @@
 import NavBar from "@/components/NavBar.vue";
 import BoxComponent from '@/components/BoxComponent.vue';
 import axios from "axios";
-import { authenKey } from "../utils/config";
+import { authenKey } from '../utils/config';
+import { HalfCircleSpinner } from 'epic-spinners'
 // import ItemhomeComponent from '../components/ItemhomeComponent.vue';
 
 export default {
@@ -16,6 +17,7 @@ export default {
   components: {
     NavBar,
     BoxComponent,
+    HalfCircleSpinner
   //   ItemhomeComponent,
    },
    data() {
@@ -26,6 +28,7 @@ export default {
       isDropdownOpen1: false,
       isDropdownOpen2: false,
       isDropdownOpen3: false,
+      isLoading:false,
 
        // ... ข้อมูลอื่น ๆ ...
     dropdownOpen: {
@@ -56,6 +59,7 @@ export default {
       this.$router.push({ path: link });
     },
     async fetchData(){
+      this.isLoading = true
       try {
         const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/class/')
         if(result){
@@ -75,6 +79,7 @@ export default {
             isExpanded:false,
           }));
           console.log(this.articles)
+          this.isLoading = false
         }
       } catch (error) {
         console.error("Error during getdata:", error);
@@ -118,22 +123,29 @@ toggleSection() {
 
 
 <template>
-  <div>
+  <half-circle-spinner
+      :animation-duration="1000"
+      :size="60"
+      color="#ff1d5e"
+      class="loading"
+      v-if="isLoading"
+    />
+  <div v-if="!isLoading">
     <!-- section 1 -->
     <div v-if="currentSection === 1">
       <NavBar />
       <div class="container">
-        <div v-if="boxes != null || boxes != ''" class="row">
+        <div class="text">
+          <h1>เริ่มต้นการเรียน</h1>
+          <h2>ภาษาคอมพิวเตอร์เบื้องต้น</h2>
+        </div>
+        <div v-if="boxes != null || boxes != ''" class="row" style="background-color: aqua;">
           <router-link v-for="box in boxes" :key="box.id" :to="`/class/${box.link}`" class="box">
             <BoxComponent :boxData="box" />
           </router-link>
         </div>
         <div v-else class="row">
           <h1>Data not available</h1>
-        </div>
-        <div class="text">
-          <h1>เริ่มต้นการเรียน</h1>
-          <h2>ภาษาคอมพิวเตอร์เบื้องต้น</h2>
         </div>
       </div>
 
@@ -188,6 +200,14 @@ toggleSection() {
   /* margin: 0px;
   padding: 0px; */
   box-sizing: border-box;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* ตัวอย่างการกำหนดสไตล์เพิ่มเติมสำหรับ Spinner หากต้องการ */
 }
 
 /* ส่วนของปุ่ม */
@@ -451,7 +471,7 @@ h{
   }
 
   .text h1 {
-    font-size: 2.5rem;
+    font-size: 1.7rem;
    
   }
 
@@ -516,12 +536,11 @@ h{
 
 
 h3 {
-  font-size: 1.5rem; /* ปรับค่าตามที่คุณต้องการ */
+  font-size: 1.9rem; /* ปรับค่าตามที่คุณต้องการ */
   padding-bottom: 1px;
   font-weight: bold;
   color: #ffffff;
 
-  
 }
 
 .article-box {

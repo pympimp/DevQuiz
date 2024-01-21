@@ -3,7 +3,14 @@
 <template>
   <div>
   <NavBar />
-    <div class="container">
+  <half-circle-spinner
+      :animation-duration="1000"
+      :size="60"
+      color="#ff1d5e"
+      class="loading"
+      v-if="isLoading"
+    />
+    <div class="container" v-if="!isLoading">
       <div class="buttons">
         <h1>บทความทั้งหมด</h1>
 
@@ -36,11 +43,13 @@ import { useRoute,useRouter} from 'vue-router'
 import axios from 'axios';
 import { useAuthenStore } from '../stores/auth';
 import { ref } from 'vue';
+import { HalfCircleSpinner } from 'epic-spinners'
 
 export default {
   components: {
     NavBar,
-    BoxArticie
+    BoxArticie,
+    HalfCircleSpinner,
   },
   data() {
     return {
@@ -53,10 +62,12 @@ export default {
       classData:ref({}),
       unitData:ref({}),
       router:useRouter(),
+      isLoading:false
     }
   },
 
   mounted(){
+    this.isLoading = true
     setTimeout(() => {
     if(this.route.params.ArticieId){
       this.classId = this.route.params.ArticieId
@@ -65,6 +76,7 @@ export default {
     if(this.classId){
       this.fetchOneClass(this.classId);
       // fetchUnitData();
+      this.isLoading = false
     }
   },300);
   },
@@ -131,6 +143,13 @@ export default {
   box-sizing: border-box;
 }
 
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* ตัวอย่างการกำหนดสไตล์เพิ่มเติมสำหรับ Spinner หากต้องการ */
+}
 .buttons {
   grid-column: 1 / 2;
 }
@@ -147,7 +166,7 @@ h1 {
   transform: translateY(10%);
   width: 40px;
   height: 40px;
-  margin-left: 65px;
+  margin-left: 45px;
   /* background-color: aqua; */
 }
 
@@ -170,8 +189,8 @@ h1 {
 
 p {
   font-size: 20px;
-  margin-left: 115px;
-  transform: translateY(-105%);
+  margin-left: 85px;
+  transform: translateY(-85%);
   font-weight: bolder;
   color: #fffdfd;
   width: 20px;

@@ -25,7 +25,7 @@
                   @click="goto(unitData.courseId, box.lessonId, subitem.unitId, unitData.name)"
                   class="card-unit"
                   :style="{
-                    backgroundColor: authenStore.auth.progress[ProgressIndex][box.nameLesson][
+                    backgroundColor: userData.progress[ProgressIndex][box.nameLesson][
                       subitem.nameUnit
                     ]
                       ? 'rgba(237, 237, 237, 1)'
@@ -33,7 +33,7 @@
                   }"
                   :class="{
                     'not-clickable':
-                      authenStore.auth.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] ==
+                      userData.progress[ProgressIndex][box.nameLesson][subitem.nameUnit] ==
                       false
                   }"
                 >
@@ -43,7 +43,7 @@
                   <div
                     class="icon-card"
                     :style="{
-                      backgroundColor: authenStore.auth.progress[ProgressIndex][box.nameLesson][
+                      backgroundColor: userData.progress[ProgressIndex][box.nameLesson][
                         subitem.nameUnit
                       ]
                         ? 'rgba(151, 221, 118, 1)'
@@ -53,7 +53,7 @@
                     <FontAwesomeIcon
                       icon="fa-solid fa-check"
                       v-if="
-                        authenStore.auth.progress[ProgressIndex][box.nameLesson][
+                        userData.progress[ProgressIndex][box.nameLesson][
                           subitem.nameUnit
                         ] == true
                       "
@@ -123,6 +123,10 @@ export default {
     },
     ProgressIndex: {
       type: Number
+    },
+    userData:{
+      type: Object,
+      default: () =>({})
     }
   },
   data() {
@@ -138,13 +142,15 @@ export default {
     const internalContentData = reactive(props.contentData)
     const unitData1 = reactive(props.unitData)
     const lessonData = reactive(props.unitData.lessons)
+    const userData1 = reactive(props.userData)
 
     // ฟังก์ชันสำหรับการเปลี่ยนสถานะของกล่อง
 
     return {
       internalContentData,
       unitData1,
-      lessonData
+      lessonData,
+      userData1
     }
   },
   methods: {
