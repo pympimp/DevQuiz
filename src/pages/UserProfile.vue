@@ -186,6 +186,7 @@ export default {
   justify-content: center;
   margin-top: 40px;
   width: auto;
+ 
   
   
 }
@@ -807,7 +808,6 @@ h2 {
   text-align: center;
 }
 .container {
-  margin-left: 5%;
   display: flex;
   justify-content: center;
   margin-top: 40px;

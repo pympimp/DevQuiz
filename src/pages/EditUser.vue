@@ -12,7 +12,7 @@ import { useRouter } from 'vue-router'
 import { HalfCircleSpinner } from 'epic-spinners'
 
 const InputData = ref({
-  email: '',
+  email: '', 
   username: ''
 })
 
@@ -106,7 +106,10 @@ const fetchOneUser =async()=>{
       v-if="isLoading"
     />
     <div v-if="!isLoading">
+      <div class="contai">
+        <div class="containers">
       <h1>แก้ไขข้อมูลผู้ใช้</h1>
+    </div>
       <div class="container">
         <section>
           <div>
@@ -131,14 +134,30 @@ const fetchOneUser =async()=>{
         </section>
       </div>
     </div>
+    </div>
   </div>
-</template>
+</template> 
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 * {
   box-sizing: border-box;
+}
+
+.contai{
+  display: flex;
+  flex-direction: column;
+  /* background-color: #ae3458; */
+  margin: auto;
+  width: 360px;
+}
+
+.containers h1{
+  display: flex;
+  align-items: flex-start;
+  width: 50%;
+  /* background-color: #333; */
 }
 
 .container {
@@ -172,7 +191,6 @@ section {
 h1 {
   font-size: 20px;
   color: #ffffff;
-  margin-left: 610px;
   margin-top: 125px;
   margin-bottom: 10px;
   font-weight: 600;
@@ -319,313 +337,121 @@ p {
   font-size: 1.5rem;
 }
 
-/* responsive */
-/*  */
 
-@media screen and (max-width: 1890px) {
+/* reponsive */
+@media only screen and (max-width: 480px) {
+  .contai{
+  display: flex;
+  flex-direction: column;
+  /* background-color: #ae3458; */
+  margin: auto;
+  width: 300px;
 }
 
-@media screen and (max-width: 1440px) {
-  /* ตัวอักษร */
-  p {
-    font-size: 20px;
-    color: #000;
-    font-weight: 900;
-  }
-
-  h1 {
-    font-size: 30px;
-    color: #ffffff;
-    margin-left: 530px;
-    margin-top: 125px;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  button {
-    width: 100%;
-    height: 45px;
-    border-radius: 10px;
-    background-color: #ee5684;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 1.4rem;
-    font-weight: 600;
-    transition: all 0.4s ease;
-    margin-top: 0.7rem;
-  }
-
-  section {
-    position: relative;
-    width: 400px;
-    background-color: rgb(246, 246, 246);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    backdrop-filter: blur(55px);
-    margin-left: 150px;
-    padding: 2rem 3rem;
-  }
+.containers h1{
+  display: flex;
+  align-items: flex-start;
+  width: 50%;
+  /* background-color: #333; */
 }
 
-@media screen and (max-width: 1024px) {
-  /* ตัวอักษร */
-  p {
-    font-size: 20px;
-    color: #000;
-    font-weight: 900;
-  }
-
-  h1 {
-    font-size: 30px;
-    color: #ffffff;
-    margin-left: 330px;
-    margin-top: 35px;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  button {
-    width: 100%;
-    height: 45px;
-    border-radius: 10px;
-    background-color: #ee5684;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 1.4rem;
-    font-weight: 600;
-    transition: all 0.4s ease;
-    margin-top: 0.7rem;
-  }
-
-  section {
-    position: relative;
-    width: 400px;
-    background-color: rgb(246, 246, 246);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    backdrop-filter: blur(55px);
-    margin-left: 10px;
-    padding: 2rem 3rem;
-  }
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
 }
 
-@media screen and (max-width: 820px) {
-  /* ตัวอักษร */
-  p {
-    font-size: 20px;
-    color: #000;
-    font-weight: 900;
-  }
-
-  h1 {
-    font-size: 28px;
-    color: #ffffff;
-    margin-left: 60px;
-    margin-top: 125px;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  button {
-    width: 100%;
-    height: 45px;
-    border-radius: 10px;
-    background-color: #ee5684;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 1.4rem;
-    font-weight: 600;
-    transition: all 0.4s ease;
-    margin-top: 0.7rem;
-  }
-
-  section {
-    position: relative;
-    width: 400px;
-    background-color: rgb(246, 246, 246);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    backdrop-filter: blur(55px);
-    margin-left: -275px;
-    padding: 2rem 3rem;
-  }
+.back-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  color: #ee5684;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
-  p {
-    font-size: 20px;
-    color: #000;
-    font-weight: 900;
-  }
-
-  h1 {
-    font-size: 25px;
-    color: #ffffff;
-    margin-left: 200px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  button {
-    width: 100%;
-    height: 45px;
-    border-radius: 10px;
-    background-color: #ee5684;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 1.4rem;
-    font-weight: 600;
-    transition: all 0.4s ease;
-    margin-top: 0.7rem;
-  }
-
-  section {
-    position: relative;
-    width: 400px;
-    background-color: rgb(246, 246, 246);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    backdrop-filter: blur(55px);
-    margin-left: 10px;
-    padding: 2rem 3rem;
-  }
+section {
+  position: relative;
+  max-width: 300px;
+  background-color: rgb(246, 246, 246);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(55px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem;
 }
 
-@media screen and (max-width: 426px) {
-  p {
-    font-size: 15px;
-    color: #000;
-    font-weight: 900;
-  }
-
-  h1 {
-    font-size: 20px;
-    color: #ffffff;
-    margin-left: 80px;
-    margin-top: 60px;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  button {
-    width: 100%;
-    height: 35px;
-    border-radius: 10px;
-    background-color: #ee5684;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 1.2rem;
-    font-weight: 600;
-    transition: all 0.4s ease;
-    margin-top: 0.7rem;
-  }
-
-  section {
-    position: relative;
-    width: 300px;
-    background-color: rgb(246, 246, 246);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    /* backdrop-filter: blur(55px); */
-    margin-left: 10px;
-    /* padding: 2rem 3rem; */
-  }
+h1 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: 120px;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
-@media screen and (max-width: 376px) {
-  p {
-    font-size: 15px;
-    color: #000;
-    font-weight: 900;
-  }
 
-  h1 {
-    font-size: 20px;
-    color: #ffffff;
-    margin-left: 55px;
-    margin-top: 60px;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
 
-  button {
-    width: 100%;
-    height: 35px;
-    border-radius: 10px;
-    background-color: #ee5684;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 1.2rem;
-    font-weight: 600;
-    transition: all 0.4s ease;
-    margin-top: 0.7rem;
-  }
-
-  section {
-    position: relative;
-    width: 300px;
-    background-color: rgb(246, 246, 246);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    /* backdrop-filter: blur(55px); */
-    margin-left: 8px;
-    /* padding: 2rem 3rem; */
-  }
+h2 {
+  font-size: 0.7rem;
+  text-decoration: none;
+  color: #707070;
+  margin-bottom: 20px;
+  
 }
 
-@media screen and (max-width: 320px) {
-  p {
-    font-size: 15px;
+
+/* ตัวอักษร */
+p{
+    font-size: 1rem;
     color: #000;
     font-weight: 900;
-  }
+}
 
-  h1 {
-    font-size: 20px;
-    color: #ffffff;
-    margin-left: 25px;
-    margin-top: 60px;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
+/* การตกแต่งลิงก์และข้อความ */
+.custom-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  color: #333; /* สีข้อความ */
+  font-family: Arial, sans-serif;
+}
 
-  button {
-    width: 100%;
-    height: 35px;
-    border-radius: 10px;
-    background-color: #ee5684;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: all 0.4s ease;
-    margin-top: 0.7rem;
-  }
+i {
+  /* ขนาดของไอคอน */
+  color: #EC4088;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-left: 20px; /* ระยะห่างของไอคอนกับข้อความ */
+  cursor: pointer;
+}
 
-  section {
-    position: relative;
-    width: 290px;
-    background-color: rgb(246, 246, 246);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    /* backdrop-filter: blur(55px); */
+h3 {
+  font-size: 20px;
+    color: #EC4088;
     margin-left: 2px;
-    /* padding: 2rem 3rem; */
-  }
+    margin-top: 20px;
+    cursor: pointer;
 }
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+
+}
+
+@media screen and (min-width: 1200px)  {
+ 
+}
+
 </style>
