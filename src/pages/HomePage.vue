@@ -127,7 +127,7 @@ toggleSection() {
           <h1>เริ่มต้นการเรียน</h1>
           <h2>ภาษาคอมพิวเตอร์เบื้องต้น</h2>
         </div>
-        <div v-if="boxes != null || boxes != ''" class="row" style="background-color: aqua;">
+        <div v-if="boxes != null || boxes != ''" class="row" >
           <router-link v-for="box in boxes" :key="box.id" :to="`/class/${box.link}`" class="box">
             <BoxComponent :boxData="box" />
           </router-link>

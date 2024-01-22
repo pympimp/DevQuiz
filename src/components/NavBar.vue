@@ -74,6 +74,13 @@ export default {
   .custom-button {
     background-color: #02BDCC;
   }
+
+  .md:flex {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 </style>
 
 
