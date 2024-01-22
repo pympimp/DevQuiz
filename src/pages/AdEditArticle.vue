@@ -17,6 +17,7 @@
         <h3>บทความ</h3>
         <div v-if="Data">
         {{ Data.nameUnit }}<input type="text" v-model="InputData.header" />
+        <h3>Description</h3>
         <textarea v-model="InputData.discription" class="body" style="height: 100px;width: 53%;"></textarea>
       
         <h3>แบบฝึกหัด</h3>

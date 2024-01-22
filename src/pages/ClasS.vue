@@ -1,7 +1,14 @@
 <template>
   <div>
     <NavBar />
-    <div class="container">
+    <half-circle-spinner
+      :animation-duration="1000"
+      :size="60"
+      color="#ff1d5e"
+      class="loading"
+      v-if="isLoading"
+    />
+    <div class="container" v-if="!isLoading">
       <div class="buttons">
         <h1>บทเรียน</h1>
 
@@ -36,6 +43,7 @@ import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
 import { useAuthenStore } from '../stores/auth'
 import { ref, onMounted } from 'vue'
+import { HalfCircleSpinner } from 'epic-spinners'
 
 const classId = ref('')
 const route = useRoute()
@@ -48,8 +56,10 @@ const classAllData = ref([])
 const unitData = ref({})
 const ProgressIndex = ref()
 const userData = ref()
+const isLoading = ref(false)
 
 onMounted(() => {
+  isLoading.value = true
   setTimeout(async() => {
     if (route.params.classId) {
       classId.value = route.params.classId
@@ -57,6 +67,7 @@ onMounted(() => {
       await fetchOneUser()
       if (classId.value ) {
       fetchOneClass(classId.value)
+      isLoading.value = false
     }
     }
   }, 800)
@@ -156,6 +167,14 @@ const fetchOneUser = async()=>{
   /* margin: 0;
   padding: 0; */
   box-sizing: border-box;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* ตัวอย่างการกำหนดสไตล์เพิ่มเติมสำหรับ Spinner หากต้องการ */
 }
 
 h1 {
