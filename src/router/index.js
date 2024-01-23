@@ -138,6 +138,8 @@ const router = createRouter({
       name: '/AdminManageUser',
       component: () => import('../pages/AdManageUser.vue')
     },
+
+    
     
 
     // {

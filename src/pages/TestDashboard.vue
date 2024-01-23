@@ -117,11 +117,17 @@
     box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
       font-size: 1.2rem;
     font-weight: bolder;
+    display: flex; /* เพิ่มบรรทัดนี้ */
+    flex-direction: column; /* เพิ่มบรรทัดนี้ */
   }
   
   .box-3 p {
     font-size: 50px;
     color: #ec4088;
+    margin: 0;
+    justify-self: center;
+    align-self: center;
+    padding-top: 3%;
   }
   
   .box-4 {
