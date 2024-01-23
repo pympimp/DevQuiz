@@ -7,8 +7,7 @@ export default {
   name: 'App',
   data() {
     return {
-      message:
-        'การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น'
+      message: 'การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น'
     }
   },
   methods: {
@@ -55,7 +54,10 @@ export default {
     <div class="footer-container">
       <p>&copy; 2024 By</p>
       <div class="credit">
-        <p>นักศึกษาชั้นประกาศนียบัตรวิชาชีพชั้นสูง สาขาวิชาเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาอุดรธานี</p>
+        <p>
+          นักศึกษาชั้นประกาศนียบัตรวิชาชีพชั้นสูง สาขาวิชาเทคโนโลยีสารสนเทศ
+          วิทยาลัยอาชีวศึกษาอุดรธานี
+        </p>
         <!-- <ol type="1">
           <li>นาย พงศธรณ์ พลแสง</li>
           <li>นางสาว พิมพ์มาดา สุระดนัย</li>
@@ -72,9 +74,6 @@ export default {
 
 <style scoped>
 * {
-  /* background-color: #FAF5FF; */
-  /* margin: 0px;
-  padding: 0px; */
   box-sizing: border-box;
 }
 
@@ -85,91 +84,28 @@ footer {
   padding: 1em;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 #text-run {
   overflow: hidden;
 }
 
-.footer-container{
+.footer-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
 }
 
-.credit{
+.credit {
   display: flex;
   flex-direction: row;
   text-align: left;
   margin-left: 0.5%;
 }
-
-/* body {
-  background-color: #FAF5FF;
-  margin: 0;
-} */
-
-/* .page {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #191717;
-  margin-top: 100px;
-  padding: 100px;
-} */
-
-/* .page h1{
-    font-size: 50px; */
-/* margin-left: 200px;
-    padding-top: 250px; */
-/* } */
-
-/* .page h3{
-    font-size: 25px; */
-/* margin-left: 70px;
-    padding-top: 20px; */
-/*
-  } */
-
-/* .page h4{
-    font-size: 25px; */
-/* margin-left: 70px; */
-/* padding-top: -5px;  */
-/*
-  } */
-
-/* .page button {
-  background-color: #EB7E55;
-  color: white;
-  margin-top: 6px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-} */
-
-/* .page button:hover {
-  background-color: #2980b9;
-} */
-
-/* .container { */
-/* width: 90%;
-  margin: 0 auto;
-  padding: 10px 20px; */
-
-/* display: grid;
-  gap: 30px;
-  margin: 14px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 2fr 2fr 1fr; */
-/*
-} */
 
 .container {
   width: 100%;
@@ -219,21 +155,7 @@ footer {
   color: #fff;
 }
 
-/* .about-content p{
-  font-size: 18px;
-  line-height: 1.5;
-  color: #666;
-} */
-
 .about button {
-  /* background-color: #EB7E55;
-  color: white;
-  margin-top: 6px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;*/
-  cursor: pointer;
   background-color: #f5c722;
   display: inline-block;
   padding: 10px 20px;
@@ -268,38 +190,32 @@ footer {
   }
 }
 
-@media screen and (max-width: 768px) {
-  /* .container{
-    padding: 0px;
-  } */
+@media screen and (min-width: 481px) and (max-width: 768px) {
 
   .about {
     /* padding: 20px; */
     flex-direction: column;
   }
+
+  footer {
+  font-size: 1rem;
 }
 
-@media screen and (max-width: 820px) {
   .about-content h1 {
-    padding-top: 40%;
-    font-size: 60px;
+    padding-top: 10%;
+    font-size: 3rem;
     margin-bottom: 5px;
   }
   .about-content h3 {
-    font-size: 25px;
+    font-size: 1.5rem;
     margin-bottom: 15px;
     color: #fff;
   }
 
-  .about-content {
-    flex: 1 1 5px;
-  }
 
   .about-image {
     flex: 1;
     margin-left: 10%;
-    overflow: hidden;
-    /* ไก */
   }
 
   .about {
@@ -310,9 +226,11 @@ footer {
   .about button {
     font-size: 25px;
   }
+
 }
 
-@media screen and (max-width: 450px) {
+
+@media screen and (max-width: 480px) {
   .about-content h1 {
     padding-top: 40%;
     font-size: 40px;
