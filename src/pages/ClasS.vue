@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavBar />
     <half-circle-spinner
       :animation-duration="1000"
       :size="60"
@@ -37,7 +36,6 @@
 </template>
 
 <script setup>
-import NavBar from '@/components/NavBar.vue'
 import BoxArticie from '@/components/BoxArticie.vue'
 import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'

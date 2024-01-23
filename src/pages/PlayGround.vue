@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavBar />
     <div class="container-playground">
       <div class="discription" v-if="unit">
         <div clas="UnitName" style="font-size: 24px">
@@ -41,7 +40,6 @@
 </template>
 
 <script setup>
-import NavBar from '@/components/NavBar.vue'
 import { ref } from 'vue'
 import { onMounted } from 'vue'
 import axios from 'axios'

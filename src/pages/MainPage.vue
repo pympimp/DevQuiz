@@ -2,13 +2,9 @@
 // import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
 // import VueResponsiveImage from 'vue-responsive-image'
-import NavBar from '@/components/NavBar.vue'
 import { authenKey } from '../utils/config'
 export default {
   name: 'App',
-  components: {
-    NavBar
-  },
   data() {
     return {
       message:
@@ -37,7 +33,6 @@ export default {
 </script>
 
 <template>
-  <NavBar />
   <!-- <div class="screen" id="screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center;"> -->
   <!-- <div class="page"> -->
   <div class="container">

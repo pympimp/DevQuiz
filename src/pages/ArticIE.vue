@@ -2,7 +2,6 @@
 
 <template>
   <div>
-  <NavBar />
   <half-circle-spinner
       :animation-duration="1000"
       :size="60"
@@ -36,7 +35,6 @@
   </div>
 </template>
 <script>
-import NavBar from '@/components/NavBar.vue'
 import BoxArticie from '@/components/BoxArticie.vue'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useRoute,useRouter} from 'vue-router'
@@ -47,7 +45,6 @@ import { HalfCircleSpinner } from 'epic-spinners'
 
 export default {
   components: {
-    NavBar,
     BoxArticie,
     HalfCircleSpinner,
   },

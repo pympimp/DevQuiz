@@ -6,7 +6,7 @@
       <div class="right-end">
         <div class="search-container">
           <input v-model="Search" class="input1" />
-          <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="search-icon" v-if="!Search"/>
+          <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="search-icon" v-if="Search === ''"/>
           <FontAwesomeIcon @click="Search = ''" icon="fa-solid fa-xmark" class="search-icon" v-else style="cursor: pointer;"/>
         </div>
         <router-link to="AdminAddUser">
@@ -25,7 +25,7 @@
       </ul>
 
       <!-- ตัวอย่างรายชื่อ -->
-      <ul class="grid-list" v-for="(item, index) in user" :key="index">
+      <ul class="grid-list" v-for="(item, index) in fiteredUserList" :key="index" >
         <li class="grid-item col-1">{{ index + 1 }}</li>
         <li class="grid-item col-4">{{ item.username }}</li>
         <li class="grid-item col-3">{{ item.email }}</li>
@@ -47,13 +47,17 @@
 
 <script setup>
 import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
 const user = ref([])
-const Search = ref()
+const Search = ref('')
+
+onMounted(() => {
+  fetchData()
+})
 
 const fetchData = async () => {
   try {
@@ -105,8 +109,16 @@ const deleteUser = async (id) => {
   }
 }
 
-onMounted(() => {
-  fetchData()
+const fiteredUserList = computed(()=>{
+  const searchText = Search.value.toLowerCase();
+
+  return user.value.filter((user)=>{
+    return(
+      user.email.toLowerCase().includes(searchText) ||
+      user.username.toLowerCase().includes(searchText) ||
+      user.role.toLowerCase().includes(searchText)
+    )
+  })
 })
 </script>
 
@@ -135,7 +147,7 @@ onMounted(() => {
   align-self: flex-start;
   margin-right: 5%;
   border-radius: 24.5px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   padding: 0 0 0 40px;
 }
 

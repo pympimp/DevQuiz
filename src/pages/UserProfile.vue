@@ -1,5 +1,4 @@
 <script>
-import NavBar from '@/components/NavBar.vue'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useAuthenStore } from '../stores/auth'
 import axios from 'axios'
@@ -17,7 +16,6 @@ export default {
   },
   name: 'UserProfile',
   components: {
-    NavBar,
     FontAwesomeIcon,
     HalfCircleSpinner
   },
@@ -79,7 +77,6 @@ export default {
 
 <template>
   <div>
-    <NavBar />
     <half-circle-spinner
       :animation-duration="1000"
       :size="60"

@@ -5,23 +5,48 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'MainPage',
-      component: () => import('../pages/MainPage.vue')
-      // children:
-      // [
-      //   {
-      //     path:'',
-      //     name:'Mainpage',
-      //     component: () => import('../pages/MainPage.vue')
-      //   }
-      // ]
+      name: 'nav',
+      component: () => import('../layouts/NavBar.vue'),
+      children:
+      [
+        {
+          path: '',
+          name: 'MainPage',
+          component: () => import('../pages/MainPage.vue')
+        },
+        {
+          path: 'HomePage',
+          name: 'HomePage',
+          component: () => import('../pages/HomePage.vue')
+        },
+        {
+          path: 'Articie/:ArticieId',
+          name: 'Articie',
+          component: () => import('../pages/ArticIE.vue')
+        },
+        {
+          path: 'Class/:classId',
+          name: 'Class',
+          component: () => import('../pages/ClasS.vue')
+        },
+        {
+          path:'unit/:couresId/:lessonId/:unitId/:name',
+          name:'unit',
+          component:()=> import('../pages/PlayGround.vue')
+        },
+        {
+          path: "UserProfile",
+          name: 'UserProfile',
+          component: () => import('../pages/Userprofile.vue') 
+        },
+      ]
     },
 
-    {
-      path: '/HomePage',
-      name: 'HomePage',
-      component: () => import('../pages/HomePage.vue')
-    },
+    // {
+    //   path: '/HomePage',
+    //   name: 'HomePage',
+    //   component: () => import('../pages/HomePage.vue')
+    // },
 
     {
       path: '/login',
@@ -60,22 +85,22 @@ const router = createRouter({
       component: () => import('../pages/EditPassword.vue') 
     },
 
-    {
-      path: '/',
-      name: 'MainPage',
-      component: () => import('../pages/MainPage.vue')
-    },
-    {
-      path:'/unit/:couresId/:lessonId/:unitId/:name',
-      name:'unit',
-      component:()=> import('../pages/PlayGround.vue')
-    },
+    // {
+    //   path: '/',
+    //   name: 'MainPage',
+    //   component: () => import('../pages/MainPage.vue')
+    // },
+    // {
+    //   path:'/unit/:couresId/:lessonId/:unitId/:name',
+    //   name:'unit',
+    //   component:()=> import('../pages/PlayGround.vue')
+    // },
   
-    {
-      path: '/HomePage',
-      name: 'HomePage',
-      component: () => import('../pages/HomePage.vue')
-    },
+    // {
+    //   path: '/HomePage',
+    //   name: 'HomePage',
+    //   component: () => import('../pages/HomePage.vue')
+    // },
   
     {
       path: '/login',
@@ -89,17 +114,17 @@ const router = createRouter({
       component: () => import('../pages/RegisteR.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
     },
   
-    {
-      path: '/Articie/:ArticieId',
-      name: 'Articie',
-      component: () => import('../pages/ArticIE.vue')
-    },
+    // {
+    //   path: '/Articie/:ArticieId',
+    //   name: 'Articie',
+    //   component: () => import('../pages/ArticIE.vue')
+    // },
   
-    {
-      path: '/Class/:classId',
-      name: 'Class',
-      component: () => import('../pages/ClasS.vue')
-    },
+    // {
+    //   path: '/Class/:classId',
+    //   name: 'Class',
+    //   component: () => import('../pages/ClasS.vue')
+    // },
   
     {
       path: '/AdminDashboard',
@@ -114,11 +139,11 @@ const router = createRouter({
     },
     
 
-    {
-      path: "/UserProfile",
-      name: 'UserProfile',
-      component: () => import('../pages/Userprofile.vue') 
-    },
+    // {
+    //   path: "/UserProfile",
+    //   name: 'UserProfile',
+    //   component: () => import('../pages/Userprofile.vue') 
+    // },
 
     {
       path:'/Admin',

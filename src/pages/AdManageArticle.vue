@@ -10,9 +10,26 @@
         <img :src="data.img" alt="" />
         <h1>{{ data.fullname }}</h1>
       </div>
-      <button v-if="data" class="btn" style="margin-bottom: 0.5vh" @click="changeName()">
-        <i class="fa fa-plus"></i>
-      </button>
+      <div class="right-end">
+        <div class="search-container">
+          <input v-model="Search" class="input1" />
+          <FontAwesomeIcon
+            icon="fa-solid fa-magnifying-glass"
+            class="search-icon"
+            v-if="Search === ''"
+          />
+          <FontAwesomeIcon
+            @click="Search = ''"
+            icon="fa-solid fa-xmark"
+            class="search-icon"
+            v-else
+            style="cursor: pointer"
+          />
+        </div>
+        <button v-if="data" class="btn" style="margin-bottom: 0.5vh" @click="changeName()">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
     </div>
     <div class="border border-gray-300 rounded-md p-[20px] h-full">
       <!-- หัวข้อ -->
@@ -25,17 +42,26 @@
 
       <!-- ตัวอย่างรายชื่อ -->
       <div v-if="data">
-        <div class="card-container" v-for="(item, index) in data.lessons" :key="index">
+        <div class="card-container" v-for="(item, index) in fiteredLessonList" :key="index">
           <div class="card-lesson">
             <h1>{{ item.nameLesson }}</h1>
             <div class="button-box">
               <i
                 class="bi bi-trash"
-                style="padding: 0; cursor: pointer; color: rgb(163, 22, 22); font-size: 20px; margin-top: 0.5vh"
+                style="
+                  padding: 0;
+                  cursor: pointer;
+                  color: rgb(163, 22, 22);
+                  font-size: 20px;
+                  margin-top: 0.5vh;
+                "
                 v-if="!item.isExpanded"
                 @click="preDelete(data.CoursesId, item.lessonId)"
               ></i>
-              <router-link :to="`/Admin/AdminAddArticle/${data.CoursesId}/${item.lessonId}`" v-if="item.isExpanded">
+              <router-link
+                :to="`/Admin/AdminAddArticle/${data.CoursesId}/${item.lessonId}`"
+                v-if="item.isExpanded"
+              >
                 <button class="btn"><i class="fa fa-plus"></i></button>
               </router-link>
               <button @click="toggleBox(index)" class="button-icon">
@@ -89,8 +115,9 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
@@ -99,6 +126,7 @@ const route = useRoute()
 const courses = ref()
 const data = ref()
 const isLoading = ref(false)
+const Search = ref('')
 
 onMounted(() => {
   if (route.params.id) {
@@ -220,6 +248,16 @@ const deleteLesson = async (coursesId, lessonId) => {
     fetchOneCourses()
   }
 }
+
+const fiteredLessonList = computed(()=>{
+  const searchText = Search.value.toLowerCase();
+
+  return data.value.lessons.filter((data)=>{
+    return(
+      data.nameLesson.toLowerCase().includes(searchText) 
+    )
+  })
+})
 </script>
 
 <style scoped>
@@ -227,6 +265,36 @@ const deleteLesson = async (coursesId, lessonId) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.right-end {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.search-container {
+  position: relative;
+  width: 90%;
+  margin-right: 5%;
+}
+
+.input1 {
+  width: 100%;
+  height: 35px;
+  align-self: flex-start;
+  border-radius: 24.5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 0 0 40px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-80%);
+  width: 20px; /* ปรับขนาดไอคอนตามต้องการ */
+  height: 20px;
 }
 
 .unit-card {

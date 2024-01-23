@@ -1,5 +1,4 @@
 <script>
-import NavBar from "@/components/NavBar.vue";
 import BoxComponent from '@/components/BoxComponent.vue';
 import axios from "axios";
 import { authenKey } from '../utils/config';
@@ -15,7 +14,6 @@ export default {
     this.fetchData()
   },
   components: {
-    NavBar,
     BoxComponent,
     HalfCircleSpinner
   //   ItemhomeComponent,
@@ -133,13 +131,12 @@ toggleSection() {
   <div v-if="!isLoading">
     <!-- section 1 -->
     <div v-if="currentSection === 1">
-      <NavBar />
       <div class="container">
         <div class="text">
           <h1>เริ่มต้นการเรียน</h1>
           <h2>ภาษาคอมพิวเตอร์เบื้องต้น</h2>
         </div>
-        <div v-if="boxes != null || boxes != ''" class="row" style="background-color: aqua;">
+        <div v-if="boxes != null || boxes != ''" class="row" >
           <router-link v-for="box in boxes" :key="box.id" :to="`/class/${box.link}`" class="box">
             <BoxComponent :boxData="box" />
           </router-link>

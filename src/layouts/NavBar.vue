@@ -13,7 +13,7 @@
       <i :class="[open ? 'bi bi-x' : 'bi bi-filter-left']"></i>
     </span>
 
-    <ul class="md:flex md:items-center md:px-0 px-3 md:pb-0 pb-6 md:static absolute  md:w-auto w-full duration-700 ease-in" :class="[open ? 'left-0' : 'left-[-100%]']">
+    <ul class="md:flex md:items-center md:px-0 px-3 md:pb-0 pb-6 md:static absolute  md:w-auto w-full duration-700 ease-in" style="z-index: 100" :class="[open ? 'left-0' : 'left-[-100%]']">
       <li class="md:mx-4 md:my-0 my-6" v-for="link in Links" :key="link.name">
         <a :href="link.link" class="text-xl hover:text-blue-200">{{ link.name }}</a>
       </li>
@@ -23,11 +23,13 @@
       <ButTon/>
     </ul>
   </div>
+
+  <RouterView></RouterView>
 </template>
 
 <script>
 import { ref } from 'vue';
-import ButTon from './ButTon.vue'
+import ButTon from '../components/ButTon.vue'
 export default {
   components:{
     ButTon
