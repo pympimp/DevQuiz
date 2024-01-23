@@ -29,4 +29,6 @@ npm run dev
 expland install
 ```sh
 npm install --save epic-spinners
+npm install --save apexcharts
+npm install --save vue3-apexcharts
 ```
