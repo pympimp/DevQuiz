@@ -14,22 +14,42 @@
                 </div>
               </div> -->
             </div>
+          </div>
           <div class="box-2-3-container">
-            <div class="box-2">จำนวนผู้ใช้งานวันนี้
+            <div class="box-2">
+              จำนวนผู้ใช้งานวันนี้
               <p>0 คน</p>
             </div>
-            <div class="box-3">จำนวนสมาชิก
-              <p>0 คน</p>
+            <div class="box-3">
+              จำนวนสมาชิกที่เข้าใช้ระบบ
+              <p v-if="userStatAll">{{ userStatAll.totalCount }} คน</p>
             </div>
           </div>
           <!-- <div class="box-4">Box 4</div> -->
         </div>
       </div>
-  </div>
 
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
+import { useAuthenStore } from '../stores/auth'
+
+const authenStore = useAuthenStore()
+const userStatAll = ref()
+
+onMounted(() => {
+  setTimeout(() => {
+    const eventSource = new EventSource(
+      `http://localhost:5000/test-elearning-b0646/us-central1/api/user/userStat/${authenStore.auth.id}`
+    )
+    eventSource.addEventListener('message', (event) => {
+      const eventData = JSON.parse(event.data)
+      userStatAll.value = eventData
+      console.log('stat', eventData)
+    })
+  }, 800)
+})
 </script>
 
 <style scoped>
@@ -58,13 +78,12 @@ h1{
   width: 400px;
   height: 250px;
   margin-top: -45px;
-   /* background-color: #bfffbf; */
-   margin-right: 30px;
+  /* background-color: #bfffbf; */
+  margin-right: 30px;
 }
 
 .about-text {
- margin-top: 55px;
-  
+  margin-top: 55px;
 }
 
 .about-text p {

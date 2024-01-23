@@ -25,3 +25,6 @@ npm install
 ```sh
 npm run dev
 ```
+
+expland install
+npm install --save epic-spinners

@@ -212,7 +212,6 @@ toggleSection() {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 110px;
 }
 
 .slide-fade-enter-active {
@@ -240,6 +239,7 @@ toggleSection() {
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.1s ease;
+  transform: translateY(-30px);
 }
 
 
@@ -248,12 +248,13 @@ toggleSection() {
   color: #434343;
   padding: 10px 20px;
   /* margin-top: -100px; */
-  margin-bottom: 100px; /* ปรับตามความต้องการ */
+  margin-bottom: 20px; /* ปรับตามความต้องการ */
   font-size: 18px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.1s ease;
+  transform: translateY(-50px);
 }
 
 
@@ -344,8 +345,6 @@ h{
   /* background-color: #f5c722; */
   margin: auto;
   width: 1300px;
-  
-  
 }
 
 .containers h3 {
@@ -366,7 +365,7 @@ h{
   transition: height 0.3s ease;
   width: 1300px;
   border-radius: 20px;
- 
+ margin-bottom: 20px;
 }
 
 
