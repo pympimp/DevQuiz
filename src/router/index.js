@@ -131,6 +131,7 @@ const router = createRouter({
       name: '/AdminDashboard',
       component: () => import('../pages/AdDashBoard.vue')
     },
+
   
     {
       path: '/AdminManageUser',
@@ -217,6 +218,12 @@ const router = createRouter({
           path: "AdminAddClass",
           name: "AdminAddClass",
           component: () => import('../pages/AdAddClass.vue') 
+        },
+
+        {
+          path: 'TestDashboard',
+          name: 'TestDashboard',
+          component: () => import('../pages/TestDashboard.vue')
         },
       ]
     }

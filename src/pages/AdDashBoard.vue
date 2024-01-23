@@ -1,19 +1,18 @@
-<template>
-  <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]" style="background-color: #f5fcff">
-    <h1>Dashboard</h1>
-    <div class="border border-gray-300 rounded-md p-[20px] h-full">
-      <!-- หัวข้อ -->
-      <div class="containers">
+<template>    <div class="h-[calc(100vh-50px)]  p-[20px]" style="background-color: #fff;">
+  <h1>Dashboard</h1>
+    <div class="containers">
         <div class="box-container">
           <div class="box-1">
-            <div class="about-text">
-              <h1>ยินดีต้อนรับ</h1>
-              <p>ระบบ e-Laerning แบบ Interactive สำหรับวิชาการเขียนโปรแกรมเบื้องต้น</p>
-            </div>
-            <div class="about-content">
-              <div class="about-image">
-                <img src="/images/main.png" alt="Main Image" class="h-auto" />
-              </div>
+
+            <!-- <div class="about-text">
+                  <h1>ยินดีต้อนรับ</h1>
+                  <p>ระบบ e-Laerning แบบ Interactive สำหรับวิชาการเขียนโปรแกรมเบื้องต้น</p>
+                </div>
+              <div class="about-content">
+                <div class="about-image">
+                  <img src="/images/main.png" alt="Main Image" class="h-auto">
+                </div>
+              </div> -->
             </div>
           </div>
           <div class="box-2-3-container">
@@ -29,8 +28,7 @@
           <!-- <div class="box-4">Box 4</div> -->
         </div>
       </div>
-    </div>
-  </div>
+
 </template>
 
 <script setup>
@@ -55,6 +53,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
+h1{
+  font-size: 1.5rem;
+  font-weight: bolder;
+  padding-bottom: 1.5%;
+}
 .box-1 {
   background-color: #ececec;
   padding: 20px;
@@ -107,11 +110,22 @@ onMounted(() => {
   margin-right: 25px;
   border-radius: 5px;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
+  font-size: 1.2rem;
+  font-weight: bolder;
+  height: 100%;
+  display: flex; /* เพิ่มบรรทัดนี้ */
+  flex-direction: column; /* เพิ่มบรรทัดนี้ */
+
+
 }
 
 .box-2 p {
   font-size: 50px;
-  color: #2685ad;
+  color: #ec4088;
+  margin: 0;
+  justify-self: center;
+  align-self: center;
+  padding-top: 3%;
 }
 
 .box-3 {
@@ -120,11 +134,13 @@ onMounted(() => {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
+    font-size: 1.2rem;
+  font-weight: bolder;
 }
 
 .box-3 p {
   font-size: 50px;
-  color: #2685ad;
+  color: #ec4088;
 }
 
 .box-4 {
