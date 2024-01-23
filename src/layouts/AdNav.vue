@@ -77,16 +77,14 @@
             <!-- Search bar -->
           </div>
           <!-- User login -->
-          <div class="relative inline-block text-left" >
-            <router-link to="/login">
+          <div class="relative inline-block text-left">
               <button
-                class="focus:outline-none text-white font-semibold hover:text-black px-3 py-2 rounded-md bg-blue-800 hover:bg-blue-900"
-                id="button"
-                style="background-color: #02BDCC"
+                class="focus:outline-none text-white font-semibold hover:text-gray-300 px-3 py-2 rounded-md bg-blue-800 hover:bg-blue-900 transition duration-300"
+                style="background-color: #30aade"
+                @click="signout()"
               >
                 Sign out
               </button>
-            </router-link>
           </div>
         </div>
       </div>
@@ -100,6 +98,8 @@
 // eslint-disable-next-line no-unused-vars
 import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from 'radix-vue'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import { useAuthenStore } from "../stores/auth";
+
 // import UserList from '@/components/UserList.vue';
 // import ArticleList from '@/components/ArticleList.vue';
 // import ClassList from '@/components/ClassList.vue';
@@ -108,7 +108,8 @@ export default {
   data() {
     return {
       showDropDown: false,
-      showSide: true
+      showSide: true,
+      authenStore:useAuthenStore(),
     }
   },
   methods: {
@@ -119,7 +120,11 @@ export default {
     // toggle user
     toggleDrop() {
       this.showDropDown = !this.showDropDown
-    }
+    },
+    signout(){
+        this.authenStore.logout()
+        this.$router.push({ name: "LogIn"});
+      }
   }
   //   components: {
   //     UserList
