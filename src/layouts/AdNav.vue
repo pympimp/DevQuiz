@@ -126,6 +126,13 @@ export default {
 </script>
 
 <style scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+
+* {
+  font-family: 'Prompt', sans-serif;
+}
+
 h1 {
   font-size: 1.5rem;
   font-weight: bold;
