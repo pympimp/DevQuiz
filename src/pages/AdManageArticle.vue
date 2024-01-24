@@ -1,5 +1,12 @@
 <template>
-  <div class="h-[calc(auto)] bg-gray-50 p-[20px] overflow-auto">
+  <half-circle-spinner
+            :animation-duration="1000"
+            :size="60"
+            color="#ff1d5e"
+            class="loading"
+            v-if="isLoading"
+          />
+  <div class="h-[calc(auto)] bg-gray-50 p-[20px] overflow-auto" v-if="!isLoading">
     <div class="top-sec">
       <router-link to="/Admin/ArticleList" class="back-link">
         <!-- <i class="bi bi-arrow-left"></i> -->
@@ -77,7 +84,7 @@
                 <h2>{{ subindex + 1 }} {{ subitem.header }}</h2>
                 <div>
                   <router-link
-                    :to="`/Admin/AdminEditArticle/${data.CoursesId}/${item.lessonId}/${subitem.unitId}`"
+                    :to="`/Admin/AdminEditArticle/${data.CoursesId}/${item.lessonId}/${subitem.unitId}/${data.name}`"
                     ><i class="bi bi-pencil"></i
                   ></router-link>
                   <i
@@ -118,6 +125,7 @@
 import { onMounted, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { HalfCircleSpinner } from 'epic-spinners'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
@@ -136,12 +144,14 @@ onMounted(() => {
 })
 
 const fetchOneCourses = async () => {
+  isLoading.value = true
   const result = await axios.get(
     `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/lessons/${courses.value}`
   )
   if (result) {
     data.value = result.data
     console.log('data', data.value)
+    isLoading.value = false
   }
 }
 
@@ -265,6 +275,13 @@ const fiteredLessonList = computed(()=>{
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
 }
 
 .right-end {

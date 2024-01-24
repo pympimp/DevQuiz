@@ -12,6 +12,7 @@ import './assets/main.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCheck, faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import VueApexCharts from "vue3-apexcharts";
 // import VueResponsiveImage from 'vue-responsive-image'
 
 library.add(faXmark,faCheck, faMagnifyingGlass)
@@ -22,5 +23,6 @@ app.use(createPinia())
 app.use(router)
 app.use(store)
 app.use('font-awesome-icon', FontAwesomeIcon)
+app.use(VueApexCharts);
 
 app.mount('#app')

@@ -22,31 +22,24 @@
           <div class="flex flex-col justify-between space-y-[10px]">
             <router-link
               to="/Admin/AdminDashboard"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 transition duration-400 ease-in-out"
+              class="router inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200  transition duration-400 ease-in-out"
               style="color: #ffffff"
             >
               Dashboard
             </router-link>
             <router-link
               to="/Admin/AdminManageUser"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 transition duration-400 ease-in-out"
+              class="router inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200  transition duration-400 ease-in-out"
               style="color: #fffefe"
             >
               User
             </router-link>
             <router-link
               to="/Admin/ArticleList"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-300 hover:text-gray-800 transition duration-400 ease-in-out"
+              class="router inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200  transition duration-400 ease-in-out"
               style="color: #ffffff"
             >
-              Article
-            </router-link>
-            <router-link
-              to="/Admin/ClassList"
-              class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md rounded-b-lg hover:bg-blue-300 hover:text-gray-800 transition duration-400 ease-in-out"
-              style="color: #ffffff"
-            >
-              Class
+              Article / Class
             </router-link>
           </div>
         </div>
@@ -237,5 +230,9 @@ h1 {
   border-radius: 5px;
   height: 150px;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
+}
+
+.router:hover{
+background-color: #ee5684;
 }
 </style>

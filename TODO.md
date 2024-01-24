@@ -6,16 +6,23 @@ Project Description
 
 ### Todo
 
-- [ ] login stat dashborad  
+- [ ] นำbody ไปใส่ในเทรมเพลต  
 
 ### In Progress
 
+- [ ] ทำ apex chart  
 - [ ] ทำระบบ feedback สามารถ report bug ได้  
 - [ ] เติมข้อมูลใน firebase  
 - [ ] ทำเสร็จสองงาน นอนพัก 1.30  
 
 ### Done ✓
 
+- [x] ทำให้มีเทมเพรตสำหรับการ edit ไว้รอ  
+- [x] ผมฟังก์ชันหน้าต่อไปจาก 2 ไป 3 ได้  
+- [x] ใส่ loading ใน admin  
+- [x] รวม class เข้ากับ article  
+- [x] นับจำนวนสมาชิกที่สมัครเข้ามา  
+- [x] login stat today  
 - [x] ปรับปรุง navbar  
 - [x] search bar  
 - [x] ใส่ loading  

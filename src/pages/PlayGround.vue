@@ -63,10 +63,6 @@ const nextUnit = ref()
 const unitData = ref()
 onMounted(() => {
   if (route.params.couresId && route.params.lessonId && route.params.unitId && route.params.name) {
-    couresId.value = route.params.couresId
-    lessonId.value = route.params.lessonId
-    unitId.value = route.params.unitId
-    course.value = route.params.name
     fetchUnitData()
     if (couresId.value && lessonId.value && unitId.value) {
       fetchOneUnit(couresId.value, lessonId.value, unitId.value)
@@ -193,11 +189,10 @@ const check = async () => {
     )
     if (result) {
       corrcet.value = false
-      router.push(`/unit/${couresId.value}/${lessonId.value}/${nextUnit.value}/${course.value}`)
-      if (router.push) {
-        fetchOneUnit(couresId.value, lessonId.value, nextUnit.value)
-        console.log('เปลี่ยนหน้า')
-      }
+      await router.push(`/unit/${couresId.value}/${lessonId.value}/${nextUnit.value}/${course.value}`)
+         await fetchOneUnit(couresId.value, lessonId.value, nextUnit.value)
+         fetchUnitData()
+          console.log('เปลี่ยนหน้า',nextUnit.value)
     }
   } catch (error) {
     console.error('Error:', error.message)
@@ -205,6 +200,11 @@ const check = async () => {
 }
 
 const fetchUnitData = async () => {
+  couresId.value = route.params.couresId
+    lessonId.value = route.params.lessonId
+    unitId.value = route.params.unitId
+    course.value = route.params.name
+    console.log("unitId ที่เปลี่ยน ", unitId.value)
   try {
     const result = await axios.get(
       'http://localhost:5000/test-elearning-b0646/us-central1/api/coures/'
@@ -289,7 +289,6 @@ const endLesson = async()=>{
 .discription {
   background-color: white;
   width: 1000px;
-  max-height: 150px;
   border-radius: 10px;
   padding: 15px;
   margin-top: 60px;
