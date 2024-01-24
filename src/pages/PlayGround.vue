@@ -19,7 +19,7 @@
           <div>
             <ScrollAreaRoot style="--scrollbar-size: 10px" class="Text-area">
               <ScrollAreaViewport>
-                <textarea v-if="unitData" v-model="code[unitData.name]"></textarea>
+                <textarea v-if="unitData" v-model="code.Start"></textarea>
               </ScrollAreaViewport>
               <ScrollAreaScrollbar class="ScrollAreaScrollbar" orientation="horizontal">
                 <ScrollAreaThumb class="ScrollAreaThumb" />
@@ -70,53 +70,9 @@ onMounted(() => {
   }
 })
 
-const htmlstart = ref(`<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-  
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
-</body>
-</html>`)
-
-const cssstart = ref(`<!DOCTYPE html>
-<html>
-<head>
-<style>
-h1 {
-  font-family: verdana;
-  font-size: 300%;
-}
-</style>
-</head>
-<body>
-
-<h1>This is a heading</h1>
-<p>This is a paragraph.</p>
-
-</body>
-</html>`)
-
-const javascriptstart = ref(`<!DOCTYPE html>
-<html>
-<head>
-    <title>HTML with JavaScript</title>
-</head>
-<body>
-
-    <h1>Hello, World!</h1>
-
-</body>
-</html>`)
-
+const start = ref()
 const code = ref({
-  HTML: htmlstart,
-  CSS: cssstart,
-  JavaScript: javascriptstart
+  Start: start,
 })
 
 const outputFrame = ref(null)
@@ -126,10 +82,10 @@ const runCode = () => {
     outputFrame.value.contentDocument || outputFrame.value.contentWindow.document
 
   outputDocument.open()
-  outputDocument.write(code.value[unitData.value.name])
+  outputDocument.write(code.value.Start)
   outputDocument.close()
 
-  const userAnswer = code.value[unitData.value.name]
+  const userAnswer = code.value.Start
   const step1 = userAnswer.replace(/".*?"/g, '')
   const step2 =  step1.replace(/:\s*([^;]+)\s*;/g, ':')
   const answer = step2
@@ -163,7 +119,8 @@ const fetchOneUnit = async (couresId, lessonId, unitId) => {
     `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/${couresId}/${lessonId}/${unitId}`
   )
   if (result) {
-    unit.value = result.data
+    unit.value = await result.data
+    start.value = unit.value.body
     console.log('unit', unit.value)
   }
 }
