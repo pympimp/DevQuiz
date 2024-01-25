@@ -142,12 +142,15 @@ const router = createRouter({
       name: '/AdminDashboard',
       component: () => import('../pages/AdDashBoard.vue')
     },
+
   
     {
       path: '/AdminManageUser',
       name: '/AdminManageUser',
       component: () => import('../pages/AdManageUser.vue')
     },
+
+    
     
 
     // {
@@ -200,7 +203,7 @@ const router = createRouter({
         },
 
         {
-          path: "AdminEditArticle/:coursesId/:lessonId/:unitId",
+          path: "AdminEditArticle/:coursesId/:lessonId/:unitId/:name",
           name: "AdminEditArticle",
           component: () => import('../pages/AdEditArticle.vue') 
         },
@@ -228,6 +231,12 @@ const router = createRouter({
           path: "AdminAddClass",
           name: "AdminAddClass",
           component: () => import('../pages/AdAddClass.vue') 
+        },
+
+        {
+          path: 'TestDashboard',
+          name: 'TestDashboard',
+          component: () => import('../pages/TestDashboard.vue')
         },
       ]
     }

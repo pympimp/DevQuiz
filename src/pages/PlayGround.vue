@@ -19,7 +19,7 @@
           <div>
             <ScrollAreaRoot style="--scrollbar-size: 10px" class="Text-area">
               <ScrollAreaViewport>
-                <textarea v-if="unitData" v-model="code[unitData.name]"></textarea>
+                <textarea v-if="unitData" v-model="code.Start"></textarea>
               </ScrollAreaViewport>
               <ScrollAreaScrollbar class="ScrollAreaScrollbar" orientation="horizontal">
                 <ScrollAreaThumb class="ScrollAreaThumb" />
@@ -63,10 +63,6 @@ const nextUnit = ref()
 const unitData = ref()
 onMounted(() => {
   if (route.params.couresId && route.params.lessonId && route.params.unitId && route.params.name) {
-    couresId.value = route.params.couresId
-    lessonId.value = route.params.lessonId
-    unitId.value = route.params.unitId
-    course.value = route.params.name
     fetchUnitData()
     if (couresId.value && lessonId.value && unitId.value) {
       fetchOneUnit(couresId.value, lessonId.value, unitId.value)
@@ -74,53 +70,9 @@ onMounted(() => {
   }
 })
 
-const htmlstart = ref(`<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-  
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
-</body>
-</html>`)
-
-const cssstart = ref(`<!DOCTYPE html>
-<html>
-<head>
-<style>
-h1 {
-  font-family: verdana;
-  font-size: 300%;
-}
-</style>
-</head>
-<body>
-
-<h1>This is a heading</h1>
-<p>This is a paragraph.</p>
-
-</body>
-</html>`)
-
-const javascriptstart = ref(`<!DOCTYPE html>
-<html>
-<head>
-    <title>HTML with JavaScript</title>
-</head>
-<body>
-
-    <h1>Hello, World!</h1>
-
-</body>
-</html>`)
-
+const start = ref()
 const code = ref({
-  HTML: htmlstart,
-  CSS: cssstart,
-  JavaScript: javascriptstart
+  Start: start,
 })
 
 const outputFrame = ref(null)
@@ -130,10 +82,10 @@ const runCode = () => {
     outputFrame.value.contentDocument || outputFrame.value.contentWindow.document
 
   outputDocument.open()
-  outputDocument.write(code.value[unitData.value.name])
+  outputDocument.write(code.value.Start)
   outputDocument.close()
 
-  const userAnswer = code.value[unitData.value.name]
+  const userAnswer = code.value.Start
   const step1 = userAnswer.replace(/".*?"/g, '')
   const step2 =  step1.replace(/:\s*([^;]+)\s*;/g, ':')
   const answer = step2
@@ -167,7 +119,8 @@ const fetchOneUnit = async (couresId, lessonId, unitId) => {
     `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/${couresId}/${lessonId}/${unitId}`
   )
   if (result) {
-    unit.value = result.data
+    unit.value = await result.data
+    start.value = unit.value.body
     console.log('unit', unit.value)
   }
 }
@@ -193,11 +146,10 @@ const check = async () => {
     )
     if (result) {
       corrcet.value = false
-      router.push(`/unit/${couresId.value}/${lessonId.value}/${nextUnit.value}/${course.value}`)
-      if (router.push) {
-        fetchOneUnit(couresId.value, lessonId.value, nextUnit.value)
-        console.log('เปลี่ยนหน้า')
-      }
+      await router.push(`/unit/${couresId.value}/${lessonId.value}/${nextUnit.value}/${course.value}`)
+         await fetchOneUnit(couresId.value, lessonId.value, nextUnit.value)
+         fetchUnitData()
+          console.log('เปลี่ยนหน้า',nextUnit.value)
     }
   } catch (error) {
     console.error('Error:', error.message)
@@ -205,6 +157,11 @@ const check = async () => {
 }
 
 const fetchUnitData = async () => {
+  couresId.value = route.params.couresId
+    lessonId.value = route.params.lessonId
+    unitId.value = route.params.unitId
+    course.value = route.params.name
+    console.log("unitId ที่เปลี่ยน ", unitId.value)
   try {
     const result = await axios.get(
       'http://localhost:5000/test-elearning-b0646/us-central1/api/coures/'
@@ -289,7 +246,6 @@ const endLesson = async()=>{
 .discription {
   background-color: white;
   width: 1000px;
-  max-height: 150px;
   border-radius: 10px;
   padding: 15px;
   margin-top: 60px;

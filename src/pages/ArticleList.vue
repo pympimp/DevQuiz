@@ -1,12 +1,19 @@
 <template>
-    <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]">
-        <h1>Manage Article</h1>
+  <half-circle-spinner
+            :animation-duration="1000"
+            :size="60"
+            color="#ff1d5e"
+            class="loading"
+            v-if="isLoading"
+          />
+    <div class="h-[calc(97vh-50px)] bg-gray-50 p-[20px]" v-if="!isLoading">
+        <h1>Manage Article / Class</h1>
         <div class="border border-gray-300 rounded-md p-[20px] h-full">
           <!-- หัวข้อ -->
           <ul class="grid-list" >
             <li class="grid-item col-1" style="font-weight: bold;">ID</li>
             <li class="grid-item col-3"></li>
-            <li class="grid-item col-4" style="font-weight: bold;">Articles</li>
+            <li class="grid-item col-4" style="font-weight: bold;">Articles / Class</li>
             <li class="grid-item col-3" style="font-weight: bold;"></li>
           </ul>
           
@@ -45,6 +52,9 @@
   <script setup>
   import axios from "axios";
 import { ref, onMounted } from "vue";
+import { HalfCircleSpinner } from 'epic-spinners'
+
+const isLoading = ref(false)
 
 const course = ref({
   classID: '',
@@ -55,11 +65,13 @@ const course = ref({
 })
 
 const fetchData = async () => {
+  isLoading.value = true
   try {
     const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
     if (result) {
       course.value = result.data
       console.log("data", course.value)
+      isLoading.value = false
     }
   } catch (error) {
     console.error("Error during getdata:", error);
@@ -76,6 +88,13 @@ onMounted(() => {
     font-size: 1.5rem;
     font-weight: bold;
   }
+
+  .loading {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
   .admin {
     background-color: rgb(183, 229, 229);
   }

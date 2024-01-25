@@ -12,7 +12,7 @@
 
     <div class="border border-gray-300 rounded-md p-[20px] h-full">
       <div class="container">
-      <h1>Edit Article</h1>
+      <h1>Edit Article / Class</h1>
       <div>
         <h3>บทความ</h3>
         <div v-if="Data">
@@ -24,7 +24,7 @@
         <textarea v-model="InputData.question" class="body" style="height: 100px;width: 53%;"></textarea>
 
         <h3>รูปแบบโค้ด</h3>
-        <textarea v-model="InputData.body" class="body" style="height: 100px;width: 53%;"></textarea>
+        <textarea v-model="InputData.body" class="body" style="height: 300px;width: 53%;"></textarea>
 
         <h3>คำตอบ</h3>
         <div class="answer-container">
@@ -60,6 +60,7 @@ const route = useRoute()
 const coursesId = ref()
 const lessonId = ref()
 const unitId = ref()
+const name = ref()
 const InputData = ref({
   header:'',
   question:'',
@@ -68,11 +69,61 @@ const InputData = ref({
   answer:[],
 })
 
+const htmlstart = ref(`<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+  
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>`)
+
+const cssstart = ref(`<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+  font-family: verdana;
+  font-size: 300%;
+}
+</style>
+</head>
+<body>
+
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>`)
+
+const javascriptstart = ref(`<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML with JavaScript</title>
+</head>
+<body>
+
+    <h1>Hello, World!</h1>
+
+</body>
+</html>`)
+
+const code = ref({
+  HTML: htmlstart,
+  CSS: cssstart,
+  JavaScript: javascriptstart
+})
+
 onMounted(()=>{
-  if(route.params.coursesId && route.params.lessonId && route.params.unitId)
+  if(route.params.coursesId && route.params.lessonId && route.params.unitId && route.params.name)
   coursesId.value = route.params.coursesId
   lessonId.value = route.params.lessonId
   unitId.value = route.params.unitId
+  name.value = route.params.name
   fetchOneCourses()
 })
 
@@ -83,6 +134,9 @@ const fetchOneCourses = async() =>{
     if(Data.value){
       const { header, discription, answer,body,question } = Data.value;
       InputData.value = { header, discription, answer,body,question };
+      if(body === ''){
+        InputData.value.body = code.value[name.value]
+      }
     }
     console.log("data",Data.value)
   }
