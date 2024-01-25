@@ -27,14 +27,12 @@
 
 <script setup>
 import axios from "axios";
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import { useRoute,useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
 const user = ref([]);
-
-
 const router = useRouter()
 const route = useRoute()
 
