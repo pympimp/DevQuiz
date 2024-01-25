@@ -1,7 +1,7 @@
 <!-- eslint-disable no-undef -->
 <script setup>
 import axios from 'axios'
-import NavBar from '@/components/NavBar.vue'
+
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { ref } from 'vue'
 import { useAuthenStore } from '../stores/auth'
@@ -88,7 +88,7 @@ const fetchOneUser =async()=>{
 
 <template>
   <div>
-    <NavBar />
+    
     <router-link to="/UserProfile">
       <div id="app">
         <a :href="link" class="custom-link">

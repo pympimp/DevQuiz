@@ -1,6 +1,5 @@
 <script setup> 
 import axios from 'axios';
-import NavBar from "@/components/NavBar.vue";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Swal from 'sweetalert2';
 import { useAuthenStore } from '../stores/auth';
@@ -62,7 +61,6 @@ const updateUser = async () => {
 
 <template>
     <div>
-      <NavBar />
       <router-link to="/EditUser">
       <div id="app">
           <a :href="link" class="custom-link">

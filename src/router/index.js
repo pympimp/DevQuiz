@@ -39,6 +39,17 @@ const router = createRouter({
           name: 'UserProfile',
           component: () => import('../pages/Userprofile.vue') 
         },
+        {
+          path: "/EditUser",
+          name: 'EditUser',
+          component: () => import('../pages/EditUser.vue') 
+        },
+    
+        {
+          path: "/EditPassword",
+          name: 'EditPassword',
+          component: () => import('../pages/EditPassword.vue') 
+        },
       ]
     },
 
@@ -73,17 +84,17 @@ const router = createRouter({
     // },
 
 
-    {
-      path: "/EditUser",
-      name: 'EditUser',
-      component: () => import('../pages/EditUser.vue') 
-    },
+    // {
+    //   path: "/EditUser",
+    //   name: 'EditUser',
+    //   component: () => import('../pages/EditUser.vue') 
+    // },
 
-    {
-      path: "/EditPassword",
-      name: 'EditPassword',
-      component: () => import('../pages/EditPassword.vue') 
-    },
+    // {
+    //   path: "/EditPassword",
+    //   name: 'EditPassword',
+    //   component: () => import('../pages/EditPassword.vue') 
+    // },
 
     // {
     //   path: '/',
