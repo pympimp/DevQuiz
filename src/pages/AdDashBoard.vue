@@ -44,11 +44,11 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios';
-import { useAuthenStore } from '../stores/auth'
+// import { useAuthenStore } from '../stores/auth'
 import { HalfCircleSpinner } from 'epic-spinners'
 import VueApexCharts from 'vue3-apexcharts'
 
-const authenStore = useAuthenStore()
+// const authenStore = useAuthenStore()
 const userStatAll = ref()
 const isLoading = ref(false)
 const userData = ref()
@@ -71,32 +71,32 @@ const series = ref([
 onMounted(() => {
   isLoading.value = true
   setTimeout(() => {
-    countStat()
+    // countStat()
     fetchUser()
     isLoading.value = false
   }, 800)
 })
 
-const countStat = () => {
-  const fetchData = () => {
-    if (authenStore.auth.id) {
-      const eventSource = new EventSource(
-        `http://localhost:5000/test-elearning-b0646/us-central1/api/user/userStat/${authenStore.auth.id}`
-      )
-      eventSource.addEventListener('message', (event) => {
-        const eventData = JSON.parse(event.data)
-        userStatAll.value = eventData
-        console.log("stat",userStatAll.value)
-      })
-    }
-  }
+// const countStat = () => {
+//   const fetchData = () => {
+//     if (authenStore.auth.id) {
+//       const eventSource = new EventSource(
+//         `http://localhost:5000/test-elearning-b0646/us-central1/api/user/userStat/${authenStore.auth.id}`
+//       )
+//       eventSource.addEventListener('message', (event) => {
+//         const eventData = JSON.parse(event.data)
+//         userStatAll.value = eventData
+//         console.log("stat",userStatAll.value)
+//       })
+//     }
+//   }
 
-  // เรียก fetchData ครั้งแรก
-  fetchData()
+//   // เรียก fetchData ครั้งแรก
+//   fetchData()
 
-  // เรียก fetchData ทุก 1 นาที
-  setInterval(fetchData, 60000) // 1 นาที = 60,000 มิลลิวินาที
-}
+//   // เรียก fetchData ทุก 1 นาที
+//   setInterval(fetchData, 60000) // 1 นาที = 60,000 มิลลิวินาที
+// }
 
 const fetchUser = async() =>{
 const result = await axios.get("http://localhost:5000/test-elearning-b0646/us-central1/api/user")
