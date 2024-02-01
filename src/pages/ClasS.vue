@@ -90,7 +90,7 @@ const fetchOneClass = async (id) => {
       changeColor.value = classData.value.name
       console.log(classData.value)
       if (classData.value) {
-        if (!authenStore.auth.progress) {
+        if (!authenStore.auth) {
           window.location.reload()
         } else {
           userProgress(classData.value.name)
@@ -153,9 +153,13 @@ const userProgress = (contentName) => {
 }
 
 const fetchOneUser = async()=>{
-  const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`)
+  if (!authenStore.auth.progress) {
+          window.location.reload()
+  }else{
+    const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`)
   if(result){
     userData.value = result.data
+  }
   }
 }
 </script>

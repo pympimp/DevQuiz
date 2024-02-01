@@ -32,7 +32,7 @@
           <iframe class="Text-area" ref="outputFrame"></iframe>
           <button @click="runCode" class="button" v-if="!corrcet"><b> ตรวจสอบ </b></button>
           <button @click="check()" class="button" v-if="corrcet && nextUnit != null"><b> ต่อไป </b></button>
-          <button @click="endLesson()" class="button" v-if="corrcet && nextUnit == null"><b> จบแบบทดสอบ </b></button>
+          <button @click="endLesson()" class="button" v-if="corrcet && nextUnit == null"><b> จบบท </b></button>
         </div>
       </div>
     </div>

@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     scrollToAdditionalBox(contentId,id,name) {
-      this.currentContent = contentId
+      this.currentContent = name
       this.changeColor = name
       this.router.push(`/Articie/${id}`)
       if(this.router.push){
