@@ -17,12 +17,16 @@ import VueApexCharts from "vue3-apexcharts";
 
 library.add(faXmark,faCheck, faMagnifyingGlass)
 
+
 const app = createApp(App)
+
+// eslint-disable-next-line vue/multi-word-component-names
 
 app.use(createPinia())
 app.use(router)
 app.use(store)
-app.use('font-awesome-icon', FontAwesomeIcon)
 app.use(VueApexCharts);
+app.use('font-awesome-icon', FontAwesomeIcon)
+
 
 app.mount('#app')
