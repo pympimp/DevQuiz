@@ -7,7 +7,6 @@
     <div class="border border-gray-300 rounded-md p-[20px] h-full">
       <h1>Add User</h1>
       <div>
-        <h3>ID: </h3>
         <h3>Username :</h3>
         <input type="text" v-model="formData.username">
 
@@ -32,8 +31,10 @@ import { useRoute,useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
+// eslint-disable-next-line no-unused-vars
 const user = ref([]);
 const router = useRouter()
+// eslint-disable-next-line no-unused-vars
 const route = useRoute()
 
 const formData = ref({
@@ -123,4 +124,37 @@ button {
       margin-left: 2vh;
       font-size: 2vh;
     }
+
+    @media only screen and (max-width: 480px) {
+    input {
+  width: 90%;
+}
+
+button {
+  margin-left: 0;
+  margin-top: 5%;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  input {
+  width: 50%;
+}
+
+button {
+  margin-left: 0;
+  margin-top: 2%;
+}
+}
+
+@media screen and (min-width: 769px)  {
+  input {
+  width: 30%;
+}
+
+button {
+  margin-left: 0;
+}
+}
+
     </style>

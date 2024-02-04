@@ -25,14 +25,17 @@
       </div>
       <div class="box-2-3-container">
         <div class="box-2">
-          จำนวนผู้ใช้งานวันนี้
+          <h6>
+          จำนวนผู้ใช้งานวันนี้</h6>
           <transition mode="out-in">
           <p v-if="userStatAll" :key="userStatAll.totalCount">{{ userStatAll.totalCount }} คน</p>
         </transition>
 
         </div>
         <div class="box-3">
+          <h6>
           จำนวนสมาชิกที่เข้าใช้ระบบ
+        </h6>
           <p v-if="userData" >{{ userData.length }} คน</p>
         </div>
       </div>
@@ -200,6 +203,9 @@ h1 {
 .box-3 p {
   font-size: 50px;
   color: #ec4088;
+  justify-self: center;
+  align-self: center;
+  padding-top: 3%;
 }
 
 .box-4 {
@@ -208,5 +214,37 @@ h1 {
   border-radius: 5px;
   height: 150px;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้กับกล่อง */
+}
+
+
+@media only screen and (max-width: 480px) {
+
+  .box-2 h6 {
+  font-size: 1rem;
+}
+
+.box-3 h6{
+  font-size: 1rem;
+}
+
+.box-3 p {
+  font-size: 2rem;
+  color: #ec4088;
+  justify-self: center;
+  align-self: center;
+  padding-top: 3%;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1025px) {
+
 }
 </style>
