@@ -33,6 +33,8 @@ import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
+import { authenKey } from '../utils/config';
+import { useAuthenStore } from '../stores/auth'
 
 
 const user = ref({
@@ -44,6 +46,7 @@ const user = ref({
 
 const router = useRouter()
 const route = useRoute()
+const authenStore = useAuthenStore()
 
 const fetchData = async () => {
   try {
@@ -103,6 +106,13 @@ const editUser = async () => {
 }
 
 onMounted(() => {
+  setTimeout(()=>{
+    if (!localStorage.getItem(authenKey)) {
+        router.push({ name: 'LogIn' })
+  }if(authenStore.auth.role !== 'admin'){
+    router.push("/")
+  }
+  },800)
   if (route.params.Id) {
     fetchData()
   }

@@ -3,11 +3,15 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useAuthenStore } from '../stores/auth'
 import axios from 'axios'
 import { ref } from 'vue'
+import { authenKey } from '../utils/config';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { HalfCircleSpinner } from 'epic-spinners'
 
 export default {
   mounted() {
+    if(!localStorage.getItem(authenKey)){
+      this.$router.push({ name: "LogIn" });
+    };
     setTimeout(() => {
       this.isLoading = true
       this.fetchOneUser()

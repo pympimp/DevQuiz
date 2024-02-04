@@ -48,13 +48,17 @@
 </template>
 
 <script setup>
-import {getCurrentInstance, ref } from 'vue';
+import { ref } from 'vue';
 import { onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute,useRouter } from 'vue-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { authenKey } from '../utils/config';
 import 'sweetalert2/dist/sweetalert2.min.css';
-const router = getCurrentInstance().appContext.config.globalProperties.$router;
+import { useAuthenStore } from '../stores/auth';
+
+const authenStore = useAuthenStore()
+const router = useRouter()
 const Data = ref();
 const route = useRoute()
 const coursesId = ref()
@@ -119,6 +123,13 @@ const code = ref({
 })
 
 onMounted(()=>{
+  setTimeout(()=>{
+    if (!localStorage.getItem(authenKey)) {
+        router.push({ name: 'LogIn' })
+  }if(authenStore.auth.role !== 'admin'){
+    router.push("/")
+  }
+  },800)
   if(route.params.coursesId && route.params.lessonId && route.params.unitId && route.params.name)
   coursesId.value = route.params.coursesId
   lessonId.value = route.params.lessonId

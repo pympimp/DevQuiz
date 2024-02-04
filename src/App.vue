@@ -12,16 +12,14 @@ import { Id_Key } from './utils/config';
 // };
 
 export default {
-  mounted(){
+   mounted(){
     if(localStorage.getItem(Id_Key)){
-      this.id = localStorage.getItem(Id_Key)
-      this.fetchUser(this.id)
+      this.fetchUser(localStorage.getItem(Id_Key))
     }
   },
   data(){
     return{
     authenStore:useAuthenStore(),
-    Id:''
     }
   },
   computed: {

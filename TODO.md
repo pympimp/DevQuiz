@@ -10,12 +10,13 @@ Project Description
 
 ### In Progress
 
-- [ ] ทำ apex chart  
 - [ ] ทำระบบ feedback สามารถ report bug ได้  
 - [ ] เติมข้อมูลใน firebase  
 
 ### Done ✓
 
+- [x] ทำระบบความปลอดภัย  
+- [x] ทำ apex chart  
 - [x] นำbody ไปใส่ในเทรมเพลต  
 - [x] ทำให้มีเทมเพรตสำหรับการ edit ไว้รอ  
 - [x] ผมฟังก์ชันหน้าต่อไปจาก 2 ไป 3 ได้  

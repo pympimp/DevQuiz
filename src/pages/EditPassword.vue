@@ -5,11 +5,19 @@ import Swal from 'sweetalert2';
 import { useAuthenStore } from '../stores/auth';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
+import { authenKey } from '../utils/config';
 
 const authenStore = useAuthenStore()
 const oldPassword = ref();
 const newPassword = ref();
 const router = useRouter();
+
+onMounted(()=>{
+  if (!localStorage.getItem(authenKey)) {
+        router.push({ name: 'LogIn' })
+      }
+})
 
     const EditUser=()=> {
       this.$router.push({ name: "EditUser" });

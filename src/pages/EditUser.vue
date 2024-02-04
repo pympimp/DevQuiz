@@ -7,6 +7,7 @@ import { ref } from 'vue'
 import { useAuthenStore } from '../stores/auth'
 import { onMounted } from 'vue'
 import Swal from 'sweetalert2'
+import { authenKey } from '../utils/config';
 import 'sweetalert2/dist/sweetalert2.min.css'
 import { useRouter } from 'vue-router'
 import { HalfCircleSpinner } from 'epic-spinners'
@@ -21,6 +22,9 @@ const authenStore = useAuthenStore()
 const isLoading = ref(false)
 
 onMounted(async() => {
+  if (!localStorage.getItem(authenKey)) {
+        router.push({ name: 'LogIn' })
+      }
   isLoading.value = true
   setTimeout(() => {
     if (authenStore.auth) {

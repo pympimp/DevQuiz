@@ -137,9 +137,9 @@ toggleSection() {
           <h2>ภาษาคอมพิวเตอร์เบื้องต้น</h2>
         </div>
         <div v-if="boxes != null || boxes != ''" class="row" >
-          <router-link v-for="box in boxes" :key="box.id" :to="`/class/${box.link}`" class="box">
+          <a :href="`/class/${box.link}`" v-for="box in boxes" :key="box.id" class="box">
             <BoxComponent :boxData="box" />
-          </router-link>
+          </a>
         </div>
         <div v-else class="row">
           <h1>Data not available</h1>
