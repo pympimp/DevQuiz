@@ -42,6 +42,7 @@ import axios from 'axios';
 import { useAuthenStore } from '../stores/auth';
 import { ref } from 'vue';
 import { HalfCircleSpinner } from 'epic-spinners'
+import { authenKey } from '../utils/config';
 
 export default {
   components: {
@@ -64,6 +65,9 @@ export default {
   },
 
   mounted(){
+    if (!localStorage.getItem(authenKey)) {
+        this.router.push({ name: 'LogIn' })
+      }
     this.isLoading = true
     setTimeout(() => {
     if(this.route.params.ArticieId){

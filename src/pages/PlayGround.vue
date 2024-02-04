@@ -46,6 +46,7 @@ import axios from 'axios'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuthenStore } from '../stores/auth'
 import Swal from 'sweetalert2'
+import { authenKey } from '../utils/config';
 import 'sweetalert2/dist/sweetalert2.min.css'
 import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from 'radix-vue'
 
@@ -61,11 +62,17 @@ const unitId = ref()
 const course = ref()
 const nextUnit = ref()
 const unitData = ref()
-onMounted(() => {
+onMounted(async() => {
+  if(!localStorage.getItem(authenKey)){
+      router.push({ name: "LogIn" });
+    };
   if (route.params.couresId && route.params.lessonId && route.params.unitId && route.params.name) {
     fetchUnitData()
     if (couresId.value && lessonId.value && unitId.value) {
-      fetchOneUnit(couresId.value, lessonId.value, unitId.value)
+      await fetchOneUnit(couresId.value, lessonId.value, unitId.value)
+      setTimeout(()=>{
+        outPut()
+      },500)
     }
   }
 })
@@ -78,12 +85,7 @@ const code = ref({
 const outputFrame = ref(null)
 
 const runCode = () => {
-  const outputDocument =
-    outputFrame.value.contentDocument || outputFrame.value.contentWindow.document
-
-  outputDocument.open()
-  outputDocument.write(code.value.Start)
-  outputDocument.close()
+  outPut()
 
   const userAnswer = code.value.Start
   const step1 = userAnswer.replace(/".*?"/g, '')
@@ -149,11 +151,20 @@ const check = async () => {
       await router.push(`/unit/${couresId.value}/${lessonId.value}/${nextUnit.value}/${course.value}`)
          await fetchOneUnit(couresId.value, lessonId.value, nextUnit.value)
          fetchUnitData()
+         outPut()
           console.log('เปลี่ยนหน้า',nextUnit.value)
     }
   } catch (error) {
     console.error('Error:', error.message)
   }
+}
+
+const outPut = () =>{
+  const outputDocument =
+         outputFrame.value.contentDocument || outputFrame.value.contentWindow.document
+            outputDocument.open()
+              outputDocument.write(code.value.Start)
+            outputDocument.close()
 }
 
 const fetchUnitData = async () => {
@@ -258,6 +269,7 @@ const endLesson = async()=>{
   padding: 15px;
   margin: 0px 10px 0px 10px;
   resize: none;
+  overflow: hidden;
 }
 
 .Text-area textarea {
@@ -265,6 +277,7 @@ const endLesson = async()=>{
   height: 270px;
   overflow-y: auto;
   border: none; /* เพิ่มบรรทัดนี้ถ้าคุณต้องการลบเส้นขอบ */
+   resize: none;
 }
 
 .box-playground {

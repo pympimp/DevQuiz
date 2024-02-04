@@ -50,6 +50,8 @@
   import Swal from 'sweetalert2';
   import axios from 'axios';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import { authenKey } from '../utils/config';
+import { useAuthenStore } from '../stores/auth';
 
   const route = useRoute();
   const router = useRouter();
@@ -60,10 +62,18 @@ import 'sweetalert2/dist/sweetalert2.min.css';
   discription:'',
   answer:[],
 })
+const authenStore = useAuthenStore()
 const coursesId = ref();
 const lessonId = ref();
 
 onMounted(()=>{
+  setTimeout(()=>{
+    if (!localStorage.getItem(authenKey)) {
+        router.push({ name: 'LogIn' })
+  }if(authenStore.auth.role !== 'admin'){
+    router.push("/")
+  }
+  },800)
   if(route.params.coursesId && route.params.lessonId){
     coursesId.value = route.params.coursesId;
     lessonId.value = route.params.lessonId

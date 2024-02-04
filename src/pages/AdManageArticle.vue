@@ -123,20 +123,31 @@
 
 <script setup>
 import { onMounted, ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute,useRouter } from 'vue-router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { HalfCircleSpinner } from 'epic-spinners'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
+import { authenKey } from '../utils/config';
+import { useAuthenStore } from '../stores/auth'
 
+const authenStore = useAuthenStore()
 const route = useRoute()
 const courses = ref()
 const data = ref()
 const isLoading = ref(false)
 const Search = ref('')
+const router = useRouter()
 
 onMounted(() => {
+  setTimeout(()=>{
+    if (!localStorage.getItem(authenKey)) {
+        router.push({ name: 'LogIn' })
+  }if(authenStore.auth.role !== 'admin'){
+    router.push("/")
+  }
+  },800)
   if (route.params.id) {
     courses.value = route.params.id
     fetchOneCourses()

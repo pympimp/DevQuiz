@@ -42,6 +42,7 @@ import axios from 'axios'
 import { useAuthenStore } from '../stores/auth'
 import { ref, onMounted } from 'vue'
 import { HalfCircleSpinner } from 'epic-spinners'
+import { authenKey } from '../utils/config';
 
 const classId = ref('')
 const route = useRoute()
@@ -56,13 +57,16 @@ const ProgressIndex = ref()
 const userData = ref()
 const isLoading = ref(false)
 
-onMounted(() => {
+onMounted(async() => {
+  if (!localStorage.getItem(authenKey)) {
+        router.push({ name: 'LogIn' })
+      }
   isLoading.value = true
   setTimeout(async() => {
     if (route.params.classId) {
       classId.value = route.params.classId
-      fetchData()
       await fetchOneUser()
+      fetchData()
       if (classId.value ) {
       fetchOneClass(classId.value)
       isLoading.value = false
@@ -90,12 +94,8 @@ const fetchOneClass = async (id) => {
       changeColor.value = classData.value.name
       console.log(classData.value)
       if (classData.value) {
-        if (!authenStore.auth) {
-          window.location.reload()
-        } else {
           userProgress(classData.value.name)
           fetchUnitData(classData.value.name)
-        }
       }
     }
   } catch (error) {
@@ -153,7 +153,7 @@ const userProgress = (contentName) => {
 }
 
 const fetchOneUser = async()=>{
-  if (!authenStore.auth.progress) {
+  if (!authenStore.auth.id) {
           window.location.reload()
   }else{
     const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`)

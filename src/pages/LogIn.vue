@@ -36,12 +36,13 @@
 import axios from 'axios';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useAuthenStore } from "../stores/auth";
-import { authenKey } from '../utils/config';
+import { authenKey,Id_Key } from '../utils/config';
+import { useRouter } from 'vue-router';
 
 export default {
   mounted(){
     if(localStorage.getItem(authenKey)){
-      this.$router.push({ name: "HomePage" });
+      this.router.push("/Homepage");
     }
   },
   name: 'LogIn',
@@ -49,7 +50,8 @@ export default {
     return{
       username:'',
       password:'',
-     authenStore:useAuthenStore()
+     authenStore:useAuthenStore(),
+     router:useRouter()
     }
   },
   components: {
@@ -66,13 +68,13 @@ export default {
           password:this.password
         });
         if(result && result.data && result.data.token){
-          this.authenStore.setAuthen(result.data)
+           this.authenStore.setAuthen(result.data)
           alert("Welcome "+ result.data.username)
-          if(localStorage.setItem && result.data.role === 'user'){
-            this.$router.push({ name: "HomePage" });
+          if(localStorage.setItem && result.data.role === 'user' && localStorage.getItem(Id_Key)){
+            this.router.push("/Homepage");
           }
-          if(localStorage.setItem && result.data.role === 'admin'){
-            this.$router.push({ name: "AdminDashboard" });
+          if(localStorage.setItem && result.data.role === 'admin' && localStorage.getItem(Id_Key)){
+            this.router.push("/Admin/AdminDashboard");
           }
         }
       } catch (error) {

@@ -20,8 +20,10 @@ export default {
       // เพิ่มโค้ดที่คุณต้องการเมื่อปุ่มถูกคลิก
     },
     mounted() {
+      setTimeout(()=>{
+        document.body.style.overflow = 'hidden'
+      },800)
       // ทำการลบ scrollbar ของ body เมื่อ component นี้ถูก mounted
-      document.body.style.overflow = 'hidden'
     },
     beforeDestroy() {
       // ทำการคืนค่า overflow ของ body เมื่อ component นี้ถูก destroy

@@ -49,13 +49,25 @@
 import axios from 'axios'
 import { ref, onMounted, computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
+import { authenKey } from '../utils/config';
+import { useAuthenStore } from '../stores/auth'
 
 const user = ref([])
 const Search = ref('')
+const router = useRouter()
+const authenStore = useAuthenStore()
 
 onMounted(() => {
+  setTimeout(()=>{
+    if (!localStorage.getItem(authenKey)) {
+        router.push({ name: 'LogIn' })
+  }if(authenStore.auth.role !== 'admin'){
+    router.push("/")
+  }
+  },800)
   fetchData()
 })
 

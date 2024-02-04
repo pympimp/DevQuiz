@@ -53,8 +53,13 @@
   import axios from "axios";
 import { ref, onMounted } from "vue";
 import { HalfCircleSpinner } from 'epic-spinners'
+import { authenKey } from '../utils/config'
+import { useRouter } from "vue-router";
+import { useAuthenStore } from "../stores/auth";
 
+const authenStore = useAuthenStore()
 const isLoading = ref(false)
+const router = useRouter()
 
 const course = ref({
   classID: '',
@@ -79,6 +84,13 @@ const fetchData = async () => {
 };
 
 onMounted(() => {
+  setTimeout(()=>{
+    if (!localStorage.getItem(authenKey)) {
+        router.push({ name: 'LogIn' })
+  }if(authenStore.auth.role !== 'admin'){
+    router.push("/")
+  }
+  },800)
   fetchData();
 });
   </script>
