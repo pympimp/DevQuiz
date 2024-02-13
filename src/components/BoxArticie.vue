@@ -155,10 +155,8 @@ export default {
   },
   methods: {
     toggleBox(index) {
-      console.log('Toggle Box Clicked', index)
       if (this.unitData1.lessons[index].isExpanded == false) {
         this.unitData1.lessons[index].isExpanded = true
-        console.log(this.ProgressIndex)
       } else {
         this.unitData1.lessons[index].isExpanded = false
       }

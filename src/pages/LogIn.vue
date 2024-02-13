@@ -63,7 +63,7 @@ export default {
     },
     async login() {
       try {
-        const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/api/user/login",{
+        const result = await axios.post("http://localhost:3000/user/login",{
           username:this.username,
           password:this.password
         });

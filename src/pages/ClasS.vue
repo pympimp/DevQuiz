@@ -87,12 +87,11 @@ const scrollToAdditionalBox = (id, name) => {
 const fetchOneClass = async (id) => {
   try {
     const result = await axios.get(
-      `http://localhost:5000/test-elearning-b0646/us-central1/api/class/${id}`
+      `http://localhost:3000/class/${id}`
     )
     if (result) {
       classData.value = result.data
       changeColor.value = classData.value.name
-      console.log(classData.value)
       if (classData.value) {
           userProgress(classData.value.name)
           fetchUnitData(classData.value.name)
@@ -106,11 +105,10 @@ const fetchOneClass = async (id) => {
 const fetchData = async () => {
   try {
     const result = await axios.get(
-      'http://localhost:5000/test-elearning-b0646/us-central1/api/class/'
+      'http://localhost:3000/class/'
     )
     if (result) {
       classAllData.value = result.data
-      console.log('classAllData', classAllData.value)
     }
   } catch (error) {
     console.error('Error during getdata:', error)
@@ -120,14 +118,13 @@ const fetchData = async () => {
 const fetchUnitData = async (name) => {
   try {
     const result = await axios.get(
-      'http://localhost:5000/test-elearning-b0646/us-central1/api/coures/'
+      'http://localhost:3000/coures/'
     )
     if (result) {
       const Index = result.data.findIndex((item) => item.name === name)
       if (Index !== -1) {
         unitData.value = result.data[Index]
         currentContent.value = unitData.value.name
-        console.log('unitData', unitData.value)
       }
     }
   } catch (error) {
@@ -142,7 +139,6 @@ const userProgress = (contentName) => {
     const foundIndex = userIndex.findIndex((item) => item.name === contentName)
     if (foundIndex !== -1) {
       ProgressIndex.value = foundIndex
-      console.log(ProgressIndex.value)
     } else {
       console.log('Not found')
     }
@@ -156,7 +152,7 @@ const fetchOneUser = async()=>{
   if (!authenStore.auth.id) {
           window.location.reload()
   }else{
-    const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`)
+    const result = await axios.get(`http://localhost:3000/user/${authenStore.auth.id}`)
   if(result){
     userData.value = result.data
   }

@@ -67,7 +67,7 @@ const onSubmit = () => {
 
 const updateUser = async () => {
   const result = await axios.put(
-    `http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`,
+    `http://localhost:3000/user/${authenStore.auth.id}`,
     InputData.value
   )
   if (result) {
@@ -76,7 +76,7 @@ const updateUser = async () => {
 }
 
 const fetchOneUser =async()=>{
-      const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${authenStore.auth.id}`)
+      const result = await axios.get(`http://localhost:3000/user/${authenStore.auth.id}`)
     if(result){
       InputData.value = ({
         email:result.data.email,

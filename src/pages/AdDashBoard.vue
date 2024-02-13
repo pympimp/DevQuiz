@@ -99,10 +99,13 @@ onMounted(() => {
 })
 
 const countStat = () => {
-  const fetchData = () => {
+  if(!authenStore.auth.id){
+      window.location.reload()
+    }else{
+      const fetchData = () => {
     if (authenStore.auth.id) {
       const eventSource = new EventSource(
-        `http://localhost:5000/test-elearning-b0646/us-central1/api/user/userStat/${authenStore.auth.id}`
+        `http://localhost:3000/user/userStat/${authenStore.auth.id}`
       )
       eventSource.addEventListener('message', (event) => {
         const eventData = JSON.parse(event.data)
@@ -114,19 +117,18 @@ const countStat = () => {
       })
     }
   }
+    // เรียก fetchData ครั้งแรก
+    fetchData()
 
-  // เรียก fetchData ครั้งแรก
-  fetchData()
-
-  // เรียก fetchData ทุก 1 นาที
-  setInterval(fetchData, 60000) // 1 นาที = 60,000 มิลลิวินาที
+// เรียก fetchData ทุก 1 นาที
+setInterval(fetchData, 60000) // 1 นาที = 60,000 มิลลิวินาที
+    }
 }
 
 const fetchUser = async () => {
-  const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/user')
+  const result = await axios.get('http://localhost:3000/user')
   if (result) {
     userData.value = result.data
-    console.log(userData.value)
   }
 }
 

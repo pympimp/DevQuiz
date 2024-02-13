@@ -57,7 +57,6 @@
   
       // ฟังก์ชันสำหรับการเปลี่ยนสถานะของกล่อง
       const toggleBox = (index) => {
-        console.log('Toggle Box Clicked', index);
         
         // ให้ Vue ทราบถึงการเปลี่ยนแปลงค่า isExpanded
         internalContentData.boxes[index].isExpanded = !internalContentData.boxes[index].isExpanded;

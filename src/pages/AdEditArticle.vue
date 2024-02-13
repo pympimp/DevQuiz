@@ -139,7 +139,7 @@ onMounted(()=>{
 })
 
 const fetchOneCourses = async() =>{
-  const result = await axios.get(` http://localhost:5000/test-elearning-b0646/us-central1/api/coures/${coursesId.value}/${lessonId.value}/${unitId.value}`)
+  const result = await axios.get(` http://localhost:3000/coures/${coursesId.value}/${lessonId.value}/${unitId.value}`)
   if(result){
     Data.value = result.data
     if(Data.value){
@@ -149,7 +149,6 @@ const fetchOneCourses = async() =>{
         InputData.value.body = code.value[name.value]
       }
     }
-    console.log("data",Data.value)
   }
 }
 
@@ -177,7 +176,7 @@ const submit = () =>{
 }
 
 const editCourses = async() =>{
-await axios.put(`http://localhost:5000/test-elearning-b0646/us-central1/api/coures/editCourse/${coursesId.value}/${lessonId.value}/${unitId.value}`,InputData.value)
+await axios.put(`http://localhost:3000/coures/editCourse/${coursesId.value}/${lessonId.value}/${unitId.value}`,InputData.value)
 }
 const goback = () => {
   router.go(-1);

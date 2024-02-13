@@ -32,7 +32,7 @@ export default {
       this.$store.commit('toggleTheme');
     },
     async fetchUser(id) {
-      const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/user/${id}`)
+      const result = await axios.get(`http://localhost:3000/user/${id}`)
       if(result && result.data){
         this.authenStore.setAuthen(result.data)
       }

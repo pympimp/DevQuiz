@@ -103,7 +103,7 @@ const submit = () =>{
 }
 
 const createCourses = async() =>{
-const result = await axios.post(`http://localhost:5000/test-elearning-b0646/us-central1/api/coures/create/${coursesId.value}/${lessonId.value}`,InputData.value)
+const result = await axios.post(`http://localhost:3000/coures/create/${coursesId.value}/${lessonId.value}`,InputData.value)
 if(result){
   InputData.value = ({
     header:'',
@@ -112,7 +112,6 @@ if(result){
     discription:'',
     answer:[],
   })
-  console.log("success",result.data.message)
 }
 }
 

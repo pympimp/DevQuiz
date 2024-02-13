@@ -1,3 +1,4 @@
+<!-- eslint-disable no-undef -->
 <script>
 // import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
@@ -7,7 +8,10 @@ export default {
   name: 'App',
   data() {
     return {
-      message: 'การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น'
+      message: 'การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น',
+      dropdown: false,
+      PdfPresent: '/src/assets/PresentationElearning.pdf',
+      PdfManual: '/src/assets/UserManual.pdf',
     }
   },
   methods: {
@@ -18,6 +22,9 @@ export default {
         this.$router.push({ name: 'HomePage' })
       }
       // เพิ่มโค้ดที่คุณต้องการเมื่อปุ่มถูกคลิก
+    },
+    Toggledropdown(){
+      this.dropdown = !this.dropdown
     },
     mounted() {
       setTimeout(()=>{
@@ -46,6 +53,14 @@ export default {
         <h3>Web Application ระบบ e-Learning</h3>
         <h3>สำหรับเรียนการเขียนโปรแกรมเบื้องต้น</h3>
         <button @click="startQuiz()">เริ่มต้นการเรียน</button>
+        <button @click="Toggledropdown()" style="background-color: aliceblue;margin-left: 20px;text-wrap: nowrap;">ดาวโหลดไฟล์
+          <i :class="['bi', 'bi-arrow-down-short', { 'rotate-180': dropdown }]"></i>
+        </button>
+        <div v-if="dropdown" class="dropdown">
+          <a :href="PdfPresent" class="a" download="PresentationElearning.pdf" >ไฟล์นำเสนอ</a>
+          <hr style="width: 80%; background-color: black;">
+          <a :href="PdfManual" class="a" download="UserManual.pdf">คู่มือการใช้งาน</a>
+        </div>
       </div>
       <div class="about-image">
         <img src="/images/main.png" alt="Main Image" class="h-auto" />
@@ -89,6 +104,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  
 }
 
 #text-run {
@@ -102,6 +118,19 @@ footer {
   align-items: flex-start;
 }
 
+.select{
+  background-color: aliceblue;
+  display: inline-block;
+  color: #434343;
+  font-size: small;
+  text-decoration: none;
+  border-radius: 25px;
+  margin-top: 5px;
+  transition: 0.3s ease;
+  margin-left: 20px;
+  text-wrap: nowrap;
+  padding: 5px;
+}
 .credit {
   display: flex;
   flex-direction: row;
@@ -174,6 +203,28 @@ footer {
   transform: scale(1.1);
 }
 
+.dropdown{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: aliceblue;
+  color: black;
+  position: absolute;
+  transform: translateX(200px) translateY(-5px);
+  border-radius: 5px;
+}
+
+.a{
+  padding: 15px;
+}
+
+.a:hover{
+  color: #ec4088;
+  cursor: pointer;
+  transition: color 0.5s;
+  transform: scale(1.1);
+}
 .running-text {
   font-size: 1.1rem;
   margin-top: 0.5rem;

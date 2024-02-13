@@ -59,7 +59,7 @@ const formData = ref({
 
 const submitForm = async () => {
   try {
-    const result = await axios.post('http://localhost:5000/test-elearning-b0646/us-central1/api/admin/createUser', formData.value);
+    const result = await axios.post('http://localhost:3000/admin/createUser', formData.value);
     if (result) {
       // If successful, update the user list and clear the form
       formData.value.username = '';
