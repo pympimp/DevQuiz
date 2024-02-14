@@ -15,27 +15,27 @@ const router = createRouter({
           component: () => import('../pages/MainPage.vue')
         },
         {
-          path: 'HomePage',
+          path: '/HomePage',
           name: 'HomePage',
           component: () => import('../pages/HomePage.vue')
         },
         {
-          path: 'Articie/:ArticieId',
+          path: '/Articie/:ArticieId',
           name: 'Articie',
           component: () => import('../pages/ArticIE.vue')
         },
         {
-          path: 'Class/:classId',
+          path: '/Class/:classId',
           name: 'Class',
           component: () => import('../pages/ClasS.vue')
         },
         {
-          path:'unit/:couresId/:lessonId/:unitId/:name',
+          path:'/unit/:couresId/:lessonId/:unitId/:name',
           name:'unit',
           component:()=> import('../pages/PlayGround.vue')
         },
         {
-          path: "UserProfile",
+          path: "/UserProfile",
           name: 'UserProfile',
           component: () => import('../pages/UserProfile.vue') 
         },
