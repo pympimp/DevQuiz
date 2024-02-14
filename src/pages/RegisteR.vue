@@ -65,7 +65,7 @@ export default {
     async signup(){
   try {
     // ส่วนของการส่งข้อมูล
-    const result = await axios.post("http://localhost:3000/user/register", {
+    const result = await axios.post("http://192.168.1.110:3000/user/register", {
       email: this.email,
       username: this.username,
       password: this.password,
