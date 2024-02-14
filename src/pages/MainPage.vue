@@ -55,9 +55,9 @@ export default {
           <i :class="['bi', 'bi-arrow-down-short', { 'rotate-180': dropdown }]"></i>
         </button>
         <div v-if="dropdown" class="dropdown">
-          <Link  href='public/image/PresentationElearning.pdf'  class="a" target="_blank"  rel="noopener noreferrer" locale={false} download>ไฟล์นำเสนอ</Link>
+          <a href="https://devquiz-five.vercel.app/pubilc/image/PresentationElearning.pdf" class="a" download="PresentationElearning.pdf" >ไฟล์นำเสนอ</a>
           <hr style="width: 80%; background-color: black;">
-          <a href="https://devquiz-five.vercel.app/images/UserManual.pdf" class="a" download="UserManual.pdf">คู่มือการใช้งาน</a>
+          <a href="https://devquiz-five.vercel.app/pubilc/image/UserManual.pdf" class="a" download="UserManual.pdf">คู่มือการใช้งาน</a>
         </div>
       </div>
       <div class="about-image">
