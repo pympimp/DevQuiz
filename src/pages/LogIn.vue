@@ -74,7 +74,7 @@ export default {
             this.router.push("/Homepage");
           }
           if(localStorage.setItem && result.data.role === 'admin' && localStorage.getItem(Id_Key)){
-            this.router.push("/Admin/AdminDashboard");
+            this.router.push("Admin/AdminDashboard");
           }
         }
       } catch (error) {
