@@ -74,7 +74,7 @@ onMounted(() => {
 const fetchData = async () => {
   try {
     const result = await axios.get(
-      'http://localhost:3000/admin'
+      'http://192.168.1.110:3000/admin'
     )
     if (result) {
       user.value = result.data
@@ -110,7 +110,7 @@ const beforeDelete = (id) => {
 const deleteUser = async (id) => {
   try {
     const result = await axios.delete(
-      `http://localhost:3000/admin/delete/${id}`
+      `http://192.168.1.110:3000/admin/delete/${id}`
     )
     if (result) {
       fetchData()

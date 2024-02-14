@@ -59,7 +59,7 @@ export default {
     async fetchData(){
       this.isLoading = true
       try {
-        const result = await axios.get('http://localhost:3000/class')
+        const result = await axios.get('http://192.168.1.110:3000/class')
         if(result){
           this.boxes = result.data.map((item, index) =>({
             id:index + 1,

@@ -103,7 +103,7 @@ const submit = () =>{
 }
 
 const createCourses = async() =>{
-const result = await axios.post(`http://localhost:3000/coures/create/${coursesId.value}/${lessonId.value}`,InputData.value)
+const result = await axios.post(`http://192.168.1.110:3000/coures/create/${coursesId.value}/${lessonId.value}`,InputData.value)
 if(result){
   InputData.value = ({
     header:'',

@@ -72,7 +72,7 @@ const course = ref({
 const fetchData = async () => {
   isLoading.value = true
   try {
-    const result = await axios.get('http://localhost:3000/coures/');
+    const result = await axios.get('http://192.168.1.110:3000/coures/');
     if (result) {
       course.value = result.data
       console.log("data", course.value)

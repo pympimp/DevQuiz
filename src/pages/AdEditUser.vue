@@ -54,7 +54,7 @@ const fetchData = async () => {
 
     if (userId) {
       const result = await axios.get(
-        `http://localhost:3000/user/${userId}`
+        `http://192.168.1.110:3000/user/${userId}`
       )
 
       if (result.data) {
@@ -78,7 +78,7 @@ const editUser = async () => {
   const userId = user.value.id
   try {
     const result = await axios.put(
-      `http://localhost:3000/admin/edit/${userId}`,
+      `http://192.168.1.110:3000/admin/edit/${userId}`,
       {
         username: user.value.username,
         email: user.value.email,
