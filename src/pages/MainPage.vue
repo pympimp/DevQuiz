@@ -10,8 +10,8 @@ export default {
     return {
       message: 'การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น',
       dropdown: false,
-      PdfPresent: '/src/assets/PresentationElearning.pdf',
-      PdfManual: '/src/assets/UserManual.pdf',
+      PdfPresent: '../assets/PresentationElearning.pdf',
+      PdfManual: '../assets/UserManual.pdf',
     }
   },
   methods: {
