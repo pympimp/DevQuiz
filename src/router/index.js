@@ -69,7 +69,23 @@ const router = createRouter({
       name: 'RegisteR',
       component: () => import('../pages/RegisteR.vue') // กำหนดให้หน้าหลักเป็น LogIn.vue
     },
-    
+
+
+    // {
+    //   path: '/AdminDashboard',
+    //   name: '/AdminDashboard',
+    //   component: () => import('../pages/AdDashBoard.vue')
+    // },
+
+  
+    // {
+    //   path: '/AdminManageUser',
+    //   name: '/AdminManageUser',
+    //   component: () => import('../pages/AdManageUser.vue')
+    // },
+
+   
+
     {
       path:'/Admin',
       name:'admin',

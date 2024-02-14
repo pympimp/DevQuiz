@@ -18,13 +18,13 @@
         <div v-if="Data">
         {{ Data.nameUnit }}<input type="text" v-model="InputData.header" />
         <h3>Description</h3>
-        <textarea v-model="InputData.discription" class="body" style="height: 100px;width: 53%;"></textarea>
+        <textarea v-model="InputData.discription" class="body" style="height: 8rem;"></textarea>
       
         <h3>แบบฝึกหัด</h3>
-        <textarea v-model="InputData.question" class="body" style="height: 100px;width: 53%;"></textarea>
+        <textarea v-model="InputData.question" class="body" style="height: 8rem;"></textarea>
 
         <h3>รูปแบบโค้ด</h3>
-        <textarea v-model="InputData.body" class="body" style="height: 300px;width: 53%;"></textarea>
+        <textarea v-model="InputData.body" class="body" style="height: 8rem;"></textarea>
 
         <h3>คำตอบ</h3>
         <div class="answer-container">
@@ -267,4 +267,70 @@ button:hover {
 
 .container{
 }
+
+@media only screen and (max-width: 480px) {
+  h1 {
+  font-size: 1.3rem;
+}
+
+input {
+  width: 90%;
+}
+textarea.body {
+  width: 90%;
+}
+
+
+.input-answer{
+  width: 90%;
+}
+
+
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  h1 {
+  font-size: 1.3rem;
+}
+
+input {
+  width: 85%;
+}
+textarea.body {
+  width: 90%;
+}
+
+
+.input-answer{
+  width: 90%;
+}
+
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
+
+@media screen and (min-width: 769px)  {
+  input {
+  width: 30rem;
+}
+textarea.body {
+  width: 32rem;
+}
+
+
+.input-answer{
+  width: 14rem;
+}
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
+
 </style>

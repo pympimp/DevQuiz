@@ -96,5 +96,68 @@
     margin-left: 2vh;
     font-size: 2vh;
   }
+
+  @media only screen and (max-width: 480px) {
+  h1 {
+  font-size: 1.3rem;
+}
+
+input {
+  width: 90%;
+}
+textarea.body {
+  width: 90%;
+}
+
+
+.input-answer{
+  width: 90%;
+}
+
+
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  h1 {
+  font-size: 1.3rem;
+}
+
+input {
+  width: 90%;
+}
+textarea.body {
+  width: 90%;
+}
+
+
+.input-answer{
+  width: 90%;
+}
+
+
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
+
+@media screen and (min-width: 1025px) {
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
   </style>
   

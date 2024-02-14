@@ -16,13 +16,13 @@
       <div>
         <h3>บทความ</h3>
         <input type="text" v-model="InputData.header" />
-        <textarea v-model="InputData.discription" class="body" style="height: 100px;width: 53%;"></textarea>
+        <textarea v-model="InputData.discription" class="body" style="height: 8rem;"></textarea>
       
         <h3>แบบฝึกหัด</h3>
-        <textarea v-model="InputData.question" class="body" style="height: 100px;width: 53%;"></textarea>
+        <textarea v-model="InputData.question" class="body" style="height: 8rem;"></textarea>
 
         <h3>รูปแบบโค้ด</h3>
-        <textarea v-model="InputData.body" class="body" style="height: 100px;width: 53%;"></textarea>
+        <textarea v-model="InputData.body" class="body" style="height: 8rem;"></textarea>
 
         <h3>คำตอบ</h3>
         <div class="answer-container">
@@ -37,7 +37,7 @@
       </div>
         <br />
 
-        <button @click="submit()">Submit</button>
+        <button class="btn" @click="submit()">Submit</button>
       </div>
     </div>
   </div>
@@ -203,6 +203,69 @@ button:hover {
 }
 
 .container{
+}
+
+@media only screen and (max-width: 480px) {
+  h1 {
+  font-size: 1.3rem;
+}
+
+input {
+  width: 90%;
+}
+textarea.body {
+  width: 90%;
+}
+
+
+.input-answer{
+  width: 90%;
+}
+
+
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  h1 {
+  font-size: 1.3rem;
+}
+
+input {
+  width: 90%;
+}
+textarea.body {
+  width: 90%;
+}
+
+
+.input-answer{
+  width: 90%;
+}
+
+
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
+}
+
+@media screen and (min-width: 1025px) {
+button {
+  margin-left:0%;
+  margin-top: 0;
+}
 }
 </style>
 

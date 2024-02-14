@@ -478,4 +478,35 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (max-width: 480px) {
+  img {
+  width: 3vh;
+  height: 3vh;
+  margin-left: 1rem;
+}
+
+h1 {
+  font-size: 1rem;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  img {
+  width: 3vh;
+  height: 3vh;
+  margin-left: 1rem;
+}
+
+h1 {
+  font-size: 1.2rem;
+}
+}
+
+@media screen and (min-width: 769px)  {
+  h1 {
+  font-size: 1.2rem;
+}
+}
+
 </style>
