@@ -63,7 +63,7 @@ export default {
     },
     async login() {
       try {
-        const result = await axios.post("http://localhost:3000/user/login",{
+        const result = await axios.post("https://172.16.49.36:3000/user/login",{
           username:this.username,
           password:this.password
         });
