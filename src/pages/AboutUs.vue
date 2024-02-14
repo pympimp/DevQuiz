@@ -5,7 +5,7 @@
         <p>Our project is being undertaken by a team of three individuals</p>
         <div class="img-container">
             <div class="card-img" v-for="(item,index) in imgSrc" :key="index">
-                <img src={{item.img}} alt="Image">
+                <img :src="item.img" alt="Image">
                 <h3 style="font-size: larger;color: #EC4088;">{{ item.name }}</h3>
                 <p style="color: gray;">{{ item.status }}</p>
                 <p style="text-align: center;margin-top: 20px;"> {{ item.work }}</p>
@@ -36,19 +36,19 @@ const imgSrc = [
         name:'Pongsatorn Polsaeng',
         status:'Developer / Database Analyst',
         work:'"Doing Project as Front-End Developer, Back-End Developer and Database Manager"',
-        img:'/images/ninja.png'
+        img:new URL('/images/ninja.png', import.meta.url).href
     },
     {
         name:'Pimmada Suradanai',
         status:'Developer / Designer',
         work:'"Doing Project as User Interface Designer, Front-End Developer and Document Supporter"',
-        img:'/images/pim.png'
+        img:new URL('/images/pim.png', import.meta.url).href
     },  
     {
         name:'Natthawadee Intaput',
         status:'Developer /Supporter',
         work:'"Doing Project as Front-End Developer, Document Supporter and Database Manager"',
-        img:'/images/gib.png'
+        img:new URL('/images/gib.png', import.meta.url).href
     }
 ];
 </script>
