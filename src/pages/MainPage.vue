@@ -24,6 +24,15 @@ export default {
     Toggledropdown(){
       this.dropdown = !this.dropdown
     },
+    downloadPdf(pdfUrl,pdfName) {
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.target = '_blank';
+    link.download = pdfName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  },
     mounted() {
       setTimeout(()=>{
         document.body.style.overflow = 'hidden'
@@ -55,7 +64,7 @@ export default {
           <i :class="['bi', 'bi-arrow-down-short', { 'rotate-180': dropdown }]"></i>
         </button>
         <div v-if="dropdown" class="dropdown">
-          <a href="https://devquiz-five.vercel.app/pubilc/image/PresentationElearning.pdf" class="a" download="PresentationElearning.pdf" >ไฟล์นำเสนอ</a>
+          <div class="a" @click="downloadPdf('https://devquiz-five.vercel.app/pubilc/image/PresentationElearning.pdf','PresentationElearning.pdf')">ไฟล์นำเสนอ</div>
           <hr style="width: 80%; background-color: black;">
           <a href="https://devquiz-five.vercel.app/pubilc/image/UserManual.pdf" class="a" download="UserManual.pdf">คู่มือการใช้งาน</a>
         </div>
