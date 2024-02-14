@@ -63,7 +63,7 @@ export default {
     },
     async login() {
       try {
-        const result = await axios.post("https://devquiz-five.vercel.app:3000/user/login",{
+        const result = await axios.post("https://devquiz-five.vercel.app/user/login",{
           username:this.username,
           password:this.password
         });
