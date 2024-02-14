@@ -157,11 +157,10 @@ onMounted(() => {
 const fetchOneCourses = async () => {
   isLoading.value = true
   const result = await axios.get(
-    `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/lessons/${courses.value}`
+    `http://192.168.1.110:3000/coures/lessons/${courses.value}`
   )
   if (result) {
     data.value = result.data
-    console.log('data', data.value)
     isLoading.value = false
   }
 }
@@ -222,7 +221,7 @@ const preDelete = (coursesId, lessonId, unitId, auth) => {
 
 const deleteUnit = async (coursesId, lessonId, unitId) => {
   const result = await axios.delete(
-    ` http://localhost:5000/test-elearning-b0646/us-central1/api/coures/deleteCourse/${coursesId}/${lessonId}/${unitId}`
+    ` http://192.168.1.110:3000/coures/deleteCourse/${coursesId}/${lessonId}/${unitId}`
   )
   if (result) {
     fetchOneCourses()
@@ -250,7 +249,7 @@ const changeName = () => {
 
 const addLesson = async (finalName) => {
   const result = await axios.post(
-    `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/addLesson/${data.value.CoursesId}`,
+    `http://192.168.1.110:3000/coures/addLesson/${data.value.CoursesId}`,
     {
       nameLesson: finalName
     }
@@ -263,7 +262,7 @@ const addLesson = async (finalName) => {
 
 const deleteLesson = async (coursesId, lessonId) => {
   const result = await axios.delete(
-    `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/deleteLesson/${coursesId}/${lessonId}`
+    `http://192.168.1.110:3000/coures/deleteLesson/${coursesId}/${lessonId}`
   )
   if (result) {
     fetchOneCourses()

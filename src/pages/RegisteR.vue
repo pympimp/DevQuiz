@@ -65,7 +65,7 @@ export default {
     async signup(){
   try {
     // ส่วนของการส่งข้อมูล
-    const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/api/user/register", {
+    const result = await axios.post("http://192.168.1.110:3000/user/register", {
       email: this.email,
       username: this.username,
       password: this.password,
@@ -73,7 +73,6 @@ export default {
     });
     // เมื่อสมัครได้
     if (result) {
-      console.log(result.data);
       alert("Sign-up done");
       this.$router.push({ name: "LogIn" });
     }

@@ -39,7 +39,7 @@ export default {
     async fetchCourses() {
       try {
         const result = await axios.get(
-          'http://localhost:5000/test-elearning-b0646/us-central1/api/coures/'
+          'http://192.168.1.110:3000/coures/'
         )
         if (result) {
           this.courses = result.data
@@ -68,7 +68,7 @@ export default {
     async fetchOneUser() {
       if (this.authenStore.auth) {
         const result = await axios.get(
-          `http://localhost:5000/test-elearning-b0646/us-central1/api/user/${this.authenStore.auth.id}`
+          `http://192.168.1.110:3000/user/${this.authenStore.auth.id}`
         )
         if (result) {
           this.userData = result.data

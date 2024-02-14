@@ -15,7 +15,7 @@
 
     <ul class="md:flex md:items-center md:px-0 px-3 md:pb-0 pb-6 md:static absolute  md:w-auto w-full duration-700 ease-in" style="z-index: 100" :class="[open ? 'left-0' : 'left-[-100%]']">
       <li class="md:mx-4 md:my-0 my-6" v-for="link in Links" :key="link.name">
-        <a :href="link.link" class="text-xl hover:text-blue-200">{{ link.name }}</a>
+        <RouterLink :to="link.link" class="text-xl hover:text-blue-200">{{ link.name }}</RouterLink>
       </li>
       <router-link to="/UserProfile">
       <i class="bi bi-person-circle" style="margin-right: 3vh;"></i>  
@@ -37,8 +37,10 @@ export default {
   setup() {
     let open = ref(false)
     let Links = [
+      { name: "หน้าหลัก", link: '/'},
       { name: "บทเรียน", link: '/Class/GcuU8of4PMEafViNyYRQ' },
       { name: "บทความ", link: '/Articie/GcuU8of4PMEafViNyYRQ' },
+      { name: "เกี่ยวกับเรา", link : "/About"}
       // { name: "เกี่ยวกับเรา", link: "#" },
     ];
 

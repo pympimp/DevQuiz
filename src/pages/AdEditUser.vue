@@ -54,7 +54,7 @@ const fetchData = async () => {
 
     if (userId) {
       const result = await axios.get(
-        `http://localhost:5000/test-elearning-b0646/us-central1/api/user/${userId}`
+        `http://192.168.1.110:3000/user/${userId}`
       )
 
       if (result.data) {
@@ -72,14 +72,13 @@ const handleSubmit = () => {
   // Handle form submission or any other logic
   // editUser();
   editUser()
-  console.log(user.value)
 }
 
 const editUser = async () => {
   const userId = user.value.id
   try {
     const result = await axios.put(
-      `http://localhost:5000/test-elearning-b0646/us-central1/api/admin/edit/${userId}`,
+      `http://192.168.1.110:3000/admin/edit/${userId}`,
       {
         username: user.value.username,
         email: user.value.email,

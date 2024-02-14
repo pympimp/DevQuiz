@@ -74,11 +74,10 @@ onMounted(() => {
 const fetchData = async () => {
   try {
     const result = await axios.get(
-      'http://localhost:5000/test-elearning-b0646/us-central1/api/admin'
+      'http://192.168.1.110:3000/admin'
     )
     if (result) {
       user.value = result.data
-      console.log('data', user.value)
     }
   } catch (error) {
     console.error('Error during getdata:', error)
@@ -111,7 +110,7 @@ const beforeDelete = (id) => {
 const deleteUser = async (id) => {
   try {
     const result = await axios.delete(
-      `http://localhost:5000/test-elearning-b0646/us-central1/api/admin/delete/${id}`
+      `http://192.168.1.110:3000/admin/delete/${id}`
     )
     if (result) {
       fetchData()

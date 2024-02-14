@@ -91,7 +91,6 @@ const runCode = () => {
   const step1 = userAnswer.replace(/".*?"/g, '')
   const step2 =  step1.replace(/:\s*([^;]+)\s*;/g, ':')
   const answer = step2
-  console.log("test",answer)
   if (unit.value.answer[0] && unit.value.answer[1]) {
     const hasBTags = answer.includes(unit.value.answer[0]) && answer.includes(unit.value.answer[1])
     corrcet.value = hasBTags
@@ -113,17 +112,15 @@ const runCode = () => {
       text: 'โปรดลองใหม่อีกครัง'
     })
   }
-  console.log(corrcet.value)
 }
 
 const fetchOneUnit = async (couresId, lessonId, unitId) => {
   const result = await axios.get(
-    `http://localhost:5000/test-elearning-b0646/us-central1/api/coures/${couresId}/${lessonId}/${unitId}`
+    `http://192.168.1.110:3000/coures/${couresId}/${lessonId}/${unitId}`
   )
   if (result) {
     unit.value = await result.data
     start.value = unit.value.body
-    console.log('unit', unit.value)
   }
 }
 
@@ -139,7 +136,7 @@ const check = async () => {
   }
   try {
     const result = await axios.put(
-      `http://localhost:5000/test-elearning-b0646/us-central1/api/user/Test/${authenStore.auth.id}/${course.value}`,
+      `http://192.168.1.110:3000/user/Test/${authenStore.auth.id}/${course.value}`,
       {
         [lesson]: {
           [units]: true
@@ -152,7 +149,6 @@ const check = async () => {
          await fetchOneUnit(couresId.value, lessonId.value, nextUnit.value)
          fetchUnitData()
          outPut()
-          console.log('เปลี่ยนหน้า',nextUnit.value)
     }
   } catch (error) {
     console.error('Error:', error.message)
@@ -172,10 +168,9 @@ const fetchUnitData = async () => {
     lessonId.value = route.params.lessonId
     unitId.value = route.params.unitId
     course.value = route.params.name
-    console.log("unitId ที่เปลี่ยน ", unitId.value)
   try {
     const result = await axios.get(
-      'http://localhost:5000/test-elearning-b0646/us-central1/api/coures/'
+      'http://192.168.1.110:3000/coures/'
     )
     if (result) {
       const Index = result.data.findIndex((item) => item.name === course.value)
@@ -186,7 +181,6 @@ const fetchUnitData = async () => {
         )
         if (lessonIndex !== -1) {
           lessonName.value = unitData.value.lessons[lessonIndex].nameLesson
-          console.log('lessonName', lessonName.value)
           const unitIndex = unitData.value.lessons[lessonIndex].units.findIndex(
             (item) => item.unitId === unitId.value
           )
@@ -200,7 +194,6 @@ const fetchUnitData = async () => {
             nextUnit.value = null
           }
         }
-        console.log('unitData', unitData.value)
       }
     }
   } catch (error) {
@@ -218,7 +211,7 @@ const endLesson = async()=>{
   }
   try {
     const result = await axios.put(
-      `http://localhost:5000/test-elearning-b0646/us-central1/api/user/Test/${authenStore.auth.id}/${course.value}`,
+      `http://192.168.1.110:3000/user/Test/${authenStore.auth.id}/${course.value}`,
       {
         [lessons]: {
           unit1: true

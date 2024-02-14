@@ -63,7 +63,7 @@ export default {
     },
     async login() {
       try {
-        const result = await axios.post("http://localhost:5000/test-elearning-b0646/us-central1/api/user/login",{
+        const result = await axios.post("http://192.168.1.110:3000/user/login",{
           username:this.username,
           password:this.password
         });
@@ -71,10 +71,10 @@ export default {
            this.authenStore.setAuthen(result.data)
           alert("Welcome "+ result.data.username)
           if(localStorage.setItem && result.data.role === 'user' && localStorage.getItem(Id_Key)){
-            this.router.push("/Homepage");
+            this.$router.push({ name: 'HomePage' })
           }
           if(localStorage.setItem && result.data.role === 'admin' && localStorage.getItem(Id_Key)){
-            this.router.push("/Admin/AdminDashboard");
+            this.$router.push({ name: 'AdminDashboard' })
           }
         }
       } catch (error) {

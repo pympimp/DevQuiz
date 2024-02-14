@@ -59,7 +59,7 @@ export default {
     async fetchData(){
       this.isLoading = true
       try {
-        const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/class/')
+        const result = await axios.get('http://192.168.1.110:3000/class')
         if(result){
           this.boxes = result.data.map((item, index) =>({
             id:index + 1,
@@ -76,7 +76,6 @@ export default {
             hiddenText:item.content[0].hidden,
             isExpanded:false,
           }));
-          console.log(this.articles)
           this.isLoading = false
         }
       } catch (error) {
@@ -137,9 +136,9 @@ toggleSection() {
           <h2>ภาษาคอมพิวเตอร์เบื้องต้น</h2>
         </div>
         <div v-if="boxes != null || boxes != ''" class="row" >
-          <a :href="`/class/${box.link}`" v-for="box in boxes" :key="box.id" class="box">
+          <RouterLink :to="`/class/${box.link}`" v-for="box in boxes" :key="box.id" class="box">
             <BoxComponent :boxData="box" />
-          </a>
+          </RouterLink>
         </div>
         <div v-else class="row">
           <h1>Data not available</h1>

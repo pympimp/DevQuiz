@@ -93,10 +93,9 @@ export default {
 
     async fetchData(){
     try {
-        const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/class/');
+        const result = await axios.get('http://192.168.1.110:3000/class/');
         if (result) {
           this.classAllData = result.data;
-          console.log("classAllData", this.classAllData);
         }
       } catch (error) {
         console.error("Error during getdata:", error);
@@ -105,11 +104,10 @@ export default {
 
   async fetchOneClass(id) {
       try {
-        const result = await axios.get(`http://localhost:5000/test-elearning-b0646/us-central1/api/class/${id}`)
+        const result = await axios.get(`http://192.168.1.110:3000/class/${id}`)
           if(result){
             this.classData = result.data
             this.changeColor = this.classData.name
-            console.log("sadasd",this.classData)
             if(this.classData){
               this.fetchUnitData(this.classData.name);
             }
@@ -121,13 +119,12 @@ export default {
 
     async fetchUnitData (name) {
       try {
-        const result = await axios.get('http://localhost:5000/test-elearning-b0646/us-central1/api/coures/');
+        const result = await axios.get('http://192.168.1.110:3000/coures/');
         if(result){
           const Index = result.data.findIndex((item) => item.name === name)
           if(Index !== -1){
             this.unitData = result.data[Index]
             this.currentContent = this.unitData.name
-          console.log('unitData', this.unitData)
           }
         }
       } catch (error) {
