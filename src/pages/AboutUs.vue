@@ -5,7 +5,7 @@
         <p>Our project is being undertaken by a team of three individuals</p>
         <div class="img-container">
             <div class="card-img" v-for="(item,index) in imgSrc" :key="index">
-                <img :src=item.img alt="Image">
+                <img src={{item.img}} alt="Image">
                 <h3 style="font-size: larger;color: #EC4088;">{{ item.name }}</h3>
                 <p style="color: gray;">{{ item.status }}</p>
                 <p style="text-align: center;margin-top: 20px;"> {{ item.work }}</p>
