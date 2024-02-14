@@ -77,69 +77,69 @@ const router = createRouter({
       children:
       [
         {
-          path: "/AdminDashboard",
+          path: "AdminDashboard",
           name: 'AdminDashboard',
          component: () => import('../pages/AdDashBoard.vue') 
        },
         {
-          path: "/AdminManageUser",
+          path: "AdminManageUser",
           name: 'AdminManageUser',
           component: () => import('../pages/AdManageUser.vue') 
         },
         {
-          path: "/AdminManageClass",
+          path: "AdminManageClass",
           name: 'AdminManageClass',
           component: () => import('../pages/AdManageClass.vue') 
         },
         {
-          path: "/AdminManageArticle/:id",
+          path: "AdminManageArticle/:id",
           name: 'AdminManageArticle',
           component: () => import('../pages/AdManageArticle.vue') 
         },
         {
-          path: "/AdminEditUser/:Id",
+          path: "AdminEditUser/:Id",
           name: "AdminEditUser",
           component: () => import('../pages/AdEditUser.vue') 
         },
         {
-          path: "/AdminAddUser",
+          path: "AdminAddUser",
           name: "AdminAddUser",
           component: () => import('../pages/AdAddUser.vue') 
         },
 
         {
-          path: "/ArticleList",
+          path: "ArticleList",
           name: "ArticleList",
           component: () => import('../pages/ArticleList.vue') 
         },
 
         {
-          path: "/AdminEditArticle/:coursesId/:lessonId/:unitId/:name",
+          path: "AdminEditArticle/:coursesId/:lessonId/:unitId/:name",
           name: "AdminEditArticle",
           component: () => import('../pages/AdEditArticle.vue') 
         },
 
         {
-          path: "/AdminAddArticle/:coursesId/:lessonId",
+          path: "AdminAddArticle/:coursesId/:lessonId",
           name: "AdminAddArticle",
           component: () => import('../pages/AdAddArticle.vue') 
         },
 
         {
-          path: "/ClassList",
+          path: "ClassList",
           name: "ClassList",
           component: () => import('../pages/ClassList.vue') 
         },
 
         {
-          path: "/AdminEditClass",
+          path: "AdminEditClass",
           name: "AdminEditClass",
           component: () => import('../pages/AdEditClass.vue') 
         },
 
         
         {
-          path: "/AdminAddClass",
+          path: "AdminAddClass",
           name: "AdminAddClass",
           component: () => import('../pages/AdAddClass.vue') 
         },

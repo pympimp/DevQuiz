@@ -71,10 +71,10 @@ export default {
            this.authenStore.setAuthen(result.data)
           alert("Welcome "+ result.data.username)
           if(localStorage.setItem && result.data.role === 'user' && localStorage.getItem(Id_Key)){
-            this.router.push("/Homepage");
+            this.$router.push({ name: 'HomePage' })
           }
           if(localStorage.setItem && result.data.role === 'admin' && localStorage.getItem(Id_Key)){
-            this.router.push("/Admin/AdminDashboard");
+            this.$router.push({ name: 'AdminDashboard' })
           }
         }
       } catch (error) {
