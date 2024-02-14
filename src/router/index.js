@@ -37,7 +37,7 @@ const router = createRouter({
         {
           path: "UserProfile",
           name: 'UserProfile',
-          component: () => import('../pages/Userprofile.vue') 
+          component: () => import('../pages/UserProfile.vue') 
         },
         {
           path: "/EditUser",
