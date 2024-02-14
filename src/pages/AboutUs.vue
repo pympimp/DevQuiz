@@ -54,6 +54,12 @@ const imgSrc = [
 </script>
 
 <style scoped>
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .about-container{
     display: flex;
     flex-direction: column;
@@ -100,8 +106,9 @@ const imgSrc = [
 
 footer{
     background-color: #333;
-    width: 100%;
+    max-width: 100%;
     padding: 30px;
+    bottom: 0;
 }
 .footer-container{
     display: flex;
