@@ -10,7 +10,8 @@ export default {
     return {
       message: 'การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น',
       dropdown: false,
-      Present:new URL('/public/image/PresentationElearning.pdf', import.meta.url).href
+      Present:new URL('/public/image/PresentationElearning.pdf', import.meta.url).href,
+      Manual:new URL('/public/image/UserManual.pdf', import.meta.url).href
     }
   },
   methods: {
@@ -67,7 +68,7 @@ export default {
         <div v-if="dropdown" class="dropdown">
           <div class="a" @click="downloadPdf(Present,'PresentationElearning.pdf')">ไฟล์นำเสนอ</div>
           <hr style="width: 80%; background-color: black;">
-          <a href="https://devquiz-five.vercel.app/pubilc/image/UserManual.pdf" class="a" download="UserManual.pdf">คู่มือการใช้งาน</a>
+          <div class="a" @click="downloadPdf(Manual,'UserManual.pdf')">คู่มือการใช้งาน</div>
         </div>
       </div>
       <div class="about-image">
