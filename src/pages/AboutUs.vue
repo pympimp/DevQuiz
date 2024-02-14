@@ -24,7 +24,7 @@
                 </div>
                 <div class="follow">
                     <h4>FOLLOW US</h4>
-                    <p style="margin-top: 10px;"><i class="bi bi-facebook"></i><i class="bi bi-youtube"></i></p>
+                    <p style="margin-top: 10px;"><a href="https://www.facebook.com/ITUDVC"><i class="bi bi-facebook"/></a><a href="https://www.youtube.com/@udvcteamwork"><i class="bi bi-youtube"/></a></p>
                 </div>
             </div>
         </footer>
