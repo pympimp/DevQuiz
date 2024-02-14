@@ -10,8 +10,8 @@ export default {
     return {
       message: 'การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น',
       dropdown: false,
-      PdfPresent: '../assets/PresentationElearning.pdf',
-      PdfManual: '../assets/UserManual.pdf',
+      PdfPresent: '/images/PresentationElearning.pdf',
+      PdfManual: '/images/UserManual.pdf',
     }
   },
   methods: {
@@ -73,7 +73,7 @@ export default {
       <div class="credit">
         <p>
           นักศึกษาชั้นประกาศนียบัตรวิชาชีพชั้นสูง สาขาวิชาเทคโนโลยีสารสนเทศ
-          วิทยาลัยอาชีวศึกษาอุดรธานี hihihi
+          วิทยาลัยอาชีวศึกษาอุดรธานี
         </p>
         <!-- <ol type="1">
           <li>นาย พงศธรณ์ พลแสง</li>
