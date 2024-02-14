@@ -10,8 +10,6 @@ export default {
     return {
       message: 'การพัฒนาระบบ e-Learning แบบ Interactive สำหรับรายวิชาการเขียนโปรแกรมเบื้องต้น',
       dropdown: false,
-      PdfPresent: '/images/PresentationElearning.pdf',
-      PdfManual: '/images/UserManual.pdf',
     }
   },
   methods: {
@@ -57,9 +55,9 @@ export default {
           <i :class="['bi', 'bi-arrow-down-short', { 'rotate-180': dropdown }]"></i>
         </button>
         <div v-if="dropdown" class="dropdown">
-          <a :href="PdfPresent" class="a" download="PresentationElearning.pdf" >ไฟล์นำเสนอ</a>
+          <a href="/images/PresentationElearning.pdf" class="a" download="PresentationElearning.pdf" >ไฟล์นำเสนอ</a>
           <hr style="width: 80%; background-color: black;">
-          <a :href="PdfManual" class="a" download="UserManual.pdf">คู่มือการใช้งาน</a>
+          <a href="/images/UserManual.pdf" class="a" download="UserManual.pdf">คู่มือการใช้งาน</a>
         </div>
       </div>
       <div class="about-image">
