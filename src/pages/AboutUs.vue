@@ -109,6 +109,7 @@ footer{
     max-width: 100%;
     padding: 30px;
     bottom: 0;
+    position: fixed;
 }
 .footer-container{
     display: flex;
