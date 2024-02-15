@@ -34,7 +34,7 @@
           <h6>
           จำนวนผู้ใช้งานวันนี้</h6>
           <transition mode="out-in">
-            <p v-if="userStatAll" :key="userStatAll.totalCount">3 คน</p>
+            <p v-if="userStatAll" :key="userStatAll.totalCount">{{ userStatAll.totalCount }} คน</p>
           </transition>
         </div>
         <div class="box-3">
@@ -64,21 +64,21 @@ const userData = ref()
 const router = useRouter()
 
 const options = ref({
-      labels: ['สัปดาห์ 1', 'สัปดาห์ 2', 'สัปดาห์ 3', 'สัปดาห์ 4', 'สัปดาห์ 5'],
+      labels: ['สัปดาห์ 1', 'สัปดาห์ 2', 'สัปดาห์ 3', 'สัปดาห์ 4', 'สัปดาห์ 5','สัปดาห์ 6','สัปดาห์ 7'],
     });
-const series1 = ref([10, 20, 13, 17,30])
+const series1 = ref([0, 0, 0, 0,0])
 const chartOptions = ref({
   chart: {
     id: 'basic-bar'
   },
   xaxis: {
-    categories: ['สัปดาห์ 1', 'สัปดาห์ 2', 'สัปดาห์ 3', 'สัปดาห์ 4', 'สัปดาห์ 5']
+    categories: ['สัปดาห์ 1', 'สัปดาห์ 2', 'สัปดาห์ 3', 'สัปดาห์ 4', 'สัปดาห์ 5','สัปดาห์ 6','สัปดาห์ 7']
   }
 })
 
 const series = ref([
   {
-    data: [10,20,13,17,30]
+    data: [0,0,0,0,0]
   }
 ])
 
@@ -102,6 +102,9 @@ onMounted(() => {
 })
 
 const countStat = () => {
+  if(!authenStore.auth.id){
+      window.location.reload()
+    }else{
       const fetchData = () => {
     if (authenStore.auth.id) {
       const eventSource = new EventSource(
@@ -122,6 +125,7 @@ const countStat = () => {
 
 // เรียก fetchData ทุก 1 นาที
 setInterval(fetchData, 60000) // 1 นาที = 60,000 มิลลิวินาที
+    }
 }
 
 const fetchUser = async () => {
