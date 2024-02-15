@@ -1,11 +1,11 @@
 <template>
   <half-circle-spinner
-            :animation-duration="1000"
-            :size="60"
-            color="#ff1d5e"
-            class="loading"
-            v-if="isLoading"
-          />
+    :animation-duration="1000"
+    :size="60"
+    color="#ff1d5e"
+    class="loading"
+    v-if="isLoading"
+  />
   <div class="h-[calc(auto)] bg-gray-50 p-[20px] overflow-auto" v-if="!isLoading">
     <div class="top-sec">
       <router-link to="/Admin/ArticleList" class="back-link">
@@ -83,10 +83,15 @@
               <div v-for="(subitem, subindex) in item.units" :key="subindex" class="unit-card">
                 <h2>{{ subindex + 1 }} {{ subitem.header }}</h2>
                 <div>
-                  <router-link
-                    :to="`/Admin/AdminEditArticle/${data.CoursesId}/${item.lessonId}/${subitem.unitId}/${data.name}`"
-                    ><i class="bi bi-pencil"></i
-                  ></router-link>
+                  <i
+                    class="bi bi-pencil"
+                    @click="
+                      goto(
+                        `/Admin/AdminEditArticle/${data.CoursesId}/${item.lessonId}/${subitem.unitId}/${data.name}`
+                      )
+                    "
+                    style="color: rgb(163, 22, 22); cursor: pointer"
+                  ></i>
                   <i
                     class="bi bi-trash"
                     style="color: rgb(163, 22, 22); cursor: pointer"
@@ -123,13 +128,13 @@
 
 <script setup>
 import { onMounted, ref, computed } from 'vue'
-import { useRoute,useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { HalfCircleSpinner } from 'epic-spinners'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
-import { authenKey } from '../utils/config';
+import { authenKey } from '../utils/config'
 import { useAuthenStore } from '../stores/auth'
 
 const authenStore = useAuthenStore()
@@ -141,24 +146,27 @@ const Search = ref('')
 const router = useRouter()
 
 onMounted(() => {
-  setTimeout(()=>{
+  setTimeout(() => {
     if (!localStorage.getItem(authenKey)) {
-        router.push({ name: 'LogIn' })
-  }if(authenStore.auth.role !== 'admin'){
-    router.push("/")
-  }
-  },800)
+      router.push({ name: 'LogIn' })
+    }
+    if (authenStore.auth.role !== 'admin') {
+      router.push('/')
+    }
+  }, 800)
   if (route.params.id) {
     courses.value = route.params.id
     fetchOneCourses()
   }
 })
 
+const goto = (url) => {
+  router.push(url)
+}
+
 const fetchOneCourses = async () => {
   isLoading.value = true
-  const result = await axios.get(
-    `http://172.16.49.36:3000/coures/lessons/${courses.value}`
-  )
+  const result = await axios.get(`http://172.16.49.36:3000/coures/lessons/${courses.value}`)
   if (result) {
     data.value = result.data
     isLoading.value = false
@@ -269,13 +277,11 @@ const deleteLesson = async (coursesId, lessonId) => {
   }
 }
 
-const fiteredLessonList = computed(()=>{
-  const searchText = Search.value.toLowerCase();
+const fiteredLessonList = computed(() => {
+  const searchText = Search.value.toLowerCase()
 
-  return data.value.lessons.filter((data)=>{
-    return(
-      data.nameLesson.toLowerCase().includes(searchText) 
-    )
+  return data.value.lessons.filter((data) => {
+    return data.nameLesson.toLowerCase().includes(searchText)
   })
 })
 </script>
@@ -481,32 +487,31 @@ button:hover {
 
 @media only screen and (max-width: 480px) {
   img {
-  width: 3vh;
-  height: 3vh;
-  margin-left: 1rem;
-}
+    width: 3vh;
+    height: 3vh;
+    margin-left: 1rem;
+  }
 
-h1 {
-  font-size: 1rem;
-}
+  h1 {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
   img {
-  width: 3vh;
-  height: 3vh;
-  margin-left: 1rem;
-}
+    width: 3vh;
+    height: 3vh;
+    margin-left: 1rem;
+  }
 
-h1 {
-  font-size: 1.2rem;
-}
-}
-
-@media screen and (min-width: 769px)  {
   h1 {
-  font-size: 1.2rem;
-}
+    font-size: 1.2rem;
+  }
 }
 
+@media screen and (min-width: 769px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+}
 </style>
