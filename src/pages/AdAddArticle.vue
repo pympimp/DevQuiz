@@ -97,6 +97,7 @@ const submit = () =>{
             title: "สร้างสำเร็จ",
             icon: "success"
           });
+          goback()
           }
         }
       });
