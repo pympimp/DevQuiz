@@ -102,13 +102,10 @@ onMounted(() => {
 })
 
 const countStat = () => {
-  if(!authenStore.auth.id){
-      window.location.reload()
-    }else{
       const fetchData = () => {
     if (authenStore.auth.id) {
       const eventSource = new EventSource(
-        `http://192.168.1.110:3000/user/userStat/${authenStore.auth.id}`
+        `http://172.16.49.36:3000/user/userStat/${authenStore.auth.id}`
       )
       eventSource.addEventListener('message', (event) => {
         const eventData = JSON.parse(event.data)
@@ -125,11 +122,10 @@ const countStat = () => {
 
 // เรียก fetchData ทุก 1 นาที
 setInterval(fetchData, 60000) // 1 นาที = 60,000 มิลลิวินาที
-    }
 }
 
 const fetchUser = async () => {
-  const result = await axios.get('http://192.168.1.110:3000/user')
+  const result = await axios.get('http://172.16.49.36:3000/user')
   if (result) {
     userData.value = result.data
   }

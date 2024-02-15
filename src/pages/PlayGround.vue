@@ -116,7 +116,7 @@ const runCode = () => {
 
 const fetchOneUnit = async (couresId, lessonId, unitId) => {
   const result = await axios.get(
-    `http://192.168.1.110:3000/coures/${couresId}/${lessonId}/${unitId}`
+    `http://172.16.49.36:3000/coures/${couresId}/${lessonId}/${unitId}`
   )
   if (result) {
     unit.value = await result.data
@@ -136,7 +136,7 @@ const check = async () => {
   }
   try {
     const result = await axios.put(
-      `http://192.168.1.110:3000/user/Test/${authenStore.auth.id}/${course.value}`,
+      `http://172.16.49.36:3000/user/Test/${authenStore.auth.id}/${course.value}`,
       {
         [lesson]: {
           [units]: true
@@ -170,7 +170,7 @@ const fetchUnitData = async () => {
     course.value = route.params.name
   try {
     const result = await axios.get(
-      'http://192.168.1.110:3000/coures/'
+      'http://172.16.49.36:3000/coures/'
     )
     if (result) {
       const Index = result.data.findIndex((item) => item.name === course.value)
@@ -211,7 +211,7 @@ const endLesson = async()=>{
   }
   try {
     const result = await axios.put(
-      `http://192.168.1.110:3000/user/Test/${authenStore.auth.id}/${course.value}`,
+      `http://172.16.49.36:3000/user/Test/${authenStore.auth.id}/${course.value}`,
       {
         [lessons]: {
           unit1: true

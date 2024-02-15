@@ -67,7 +67,7 @@ const onSubmit = () => {
 
 const updateUser = async () => {
   const result = await axios.put(
-    `http://192.168.1.110:3000/user/${authenStore.auth.id}`,
+    `http://172.16.49.36:3000/user/${authenStore.auth.id}`,
     InputData.value
   )
   if (result) {
@@ -76,7 +76,7 @@ const updateUser = async () => {
 }
 
 const fetchOneUser =async()=>{
-      const result = await axios.get(`http://192.168.1.110:3000/user/${authenStore.auth.id}`)
+      const result = await axios.get(`http://172.16.49.36:3000/user/${authenStore.auth.id}`)
     if(result){
       InputData.value = ({
         email:result.data.email,

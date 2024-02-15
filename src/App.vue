@@ -32,7 +32,7 @@ export default {
       this.$store.commit('toggleTheme');
     },
     async fetchUser(id) {
-      const result = await axios.get(`http://192.168.1.110:3000/user/${id}`)
+      const result = await axios.get(`http://172.16.49.36:3000/user/${id}`)
       if(result && result.data){
         this.authenStore.setAuthen(result.data)
       }
