@@ -91,8 +91,8 @@ const submit = () =>{
         cancelButtonText: "ยกเลิก"
       }).then(async(result) => {
         if (result.isConfirmed) {
-          const result = await createCourses()
-          if(result){
+          await createCourses()
+          if(createCourses){
             Swal.fire({
             title: "สร้างสำเร็จ",
             icon: "success"
