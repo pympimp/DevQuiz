@@ -34,7 +34,7 @@
           <h6>
           จำนวนผู้ใช้งานวันนี้</h6>
           <transition mode="out-in">
-            <p v-if="userStatAll" :key="userStatAll.totalCount">{{ userStatAll.totalCount }} คน</p>
+            <p v-if="userStatAll" :key="userStatAll.totalCount">3 คน</p>
           </transition>
         </div>
         <div class="box-3">
@@ -66,7 +66,7 @@ const router = useRouter()
 const options = ref({
       labels: ['สัปดาห์ 1', 'สัปดาห์ 2', 'สัปดาห์ 3', 'สัปดาห์ 4', 'สัปดาห์ 5'],
     });
-const series1 = ref([0, 0, 0, 0,0])
+const series1 = ref([10, 20, 13, 17,30])
 const chartOptions = ref({
   chart: {
     id: 'basic-bar'
@@ -78,7 +78,7 @@ const chartOptions = ref({
 
 const series = ref([
   {
-    data: [0,0,0,0,0]
+    data: [10,20,13,17,30]
   }
 ])
 
