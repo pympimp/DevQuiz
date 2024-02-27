@@ -108,7 +108,7 @@ const countStat = () => {
       const fetchData = () => {
     if (authenStore.auth.id) {
       const eventSource = new EventSource(
-        `http://172.16.49.36:3000/user/userStat/${authenStore.auth.id}`
+        `http://172.16.49.120:3000/user/userStat/${authenStore.auth.id}`
       )
       eventSource.addEventListener('message', (event) => {
         const eventData = JSON.parse(event.data)
@@ -129,7 +129,7 @@ setInterval(fetchData, 60000) // 1 นาที = 60,000 มิลลิวิ�
 }
 
 const fetchUser = async () => {
-  const result = await axios.get('http://172.16.49.36:3000/user')
+  const result = await axios.get('http://172.16.49.120:3000/user')
   if (result) {
     userData.value = result.data
   }

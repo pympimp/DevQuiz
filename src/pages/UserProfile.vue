@@ -39,7 +39,7 @@ export default {
     async fetchCourses() {
       try {
         const result = await axios.get(
-          'http://172.16.49.36:3000/coures/'
+          'http://172.16.49.120:3000/coures/'
         )
         if (result) {
           this.courses = result.data
@@ -68,7 +68,7 @@ export default {
     async fetchOneUser() {
       if (this.authenStore.auth) {
         const result = await axios.get(
-          `http://172.16.49.36:3000/user/${this.authenStore.auth.id}`
+          `http://172.16.49.120:3000/user/${this.authenStore.auth.id}`
         )
         if (result) {
           this.userData = result.data

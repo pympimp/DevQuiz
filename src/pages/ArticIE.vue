@@ -93,7 +93,7 @@ export default {
 
     async fetchData(){
     try {
-        const result = await axios.get('http://172.16.49.36:3000/class/');
+        const result = await axios.get('http://172.16.49.120:3000/class/');
         if (result) {
           this.classAllData = result.data;
         }
@@ -104,7 +104,7 @@ export default {
 
   async fetchOneClass(id) {
       try {
-        const result = await axios.get(`http://172.16.49.36:3000/class/${id}`)
+        const result = await axios.get(`http://172.16.49.120:3000/class/${id}`)
           if(result){
             this.classData = result.data
             this.changeColor = this.classData.name
@@ -119,7 +119,7 @@ export default {
 
     async fetchUnitData (name) {
       try {
-        const result = await axios.get('http://172.16.49.36:3000/coures/');
+        const result = await axios.get('http://172.16.49.120:3000/coures/');
         if(result){
           const Index = result.data.findIndex((item) => item.name === name)
           if(Index !== -1){
