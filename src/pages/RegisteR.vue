@@ -65,7 +65,7 @@ export default {
     async signup(){
   try {
     // ส่วนของการส่งข้อมูล
-    const result = await axios.post("http://172.16.49.120:3000/user/register", {
+    const result = await axios.post("http://functions-khaki-gamma.vercel.app/user/register", {
       email: this.email,
       username: this.username,
       password: this.password,

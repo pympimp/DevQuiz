@@ -32,7 +32,7 @@ export default {
       this.$store.commit('toggleTheme');
     },
     async fetchUser(id) {
-      const result = await axios.get(`http://172.16.49.120:3000/user/${id}`)
+      const result = await axios.get(`https://functions-khaki-gamma.vercel.app/user/${id}`)
       if(result && result.data){
         this.authenStore.setAuthen(result.data)
       }
