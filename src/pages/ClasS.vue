@@ -65,12 +65,16 @@ onMounted(async() => {
   setTimeout(async() => {
     if (route.params.classId) {
       classId.value = route.params.classId
-      await fetchOneUser()
+      if(!authenStore.auth.id){
+        window.location.reload();
+      }else{
+        await fetchOneUser()
       fetchData()
       if (classId.value ) {
       fetchOneClass(classId.value)
       isLoading.value = false
     }
+      }
     }
   }, 800)
 })
@@ -150,7 +154,7 @@ const userProgress = (contentName) => {
 
 const fetchOneUser = async()=>{
   if (!authenStore.auth.id) {
-          window.location.reload()
+          window.location.reload();
   }else{
     const result = await axios.get(`https://functions-khaki-gamma.vercel.app/user/${authenStore.auth.id}`)
   if(result){
