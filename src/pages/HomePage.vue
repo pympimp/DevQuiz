@@ -59,7 +59,7 @@ export default {
     async fetchData(){
       this.isLoading = true
       try {
-        const result = await axios.get('http://172.16.49.120:3000/class')
+        const result = await axios.get('https://dev-quiz-tau.vercel.app/api/class')
         if(result){
           this.boxes = result.data.map((item, index) =>({
             id:index + 1,
