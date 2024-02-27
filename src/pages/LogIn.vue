@@ -63,7 +63,7 @@ export default {
     },
     async login() {
       try {
-        const result = await axios.post("http://functions-khaki-gamma.vercel.app/user/login",{
+        const result = await axios.post("https://functions-khaki-gamma.vercel.app/user/login",{
           username:this.username,
           password:this.password
         });

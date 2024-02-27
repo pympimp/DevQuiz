@@ -166,7 +166,7 @@ const goto = (url) => {
 
 const fetchOneCourses = async () => {
   isLoading.value = true
-  const result = await axios.get(`http://172.16.49.120:3000/coures/lessons/${courses.value}`)
+  const result = await axios.get(`https://functions-khaki-gamma.vercel.app/coures/lessons/${courses.value}`)
   if (result) {
     data.value = result.data
     isLoading.value = false
@@ -229,7 +229,7 @@ const preDelete = (coursesId, lessonId, unitId, auth) => {
 
 const deleteUnit = async (coursesId, lessonId, unitId) => {
   const result = await axios.delete(
-    ` http://172.16.49.120:3000/coures/deleteCourse/${coursesId}/${lessonId}/${unitId}`
+    ` https://functions-khaki-gamma.vercel.app/coures/deleteCourse/${coursesId}/${lessonId}/${unitId}`
   )
   if (result) {
     fetchOneCourses()
@@ -257,7 +257,7 @@ const changeName = () => {
 
 const addLesson = async (finalName) => {
   const result = await axios.post(
-    `http://172.16.49.120:3000/coures/addLesson/${data.value.CoursesId}`,
+    `https://functions-khaki-gamma.vercel.app/coures/addLesson/${data.value.CoursesId}`,
     {
       nameLesson: finalName
     }
@@ -270,7 +270,7 @@ const addLesson = async (finalName) => {
 
 const deleteLesson = async (coursesId, lessonId) => {
   const result = await axios.delete(
-    `http://172.16.49.120:3000/coures/deleteLesson/${coursesId}/${lessonId}`
+    `https://functions-khaki-gamma.vercel.app/coures/deleteLesson/${coursesId}/${lessonId}`
   )
   if (result) {
     fetchOneCourses()

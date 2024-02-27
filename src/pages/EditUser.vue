@@ -67,7 +67,7 @@ const onSubmit = () => {
 
 const updateUser = async () => {
   const result = await axios.put(
-    `http://172.16.49.120:3000/user/${authenStore.auth.id}`,
+    `https://functions-khaki-gamma.vercel.app/user/${authenStore.auth.id}`,
     InputData.value
   )
   if (result) {
@@ -76,7 +76,7 @@ const updateUser = async () => {
 }
 
 const fetchOneUser =async()=>{
-      const result = await axios.get(`http://172.16.49.120:3000/user/${authenStore.auth.id}`)
+      const result = await axios.get(`https://functions-khaki-gamma.vercel.app/user/${authenStore.auth.id}`)
     if(result){
       InputData.value = ({
         email:result.data.email,

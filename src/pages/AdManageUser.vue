@@ -74,7 +74,7 @@ onMounted(() => {
 const fetchData = async () => {
   try {
     const result = await axios.get(
-      'http://172.16.49.120:3000/admin'
+      'https://functions-khaki-gamma.vercel.app/admin'
     )
     if (result) {
       user.value = result.data
@@ -110,7 +110,7 @@ const beforeDelete = (id) => {
 const deleteUser = async (id) => {
   try {
     const result = await axios.delete(
-      `http://172.16.49.120:3000/admin/delete/${id}`
+      `https://functions-khaki-gamma.vercel.app/admin/delete/${id}`
     )
     if (result) {
       fetchData()

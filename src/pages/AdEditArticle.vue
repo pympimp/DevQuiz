@@ -139,7 +139,7 @@ onMounted(()=>{
 })
 
 const fetchOneCourses = async() =>{
-  const result = await axios.get(` http://172.16.49.120:3000/coures/${coursesId.value}/${lessonId.value}/${unitId.value}`)
+  const result = await axios.get(` https://functions-khaki-gamma.vercel.app/coures/${coursesId.value}/${lessonId.value}/${unitId.value}`)
   if(result){
     Data.value = result.data
     if(Data.value){
@@ -176,7 +176,7 @@ const submit = () =>{
 }
 
 const editCourses = async() =>{
-await axios.put(`http://172.16.49.120:3000/coures/editCourse/${coursesId.value}/${lessonId.value}/${unitId.value}`,InputData.value)
+await axios.put(`https://functions-khaki-gamma.vercel.app/coures/editCourse/${coursesId.value}/${lessonId.value}/${unitId.value}`,InputData.value)
 }
 const goback = () => {
   router.go(-1);

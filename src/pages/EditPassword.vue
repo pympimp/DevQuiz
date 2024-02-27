@@ -42,7 +42,7 @@ onMounted(()=>{
 
 const updateUser = async () => {
   if(oldPassword.value === authenStore.auth.password){
-    const result = await axios.put(`http://172.16.49.120:3000/user/${authenStore.auth.id}`,{
+    const result = await axios.put(`https://functions-khaki-gamma.vercel.app/user/${authenStore.auth.id}`,{
       password:newPassword.value
     })
     if(result){

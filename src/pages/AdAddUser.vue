@@ -60,7 +60,7 @@ const formData = ref({
 
 const submitForm = async () => {
   try {
-    const result = await axios.post('http://172.16.49.120:3000/admin/createUser', formData.value);
+    const result = await axios.post('https://functions-khaki-gamma.vercel.app/admin/createUser', formData.value);
     if (result) {
       // If successful, update the user list and clear the form
       formData.value.username = '';
