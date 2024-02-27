@@ -59,7 +59,7 @@ export default {
     async fetchData(){
       this.isLoading = true
       try {
-        const result = await axios.get('http://functions-khaki-gamma.vercel.app/class')
+        const result = await axios.get('https://functions-khaki-gamma.vercel.app/class')
         if(result){
           this.boxes = result.data.map((item, index) =>({
             id:index + 1,

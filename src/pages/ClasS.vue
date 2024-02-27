@@ -87,7 +87,7 @@ const scrollToAdditionalBox = (id, name) => {
 const fetchOneClass = async (id) => {
   try {
     const result = await axios.get(
-      `http://functions-khaki-gamma.vercel.app/class/${id}`
+      `https://functions-khaki-gamma.vercel.app/class/${id}`
     )
     if (result) {
       classData.value = result.data
@@ -105,7 +105,7 @@ const fetchOneClass = async (id) => {
 const fetchData = async () => {
   try {
     const result = await axios.get(
-      'http://functions-khaki-gamma.vercel.app/class/'
+      'https://functions-khaki-gamma.vercel.app/class/'
     )
     if (result) {
       classAllData.value = result.data
@@ -118,7 +118,7 @@ const fetchData = async () => {
 const fetchUnitData = async (name) => {
   try {
     const result = await axios.get(
-      'http://functions-khaki-gamma.vercel.app/coures/'
+      'https://functions-khaki-gamma.vercel.app/coures/'
     )
     if (result) {
       const Index = result.data.findIndex((item) => item.name === name)
@@ -152,7 +152,7 @@ const fetchOneUser = async()=>{
   if (!authenStore.auth.id) {
           window.location.reload()
   }else{
-    const result = await axios.get(`http://functions-khaki-gamma.vercel.app/user/${authenStore.auth.id}`)
+    const result = await axios.get(`https://functions-khaki-gamma.vercel.app/user/${authenStore.auth.id}`)
   if(result){
     userData.value = result.data
   }
